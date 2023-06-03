@@ -1,0 +1,143 @@
+{
+  "project_info": {
+    "project_number": "880452595257",
+    "firebase_url": "https://matches-expectations-default-rtdb.firebaseio.com",
+    "project_id": "matches-expectations",
+    "storage_bucket": "matches-expectations.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880452595257:android:d2df3a2aa16215d1c227e8",
+        "android_client_info": {
+          "package_name": "Matches.expectations"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "880452595257-mfam9fs03bvap51hq3blljektc0qh4p2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "Matches.expectations",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "880452595257-0msm91kg4941oog0obbaoupfqp4bmmcs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEwRgzoHEvD3oPojGSU50oyu5Mw28U_fE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "880452595257-0msm91kg4941oog0obbaoupfqp4bmmcs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "880452595257-07o9d6jdu15tjmm558qeqq7d1hrvnj1q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "Matches.expectations"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880452595257:android:15cfbbeb299fe94ac227e8",
+        "android_client_info": {
+          "package_name": "com.Matches.expectations"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "880452595257-ct6j8ho8mmm40s2hq91vangnp8ktg642.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Matches.expectations",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "880452595257-0msm91kg4941oog0obbaoupfqp4bmmcs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEwRgzoHEvD3oPojGSU50oyu5Mw28U_fE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "880452595257-0msm91kg4941oog0obbaoupfqp4bmmcs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "880452595257-07o9d6jdu15tjmm558qeqq7d1hrvnj1q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "Matches.expectations"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880452595257:android:158682d161753897c227e8",
+        "android_client_info": {
+          "package_name": "com.mohammedj.matchesexpectations"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "880452595257-kon95199mm1sm2libv7n6ncm73oflkvk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mohammedj.matchesexpectations",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "880452595257-0msm91kg4941oog0obbaoupfqp4bmmcs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEwRgzoHEvD3oPojGSU50oyu5Mw28U_fE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "880452595257-0msm91kg4941oog0obbaoupfqp4bmmcs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "880452595257-07o9d6jdu15tjmm558qeqq7d1hrvnj1q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "Matches.expectations"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
