@@ -7,14 +7,7 @@ A new Flutter project.
 FlutterFlow projects are built to run on the Flutter _stable_ release.
 
 ### Getting started continued:
----
-flutter pub get
-flutter pub run build_runner build --delete-conflicting-outputs
-'display_name': displayName,
-'photo_url': emailAddress,
-'is_admin': emailAddress,
-'is_active': emailAddress,
----
+
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:

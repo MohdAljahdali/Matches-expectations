@@ -40,7 +40,6 @@ Future<String> addClubs(
     final teamsresponse = teamsjson['response'];
 
     teamsresponse.forEach((team) async {
-      teamsHasAddNO = teamsHasAddNO + 1;
       final doc = {
         'teamID': int.parse(team['team']['id'].toString()),
         'teamName': team['team']['name'].toString(),
@@ -59,6 +58,7 @@ Future<String> addClubs(
       } else {
         // Add a new document to the collection
         await collectionRef.add(doc);
+        teamsHasAddNO = teamsHasAddNO + 1;
       }
     });
 
