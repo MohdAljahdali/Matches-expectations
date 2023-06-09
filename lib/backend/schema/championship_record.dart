@@ -47,6 +47,14 @@ class ChampionshipRecord extends FirestoreRecord {
   @override
   String toString() =>
       'ChampionshipRecord(reference: ${reference.path}, data: $snapshotData)';
+
+  @override
+  int get hashCode => reference.path.hashCode;
+
+  @override
+  bool operator ==(other) =>
+      other is ChampionshipRecord &&
+      reference.path.hashCode == other.reference.path.hashCode;
 }
 
 Map<String, dynamic> createChampionshipRecordData({

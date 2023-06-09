@@ -21,7 +21,6 @@ class _TeamsWidgetState extends State<TeamsWidget> {
   late TeamsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -33,7 +32,6 @@ class _TeamsWidgetState extends State<TeamsWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -60,7 +58,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
         }
         List<TeamsRecord> teamsTeamsRecordList = snapshot.data!;
         return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -73,8 +71,8 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                   context: context,
                   builder: (context) {
                     return GestureDetector(
-                      onTap: () =>
-                          FocusScope.of(context).requestFocus(_unfocusNode),
+                      onTap: () => FocusScope.of(context)
+                          .requestFocus(_model.unfocusNode),
                       child: Padding(
                         padding: MediaQuery.of(context).viewInsets,
                         child: Container(
@@ -182,7 +180,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                           borderRadius:
                                               BorderRadius.circular(45.0),
                                           child: Image.network(
-                                            listViewTeamsRecord.teamLogo,
+                                            'https://picsum.photos/seed/34/600',
                                             width: 60.0,
                                             height: 60.0,
                                             fit: BoxFit.contain,
@@ -202,7 +200,10 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                listViewTeamsRecord.teamName,
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'zcr2qjga' /* List Item Title */,
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyLarge

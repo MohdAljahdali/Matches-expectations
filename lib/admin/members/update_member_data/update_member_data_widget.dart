@@ -122,12 +122,11 @@ class _UpdateMemberDataWidgetState extends State<UpdateMemberDataWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              final selectedMedia =
-                                  await selectMediaWithSourceBottomSheet(
-                                context: context,
+                              final selectedMedia = await selectMedia(
                                 maxWidth: 100.00,
                                 maxHeight: 100.00,
-                                allowPhoto: true,
+                                mediaSource: MediaSource.photoGallery,
+                                multiImage: false,
                               );
                               if (selectedMedia != null &&
                                   selectedMedia.every((m) => validateFileFormat(

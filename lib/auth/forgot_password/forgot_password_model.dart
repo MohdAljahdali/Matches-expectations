@@ -22,6 +22,8 @@ class ForgotPasswordModel extends FlutterFlowModel {
     emailFieldController?.dispose();
   }
 
+  /// Action blocks are added here.
+
   /// Additional helper methods are added here.
 
 }

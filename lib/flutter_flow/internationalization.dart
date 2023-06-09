@@ -167,6 +167,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Home
   {
+    'mpr9hs2r': {
+      'en': 'Button',
+      'ar': '',
+    },
     '32i39ac5': {
       'en': 'Page Title',
       'ar': '',
@@ -248,6 +252,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Teams
   {
+    'zcr2qjga': {
+      'en': 'List Item Title',
+      'ar': '',
+    },
     'dfyh9gkf': {
       'en': 'Page Title',
       'ar': '',
@@ -304,6 +312,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'w196sqry': {
       'en': 'Update member data',
       'ar': 'تحديث بيانات العضو',
+    },
+  },
+  // addNewMember
+  {
+    's7a5db50': {
+      'en': 'Email',
+      'ar': 'بريد إلكتروني',
+    },
+    'knglov3y': {
+      'en': 'Password',
+      'ar': 'كلمة المرور',
+    },
+    'rsr51lxw': {
+      'en': '',
+      'ar': '',
+    },
+    'k87zt5d4': {
+      'en': 'Name',
+      'ar': 'الاسم',
+    },
+    'sx6l5h1t': {
+      'en': 'Active member',
+      'ar': 'عضو نشط',
+    },
+    'bd6swm07': {
+      'en': 'Admin member',
+      'ar': 'عضو إداري',
+    },
+    'uoj01qjx': {
+      'en': 'Create member account',
+      'ar': 'إنشاء حساب عضو',
     },
   },
   // Miscellaneous

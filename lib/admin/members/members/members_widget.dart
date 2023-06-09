@@ -1,3 +1,4 @@
+import '/admin/members/add_new_member/add_new_member_widget.dart';
 import '/admin/members/update_member_data/update_member_data_widget.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -22,7 +23,6 @@ class _MembersWidgetState extends State<MembersWidget> {
   late MembersModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -34,20 +34,37 @@ class _MembersWidgetState extends State<MembersWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            print('FloatingActionButton pressed ...');
+          onPressed: () async {
+            await showModalBottomSheet(
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              enableDrag: false,
+              context: context,
+              builder: (context) {
+                return GestureDetector(
+                  onTap: () =>
+                      FocusScope.of(context).requestFocus(_model.unfocusNode),
+                  child: Padding(
+                    padding: MediaQuery.of(context).viewInsets,
+                    child: Container(
+                      height: 560.0,
+                      child: AddNewMemberWidget(),
+                    ),
+                  ),
+                );
+              },
+            ).then((value) => setState(() {}));
           },
           backgroundColor: FlutterFlowTheme.of(context).primary,
           elevation: 8.0,
@@ -212,14 +229,24 @@ class _MembersWidgetState extends State<MembersWidget> {
                                                       child: Align(
                                                         alignment:
                                                             AlignmentDirectional(
-                                                                1.0, 0.0),
+                                                                -1.0, 0.0),
                                                         child: Row(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
-                                                                  .end,
+                                                                  .spaceBetween,
                                                           children: [
+                                                            Container(
+                                                              width: 129.0,
+                                                              height: 100.0,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                              ),
+                                                            ),
                                                             Align(
                                                               alignment:
                                                                   AlignmentDirectional(
@@ -242,15 +269,19 @@ class _MembersWidgetState extends State<MembersWidget> {
                                                                         (context) {
                                                                       return GestureDetector(
                                                                         onTap: () =>
-                                                                            FocusScope.of(context).requestFocus(_unfocusNode),
+                                                                            FocusScope.of(context).requestFocus(_model.unfocusNode),
                                                                         child:
                                                                             Padding(
                                                                           padding:
                                                                               MediaQuery.of(context).viewInsets,
                                                                           child:
-                                                                              UpdateMemberDataWidget(
-                                                                            userUid:
-                                                                                listViewUserRecord.reference,
+                                                                              Container(
+                                                                            height:
+                                                                                350.0,
+                                                                            child:
+                                                                                UpdateMemberDataWidget(
+                                                                              userUid: listViewUserRecord.reference,
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                       );
