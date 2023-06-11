@@ -82,14 +82,14 @@ class _HomeWidgetState extends State<HomeWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    _model.rutenAddCubs = await actions.addClubs(
-                      3442,
-                      43434,
+                    _model.rutenAddTeams = await actions.addTeams(
+                      307,
+                      2022,
                     );
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(
-                          _model.rutenAddCubs!,
+                          _model.rutenAddTeams!,
                           style: FlutterFlowTheme.of(context)
                               .labelSmall
                               .override(
@@ -108,6 +108,56 @@ class _HomeWidgetState extends State<HomeWidget> {
                   },
                   text: FFLocalizations.of(context).getText(
                     'mpr9hs2r' /* Button */,
+                  ),
+                  options: FFButtonOptions(
+                    width: double.infinity,
+                    height: 40.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).primary,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: ' Shamel',
+                          color: Colors.white,
+                          useGoogleFonts: false,
+                        ),
+                    elevation: 3.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  children: [
+                    Text(
+                      FFLocalizations.of(context).getText(
+                        'jfc2h69d' /* Hello World */,
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyMedium,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    await actions.addTournaments(
+                      'SA',
+                      2022,
+                      'league',
+                    );
+                  },
+                  text: FFLocalizations.of(context).getText(
+                    '7hr1npr2' /* Button */,
                   ),
                   options: FFButtonOptions(
                     width: double.infinity,

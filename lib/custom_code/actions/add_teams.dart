@@ -1,5 +1,6 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
@@ -7,10 +8,12 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
-Future<String> addClubs(
+Future<String> addTeams(
   int? league,
   int? season,
 ) async {
@@ -19,9 +22,10 @@ Future<String> addClubs(
   final collectionRef = firestore.collection('teams');
 
   */
+  var teamsHa = 'teamID';
   var teamsHasAddNO = 0;
   final firestore = FirebaseFirestore.instance;
-  final collectionRef = firestore.collection('teams');
+  final TeamsRef = firestore.collection('Teams');
   var headers = {
     'x-rapidapi-key': 'ba825d70e7634e7015d2f116c1a07e03',
     'x-rapidapi-host': 'v3.football.api-sports.io'
@@ -29,7 +33,7 @@ Future<String> addClubs(
   var request = http.Request(
       'GET',
       Uri.parse(
-          'https://v3.football.api-sports.io/teams?league=307&season=2022'));
+          'https://v3.football.api-sports.io/teams?league=${league.toString()}&season=${season.toString()}'));
 
   request.headers.addAll(headers);
 
@@ -40,30 +44,24 @@ Future<String> addClubs(
     final teamsresponse = teamsjson['response'];
 
     teamsresponse.forEach((team) async {
-      final doc = {
+      final addTeamsDoc = {
         'teamID': int.parse(team['team']['id'].toString()),
         'teamName': team['team']['name'].toString(),
+        'teamNameAr': '',
         'teamCode': team['team']['code'].toString(),
         'teamCountry': team['team']['country'].toString(),
-        'teamFounded': int.parse(team['team']['founded'].toString()),
         'teamLogo': team['team']['logo'].toString(),
-        'teamNameAr': '',
       };
-      final docFilter = await collectionRef
-          .where('teamID', isEqualTo: int.parse(team['team']['id'].toString()))
-          .get();
-      if (docFilter.docs.isNotEmpty) {
-        // Update the existing document with the new data
-        //await docFilter.docs.first.reference.update(doc);
-      } else {
-        // Add a new document to the collection
-        await collectionRef.add(doc);
-        teamsHasAddNO = teamsHasAddNO + 1;
-      }
+      await TeamsRef.doc(team['team']['id'].toString()).get().then((doc) {
+        if (!doc.exists) {
+          TeamsRef.doc(team['team']['id'].toString()).set(addTeamsDoc);
+          teamsHasAddNO++;
+        }
+      });
     });
 
-    return 'Number of teams has add is $teamsHasAddNO teams';
+    return teamsHasAddNO.toString();
   } else {
-    return 'Number of teams has add is 0 team';
+    return teamsHasAddNO.toString();
   }
 }

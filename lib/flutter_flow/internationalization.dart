@@ -171,6 +171,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Button',
       'ar': '',
     },
+    'jfc2h69d': {
+      'en': 'Hello World',
+      'ar': '',
+    },
+    '7hr1npr2': {
+      'en': 'Button',
+      'ar': '',
+    },
     '32i39ac5': {
       'en': 'Page Title',
       'ar': '',

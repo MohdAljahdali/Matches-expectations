@@ -24,6 +24,11 @@ class TeamsRecord extends FirestoreRecord {
   String get teamName => _teamName ?? '';
   bool hasTeamName() => _teamName != null;
 
+  // "teamNameAr" field.
+  String? _teamNameAr;
+  String get teamNameAr => _teamNameAr ?? '';
+  bool hasTeamNameAr() => _teamNameAr != null;
+
   // "teamCode" field.
   String? _teamCode;
   String get teamCode => _teamCode ?? '';
@@ -34,33 +39,22 @@ class TeamsRecord extends FirestoreRecord {
   String get teamCountry => _teamCountry ?? '';
   bool hasTeamCountry() => _teamCountry != null;
 
-  // "teamFounded" field.
-  int? _teamFounded;
-  int get teamFounded => _teamFounded ?? 0;
-  bool hasTeamFounded() => _teamFounded != null;
-
   // "teamLogo" field.
   String? _teamLogo;
   String get teamLogo => _teamLogo ?? '';
   bool hasTeamLogo() => _teamLogo != null;
 
-  // "teamNameAr" field.
-  String? _teamNameAr;
-  String get teamNameAr => _teamNameAr ?? '';
-  bool hasTeamNameAr() => _teamNameAr != null;
-
   void _initializeFields() {
     _teamID = snapshotData['teamID'] as int?;
     _teamName = snapshotData['teamName'] as String?;
+    _teamNameAr = snapshotData['teamNameAr'] as String?;
     _teamCode = snapshotData['teamCode'] as String?;
     _teamCountry = snapshotData['teamCountry'] as String?;
-    _teamFounded = snapshotData['teamFounded'] as int?;
     _teamLogo = snapshotData['teamLogo'] as String?;
-    _teamNameAr = snapshotData['teamNameAr'] as String?;
   }
 
   static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('teams');
+      FirebaseFirestore.instance.collection('Teams');
 
   static Stream<TeamsRecord> getDocument(DocumentReference ref) =>
       ref.snapshots().map((s) => TeamsRecord.fromSnapshot(s));
@@ -95,21 +89,19 @@ class TeamsRecord extends FirestoreRecord {
 Map<String, dynamic> createTeamsRecordData({
   int? teamID,
   String? teamName,
+  String? teamNameAr,
   String? teamCode,
   String? teamCountry,
-  int? teamFounded,
   String? teamLogo,
-  String? teamNameAr,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'teamID': teamID,
       'teamName': teamName,
+      'teamNameAr': teamNameAr,
       'teamCode': teamCode,
       'teamCountry': teamCountry,
-      'teamFounded': teamFounded,
       'teamLogo': teamLogo,
-      'teamNameAr': teamNameAr,
     }.withoutNulls,
   );
 

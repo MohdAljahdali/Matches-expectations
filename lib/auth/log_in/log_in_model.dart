@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -15,6 +16,8 @@ class LogInModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - API (ApiSportsStatus)] action in Text widget.
+  ApiCallResponse? apiResult5sl;
   // State field(s) for emailField widget.
   TextEditingController? emailFieldController;
   String? Function(BuildContext, String?)? emailFieldControllerValidator;

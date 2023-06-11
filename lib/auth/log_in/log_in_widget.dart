@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -111,18 +112,30 @@ class _LogInWidgetState extends State<LogInWidget>
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'cpimxtr8' /* Sign in */,
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              _model.apiResult5sl =
+                                  await ApiSportsStatusCall.call();
+
+                              setState(() {});
+                            },
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'cpimxtr8' /* Sign in */,
+                              ),
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Marhey ',
+                                    fontSize: 25.0,
+                                    useGoogleFonts: false,
+                                  ),
                             ),
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Marhey ',
-                                  fontSize: 25.0,
-                                  useGoogleFonts: false,
-                                ),
                           ),
                         ),
                         Padding(

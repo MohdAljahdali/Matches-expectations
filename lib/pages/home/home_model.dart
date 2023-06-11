@@ -12,8 +12,8 @@ class HomeModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Custom Action - addClubs] action in Button widget.
-  String? rutenAddCubs;
+  // Stores action output result for [Custom Action - addTeams] action in Button widget.
+  String? rutenAddTeams;
 
   /// Initialization and disposal methods.
 

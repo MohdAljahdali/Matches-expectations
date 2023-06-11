@@ -277,7 +277,7 @@ class _MembersWidgetState extends State<MembersWidget> {
                                                                           child:
                                                                               Container(
                                                                             height:
-                                                                                350.0,
+                                                                                550.0,
                                                                             child:
                                                                                 UpdateMemberDataWidget(
                                                                               userUid: listViewUserRecord.reference,
