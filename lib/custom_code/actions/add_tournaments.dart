@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
@@ -16,6 +18,7 @@ Future<String> addTournaments(
   int? season,
   String? type,
 ) async {
+  var fsdfsgfdgfgdf = '';
   final firestore = FirebaseFirestore.instance;
   final TournamentsRef = firestore.collection('Tournaments');
 
@@ -27,7 +30,7 @@ Future<String> addTournaments(
   var request = http.Request(
       'GET',
       Uri.parse(
-          'https://v3.football.api-sports.io/teams?code=${code.toString()}&type=${type.toString()}'));
+          'https://v3.football.api-sports.io/leagues?code=${code.toString()}&type=${type.toString()}'));
 //https://v3.football.api-sports.io/teams?code=${code.toString()}&type=${type.toString()}
   request.headers.addAll(headers);
 
@@ -53,6 +56,7 @@ Future<String> addTournaments(
           'countryCode': tournament['country']['code'].toString(),
           'countryFlog': tournament['country']['flag'].toString(),
         };
+        fsdfsgfdgfgdf = tournament['league']['name'].toString();
         await TournamentsRef.doc(tournament['league']['id'].toString())
             .get()
             .then((doc) {
@@ -65,5 +69,5 @@ Future<String> addTournaments(
     });
   } else {}
   //################################
-  return 'fsdfsfsf';
+  return fsdfsgfdgfgdf;
 }

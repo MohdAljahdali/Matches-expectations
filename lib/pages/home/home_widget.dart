@@ -150,11 +150,25 @@ class _HomeWidgetState extends State<HomeWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    await actions.addTournaments(
+                    _model.fdsffss = await actions.addTournaments(
                       'SA',
                       2022,
                       'league',
                     );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          _model.fdsffss!,
+                          style: TextStyle(
+                            color: FlutterFlowTheme.of(context).primaryText,
+                          ),
+                        ),
+                        duration: Duration(milliseconds: 4000),
+                        backgroundColor: FlutterFlowTheme.of(context).secondary,
+                      ),
+                    );
+
+                    setState(() {});
                   },
                   text: FFLocalizations.of(context).getText(
                     '7hr1npr2' /* Button */,
