@@ -30,7 +30,7 @@ Future<String> addTournaments(
   var request = http.Request(
       'GET',
       Uri.parse(
-          'https://v3.football.api-sports.io/leagues?code=${code.toString()}&=${season.toString()}&type=${type.toString()}'));
+          'https://v3.football.api-sports.io/leagues?code=${code.toString()}&season=${season.toString()}&type=${type.toString()}'));
 //https://v3.football.api-sports.io/teams?code=${code.toString()}&type=${type.toString()}
   request.headers.addAll(headers);
 
