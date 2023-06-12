@@ -153,7 +153,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     _model.fdsffss = await actions.addTournaments(
                       'SA',
                       2022,
-                      'league',
+                      'l',
                     );
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
