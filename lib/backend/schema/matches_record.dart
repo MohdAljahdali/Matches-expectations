@@ -39,10 +39,45 @@ class MatchesRecord extends FirestoreRecord {
   String get fixturePeriodSecond => _fixturePeriodSecond ?? '';
   bool hasFixturePeriodSecond() => _fixturePeriodSecond != null;
 
-  // "leagueRound" field.
-  String? _leagueRound;
-  String get leagueRound => _leagueRound ?? '';
-  bool hasLeagueRound() => _leagueRound != null;
+  // "tournamentsRef" field.
+  DocumentReference? _tournamentsRef;
+  DocumentReference? get tournamentsRef => _tournamentsRef;
+  bool hasTournamentsRef() => _tournamentsRef != null;
+
+  // "teamHomeRef" field.
+  DocumentReference? _teamHomeRef;
+  DocumentReference? get teamHomeRef => _teamHomeRef;
+  bool hasTeamHomeRef() => _teamHomeRef != null;
+
+  // "teamAwayRef" field.
+  DocumentReference? _teamAwayRef;
+  DocumentReference? get teamAwayRef => _teamAwayRef;
+  bool hasTeamAwayRef() => _teamAwayRef != null;
+
+  // "teamHomeWinner" field.
+  bool? _teamHomeWinner;
+  bool get teamHomeWinner => _teamHomeWinner ?? false;
+  bool hasTeamHomeWinner() => _teamHomeWinner != null;
+
+  // "teamAwayWinner" field.
+  bool? _teamAwayWinner;
+  bool get teamAwayWinner => _teamAwayWinner ?? false;
+  bool hasTeamAwayWinner() => _teamAwayWinner != null;
+
+  // "fixtureStatusLong" field.
+  String? _fixtureStatusLong;
+  String get fixtureStatusLong => _fixtureStatusLong ?? '';
+  bool hasFixtureStatusLong() => _fixtureStatusLong != null;
+
+  // "fixtureStatusShort" field.
+  String? _fixtureStatusShort;
+  String get fixtureStatusShort => _fixtureStatusShort ?? '';
+  bool hasFixtureStatusShort() => _fixtureStatusShort != null;
+
+  // "fixtureStatusElapsed" field.
+  int? _fixtureStatusElapsed;
+  int get fixtureStatusElapsed => _fixtureStatusElapsed ?? 0;
+  bool hasFixtureStatusElapsed() => _fixtureStatusElapsed != null;
 
   // "goalsHome" field.
   int? _goalsHome;
@@ -69,6 +104,11 @@ class MatchesRecord extends FirestoreRecord {
   int get scoreFulltimeHome => _scoreFulltimeHome ?? 0;
   bool hasScoreFulltimeHome() => _scoreFulltimeHome != null;
 
+  // "scoreFulltimeAway" field.
+  int? _scoreFulltimeAway;
+  int get scoreFulltimeAway => _scoreFulltimeAway ?? 0;
+  bool hasScoreFulltimeAway() => _scoreFulltimeAway != null;
+
   // "scoreExtratimeHome" field.
   int? _scoreExtratimeHome;
   int get scoreExtratimeHome => _scoreExtratimeHome ?? 0;
@@ -89,52 +129,30 @@ class MatchesRecord extends FirestoreRecord {
   int get scorePenaltyAway => _scorePenaltyAway ?? 0;
   bool hasScorePenaltyAway() => _scorePenaltyAway != null;
 
-  // "fixtureStatusLong" field.
-  String? _fixtureStatusLong;
-  String get fixtureStatusLong => _fixtureStatusLong ?? '';
-  bool hasFixtureStatusLong() => _fixtureStatusLong != null;
-
-  // "fixtureStatusShort" field.
-  String? _fixtureStatusShort;
-  String get fixtureStatusShort => _fixtureStatusShort ?? '';
-  bool hasFixtureStatusShort() => _fixtureStatusShort != null;
-
-  // "fixtureStatusElapsed" field.
-  int? _fixtureStatusElapsed;
-  int get fixtureStatusElapsed => _fixtureStatusElapsed ?? 0;
-  bool hasFixtureStatusElapsed() => _fixtureStatusElapsed != null;
-
-  // "isActive" field.
-  bool? _isActive;
-  bool get isActive => _isActive ?? false;
-  bool hasIsActive() => _isActive != null;
-
-  // "isDouble" field.
-  bool? _isDouble;
-  bool get isDouble => _isDouble ?? false;
-  bool hasIsDouble() => _isDouble != null;
-
   void _initializeFields() {
     _fixtureID = snapshotData['fixtureID'] as int?;
     _fixtureDate = snapshotData['fixtureDate'] as DateTime?;
     _fixtureTimestamp = snapshotData['fixtureTimestamp'] as int?;
     _fixturePeriodFirst = snapshotData['fixturePeriodFirst'] as String?;
     _fixturePeriodSecond = snapshotData['fixturePeriodSecond'] as String?;
-    _leagueRound = snapshotData['leagueRound'] as String?;
+    _tournamentsRef = snapshotData['tournamentsRef'] as DocumentReference?;
+    _teamHomeRef = snapshotData['teamHomeRef'] as DocumentReference?;
+    _teamAwayRef = snapshotData['teamAwayRef'] as DocumentReference?;
+    _teamHomeWinner = snapshotData['teamHomeWinner'] as bool?;
+    _teamAwayWinner = snapshotData['teamAwayWinner'] as bool?;
+    _fixtureStatusLong = snapshotData['fixtureStatusLong'] as String?;
+    _fixtureStatusShort = snapshotData['fixtureStatusShort'] as String?;
+    _fixtureStatusElapsed = snapshotData['fixtureStatusElapsed'] as int?;
     _goalsHome = snapshotData['goalsHome'] as int?;
     _goalsAway = snapshotData['goalsAway'] as int?;
     _scoreHalftimeHome = snapshotData['scoreHalftimeHome'] as int?;
     _scoreHalftimeAway = snapshotData['scoreHalftimeAway'] as int?;
     _scoreFulltimeHome = snapshotData['scoreFulltimeHome'] as int?;
+    _scoreFulltimeAway = snapshotData['scoreFulltimeAway'] as int?;
     _scoreExtratimeHome = snapshotData['scoreExtratimeHome'] as int?;
     _scoreExtratimeAway = snapshotData['scoreExtratimeAway'] as int?;
     _scorePenaltyHome = snapshotData['scorePenaltyHome'] as int?;
     _scorePenaltyAway = snapshotData['scorePenaltyAway'] as int?;
-    _fixtureStatusLong = snapshotData['fixtureStatusLong'] as String?;
-    _fixtureStatusShort = snapshotData['fixtureStatusShort'] as String?;
-    _fixtureStatusElapsed = snapshotData['fixtureStatusElapsed'] as int?;
-    _isActive = snapshotData['isActive'] as bool?;
-    _isDouble = snapshotData['isDouble'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -177,21 +195,24 @@ Map<String, dynamic> createMatchesRecordData({
   int? fixtureTimestamp,
   String? fixturePeriodFirst,
   String? fixturePeriodSecond,
-  String? leagueRound,
+  DocumentReference? tournamentsRef,
+  DocumentReference? teamHomeRef,
+  DocumentReference? teamAwayRef,
+  bool? teamHomeWinner,
+  bool? teamAwayWinner,
+  String? fixtureStatusLong,
+  String? fixtureStatusShort,
+  int? fixtureStatusElapsed,
   int? goalsHome,
   int? goalsAway,
   int? scoreHalftimeHome,
   int? scoreHalftimeAway,
   int? scoreFulltimeHome,
+  int? scoreFulltimeAway,
   int? scoreExtratimeHome,
   int? scoreExtratimeAway,
   int? scorePenaltyHome,
   int? scorePenaltyAway,
-  String? fixtureStatusLong,
-  String? fixtureStatusShort,
-  int? fixtureStatusElapsed,
-  bool? isActive,
-  bool? isDouble,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -200,21 +221,24 @@ Map<String, dynamic> createMatchesRecordData({
       'fixtureTimestamp': fixtureTimestamp,
       'fixturePeriodFirst': fixturePeriodFirst,
       'fixturePeriodSecond': fixturePeriodSecond,
-      'leagueRound': leagueRound,
+      'tournamentsRef': tournamentsRef,
+      'teamHomeRef': teamHomeRef,
+      'teamAwayRef': teamAwayRef,
+      'teamHomeWinner': teamHomeWinner,
+      'teamAwayWinner': teamAwayWinner,
+      'fixtureStatusLong': fixtureStatusLong,
+      'fixtureStatusShort': fixtureStatusShort,
+      'fixtureStatusElapsed': fixtureStatusElapsed,
       'goalsHome': goalsHome,
       'goalsAway': goalsAway,
       'scoreHalftimeHome': scoreHalftimeHome,
       'scoreHalftimeAway': scoreHalftimeAway,
       'scoreFulltimeHome': scoreFulltimeHome,
+      'scoreFulltimeAway': scoreFulltimeAway,
       'scoreExtratimeHome': scoreExtratimeHome,
       'scoreExtratimeAway': scoreExtratimeAway,
       'scorePenaltyHome': scorePenaltyHome,
       'scorePenaltyAway': scorePenaltyAway,
-      'fixtureStatusLong': fixtureStatusLong,
-      'fixtureStatusShort': fixtureStatusShort,
-      'fixtureStatusElapsed': fixtureStatusElapsed,
-      'isActive': isActive,
-      'isDouble': isDouble,
     }.withoutNulls,
   );
 

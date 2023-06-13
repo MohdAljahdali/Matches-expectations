@@ -167,15 +167,35 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Home
   {
+    'whgo0dr7': {
+      'en': '',
+      'ar': '',
+    },
+    'iiendqyz': {
+      'en': 'Tournament No',
+      'ar': 'رقم البطولة',
+    },
+    'q4q25ohc': {
+      'en': 'Label here...',
+      'ar': '',
+    },
+    '2ziwcoa8': {
+      'en': 'season',
+      'ar': '',
+    },
+    'vp8idvnj': {
+      'en': 'Option 1',
+      'ar': '',
+    },
+    'xnc2eihy': {
+      'en': 'Please select...',
+      'ar': '',
+    },
+    'tjqa1fcz': {
+      'en': 'Search for an item...',
+      'ar': '',
+    },
     'mpr9hs2r': {
-      'en': 'Button',
-      'ar': '',
-    },
-    'jfc2h69d': {
-      'en': 'Hello World',
-      'ar': '',
-    },
-    '7hr1npr2': {
       'en': 'Button',
       'ar': '',
     },
