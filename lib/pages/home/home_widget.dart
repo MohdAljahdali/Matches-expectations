@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -38,7 +39,7 @@ class _HomeWidgetState extends State<HomeWidget> {
             'iiendqyz' /* Tournament No */,
           );
           _model.seasonTFController?.text = FFLocalizations.of(context).getText(
-            '2ziwcoa8' /* season */,
+            'qwyy2gzg' /* season */,
           );
         }));
   }
@@ -270,7 +271,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 FormFieldController<String>(null),
                             options: [
                               FFLocalizations.of(context).getText(
-                                'vp8idvnj' /* Option 1 */,
+                                '9x2ao9xd' /* Option 1 */,
                               )
                             ],
                             onChanged: (val) =>
@@ -279,7 +280,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             height: 50.0,
                             textStyle: FlutterFlowTheme.of(context).bodyMedium,
                             hintText: FFLocalizations.of(context).getText(
-                              'xnc2eihy' /* Please select... */,
+                              '8t2n7rce' /* Please select... */,
                             ),
                             icon: Icon(
                               Icons.keyboard_arrow_down_rounded,
@@ -309,25 +310,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                         _model.rutenAddTeams = await actions.addTeams(
                           307,
                           2022,
-                        );
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              _model.rutenAddTeams!,
-                              style: FlutterFlowTheme.of(context)
-                                  .labelSmall
-                                  .override(
-                                    fontFamily: ' Shamel',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 15.0,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                            duration: Duration(milliseconds: 4000),
-                            backgroundColor:
-                                FlutterFlowTheme.of(context).secondary,
-                          ),
                         );
 
                         setState(() {});

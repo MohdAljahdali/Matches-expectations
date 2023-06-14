@@ -23,8 +23,6 @@ Future<List<MatchesDTStruct>> addNewMatch(
   var fromDateFormat = outputFormat.format(fromDate);
   var toDateFormat = outputFormat.format(toDate);
   List<MatchesDTStruct> listOfNewMatches = [];
-
-// Firebase communication
   final firestore = FirebaseFirestore.instance;
   final MatchesRef = firestore.collection('Matches');
 

@@ -179,19 +179,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Label here...',
       'ar': '',
     },
-    '2ziwcoa8': {
+    'qwyy2gzg': {
       'en': 'season',
       'ar': '',
     },
-    'vp8idvnj': {
+    '9x2ao9xd': {
       'en': 'Option 1',
       'ar': '',
     },
-    'xnc2eihy': {
+    '8t2n7rce': {
       'en': 'Please select...',
       'ar': '',
     },
-    'tjqa1fcz': {
+    'r14znk8t': {
       'en': 'Search for an item...',
       'ar': '',
     },

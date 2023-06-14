@@ -13,17 +13,11 @@ import 'index.dart'; // Imports other custom actions
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
-Future<String> addTeams(
+Future<List<TeamsDTStruct>> addTeams(
   int? league,
   int? season,
 ) async {
-  /*
-  final firestore = FirebaseFirestore.instance;
-  final collectionRef = firestore.collection('teams');
-
-  */
-  var teamsHa = 'teamID';
-  var teamsHasAddNO = 0;
+  List<TeamsDTStruct> listOfNewTeams = [];
   final firestore = FirebaseFirestore.instance;
   final TeamsRef = firestore.collection('Teams');
   var headers = {
@@ -55,13 +49,10 @@ Future<String> addTeams(
       await TeamsRef.doc(team['team']['id'].toString()).get().then((doc) {
         if (!doc.exists) {
           TeamsRef.doc(team['team']['id'].toString()).set(addTeamsDoc);
-          teamsHasAddNO++;
+          listOfNewTeams.add(TeamsDTStruct.fromMap(addTeamsDoc));
         }
       });
     });
-
-    return teamsHasAddNO.toString();
-  } else {
-    return teamsHasAddNO.toString();
-  }
+  } else {}
+  return listOfNewTeams;
 }

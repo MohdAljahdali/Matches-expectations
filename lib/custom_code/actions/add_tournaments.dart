@@ -13,12 +13,12 @@ import 'index.dart'; // Imports other custom actions
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
-Future<String> addTournaments(
+Future<List<TournamentsDTStruct>> addTournaments(
   String? code,
   int? season,
   String? type,
 ) async {
-  var fsdfsgfdgfgdf = '';
+  List<TournamentsDTStruct> listOfNewTournaments = [];
   final firestore = FirebaseFirestore.instance;
   final TournamentsRef = firestore.collection('Tournaments');
 
@@ -56,18 +56,19 @@ Future<String> addTournaments(
           'countryCode': tournament['country']['code'].toString(),
           'countryFlog': tournament['country']['flag'].toString(),
         };
-        fsdfsgfdgfgdf = tournament['league']['name'].toString();
         await TournamentsRef.doc(tournament['league']['id'].toString())
             .get()
             .then((doc) {
           if (!doc.exists) {
             TournamentsRef.doc(tournament['league']['id'].toString())
                 .set(addTournamentDoc);
+            listOfNewTournaments
+                .add(TournamentsDTStruct.fromMap(addTournamentDoc));
           }
         });
       });
     });
   } else {}
   //################################
-  return fsdfsgfdgfgdf;
+  return listOfNewTournaments;
 }

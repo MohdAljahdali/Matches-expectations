@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -25,7 +26,7 @@ class HomeModel extends FlutterFlowModel {
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
   // Stores action output result for [Custom Action - addTeams] action in Button widget.
-  String? rutenAddTeams;
+  List<TeamsDTStruct>? rutenAddTeams;
 
   /// Initialization and disposal methods.
 
