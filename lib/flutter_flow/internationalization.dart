@@ -167,31 +167,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Home
   {
-    'whgo0dr7': {
-      'en': '',
-      'ar': '',
-    },
-    'iiendqyz': {
-      'en': 'Tournament No',
-      'ar': 'رقم البطولة',
-    },
-    'q4q25ohc': {
-      'en': 'Label here...',
-      'ar': '',
-    },
-    'qwyy2gzg': {
-      'en': 'season',
-      'ar': '',
-    },
-    '9x2ao9xd': {
-      'en': 'Option 1',
-      'ar': '',
-    },
-    '8t2n7rce': {
+    '405ax2ed': {
       'en': 'Please select...',
       'ar': '',
     },
-    'r14znk8t': {
+    'o97ii79y': {
       'en': 'Search for an item...',
       'ar': '',
     },
@@ -305,17 +285,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '4xsruki1': {
       'en': 'Home',
-      'ar': '',
-    },
-  },
-  // AddNewTeam
-  {
-    'jwmtdyzw': {
-      'en': 'Team name',
-      'ar': 'اسم الفريق',
-    },
-    '4nlkyorc': {
-      'en': 'Button',
       'ar': '',
     },
   },

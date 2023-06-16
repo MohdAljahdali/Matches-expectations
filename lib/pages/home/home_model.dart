@@ -1,5 +1,4 @@
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -16,17 +15,9 @@ class HomeModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for tournamentsTF widget.
-  TextEditingController? tournamentsTFController;
-  String? Function(BuildContext, String?)? tournamentsTFControllerValidator;
-  // State field(s) for seasonTF widget.
-  TextEditingController? seasonTFController;
-  String? Function(BuildContext, String?)? seasonTFControllerValidator;
   // State field(s) for DropDown widget.
-  String? dropDownValue;
-  FormFieldController<String>? dropDownValueController;
-  // Stores action output result for [Custom Action - addTeams] action in Button widget.
-  List<TeamsDTStruct>? rutenAddTeams;
+  int? dropDownValue;
+  FormFieldController<int>? dropDownValueController;
 
   /// Initialization and disposal methods.
 
@@ -34,8 +25,6 @@ class HomeModel extends FlutterFlowModel {
 
   void dispose() {
     unfocusNode.dispose();
-    tournamentsTFController?.dispose();
-    seasonTFController?.dispose();
   }
 
   /// Action blocks are added here.

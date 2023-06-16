@@ -1,4 +1,3 @@
-import '/admin/teams/add_new_team/add_new_team_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -42,26 +41,8 @@ class _TeamsWidgetState extends State<TeamsWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         floatingActionButton: FloatingActionButton(
-          onPressed: () async {
-            await showModalBottomSheet(
-              isScrollControlled: true,
-              backgroundColor: Colors.transparent,
-              enableDrag: false,
-              context: context,
-              builder: (context) {
-                return GestureDetector(
-                  onTap: () =>
-                      FocusScope.of(context).requestFocus(_model.unfocusNode),
-                  child: Padding(
-                    padding: MediaQuery.of(context).viewInsets,
-                    child: Container(
-                      height: 280.0,
-                      child: AddNewTeamWidget(),
-                    ),
-                  ),
-                );
-              },
-            ).then((value) => setState(() {}));
+          onPressed: () {
+            print('FloatingActionButton pressed ...');
           },
           backgroundColor: FlutterFlowTheme.of(context).primary,
           child: Icon(
