@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -109,13 +108,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                             }
                             List<TeamsRecord> dropDownTeamsRecordList =
                                 snapshot.data!;
-                            return FlutterFlowDropDown<int>(
+                            return FlutterFlowDropDown<String>(
                               controller: _model.dropDownValueController ??=
-                                  FormFieldController<int>(
-                                _model.dropDownValue ??= 0,
+                                  FormFieldController<String>(
+                                _model.dropDownValue ??= '0',
                               ),
                               options: dropDownTeamsRecordList
-                                  .map((e) => e.teamID)
+                                  .map((e) => e.reference.id)
                                   .toList(),
                               optionLabels: dropDownTeamsRecordList
                                   .map((e) => e.teamName)
@@ -127,7 +126,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                               textStyle:
                                   FlutterFlowTheme.of(context).bodyMedium,
                               hintText: FFLocalizations.of(context).getText(
-                                '405ax2ed' /* Please select... */,
+                                '4sibcmbx' /* Please select... */,
                               ),
                               icon: Icon(
                                 Icons.keyboard_arrow_down_rounded,
@@ -157,7 +156,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                     child: Text(
                       valueOrDefault<String>(
-                        _model.dropDownValue?.toString(),
+                        _model.dropDownValue,
                         'sssa',
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium,
@@ -168,8 +167,8 @@ class _HomeWidgetState extends State<HomeWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: FFButtonWidget(
-                  onPressed: () async {
-                    await actions.addCountries();
+                  onPressed: () {
+                    print('Button pressed ...');
                   },
                   text: FFLocalizations.of(context).getText(
                     'mpr9hs2r' /* Button */,
@@ -193,6 +192,43 @@ class _HomeWidgetState extends State<HomeWidget> {
                     ),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                child: StreamBuilder<List<TournamentsRecord>>(
+                  stream: queryTournamentsRecord(),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: SpinKitFadingCircle(
+                            color: FlutterFlowTheme.of(context).primary,
+                            size: 50.0,
+                          ),
+                        ),
+                      );
+                    }
+                    List<TournamentsRecord> listViewTournamentsRecordList =
+                        snapshot.data!;
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: listViewTournamentsRecordList.length,
+                      itemBuilder: (context, listViewIndex) {
+                        final listViewTournamentsRecord =
+                            listViewTournamentsRecordList[listViewIndex];
+                        return Text(
+                          listViewTournamentsRecord.name,
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        );
+                      },
+                    );
+                  },
                 ),
               ),
             ],

@@ -135,6 +135,57 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             initialPage: '',
             page: MembersWidget(),
           ),
+        ),
+        FFRoute(
+          name: 'addTournamentsManual',
+          path: '/addTournamentsManual',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'addTournamentsManual')
+              : NavBarPage(
+                  initialPage: 'addTournamentsManual',
+                  page: AddTournamentsManualWidget(),
+                ),
+        ),
+        FFRoute(
+          name: 'editTournament',
+          path: '/editTournament',
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: EditTournamentWidget(
+              tournamentRef: params.getParam('tournamentRef',
+                  ParamType.DocumentReference, false, ['Tournaments']),
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'Profile15',
+          path: '/profile15',
+          builder: (context, params) => Profile15Widget(),
+        ),
+        FFRoute(
+          name: 'Profile05',
+          path: '/profile05',
+          builder: (context, params) => Profile05Widget(),
+        ),
+        FFRoute(
+          name: 'addTournaments',
+          path: '/addTournaments',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'addTournaments')
+              : NavBarPage(
+                  initialPage: 'addTournaments',
+                  page: AddTournamentsWidget(),
+                ),
+        ),
+        FFRoute(
+          name: 'tournamentsList',
+          path: '/tournamentsList',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'tournamentsList')
+              : NavBarPage(
+                  initialPage: 'tournamentsList',
+                  page: TournamentsListWidget(),
+                ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

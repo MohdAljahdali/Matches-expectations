@@ -20,6 +20,19 @@ class TournamentsDTStruct extends FFFirebaseStruct {
     String? countryName,
     String? countryCode,
     String? countryFlog,
+    String? randomCode,
+    String? setEndMatche,
+    bool? setMatcheHasPenalty,
+    bool? setHomeWin,
+    int? setHomeWinPoints,
+    bool? setAwayWin,
+    int? setAwayWinPoints,
+    bool? setDraw,
+    int? setDrawPoints,
+    bool? setHomeGoals,
+    int? setHomeGoalsPoints,
+    bool? setAwayGoals,
+    int? setAwayGoalsPoints,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _tournamentsID = tournamentsID,
         _seasonYear = seasonYear,
@@ -32,6 +45,19 @@ class TournamentsDTStruct extends FFFirebaseStruct {
         _countryName = countryName,
         _countryCode = countryCode,
         _countryFlog = countryFlog,
+        _randomCode = randomCode,
+        _setEndMatche = setEndMatche,
+        _setMatcheHasPenalty = setMatcheHasPenalty,
+        _setHomeWin = setHomeWin,
+        _setHomeWinPoints = setHomeWinPoints,
+        _setAwayWin = setAwayWin,
+        _setAwayWinPoints = setAwayWinPoints,
+        _setDraw = setDraw,
+        _setDrawPoints = setDrawPoints,
+        _setHomeGoals = setHomeGoals,
+        _setHomeGoalsPoints = setHomeGoalsPoints,
+        _setAwayGoals = setAwayGoals,
+        _setAwayGoalsPoints = setAwayGoalsPoints,
         super(firestoreUtilData);
 
   // "tournamentsID" field.
@@ -103,6 +129,94 @@ class TournamentsDTStruct extends FFFirebaseStruct {
   set countryFlog(String? val) => _countryFlog = val;
   bool hasCountryFlog() => _countryFlog != null;
 
+  // "randomCode" field.
+  String? _randomCode;
+  String get randomCode => _randomCode ?? '';
+  set randomCode(String? val) => _randomCode = val;
+  bool hasRandomCode() => _randomCode != null;
+
+  // "setEndMatche" field.
+  String? _setEndMatche;
+  String get setEndMatche => _setEndMatche ?? '';
+  set setEndMatche(String? val) => _setEndMatche = val;
+  bool hasSetEndMatche() => _setEndMatche != null;
+
+  // "setMatcheHasPenalty" field.
+  bool? _setMatcheHasPenalty;
+  bool get setMatcheHasPenalty => _setMatcheHasPenalty ?? false;
+  set setMatcheHasPenalty(bool? val) => _setMatcheHasPenalty = val;
+  bool hasSetMatcheHasPenalty() => _setMatcheHasPenalty != null;
+
+  // "setHomeWin" field.
+  bool? _setHomeWin;
+  bool get setHomeWin => _setHomeWin ?? false;
+  set setHomeWin(bool? val) => _setHomeWin = val;
+  bool hasSetHomeWin() => _setHomeWin != null;
+
+  // "setHomeWinPoints" field.
+  int? _setHomeWinPoints;
+  int get setHomeWinPoints => _setHomeWinPoints ?? 0;
+  set setHomeWinPoints(int? val) => _setHomeWinPoints = val;
+  void incrementSetHomeWinPoints(int amount) =>
+      _setHomeWinPoints = setHomeWinPoints + amount;
+  bool hasSetHomeWinPoints() => _setHomeWinPoints != null;
+
+  // "setAwayWin" field.
+  bool? _setAwayWin;
+  bool get setAwayWin => _setAwayWin ?? false;
+  set setAwayWin(bool? val) => _setAwayWin = val;
+  bool hasSetAwayWin() => _setAwayWin != null;
+
+  // "setAwayWinPoints" field.
+  int? _setAwayWinPoints;
+  int get setAwayWinPoints => _setAwayWinPoints ?? 0;
+  set setAwayWinPoints(int? val) => _setAwayWinPoints = val;
+  void incrementSetAwayWinPoints(int amount) =>
+      _setAwayWinPoints = setAwayWinPoints + amount;
+  bool hasSetAwayWinPoints() => _setAwayWinPoints != null;
+
+  // "setDraw" field.
+  bool? _setDraw;
+  bool get setDraw => _setDraw ?? false;
+  set setDraw(bool? val) => _setDraw = val;
+  bool hasSetDraw() => _setDraw != null;
+
+  // "setDrawPoints" field.
+  int? _setDrawPoints;
+  int get setDrawPoints => _setDrawPoints ?? 0;
+  set setDrawPoints(int? val) => _setDrawPoints = val;
+  void incrementSetDrawPoints(int amount) =>
+      _setDrawPoints = setDrawPoints + amount;
+  bool hasSetDrawPoints() => _setDrawPoints != null;
+
+  // "setHomeGoals" field.
+  bool? _setHomeGoals;
+  bool get setHomeGoals => _setHomeGoals ?? false;
+  set setHomeGoals(bool? val) => _setHomeGoals = val;
+  bool hasSetHomeGoals() => _setHomeGoals != null;
+
+  // "setHomeGoalsPoints" field.
+  int? _setHomeGoalsPoints;
+  int get setHomeGoalsPoints => _setHomeGoalsPoints ?? 0;
+  set setHomeGoalsPoints(int? val) => _setHomeGoalsPoints = val;
+  void incrementSetHomeGoalsPoints(int amount) =>
+      _setHomeGoalsPoints = setHomeGoalsPoints + amount;
+  bool hasSetHomeGoalsPoints() => _setHomeGoalsPoints != null;
+
+  // "setAwayGoals" field.
+  bool? _setAwayGoals;
+  bool get setAwayGoals => _setAwayGoals ?? false;
+  set setAwayGoals(bool? val) => _setAwayGoals = val;
+  bool hasSetAwayGoals() => _setAwayGoals != null;
+
+  // "setAwayGoalsPoints" field.
+  int? _setAwayGoalsPoints;
+  int get setAwayGoalsPoints => _setAwayGoalsPoints ?? 0;
+  set setAwayGoalsPoints(int? val) => _setAwayGoalsPoints = val;
+  void incrementSetAwayGoalsPoints(int amount) =>
+      _setAwayGoalsPoints = setAwayGoalsPoints + amount;
+  bool hasSetAwayGoalsPoints() => _setAwayGoalsPoints != null;
+
   static TournamentsDTStruct fromMap(Map<String, dynamic> data) =>
       TournamentsDTStruct(
         tournamentsID: data['tournamentsID'] as int?,
@@ -116,6 +230,19 @@ class TournamentsDTStruct extends FFFirebaseStruct {
         countryName: data['countryName'] as String?,
         countryCode: data['countryCode'] as String?,
         countryFlog: data['countryFlog'] as String?,
+        randomCode: data['randomCode'] as String?,
+        setEndMatche: data['setEndMatche'] as String?,
+        setMatcheHasPenalty: data['setMatcheHasPenalty'] as bool?,
+        setHomeWin: data['setHomeWin'] as bool?,
+        setHomeWinPoints: data['setHomeWinPoints'] as int?,
+        setAwayWin: data['setAwayWin'] as bool?,
+        setAwayWinPoints: data['setAwayWinPoints'] as int?,
+        setDraw: data['setDraw'] as bool?,
+        setDrawPoints: data['setDrawPoints'] as int?,
+        setHomeGoals: data['setHomeGoals'] as bool?,
+        setHomeGoalsPoints: data['setHomeGoalsPoints'] as int?,
+        setAwayGoals: data['setAwayGoals'] as bool?,
+        setAwayGoalsPoints: data['setAwayGoalsPoints'] as int?,
       );
 
   static TournamentsDTStruct? maybeFromMap(dynamic data) =>
@@ -133,6 +260,19 @@ class TournamentsDTStruct extends FFFirebaseStruct {
         'countryName': _countryName,
         'countryCode': _countryCode,
         'countryFlog': _countryFlog,
+        'randomCode': _randomCode,
+        'setEndMatche': _setEndMatche,
+        'setMatcheHasPenalty': _setMatcheHasPenalty,
+        'setHomeWin': _setHomeWin,
+        'setHomeWinPoints': _setHomeWinPoints,
+        'setAwayWin': _setAwayWin,
+        'setAwayWinPoints': _setAwayWinPoints,
+        'setDraw': _setDraw,
+        'setDrawPoints': _setDrawPoints,
+        'setHomeGoals': _setHomeGoals,
+        'setHomeGoalsPoints': _setHomeGoalsPoints,
+        'setAwayGoals': _setAwayGoals,
+        'setAwayGoalsPoints': _setAwayGoalsPoints,
       }.withoutNulls;
 
   @override
@@ -180,6 +320,58 @@ class TournamentsDTStruct extends FFFirebaseStruct {
         'countryFlog': serializeParam(
           _countryFlog,
           ParamType.String,
+        ),
+        'randomCode': serializeParam(
+          _randomCode,
+          ParamType.String,
+        ),
+        'setEndMatche': serializeParam(
+          _setEndMatche,
+          ParamType.String,
+        ),
+        'setMatcheHasPenalty': serializeParam(
+          _setMatcheHasPenalty,
+          ParamType.bool,
+        ),
+        'setHomeWin': serializeParam(
+          _setHomeWin,
+          ParamType.bool,
+        ),
+        'setHomeWinPoints': serializeParam(
+          _setHomeWinPoints,
+          ParamType.int,
+        ),
+        'setAwayWin': serializeParam(
+          _setAwayWin,
+          ParamType.bool,
+        ),
+        'setAwayWinPoints': serializeParam(
+          _setAwayWinPoints,
+          ParamType.int,
+        ),
+        'setDraw': serializeParam(
+          _setDraw,
+          ParamType.bool,
+        ),
+        'setDrawPoints': serializeParam(
+          _setDrawPoints,
+          ParamType.int,
+        ),
+        'setHomeGoals': serializeParam(
+          _setHomeGoals,
+          ParamType.bool,
+        ),
+        'setHomeGoalsPoints': serializeParam(
+          _setHomeGoalsPoints,
+          ParamType.int,
+        ),
+        'setAwayGoals': serializeParam(
+          _setAwayGoals,
+          ParamType.bool,
+        ),
+        'setAwayGoalsPoints': serializeParam(
+          _setAwayGoalsPoints,
+          ParamType.int,
         ),
       }.withoutNulls;
 
@@ -240,6 +432,71 @@ class TournamentsDTStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        randomCode: deserializeParam(
+          data['randomCode'],
+          ParamType.String,
+          false,
+        ),
+        setEndMatche: deserializeParam(
+          data['setEndMatche'],
+          ParamType.String,
+          false,
+        ),
+        setMatcheHasPenalty: deserializeParam(
+          data['setMatcheHasPenalty'],
+          ParamType.bool,
+          false,
+        ),
+        setHomeWin: deserializeParam(
+          data['setHomeWin'],
+          ParamType.bool,
+          false,
+        ),
+        setHomeWinPoints: deserializeParam(
+          data['setHomeWinPoints'],
+          ParamType.int,
+          false,
+        ),
+        setAwayWin: deserializeParam(
+          data['setAwayWin'],
+          ParamType.bool,
+          false,
+        ),
+        setAwayWinPoints: deserializeParam(
+          data['setAwayWinPoints'],
+          ParamType.int,
+          false,
+        ),
+        setDraw: deserializeParam(
+          data['setDraw'],
+          ParamType.bool,
+          false,
+        ),
+        setDrawPoints: deserializeParam(
+          data['setDrawPoints'],
+          ParamType.int,
+          false,
+        ),
+        setHomeGoals: deserializeParam(
+          data['setHomeGoals'],
+          ParamType.bool,
+          false,
+        ),
+        setHomeGoalsPoints: deserializeParam(
+          data['setHomeGoalsPoints'],
+          ParamType.int,
+          false,
+        ),
+        setAwayGoals: deserializeParam(
+          data['setAwayGoals'],
+          ParamType.bool,
+          false,
+        ),
+        setAwayGoalsPoints: deserializeParam(
+          data['setAwayGoalsPoints'],
+          ParamType.int,
+          false,
+        ),
       );
 
   @override
@@ -258,7 +515,20 @@ class TournamentsDTStruct extends FFFirebaseStruct {
         logo == other.logo &&
         countryName == other.countryName &&
         countryCode == other.countryCode &&
-        countryFlog == other.countryFlog;
+        countryFlog == other.countryFlog &&
+        randomCode == other.randomCode &&
+        setEndMatche == other.setEndMatche &&
+        setMatcheHasPenalty == other.setMatcheHasPenalty &&
+        setHomeWin == other.setHomeWin &&
+        setHomeWinPoints == other.setHomeWinPoints &&
+        setAwayWin == other.setAwayWin &&
+        setAwayWinPoints == other.setAwayWinPoints &&
+        setDraw == other.setDraw &&
+        setDrawPoints == other.setDrawPoints &&
+        setHomeGoals == other.setHomeGoals &&
+        setHomeGoalsPoints == other.setHomeGoalsPoints &&
+        setAwayGoals == other.setAwayGoals &&
+        setAwayGoalsPoints == other.setAwayGoalsPoints;
   }
 
   @override
@@ -273,7 +543,20 @@ class TournamentsDTStruct extends FFFirebaseStruct {
         logo,
         countryName,
         countryCode,
-        countryFlog
+        countryFlog,
+        randomCode,
+        setEndMatche,
+        setMatcheHasPenalty,
+        setHomeWin,
+        setHomeWinPoints,
+        setAwayWin,
+        setAwayWinPoints,
+        setDraw,
+        setDrawPoints,
+        setHomeGoals,
+        setHomeGoalsPoints,
+        setAwayGoals,
+        setAwayGoalsPoints
       ]);
 }
 
@@ -289,6 +572,19 @@ TournamentsDTStruct createTournamentsDTStruct({
   String? countryName,
   String? countryCode,
   String? countryFlog,
+  String? randomCode,
+  String? setEndMatche,
+  bool? setMatcheHasPenalty,
+  bool? setHomeWin,
+  int? setHomeWinPoints,
+  bool? setAwayWin,
+  int? setAwayWinPoints,
+  bool? setDraw,
+  int? setDrawPoints,
+  bool? setHomeGoals,
+  int? setHomeGoalsPoints,
+  bool? setAwayGoals,
+  int? setAwayGoalsPoints,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -306,6 +602,19 @@ TournamentsDTStruct createTournamentsDTStruct({
       countryName: countryName,
       countryCode: countryCode,
       countryFlog: countryFlog,
+      randomCode: randomCode,
+      setEndMatche: setEndMatche,
+      setMatcheHasPenalty: setMatcheHasPenalty,
+      setHomeWin: setHomeWin,
+      setHomeWinPoints: setHomeWinPoints,
+      setAwayWin: setAwayWin,
+      setAwayWinPoints: setAwayWinPoints,
+      setDraw: setDraw,
+      setDrawPoints: setDrawPoints,
+      setHomeGoals: setHomeGoals,
+      setHomeGoalsPoints: setHomeGoalsPoints,
+      setAwayGoals: setAwayGoals,
+      setAwayGoalsPoints: setAwayGoalsPoints,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

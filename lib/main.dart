@@ -128,6 +128,9 @@ class _NavBarPageState extends State<NavBarPage> {
       'admin': AdminWidget(),
       'Home': HomeWidget(),
       'Profile': ProfileWidget(),
+      'addTournamentsManual': AddTournamentsManualWidget(),
+      'addTournaments': AddTournamentsWidget(),
+      'tournamentsList': TournamentsListWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -233,6 +236,84 @@ class _NavBarPageState extends State<NavBarPage> {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: currentIndex == 2
+                          ? FlutterFlowTheme.of(context).primaryText
+                          : FlutterFlowTheme.of(context).primaryText,
+                      fontSize: 11.0,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            FloatingNavbarItem(
+              customWidget: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.home_outlined,
+                    color: currentIndex == 3
+                        ? FlutterFlowTheme.of(context).primaryText
+                        : FlutterFlowTheme.of(context).primaryText,
+                    size: 24.0,
+                  ),
+                  Text(
+                    FFLocalizations.of(context).getText(
+                      '0eem94dk' /* sssss */,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: currentIndex == 3
+                          ? FlutterFlowTheme.of(context).primaryText
+                          : FlutterFlowTheme.of(context).primaryText,
+                      fontSize: 11.0,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            FloatingNavbarItem(
+              customWidget: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.home_outlined,
+                    color: currentIndex == 4
+                        ? FlutterFlowTheme.of(context).primaryText
+                        : FlutterFlowTheme.of(context).primaryText,
+                    size: 24.0,
+                  ),
+                  Text(
+                    FFLocalizations.of(context).getText(
+                      'qzt5p3cs' /* sssss */,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: currentIndex == 4
+                          ? FlutterFlowTheme.of(context).primaryText
+                          : FlutterFlowTheme.of(context).primaryText,
+                      fontSize: 11.0,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            FloatingNavbarItem(
+              customWidget: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.home_outlined,
+                    color: currentIndex == 5
+                        ? FlutterFlowTheme.of(context).primaryText
+                        : FlutterFlowTheme.of(context).primaryText,
+                    size: 24.0,
+                  ),
+                  Text(
+                    FFLocalizations.of(context).getText(
+                      'updbbsy2' /* sssss */,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: currentIndex == 5
                           ? FlutterFlowTheme.of(context).primaryText
                           : FlutterFlowTheme.of(context).primaryText,
                       fontSize: 11.0,

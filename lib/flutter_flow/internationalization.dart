@@ -167,11 +167,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Home
   {
-    '405ax2ed': {
+    '4sibcmbx': {
       'en': 'Please select...',
       'ar': '',
     },
-    'o97ii79y': {
+    'qqox6kos': {
       'en': 'Search for an item...',
       'ar': '',
     },
@@ -260,10 +260,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Teams
   {
-    'zcr2qjga': {
-      'en': 'List Item Title',
-      'ar': '',
-    },
     'dfyh9gkf': {
       'en': 'Page Title',
       'ar': '',
@@ -285,6 +281,344 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '4xsruki1': {
       'en': 'Home',
+      'ar': '',
+    },
+  },
+  // addTournamentsManual
+  {
+    '17dljnwo': {
+      'en': 'Label here...',
+      'ar': '',
+    },
+    '1fpu3giu': {
+      'en': 'Label here...',
+      'ar': '',
+    },
+    'uk4jaios': {
+      'en': 'Search',
+      'ar': 'ابحث',
+    },
+    '83ceoxpj': {
+      'en': 'Start ',
+      'ar': 'يبدا',
+    },
+    '3s19271w': {
+      'en': ':',
+      'ar': '',
+    },
+    '8qxmcmuz': {
+      'en': 'End',
+      'ar': 'ينتهي',
+    },
+    '4wzt5aq0': {
+      'en': ':',
+      'ar': '',
+    },
+    'fo82k3ye': {
+      'en': 'Edit',
+      'ar': 'تعديل',
+    },
+    'rz0jtbvt': {
+      'en': 'Add tournaments',
+      'ar': 'اضافة البطولات',
+    },
+    '0eem94dk': {
+      'en': 'sssss',
+      'ar': '',
+    },
+  },
+  // editTournament
+  {
+    'kvwhok8x': {
+      'en': 'Start  ',
+      'ar': 'يبدأ  ',
+    },
+    'f6spt5wi': {
+      'en': 'End  ',
+      'ar': 'ينتهي  ',
+    },
+    'bg1k721a': {
+      'en': 'Name',
+      'ar': 'الاسم',
+    },
+    'd95my35x': {
+      'en': 'Arabic name',
+      'ar': 'الاسم العربي',
+    },
+    '1x9pq2xi': {
+      'en': 'Settings',
+      'ar': 'الاعدادات',
+    },
+    'i2ipsqv6': {
+      'en': 'Match ends with',
+      'ar': 'تنتهي المباراة بـ',
+    },
+    'qiuzq3eq': {
+      'en': 'Full time',
+      'ar': 'الأشواط الاصلية',
+    },
+    'dgnxn298': {
+      'en': 'Extra time',
+      'ar': 'الاشواط الاضافية',
+    },
+    'oli5pbtc': {
+      'en': 'Penalty',
+      'ar': 'ركلات الترجيح',
+    },
+    'q2azmcjj': {
+      'en': 'Please select...',
+      'ar': '',
+    },
+    'ttf27iaz': {
+      'en': 'Search for an item...',
+      'ar': '',
+    },
+    'tct5lfb5': {
+      'en': 'If home team win',
+      'ar': 'إذا فاز الفريق المضيف',
+    },
+    'qm89qs5t': {
+      'en': 'Score points if correct',
+      'ar': 'يحصل على النقاط لو صحيح',
+    },
+    'patxh0oa': {
+      'en': 'If away team win',
+      'ar': 'إذا فاز الفريق الضيف',
+    },
+    'g41rhlf9': {
+      'en': 'Score points if correct',
+      'ar': 'يحصل على النقاط لو صحيح',
+    },
+    'snz2icne': {
+      'en': 'If the two teams draw',
+      'ar': 'اذا تعادل الفريقين',
+    },
+    'z0vng7sb': {
+      'en': 'Score points if correct',
+      'ar': 'يحصل على النقاط لو صحيح',
+    },
+    'bd9m8es7': {
+      'en': 'Goals of the home team',
+      'ar': 'اذا توقع اهداف الفريق المضيف',
+    },
+    'eraq8klp': {
+      'en': 'Score points if correct',
+      'ar': 'يحصل على النقاط لو صحيح',
+    },
+    'c3qdsggm': {
+      'en': 'Goals of the away team',
+      'ar': 'اذا توقع اهداف الفريق الضيف',
+    },
+    '7bs6t5wt': {
+      'en': 'Score points if correct',
+      'ar': 'يحصل على النقاط لو صحيح',
+    },
+    '4q1s3unj': {
+      'en': 'Save modifications',
+      'ar': 'حفظ التعديلات',
+    },
+    'atie4ev6': {
+      'en': 'Edit tournament',
+      'ar': 'تعديل البطولة',
+    },
+    'qyef2onu': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // Profile15
+  {
+    'y1q3fhfy': {
+      'en': '[Username]',
+      'ar': '',
+    },
+    '4o4xkyny': {
+      'en': '[Email_Address]',
+      'ar': '',
+    },
+    '9l74g7jl': {
+      'en': 'Edit Profile',
+      'ar': '',
+    },
+    'er1iil8i': {
+      'en': 'Change Password',
+      'ar': '',
+    },
+    'o36fj66i': {
+      'en': 'Notification Settings',
+      'ar': '',
+    },
+    'zwsmf4y6': {
+      'en': 'Terms of Services',
+      'ar': '',
+    },
+    'an5ptdb3': {
+      'en': 'Log Out',
+      'ar': '',
+    },
+  },
+  // Profile05
+  {
+    'g8widhkl': {
+      'en': 'Andrea Davis',
+      'ar': '',
+    },
+    'w6v1iyqi': {
+      'en': 'andrea@domainname.com',
+      'ar': '',
+    },
+    'n5u8eqy0': {
+      'en': 'Active',
+      'ar': '',
+    },
+    'd6x31tvb': {
+      'en': 'Edit Profile',
+      'ar': '',
+    },
+    'nx7pcygi': {
+      'en': 'Account Settings',
+      'ar': '',
+    },
+    'inrmzf87': {
+      'en': 'Log Out',
+      'ar': '',
+    },
+    'm7k8qnlw': {
+      'en': '__',
+      'ar': '',
+    },
+  },
+  // addTournaments
+  {
+    'j22yf5x1': {
+      'en': 'Please select...',
+      'ar': '',
+    },
+    'd9o0icap': {
+      'en': 'Search for an item...',
+      'ar': '',
+    },
+    'p6s8qrnw': {
+      'en': '2022',
+      'ar': '',
+    },
+    '9j5e0jw2': {
+      'en': '2023',
+      'ar': '',
+    },
+    '6wz68jxq': {
+      'en': '2024',
+      'ar': '',
+    },
+    'laakpi75': {
+      'en': '2025',
+      'ar': '',
+    },
+    'ov1im916': {
+      'en': '2026',
+      'ar': '',
+    },
+    '4apdi7vt': {
+      'en': 'Search for an item...',
+      'ar': '',
+    },
+    'ggbdn9a8': {
+      'en': 'league',
+      'ar': '',
+    },
+    'ochabfgk': {
+      'en': 'league',
+      'ar': 'دوري',
+    },
+    'xfwglfxm': {
+      'en': 'cup',
+      'ar': 'كاس',
+    },
+    'rjc38868': {
+      'en': 'Search',
+      'ar': 'ابحث',
+    },
+    'zcw8g8nc': {
+      'en': 'Start ',
+      'ar': 'يبدا',
+    },
+    'w1mlr4nz': {
+      'en': ':',
+      'ar': '',
+    },
+    'k6253rno': {
+      'en': 'End',
+      'ar': 'ينتهي',
+    },
+    'idarejzq': {
+      'en': ':',
+      'ar': '',
+    },
+    'de1kj3f2': {
+      'en': 'Edit',
+      'ar': 'تعديل',
+    },
+    'mftvf5k1': {
+      'en': 'Add tournaments',
+      'ar': 'اضافة البطولات',
+    },
+    'qzt5p3cs': {
+      'en': 'sssss',
+      'ar': '',
+    },
+  },
+  // tournamentsList
+  {
+    'zkb2el6z': {
+      'en': 'add Manual',
+      'ar': 'ابحث',
+    },
+    '15yc9izt': {
+      'en': 'addTournaments',
+      'ar': 'أضافة البطولات',
+    },
+    'thf86vk6': {
+      'en': 'Hello World',
+      'ar': '',
+    },
+    'ye0o4xh0': {
+      'en': 'Hello World',
+      'ar': '',
+    },
+    '2po5g8z4': {
+      'en': 'Start ',
+      'ar': 'يبدا',
+    },
+    'u21by9lz': {
+      'en': ':',
+      'ar': '',
+    },
+    'sv87574j': {
+      'en': 'Hello World ',
+      'ar': '',
+    },
+    '62xgtman': {
+      'en': 'End',
+      'ar': 'ينتهي',
+    },
+    'h4hlanp1': {
+      'en': ':',
+      'ar': '',
+    },
+    'dp548ln4': {
+      'en': 'Hello World ',
+      'ar': '',
+    },
+    '1avah5lj': {
+      'en': 'Edit',
+      'ar': 'تعديل',
+    },
+    'xwodnklz': {
+      'en': 'Add tournaments',
+      'ar': 'اضافة البطولات',
+    },
+    'updbbsy2': {
+      'en': 'sssss',
       'ar': '',
     },
   },
@@ -340,6 +674,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'uoj01qjx': {
       'en': 'Create member account',
       'ar': 'إنشاء حساب عضو',
+    },
+  },
+  // emptyTournamentsList
+  {
+    'wb6e6exi': {
+      'en': 'No new tournaments have been added',
+      'ar': 'لا توجد بطولات جديدة قد تم اضافتها ',
+    },
+    '7w4ux9nz': {
+      'en': 'Or it may have been added previously',
+      'ar': 'او قد تم اضافتها سابقا',
     },
   },
   // Miscellaneous
