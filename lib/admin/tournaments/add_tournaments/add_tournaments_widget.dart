@@ -11,12 +11,12 @@ import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:text_search/text_search.dart';
 import 'add_tournaments_model.dart';
 export 'add_tournaments_model.dart';
 
@@ -256,24 +256,12 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
                                 true,
                               ),
                             );
-                            await queryTournamentsRecordOnce()
-                                .then(
-                                  (records) => _model.simpleSearchResults =
-                                      TextSearch(
-                                    records
-                                        .map(
-                                          (record) => TextSearchItem(
-                                              record, [record.randomCode!]),
-                                        )
-                                        .toList(),
-                                  )
-                                          .search(_model.newTournamentsOutput!)
-                                          .map((r) => r.object)
-                                          .toList(),
-                                )
-                                .onError(
-                                    (_, __) => _model.simpleSearchResults = [])
-                                .whenComplete(() => setState(() {}));
+                            _model.queryNewTournaments =
+                                await queryTournamentsRecordOnce(
+                              queryBuilder: (tournamentsRecord) =>
+                                  tournamentsRecord.where('randomCode',
+                                      isEqualTo: _model.newTournamentsOutput),
+                            );
 
                             setState(() {});
                           },
@@ -316,7 +304,7 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
                     child: Builder(
                       builder: (context) {
                         final newTournamentsList =
-                            _model.simpleSearchResults.toList();
+                            _model.queryNewTournaments?.toList() ?? [];
                         if (newTournamentsList.isEmpty) {
                           return EmptyTournamentsListWidget();
                         }
