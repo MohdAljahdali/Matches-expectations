@@ -10,12 +10,12 @@ import '/flutter_flow/random_data_util.dart' as random_data;
 import '/flutter_flow/request_manager.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:text_search/text_search.dart';
 
 class AddTournamentsManualModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
@@ -28,8 +28,9 @@ class AddTournamentsManualModel extends FlutterFlowModel {
   TextEditingController? seasonTFController;
   String? Function(BuildContext, String?)? seasonTFControllerValidator;
   // Stores action output result for [Custom Action - addTournamentsManual] action in searchB widget.
-  String? tournamentsManualOutout;
-  List<TournamentsRecord> simpleSearchResults = [];
+  String? tournamentsManualOutoutManual;
+  // Stores action output result for [Firestore Query - Query a collection] action in searchB widget.
+  List<TournamentsRecord>? queryNewTournamentsManual;
 
   /// Query cache managers for this widget.
 

@@ -8,12 +8,12 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:text_search/text_search.dart';
 import 'add_tournaments_manual_model.dart';
 export 'add_tournaments_manual_model.dart';
 
@@ -225,7 +225,7 @@ class _AddTournamentsManualWidgetState
                       children: [
                         FFButtonWidget(
                           onPressed: () async {
-                            _model.tournamentsManualOutout =
+                            _model.tournamentsManualOutoutManual =
                                 await actions.addTournamentsManual(
                               _model.tournamentTFController.text,
                               _model.seasonTFController.text,
@@ -237,24 +237,13 @@ class _AddTournamentsManualWidgetState
                                 true,
                               ),
                             );
-                            await queryTournamentsRecordOnce()
-                                .then(
-                                  (records) => _model
-                                      .simpleSearchResults = TextSearch(
-                                    records
-                                        .map(
-                                          (record) => TextSearchItem(
-                                              record, [record.randomCode!]),
-                                        )
-                                        .toList(),
-                                  )
-                                      .search(_model.tournamentsManualOutout!)
-                                      .map((r) => r.object)
-                                      .toList(),
-                                )
-                                .onError(
-                                    (_, __) => _model.simpleSearchResults = [])
-                                .whenComplete(() => setState(() {}));
+                            _model.queryNewTournamentsManual =
+                                await queryTournamentsRecordOnce(
+                              queryBuilder: (tournamentsRecord) =>
+                                  tournamentsRecord.where('randomCode',
+                                      isEqualTo:
+                                          _model.tournamentsManualOutoutManual),
+                            );
 
                             setState(() {});
                           },
@@ -296,8 +285,12 @@ class _AddTournamentsManualWidgetState
                         EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                     child: Builder(
                       builder: (context) {
-                        final newTournamentsList =
-                            _model.simpleSearchResults.toList();
+                        final newTournamentsList = _model
+                                .queryNewTournamentsManual
+                                ?.map((e) => e)
+                                .toList()
+                                ?.toList() ??
+                            [];
                         if (newTournamentsList.isEmpty) {
                           return EmptyTournamentsListWidget();
                         }
