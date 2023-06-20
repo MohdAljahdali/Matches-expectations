@@ -50,6 +50,8 @@ class _UpdateMemberDataWidgetState extends State<UpdateMemberDataWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
       child: StreamBuilder<UserRecord>(

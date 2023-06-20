@@ -38,6 +38,8 @@ class _AdminWidgetState extends State<AdminWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
@@ -172,7 +174,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
+                                            MainAxisAlignment.spaceEvenly,
                                         children: [
                                           FFButtonWidget(
                                             onPressed: () async {
@@ -221,15 +223,15 @@ class _AdminWidgetState extends State<AdminWidget> {
                                               builder: (context) =>
                                                   FFButtonWidget(
                                                 onPressed: () async {
-                                                  context.pushNamed('admin');
+                                                  context.pushNamed('Profile');
                                                 },
                                                 text:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'fkn2hqr6' /* Admin */,
+                                                  'fkn2hqr6' /* Your Profile */,
                                                 ),
                                                 options: FFButtonOptions(
-                                                  width: 120.0,
+                                                  width: 130.0,
                                                   height: 40.0,
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
@@ -287,6 +289,51 @@ class _AdminWidgetState extends State<AdminWidget> {
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 children: [
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.pushNamed(
+                        'tournamentsList',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.leftToRight,
+                          ),
+                        },
+                      );
+                    },
+                    child: ListTile(
+                      title: Text(
+                        FFLocalizations.of(context).getText(
+                          'srckq6g5' /* Tournaments */,
+                        ),
+                        style: FlutterFlowTheme.of(context).titleLarge,
+                      ),
+                      subtitle: Text(
+                        FFLocalizations.of(context).getText(
+                          'tqnmndkf' /* Tournaments settings */,
+                        ),
+                        style: FlutterFlowTheme.of(context)
+                            .labelMedium
+                            .override(
+                              fontFamily: ' Shamel',
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              useGoogleFonts: false,
+                            ),
+                      ),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 20.0,
+                      ),
+                      tileColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      dense: false,
+                    ),
+                  ),
                   ListTile(
                     title: Text(
                       FFLocalizations.of(context).getText(
@@ -301,31 +348,6 @@ class _AdminWidgetState extends State<AdminWidget> {
                     subtitle: Text(
                       FFLocalizations.of(context).getText(
                         'up56z3dj' /* Subtitle goes here... */,
-                      ),
-                      style: FlutterFlowTheme.of(context).labelMedium.override(
-                            fontFamily: ' Shamel',
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            useGoogleFonts: false,
-                          ),
-                    ),
-                    trailing: Icon(
-                      Icons.arrow_forward_ios,
-                      color: FlutterFlowTheme.of(context).secondaryText,
-                      size: 20.0,
-                    ),
-                    tileColor: FlutterFlowTheme.of(context).secondaryBackground,
-                    dense: false,
-                  ),
-                  ListTile(
-                    title: Text(
-                      FFLocalizations.of(context).getText(
-                        'srckq6g5' /* Title */,
-                      ),
-                      style: FlutterFlowTheme.of(context).titleLarge,
-                    ),
-                    subtitle: Text(
-                      FFLocalizations.of(context).getText(
-                        'tqnmndkf' /* Subtitle goes here... */,
                       ),
                       style: FlutterFlowTheme.of(context).labelMedium.override(
                             fontFamily: ' Shamel',

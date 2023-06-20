@@ -47,6 +47,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<UserRecord>(
       stream: UserRecord.getDocument(currentUserReference!),
       builder: (context, snapshot) {
@@ -310,6 +312,154 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           ),
                         ],
                       ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Stack(
+                          children: [
+                            if ((Theme.of(context).brightness ==
+                                    Brightness.dark) ==
+                                true)
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  setDarkModeSetting(context, ThemeMode.light);
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'rr017r9r' /* Switch to light mode */,
+                                ),
+                                options: FFButtonOptions(
+                                  width: 180.0,
+                                  height: 30.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).lineColor,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: ' Shamel',
+                                        color: Color(0xFF1F1D2B),
+                                        useGoogleFonts: false,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(25.0),
+                                ),
+                              ),
+                            if ((Theme.of(context).brightness ==
+                                    Brightness.light) ==
+                                true)
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  setDarkModeSetting(context, ThemeMode.dark);
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'mk4ytka8' /* Switch to dark mode */,
+                                ),
+                                options: FFButtonOptions(
+                                  width: 180.0,
+                                  height: 30.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: Color(0xFF1F1D2B),
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: ' Shamel',
+                                        color: Colors.white,
+                                        useGoogleFonts: false,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(25.0),
+                                ),
+                              ),
+                          ],
+                        ),
+                        Stack(
+                          children: [
+                            if (FFLocalizations.of(context).languageCode ==
+                                'EN')
+                              FFButtonWidget(
+                                onPressed: () {
+                                  print('switchToEnglishB pressed ...');
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'p34uvxro' /* Change to English */,
+                                ),
+                                options: FFButtonOptions(
+                                  width: 180.0,
+                                  height: 30.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: ' Shamel',
+                                        color: Colors.white,
+                                        useGoogleFonts: false,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(25.0),
+                                ),
+                              ),
+                            if (FFLocalizations.of(context).languageCode ==
+                                'AR')
+                              FFButtonWidget(
+                                onPressed: () {
+                                  print('switchToEnglishB pressed ...');
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'b0wft5ts' /* Change to Arabic */,
+                                ),
+                                options: FFButtonOptions(
+                                  width: 180.0,
+                                  height: 30.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: ' Shamel',
+                                        color: Colors.white,
+                                        useGoogleFonts: false,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(25.0),
+                                ),
+                              ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                   ListView(

@@ -1,7 +1,12 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/components/empty_tournaments_list_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -37,6 +42,8 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
@@ -91,7 +98,7 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                                 20.0, 0.0, 20.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 FFButtonWidget(
                                   onPressed: () async {
@@ -101,7 +108,7 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                                     'zkb2el6z' /* add Manual */,
                                   ),
                                   options: FFButtonOptions(
-                                    width: 109.0,
+                                    width: 140.0,
                                     height: 35.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
@@ -131,7 +138,7 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                                     '15yc9izt' /* addTournaments */,
                                   ),
                                   options: FFButtonOptions(
-                                    width: 143.0,
+                                    width: 140.0,
                                     height: 35.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
@@ -166,23 +173,68 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                             child: Stack(
                               alignment: AlignmentDirectional(0.0, 0.0),
                               children: [
-                                FlutterFlowIconButton(
-                                  borderColor:
-                                      FlutterFlowTheme.of(context).alternate,
-                                  borderRadius: 20.0,
-                                  borderWidth: 1.0,
-                                  buttonSize: 40.0,
-                                  fillColor:
-                                      FlutterFlowTheme.of(context).alternate,
-                                  icon: Icon(
-                                    Icons.remove_red_eye_sharp,
-                                    color: FlutterFlowTheme.of(context).accent3,
-                                    size: 20.0,
+                                if (FFAppState().tournamentsListIsActive ==
+                                    true)
+                                  FlutterFlowIconButton(
+                                    borderColor:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    borderRadius: 20.0,
+                                    borderWidth: 1.0,
+                                    buttonSize: 40.0,
+                                    fillColor:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    icon: Icon(
+                                      Icons.remove_red_eye_sharp,
+                                      color:
+                                          FlutterFlowTheme.of(context).accent3,
+                                      size: 20.0,
+                                    ),
+                                    onPressed: () async {
+                                      setState(() {
+                                        FFAppState().tournamentsListIsActive =
+                                            true;
+                                      });
+                                      _model.outputTournamentsListActive =
+                                          await queryTournamentsRecordOnce(
+                                        queryBuilder: (tournamentsRecord) =>
+                                            tournamentsRecord.where('is_Active',
+                                                isEqualTo: true),
+                                      );
+
+                                      setState(() {});
+                                    },
                                   ),
-                                  onPressed: () {
-                                    print('IconButton pressed ...');
-                                  },
-                                ),
+                                if (FFAppState().tournamentsListIsActive ==
+                                    false)
+                                  FlutterFlowIconButton(
+                                    borderColor:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    borderRadius: 20.0,
+                                    borderWidth: 1.0,
+                                    buttonSize: 40.0,
+                                    fillColor:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    icon: Icon(
+                                      Icons.remove_red_eye_outlined,
+                                      color:
+                                          FlutterFlowTheme.of(context).accent3,
+                                      size: 20.0,
+                                    ),
+                                    onPressed: () async {
+                                      setState(() {
+                                        FFAppState().tournamentsListIsActive =
+                                            false;
+                                      });
+                                      _model.outputTournamentsListNotActive =
+                                          await queryTournamentsRecordOnce(
+                                        queryBuilder: (tournamentsRecord) =>
+                                            tournamentsRecord.where('is_Active',
+                                                isEqualTo: false),
+                                      );
+
+                                      setState(() {});
+                                    },
+                                  ),
                               ],
                             ),
                           ),
@@ -197,56 +249,70 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-                    child: ListView(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      children: [
-                        Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          elevation: 4.0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(8.0),
-                                  bottomRight: Radius.circular(0.0),
-                                  topLeft: Radius.circular(8.0),
-                                  topRight: Radius.circular(0.0),
-                                ),
-                                child: Image.network(
-                                  'https://picsum.photos/seed/558/600',
-                                  width: 100.0,
-                                  height: 100.0,
-                                  fit: BoxFit.cover,
-                                ),
+                    child: Builder(
+                      builder: (context) {
+                        final tournamentsList =
+                            _model.outputTournamentsListActive?.toList() ?? [];
+                        if (tournamentsList.isEmpty) {
+                          return EmptyTournamentsListWidget();
+                        }
+                        return ListView.builder(
+                          padding: EdgeInsets.zero,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemCount: tournamentsList.length,
+                          itemBuilder: (context, tournamentsListIndex) {
+                            final tournamentsListItem =
+                                tournamentsList[tournamentsListIndex];
+                            return Card(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              elevation: 4.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
-                              Expanded(
-                                child: Align(
-                                  alignment: AlignmentDirectional(0.0, 1.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 0.0, 5.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'thf86vk6' /* Hello World */,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(8.0),
+                                      bottomRight: Radius.circular(0.0),
+                                      topLeft: Radius.circular(8.0),
+                                      topRight: Radius.circular(0.0),
+                                    ),
+                                    child: Image.network(
+                                      tournamentsListItem.logo,
+                                      width: 100.0,
+                                      height: 100.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0.0, 1.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 0.0, 5.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Text(
+                                                  FFLocalizations.of(context)
+                                                              .languageCode ==
+                                                          'En'
+                                                      ? tournamentsListItem.name
+                                                      : tournamentsListItem
+                                                          .nameAr,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: ' Shamel',
@@ -254,189 +320,153 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                                                             FontWeight.bold,
                                                         useGoogleFonts: false,
                                                       ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'ye0o4xh0' /* Hello World */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: ' Shamel',
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                              ),
+                                              ],
                                             ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 3.0, 5.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            RichText(
-                                              text: TextSpan(
-                                                children: [
-                                                  TextSpan(
-                                                    text: FFLocalizations.of(
-                                                            context)
-                                                        .getText(
-                                                      '2po5g8z4' /* Start  */,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: ' Shamel',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                                  ),
-                                                  TextSpan(
-                                                    text: FFLocalizations.of(
-                                                            context)
-                                                        .getText(
-                                                      'u21by9lz' /* : */,
-                                                    ),
-                                                    style: TextStyle(),
-                                                  ),
-                                                  TextSpan(
-                                                    text: FFLocalizations.of(
-                                                            context)
-                                                        .getText(
-                                                      'sv87574j' /* Hello World  */,
-                                                    ),
-                                                    style: TextStyle(),
-                                                  )
-                                                ],
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                            ),
-                                            RichText(
-                                              text: TextSpan(
-                                                children: [
-                                                  TextSpan(
-                                                    text: FFLocalizations.of(
-                                                            context)
-                                                        .getText(
-                                                      '62xgtman' /* End */,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: ' Shamel',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                                  ),
-                                                  TextSpan(
-                                                    text: FFLocalizations.of(
-                                                            context)
-                                                        .getText(
-                                                      'h4hlanp1' /* : */,
-                                                    ),
-                                                    style: TextStyle(),
-                                                  ),
-                                                  TextSpan(
-                                                    text: FFLocalizations.of(
-                                                            context)
-                                                        .getText(
-                                                      'dp548ln4' /* Hello World  */,
-                                                    ),
-                                                    style: TextStyle(),
-                                                  )
-                                                ],
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 4.0, 0.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            FFButtonWidget(
-                                              onPressed: () {
-                                                print('editB pressed ...');
-                                              },
-                                              text: FFLocalizations.of(context)
-                                                  .getText(
-                                                '1avah5lj' /* Edit */,
-                                              ),
-                                              options: FFButtonOptions(
-                                                width: 90.0,
-                                                height: 40.0,
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily: ' Shamel',
-                                                          color: Colors.white,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                                elevation: 3.0,
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                              ),
-                                            ),
-                                            Stack(
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 3.0, 5.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                               children: [
+                                                RichText(
+                                                  text: TextSpan(
+                                                    children: [
+                                                      TextSpan(
+                                                        text:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          '2po5g8z4' /* Start  */,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      ' Shamel',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  useGoogleFonts:
+                                                                      false,
+                                                                ),
+                                                      ),
+                                                      TextSpan(
+                                                        text:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          'u21by9lz' /* : */,
+                                                        ),
+                                                        style: TextStyle(),
+                                                      ),
+                                                      TextSpan(
+                                                        text:
+                                                            tournamentsListItem
+                                                                .seasonStart,
+                                                        style: TextStyle(),
+                                                      )
+                                                    ],
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                ),
+                                                RichText(
+                                                  text: TextSpan(
+                                                    children: [
+                                                      TextSpan(
+                                                        text:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          '62xgtman' /* End */,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      ' Shamel',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  useGoogleFonts:
+                                                                      false,
+                                                                ),
+                                                      ),
+                                                      TextSpan(
+                                                        text:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          'h4hlanp1' /* : */,
+                                                        ),
+                                                        style: TextStyle(),
+                                                      ),
+                                                      TextSpan(
+                                                        text:
+                                                            tournamentsListItem
+                                                                .seasonEnd,
+                                                        style: TextStyle(),
+                                                      )
+                                                    ],
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 4.0, 0.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  tournamentsListItem.seasonYear
+                                                      .toString(),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: ' Shamel',
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                                ),
                                                 FFButtonWidget(
                                                   onPressed: () {
-                                                    print(
-                                                        'activeB pressed ...');
+                                                    print('editB pressed ...');
                                                   },
-                                                  text: '',
-                                                  icon: Icon(
-                                                    Icons.remove_red_eye_sharp,
-                                                    size: 30.0,
+                                                  text: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    '1avah5lj' /* Edit */,
                                                   ),
                                                   options: FFButtonOptions(
-                                                    width: 70.0,
+                                                    width: 180.0,
                                                     height: 40.0,
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -463,132 +493,31 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                                                       width: 1.0,
                                                     ),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            0.0),
-                                                  ),
-                                                ),
-                                                FFButtonWidget(
-                                                  onPressed: () {
-                                                    print(
-                                                        'notActiveB pressed ...');
-                                                  },
-                                                  text: '',
-                                                  icon: Icon(
-                                                    Icons
-                                                        .remove_red_eye_outlined,
-                                                    size: 30.0,
-                                                  ),
-                                                  options: FFButtonOptions(
-                                                    width: 70.0,
-                                                    height: 40.0,
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    iconPadding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: Color(0xFF8B8D94),
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily: ' Shamel',
-                                                          color: Colors.white,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                                    elevation: 3.0,
-                                                    borderSide: BorderSide(
-                                                      color: Colors.transparent,
-                                                      width: 1.0,
+                                                        BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(0.0),
+                                                      bottomRight:
+                                                          Radius.circular(0.0),
+                                                      topLeft:
+                                                          Radius.circular(8.0),
+                                                      topRight:
+                                                          Radius.circular(0.0),
                                                     ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            0.0),
                                                   ),
                                                 ),
                                               ],
                                             ),
-                                            FFButtonWidget(
-                                              onPressed: () async {
-                                                var confirmDialogResponse =
-                                                    await showDialog<bool>(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Delete Tournament'),
-                                                              content: Text(
-                                                                  'You are sure to delete the tournament'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          false),
-                                                                  child: Text(
-                                                                      'Cancel delete'),
-                                                                ),
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          true),
-                                                                  child: Text(
-                                                                      'Confirm delete'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        ) ??
-                                                        false;
-                                              },
-                                              text: '',
-                                              icon: Icon(
-                                                Icons.restore_from_trash,
-                                                size: 30.0,
-                                              ),
-                                              options: FFButtonOptions(
-                                                width: 70.0,
-                                                height: 40.0,
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color: Color(0xFFD10505),
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily: ' Shamel',
-                                                          color: Colors.white,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                                elevation: 3.0,
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
-                                    ],
+                                    ),
                                   ),
-                                ),
+                                ],
                               ),
-                            ],
-                          ),
-                        ),
-                      ],
+                            );
+                          },
+                        );
+                      },
                     ),
                   ),
                 ],

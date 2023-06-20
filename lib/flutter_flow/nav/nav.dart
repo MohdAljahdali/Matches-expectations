@@ -139,12 +139,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'addTournamentsManual',
           path: '/addTournamentsManual',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'addTournamentsManual')
-              : NavBarPage(
-                  initialPage: 'addTournamentsManual',
-                  page: AddTournamentsManualWidget(),
-                ),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AddTournamentsManualWidget(),
+          ),
         ),
         FFRoute(
           name: 'editTournament',
@@ -170,22 +168,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'addTournaments',
           path: '/addTournaments',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'addTournaments')
-              : NavBarPage(
-                  initialPage: 'addTournaments',
-                  page: AddTournamentsWidget(),
-                ),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AddTournamentsWidget(),
+          ),
         ),
         FFRoute(
           name: 'tournamentsList',
           path: '/tournamentsList',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'tournamentsList')
-              : NavBarPage(
-                  initialPage: 'tournamentsList',
-                  page: TournamentsListWidget(),
-                ),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: TournamentsListWidget(),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

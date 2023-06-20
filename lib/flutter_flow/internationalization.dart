@@ -199,22 +199,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تسجيل خروج',
     },
     'fkn2hqr6': {
-      'en': 'Admin',
-      'ar': 'الاداري',
+      'en': 'Your Profile',
+      'ar': 'ملفك الشخصي',
+    },
+    'srckq6g5': {
+      'en': 'Tournaments',
+      'ar': 'البطولات',
+    },
+    'tqnmndkf': {
+      'en': 'Tournaments settings',
+      'ar': 'اعدادات البطولات',
     },
     'zzwpli0v': {
       'en': 'Clubs',
       'ar': 'الاندية',
     },
     'up56z3dj': {
-      'en': 'Subtitle goes here...',
-      'ar': '',
-    },
-    'srckq6g5': {
-      'en': 'Title',
-      'ar': '',
-    },
-    'tqnmndkf': {
       'en': 'Subtitle goes here...',
       'ar': '',
     },
@@ -227,8 +227,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'ادارة الاعضاء',
     },
     'myjm1s5y': {
-      'en': 'Home',
-      'ar': 'الرئيسية',
+      'en': 'settings',
+      'ar': 'الاعدادات',
     },
   },
   // Profile
@@ -244,6 +244,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'xwicembv': {
       'en': 'Admin',
       'ar': 'الاداري',
+    },
+    'rr017r9r': {
+      'en': 'Switch to light mode',
+      'ar': 'التحويل الى المظهر الفاتح',
+    },
+    'mk4ytka8': {
+      'en': 'Switch to dark mode',
+      'ar': 'التحويل الى المظهر الداكن',
+    },
+    'p34uvxro': {
+      'en': 'Change to English',
+      'ar': 'تغير اللغة الى الانجليزية',
+    },
+    'b0wft5ts': {
+      'en': 'Change to Arabic',
+      'ar': 'تغير اللغة الى العربية',
     },
     '0wma2b5x': {
       'en': 'Title',
@@ -577,14 +593,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'addTournaments',
       'ar': 'أضافة البطولات',
     },
-    'thf86vk6': {
-      'en': 'Hello World',
-      'ar': '',
-    },
-    'ye0o4xh0': {
-      'en': 'Hello World',
-      'ar': '',
-    },
     '2po5g8z4': {
       'en': 'Start ',
       'ar': 'يبدا',
@@ -593,20 +601,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': ':',
       'ar': '',
     },
-    'sv87574j': {
-      'en': 'Hello World ',
-      'ar': '',
-    },
     '62xgtman': {
       'en': 'End',
       'ar': 'ينتهي',
     },
     'h4hlanp1': {
       'en': ':',
-      'ar': '',
-    },
-    'dp548ln4': {
-      'en': 'Hello World ',
       'ar': '',
     },
     '1avah5lj': {
@@ -618,7 +618,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'اضافة البطولات',
     },
     'updbbsy2': {
-      'en': 'sssss',
+      'en': '',
       'ar': '',
     },
   },
