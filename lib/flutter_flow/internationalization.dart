@@ -167,14 +167,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Home
   {
-    '4sibcmbx': {
-      'en': 'Please select...',
-      'ar': '',
-    },
-    'qqox6kos': {
-      'en': 'Search for an item...',
-      'ar': '',
-    },
     'mpr9hs2r': {
       'en': 'Button',
       'ar': '',
@@ -442,68 +434,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
-  // Profile15
-  {
-    'y1q3fhfy': {
-      'en': '[Username]',
-      'ar': '',
-    },
-    '4o4xkyny': {
-      'en': '[Email_Address]',
-      'ar': '',
-    },
-    '9l74g7jl': {
-      'en': 'Edit Profile',
-      'ar': '',
-    },
-    'er1iil8i': {
-      'en': 'Change Password',
-      'ar': '',
-    },
-    'o36fj66i': {
-      'en': 'Notification Settings',
-      'ar': '',
-    },
-    'zwsmf4y6': {
-      'en': 'Terms of Services',
-      'ar': '',
-    },
-    'an5ptdb3': {
-      'en': 'Log Out',
-      'ar': '',
-    },
-  },
-  // Profile05
-  {
-    'g8widhkl': {
-      'en': 'Andrea Davis',
-      'ar': '',
-    },
-    'w6v1iyqi': {
-      'en': 'andrea@domainname.com',
-      'ar': '',
-    },
-    'n5u8eqy0': {
-      'en': 'Active',
-      'ar': '',
-    },
-    'd6x31tvb': {
-      'en': 'Edit Profile',
-      'ar': '',
-    },
-    'nx7pcygi': {
-      'en': 'Account Settings',
-      'ar': '',
-    },
-    'inrmzf87': {
-      'en': 'Log Out',
-      'ar': '',
-    },
-    'm7k8qnlw': {
-      'en': '__',
-      'ar': '',
-    },
-  },
   // addTournaments
   {
     'j22yf5x1': {
@@ -516,23 +446,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'p6s8qrnw': {
       'en': '2022',
-      'ar': '',
+      'ar': '2022',
     },
     '9j5e0jw2': {
       'en': '2023',
-      'ar': '',
+      'ar': '2023',
     },
     '6wz68jxq': {
       'en': '2024',
-      'ar': '',
+      'ar': '2024',
     },
     'laakpi75': {
       'en': '2025',
-      'ar': '',
+      'ar': '2025',
     },
     'ov1im916': {
       'en': '2026',
-      'ar': '',
+      'ar': '2026',
     },
     '4apdi7vt': {
       'en': 'Search for an item...',
@@ -540,7 +470,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ggbdn9a8': {
       'en': 'league',
-      'ar': '',
+      'ar': 'دوري',
     },
     'ochabfgk': {
       'en': 'league',
@@ -560,7 +490,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'w1mlr4nz': {
       'en': ':',
-      'ar': '',
+      'ar': ':',
     },
     'k6253rno': {
       'en': 'End',
@@ -568,7 +498,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'idarejzq': {
       'en': ':',
-      'ar': '',
+      'ar': ':',
     },
     'de1kj3f2': {
       'en': 'Edit',
@@ -593,23 +523,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'addTournaments',
       'ar': 'أضافة البطولات',
     },
-    '2po5g8z4': {
+    'prhz08ey': {
       'en': 'Start ',
       'ar': 'يبدا',
     },
-    'u21by9lz': {
+    '5meqg443': {
       'en': ':',
-      'ar': '',
+      'ar': ':',
     },
-    '62xgtman': {
+    'veqbn0b8': {
       'en': 'End',
       'ar': 'ينتهي',
     },
-    'h4hlanp1': {
+    'nueq4f2a': {
       'en': ':',
-      'ar': '',
+      'ar': ':',
     },
-    '1avah5lj': {
+    '0imm2xvr': {
       'en': 'Edit',
       'ar': 'تعديل',
     },

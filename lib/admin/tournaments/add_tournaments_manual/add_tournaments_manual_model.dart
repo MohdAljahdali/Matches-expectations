@@ -1,6 +1,6 @@
+import '/admin/tournaments/empty_tournaments_list/empty_tournaments_list_widget.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/empty_tournaments_list_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -10,9 +10,9 @@ import '/flutter_flow/random_data_util.dart' as random_data;
 import '/flutter_flow/request_manager.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -29,8 +29,6 @@ class AddTournamentsManualModel extends FlutterFlowModel {
   String? Function(BuildContext, String?)? seasonTFControllerValidator;
   // Stores action output result for [Custom Action - addTournamentsManual] action in searchB widget.
   String? tournamentsManualOutoutManual;
-  // Stores action output result for [Firestore Query - Query a collection] action in searchB widget.
-  List<TournamentsRecord>? queryNewTournamentsManual;
 
   /// Query cache managers for this widget.
 

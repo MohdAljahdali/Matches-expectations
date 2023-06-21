@@ -11,8 +11,6 @@ export '/admin/tournaments/add_tournaments_manual/add_tournaments_manual_widget.
     show AddTournamentsManualWidget;
 export '/admin/tournaments/edit_tournament/edit_tournament_widget.dart'
     show EditTournamentWidget;
-export '/profile15/profile15_widget.dart' show Profile15Widget;
-export '/profile05/profile05_widget.dart' show Profile05Widget;
 export '/admin/tournaments/add_tournaments/add_tournaments_widget.dart'
     show AddTournamentsWidget;
 export '/admin/tournaments/tournaments_list/tournaments_list_widget.dart'

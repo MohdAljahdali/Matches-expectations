@@ -156,16 +156,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'Profile15',
-          path: '/profile15',
-          builder: (context, params) => Profile15Widget(),
-        ),
-        FFRoute(
-          name: 'Profile05',
-          path: '/profile05',
-          builder: (context, params) => Profile05Widget(),
-        ),
-        FFRoute(
           name: 'addTournaments',
           path: '/addTournaments',
           builder: (context, params) => NavBarPage(

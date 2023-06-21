@@ -1,12 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
+import '/admin/tournaments/empty_tournaments_list/empty_tournaments_list_widget.dart';
 import '/backend/backend.dart';
-import '/components/empty_tournaments_list_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -174,7 +171,7 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                               alignment: AlignmentDirectional(0.0, 0.0),
                               children: [
                                 if (FFAppState().tournamentsListIsActive ==
-                                    true)
+                                    false)
                                   FlutterFlowIconButton(
                                     borderColor:
                                         FlutterFlowTheme.of(context).alternate,
@@ -194,18 +191,10 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                                         FFAppState().tournamentsListIsActive =
                                             true;
                                       });
-                                      _model.outputTournamentsListActive =
-                                          await queryTournamentsRecordOnce(
-                                        queryBuilder: (tournamentsRecord) =>
-                                            tournamentsRecord.where('is_Active',
-                                                isEqualTo: true),
-                                      );
-
-                                      setState(() {});
                                     },
                                   ),
                                 if (FFAppState().tournamentsListIsActive ==
-                                    false)
+                                    true)
                                   FlutterFlowIconButton(
                                     borderColor:
                                         FlutterFlowTheme.of(context).alternate,
@@ -225,14 +214,6 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                                         FFAppState().tournamentsListIsActive =
                                             false;
                                       });
-                                      _model.outputTournamentsListNotActive =
-                                          await queryTournamentsRecordOnce(
-                                        queryBuilder: (tournamentsRecord) =>
-                                            tournamentsRecord.where('is_Active',
-                                                isEqualTo: false),
-                                      );
-
-                                      setState(() {});
                                     },
                                   ),
                               ],
@@ -249,21 +230,43 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-                    child: Builder(
-                      builder: (context) {
-                        final tournamentsList =
-                            _model.outputTournamentsListActive?.toList() ?? [];
-                        if (tournamentsList.isEmpty) {
+                    child: StreamBuilder<List<TournamentsRecord>>(
+                      stream: queryTournamentsRecord(
+                        queryBuilder: (tournamentsRecord) =>
+                            tournamentsRecord.where('is_Active',
+                                isEqualTo:
+                                    FFAppState().tournamentsListIsActive),
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: SpinKitFadingCircle(
+                                color: FlutterFlowTheme.of(context).primary,
+                                size: 50.0,
+                              ),
+                            ),
+                          );
+                        }
+                        List<TournamentsRecord>
+                            notActiveListViewTournamentsRecordList =
+                            snapshot.data!;
+                        if (notActiveListViewTournamentsRecordList.isEmpty) {
                           return EmptyTournamentsListWidget();
                         }
                         return ListView.builder(
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
-                          itemCount: tournamentsList.length,
-                          itemBuilder: (context, tournamentsListIndex) {
-                            final tournamentsListItem =
-                                tournamentsList[tournamentsListIndex];
+                          itemCount:
+                              notActiveListViewTournamentsRecordList.length,
+                          itemBuilder: (context, notActiveListViewIndex) {
+                            final notActiveListViewTournamentsRecord =
+                                notActiveListViewTournamentsRecordList[
+                                    notActiveListViewIndex];
                             return Card(
                               clipBehavior: Clip.antiAliasWithSaveLayer,
                               color: FlutterFlowTheme.of(context)
@@ -283,7 +286,7 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                                       topRight: Radius.circular(0.0),
                                     ),
                                     child: Image.network(
-                                      tournamentsListItem.logo,
+                                      notActiveListViewTournamentsRecord.logo,
                                       width: 100.0,
                                       height: 100.0,
                                       fit: BoxFit.cover,
@@ -307,9 +310,10 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                                                 Text(
                                                   FFLocalizations.of(context)
                                                               .languageCode ==
-                                                          'En'
-                                                      ? tournamentsListItem.name
-                                                      : tournamentsListItem
+                                                          'EN'
+                                                      ? notActiveListViewTournamentsRecord
+                                                          .name
+                                                      : notActiveListViewTournamentsRecord
                                                           .nameAr,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -342,7 +346,7 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          '2po5g8z4' /* Start  */,
+                                                          'prhz08ey' /* Start  */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -366,13 +370,13 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'u21by9lz' /* : */,
+                                                          '5meqg443' /* : */,
                                                         ),
                                                         style: TextStyle(),
                                                       ),
                                                       TextSpan(
                                                         text:
-                                                            tournamentsListItem
+                                                            notActiveListViewTournamentsRecord
                                                                 .seasonStart,
                                                         style: TextStyle(),
                                                       )
@@ -390,7 +394,7 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          '62xgtman' /* End */,
+                                                          'veqbn0b8' /* End */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -414,13 +418,13 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'h4hlanp1' /* : */,
+                                                          'nueq4f2a' /* : */,
                                                         ),
                                                         style: TextStyle(),
                                                       ),
                                                       TextSpan(
                                                         text:
-                                                            tournamentsListItem
+                                                            notActiveListViewTournamentsRecord
                                                                 .seasonEnd,
                                                         style: TextStyle(),
                                                       )
@@ -444,7 +448,8 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                                                       .spaceBetween,
                                               children: [
                                                 Text(
-                                                  tournamentsListItem.seasonYear
+                                                  notActiveListViewTournamentsRecord
+                                                      .seasonYear
                                                       .toString(),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -463,7 +468,7 @@ class _TournamentsListWidgetState extends State<TournamentsListWidget> {
                                                   text: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    '1avah5lj' /* Edit */,
+                                                    '0imm2xvr' /* Edit */,
                                                   ),
                                                   options: FFButtonOptions(
                                                     width: 180.0,

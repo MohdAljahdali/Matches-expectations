@@ -1,6 +1,6 @@
+import '/admin/tournaments/empty_tournaments_list/empty_tournaments_list_widget.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/empty_tournaments_list_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -8,9 +8,9 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -35,6 +35,13 @@ class _AddTournamentsManualWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => AddTournamentsManualModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        FFAppState().addTournamentsCode = '';
+      });
+    });
 
     _model.tournamentTFController ??= TextEditingController();
     _model.seasonTFController ??= TextEditingController();
@@ -237,13 +244,10 @@ class _AddTournamentsManualWidgetState
                                 true,
                               ),
                             );
-                            _model.queryNewTournamentsManual =
-                                await queryTournamentsRecordOnce(
-                              queryBuilder: (tournamentsRecord) =>
-                                  tournamentsRecord.where('randomCode',
-                                      isEqualTo:
-                                          _model.tournamentsManualOutoutManual),
-                            );
+                            setState(() {
+                              FFAppState().addTournamentsCode =
+                                  _model.tournamentsManualOutoutManual!;
+                            });
 
                             setState(() {});
                           },
@@ -283,25 +287,39 @@ class _AddTournamentsManualWidgetState
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-                    child: Builder(
-                      builder: (context) {
-                        final newTournamentsList = _model
-                                .queryNewTournamentsManual
-                                ?.map((e) => e)
-                                .toList()
-                                ?.toList() ??
-                            [];
-                        if (newTournamentsList.isEmpty) {
+                    child: StreamBuilder<List<TournamentsRecord>>(
+                      stream: queryTournamentsRecord(
+                        queryBuilder: (tournamentsRecord) =>
+                            tournamentsRecord.where('randomCode',
+                                isEqualTo: FFAppState().addTournamentsCode),
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: SpinKitFadingCircle(
+                                color: FlutterFlowTheme.of(context).primary,
+                                size: 50.0,
+                              ),
+                            ),
+                          );
+                        }
+                        List<TournamentsRecord> listViewTournamentsRecordList =
+                            snapshot.data!;
+                        if (listViewTournamentsRecordList.isEmpty) {
                           return EmptyTournamentsListWidget();
                         }
                         return ListView.builder(
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
-                          itemCount: newTournamentsList.length,
-                          itemBuilder: (context, newTournamentsListIndex) {
-                            final newTournamentsListItem =
-                                newTournamentsList[newTournamentsListIndex];
+                          itemCount: listViewTournamentsRecordList.length,
+                          itemBuilder: (context, listViewIndex) {
+                            final listViewTournamentsRecord =
+                                listViewTournamentsRecordList[listViewIndex];
                             return Card(
                               clipBehavior: Clip.antiAliasWithSaveLayer,
                               color: FlutterFlowTheme.of(context)
@@ -321,7 +339,7 @@ class _AddTournamentsManualWidgetState
                                       topRight: Radius.circular(0.0),
                                     ),
                                     child: Image.network(
-                                      newTournamentsListItem.logo,
+                                      listViewTournamentsRecord.logo,
                                       width: 100.0,
                                       height: 100.0,
                                       fit: BoxFit.cover,
@@ -343,7 +361,7 @@ class _AddTournamentsManualWidgetState
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Text(
-                                                  newTournamentsListItem
+                                                  listViewTournamentsRecord
                                                       .seasonYear
                                                       .toString(),
                                                   style: FlutterFlowTheme.of(
@@ -361,7 +379,8 @@ class _AddTournamentsManualWidgetState
                                                       .fromSTEB(
                                                           10.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    newTournamentsListItem.name,
+                                                    listViewTournamentsRecord
+                                                        .name,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -424,7 +443,7 @@ class _AddTournamentsManualWidgetState
                                                       ),
                                                       TextSpan(
                                                         text:
-                                                            newTournamentsListItem
+                                                            listViewTournamentsRecord
                                                                 .seasonStart,
                                                         style: TextStyle(),
                                                       )
@@ -472,7 +491,7 @@ class _AddTournamentsManualWidgetState
                                                       ),
                                                       TextSpan(
                                                         text:
-                                                            newTournamentsListItem
+                                                            listViewTournamentsRecord
                                                                 .seasonEnd,
                                                         style: TextStyle(),
                                                       )
@@ -501,7 +520,7 @@ class _AddTournamentsManualWidgetState
                                                       queryParameters: {
                                                         'tournamentRef':
                                                             serializeParam(
-                                                          newTournamentsListItem
+                                                          listViewTournamentsRecord
                                                               .reference,
                                                           ParamType
                                                               .DocumentReference,
@@ -548,7 +567,7 @@ class _AddTournamentsManualWidgetState
                                                 ),
                                                 Stack(
                                                   children: [
-                                                    if (newTournamentsListItem
+                                                    if (listViewTournamentsRecord
                                                             .isActive ==
                                                         false)
                                                       FFButtonWidget(
@@ -557,7 +576,7 @@ class _AddTournamentsManualWidgetState
                                                               createTournamentsRecordData(
                                                             isActive: true,
                                                           );
-                                                          await newTournamentsListItem
+                                                          await listViewTournamentsRecord
                                                               .reference
                                                               .update(
                                                                   tournamentsUpdateData);
@@ -614,7 +633,7 @@ class _AddTournamentsManualWidgetState
                                                                       0.0),
                                                         ),
                                                       ),
-                                                    if (newTournamentsListItem
+                                                    if (listViewTournamentsRecord
                                                             .isActive ==
                                                         true)
                                                       FFButtonWidget(
@@ -623,7 +642,7 @@ class _AddTournamentsManualWidgetState
                                                               createTournamentsRecordData(
                                                             isActive: false,
                                                           );
-                                                          await newTournamentsListItem
+                                                          await listViewTournamentsRecord
                                                               .reference
                                                               .update(
                                                                   tournamentsUpdateData);
@@ -713,7 +732,7 @@ class _AddTournamentsManualWidgetState
                                                               },
                                                             ) ??
                                                             false;
-                                                    await newTournamentsListItem
+                                                    await listViewTournamentsRecord
                                                         .reference
                                                         .delete();
                                                   },

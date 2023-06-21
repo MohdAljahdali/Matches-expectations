@@ -16,6 +16,34 @@ Future<String> addNewMember(
   String password,
   String randomDocGen,
 ) async {
+  var returnText = '';
+  final usersCollection = FirebaseFirestore.instance.collection('users');
+  try {
+    final credential =
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: emailAddress,
+      password: password,
+    );
+    String? userUid = credential.user?.uid;
+    final addUserDoc = {
+      //
+      'display_name': 'mm',
+      'email': emailAddress,
+      'uid': userUid,
+      'is_active': false,
+      'created_time': DateTime.now(),
+    };
+    usersCollection.doc(userUid).set(addUserDoc);
+    returnText = userUid.toString();
+  } on FirebaseAuthException catch (e) {
+    if (e.code == 'weak-password') {
+      returnText = 'The password provided is too weak.';
+    } else if (e.code == 'email-already-in-use') {
+      returnText = 'The account already exists for that email.';
+    }
+  } catch (e) {
+    print(e);
+  }
   /*
   String returnmsg = 'Success';
   //created time variable
@@ -46,5 +74,5 @@ Future<String> addNewMember(
     return e.code;
   }
   */
-  return 'Filed';
+  return returnText;
 }
