@@ -1,10 +1,10 @@
-import '/admin/tournaments/empty_tournaments_list/empty_tournaments_list_widget.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/admin/tournaments/empty_tournaments_list/empty_tournaments_list_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/flutter_flow/request_manager.dart';

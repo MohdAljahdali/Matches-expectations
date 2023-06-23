@@ -1,13 +1,10 @@
-import '/admin/tournaments/empty_tournaments_list/empty_tournaments_list_widget.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
+import '/pages/admin/tournaments/empty_tournaments_list/empty_tournaments_list_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,25 +14,27 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'add_tournaments_model.dart';
-export 'add_tournaments_model.dart';
+import 'add_tournaments_manual_model.dart';
+export 'add_tournaments_manual_model.dart';
 
-class AddTournamentsWidget extends StatefulWidget {
-  const AddTournamentsWidget({Key? key}) : super(key: key);
+class AddTournamentsManualWidget extends StatefulWidget {
+  const AddTournamentsManualWidget({Key? key}) : super(key: key);
 
   @override
-  _AddTournamentsWidgetState createState() => _AddTournamentsWidgetState();
+  _AddTournamentsManualWidgetState createState() =>
+      _AddTournamentsManualWidgetState();
 }
 
-class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
-  late AddTournamentsModel _model;
+class _AddTournamentsManualWidgetState
+    extends State<AddTournamentsManualWidget> {
+  late AddTournamentsManualModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AddTournamentsModel());
+    _model = createModel(context, () => AddTournamentsManualModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -43,6 +42,9 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
         FFAppState().tournamentsRandomCode = '';
       });
     });
+
+    _model.tournamentTFController ??= TextEditingController();
+    _model.seasonTFController ??= TextEditingController();
   }
 
   @override
@@ -80,7 +82,7 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
           ),
           title: Text(
             FFLocalizations.of(context).getText(
-              'mftvf5k1' /* Add tournaments */,
+              'rz0jtbvt' /* Add tournaments */,
             ),
             style: FlutterFlowTheme.of(context).titleLarge,
           ),
@@ -99,118 +101,125 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        StreamBuilder<List<CountriesRecord>>(
-                          stream: _model.countryQuery(
-                            requestFn: () => queryCountriesRecord(
-                              queryBuilder: (countriesRecord) => countriesRecord
-                                  .where('active', isEqualTo: true),
-                            ),
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: SpinKitFadingCircle(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    size: 50.0,
-                                  ),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                8.0, 0.0, 8.0, 0.0),
+                            child: TextFormField(
+                              controller: _model.tournamentTFController,
+                              autofocus: true,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: FFLocalizations.of(context).getText(
+                                  '17dljnwo' /* Label here... */,
                                 ),
-                              );
-                            }
-                            List<CountriesRecord>
-                                countriesDDCountriesRecordList = snapshot.data!;
-                            return FlutterFlowDropDown<String>(
-                              controller: _model.countriesDDValueController ??=
-                                  FormFieldController<String>(
-                                _model.countriesDDValue ??= '',
+                                labelStyle:
+                                    FlutterFlowTheme.of(context).labelMedium,
+                                hintStyle:
+                                    FlutterFlowTheme.of(context).labelMedium,
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
                               ),
-                              options: countriesDDCountriesRecordList
-                                  .map((e) => e.code)
-                                  .toList(),
-                              optionLabels: countriesDDCountriesRecordList
-                                  .map((e) => e.nameAr)
-                                  .toList(),
-                              onChanged: (val) =>
-                                  setState(() => _model.countriesDDValue = val),
-                              width: MediaQuery.of(context).size.width * 0.45,
-                              height: 35.0,
-                              textStyle:
-                                  FlutterFlowTheme.of(context).bodyMedium,
-                              hintText: FFLocalizations.of(context).getText(
-                                'j22yf5x1' /* Please select... */,
-                              ),
-                              icon: Icon(
-                                Icons.keyboard_arrow_down_rounded,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 24.0,
-                              ),
-                              fillColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              elevation: 2.0,
-                              borderColor:
-                                  FlutterFlowTheme.of(context).alternate,
-                              borderWidth: 2.0,
-                              borderRadius: 8.0,
-                              margin: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 4.0, 16.0, 4.0),
-                              hidesUnderline: true,
-                              isSearchable: false,
-                            );
-                          },
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: ' Shamel',
+                                    useGoogleFonts: false,
+                                    lineHeight: 1.0,
+                                  ),
+                              validator: _model.tournamentTFControllerValidator
+                                  .asValidator(context),
+                            ),
+                          ),
                         ),
-                        FlutterFlowDropDown<String>(
-                          controller: _model.seasonsDDValueController ??=
-                              FormFieldController<String>(
-                            _model.seasonsDDValue ??=
-                                (DateTime.now().year).toString(),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                8.0, 0.0, 8.0, 0.0),
+                            child: TextFormField(
+                              controller: _model.seasonTFController,
+                              autofocus: true,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: FFLocalizations.of(context).getText(
+                                  '1fpu3giu' /* Label here... */,
+                                ),
+                                labelStyle:
+                                    FlutterFlowTheme.of(context).labelMedium,
+                                hintStyle:
+                                    FlutterFlowTheme.of(context).labelMedium,
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: ' Shamel',
+                                    useGoogleFonts: false,
+                                    lineHeight: 1.0,
+                                  ),
+                              validator: _model.seasonTFControllerValidator
+                                  .asValidator(context),
+                            ),
                           ),
-                          options: [
-                            FFLocalizations.of(context).getText(
-                              'p6s8qrnw' /* 2022 */,
-                            ),
-                            FFLocalizations.of(context).getText(
-                              '9j5e0jw2' /* 2023 */,
-                            ),
-                            FFLocalizations.of(context).getText(
-                              '6wz68jxq' /* 2024 */,
-                            ),
-                            FFLocalizations.of(context).getText(
-                              'laakpi75' /* 2025 */,
-                            ),
-                            FFLocalizations.of(context).getText(
-                              'ov1im916' /* 2026 */,
-                            )
-                          ],
-                          onChanged: (val) =>
-                              setState(() => _model.seasonsDDValue = val),
-                          width: MediaQuery.of(context).size.width * 0.45,
-                          height: 35.0,
-                          textStyle: FlutterFlowTheme.of(context).bodyMedium,
-                          hintText: (DateTime.now().year).toString(),
-                          icon: Icon(
-                            Icons.keyboard_arrow_down_rounded,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
-                          ),
-                          fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          elevation: 2.0,
-                          borderColor: FlutterFlowTheme.of(context).alternate,
-                          borderWidth: 2.0,
-                          borderRadius: 8.0,
-                          margin: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 4.0, 16.0, 4.0),
-                          hidesUnderline: true,
-                          isSearchable: false,
                         ),
                       ],
                     ),
@@ -222,42 +231,12 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        FlutterFlowRadioButton(
-                          options: [
-                            FFLocalizations.of(context).getText(
-                              'ochabfgk' /* league */,
-                            ),
-                            FFLocalizations.of(context).getText(
-                              'xfwglfxm' /* cup */,
-                            )
-                          ].toList(),
-                          onChanged: (val) => setState(() {}),
-                          controller: _model.typeRBValueController ??=
-                              FormFieldController<String>(
-                                  FFLocalizations.of(context).getText(
-                            'ggbdn9a8' /* league */,
-                          )),
-                          optionHeight: 35.0,
-                          textStyle: FlutterFlowTheme.of(context).labelMedium,
-                          selectedTextStyle:
-                              FlutterFlowTheme.of(context).bodyMedium,
-                          buttonPosition: RadioButtonPosition.left,
-                          direction: Axis.horizontal,
-                          radioButtonColor:
-                              FlutterFlowTheme.of(context).primary,
-                          inactiveRadioButtonColor:
-                              FlutterFlowTheme.of(context).secondaryText,
-                          toggleable: false,
-                          horizontalAlignment: WrapAlignment.start,
-                          verticalAlignment: WrapCrossAlignment.start,
-                        ),
                         FFButtonWidget(
                           onPressed: () async {
-                            _model.newTournamentsOutput =
-                                await actions.addTournaments(
-                              _model.countriesDDValue!,
-                              _model.seasonsDDValue!,
-                              _model.typeRBValue!,
+                            _model.tournamentsManualOutoutManual =
+                                await actions.addTournamentsManual(
+                              _model.tournamentTFController.text,
+                              _model.seasonTFController.text,
                               random_data.randomString(
                                 20,
                                 20,
@@ -268,16 +247,16 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
                             );
                             setState(() {
                               FFAppState().tournamentsRandomCode =
-                                  _model.newTournamentsOutput!;
+                                  _model.tournamentsManualOutoutManual!;
                             });
 
                             setState(() {});
                           },
                           text: FFLocalizations.of(context).getText(
-                            'rjc38868' /* Search */,
+                            'uk4jaios' /* Search */,
                           ),
                           options: FFButtonOptions(
-                            width: 180.0,
+                            width: 250.0,
                             height: 35.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
@@ -435,7 +414,7 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'zcw8g8nc' /* Start  */,
+                                                          '83ceoxpj' /* Start  */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -459,7 +438,7 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'w1mlr4nz' /* : */,
+                                                          '3s19271w' /* : */,
                                                         ),
                                                         style: TextStyle(),
                                                       ),
@@ -483,7 +462,7 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'k6253rno' /* End */,
+                                                          '8qxmcmuz' /* End */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -507,7 +486,7 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'idarejzq' /* : */,
+                                                          '4wzt5aq0' /* : */,
                                                         ),
                                                         style: TextStyle(),
                                                       ),
@@ -553,7 +532,7 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
                                                   text: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'de1kj3f2' /* Edit */,
+                                                    'fo82k3ye' /* Edit */,
                                                   ),
                                                   options: FFButtonOptions(
                                                     width: 90.0,
