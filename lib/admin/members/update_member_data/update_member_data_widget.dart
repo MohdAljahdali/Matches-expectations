@@ -385,14 +385,13 @@ class _UpdateMemberDataWidgetState extends State<UpdateMemberDataWidget> {
                   ),
                   FFButtonWidget(
                     onPressed: () async {
-                      final userUpdateData = createUserRecordData(
+                      await widget.userUid!.update(createUserRecordData(
                         email: _model.emailTextFieldController.text,
                         displayName: _model.nameTextFieldController.text,
                         photoUrl: _model.uploadedFileUrl,
                         isAdmin: _model.activememberSLTValue,
                         isActive: _model.adminMemberSLTValue,
-                      );
-                      await widget.userUid!.update(userUpdateData);
+                      ));
                       Navigator.pop(context);
                     },
                     text: FFLocalizations.of(context).getText(

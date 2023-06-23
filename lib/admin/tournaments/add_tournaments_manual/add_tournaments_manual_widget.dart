@@ -39,7 +39,7 @@ class _AddTournamentsManualWidgetState
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
-        FFAppState().addTournamentsCode = '';
+        FFAppState().tournamentsRandomCode = '';
       });
     });
 
@@ -100,7 +100,8 @@ class _AddTournamentsManualWidgetState
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -245,7 +246,7 @@ class _AddTournamentsManualWidgetState
                               ),
                             );
                             setState(() {
-                              FFAppState().addTournamentsCode =
+                              FFAppState().tournamentsRandomCode =
                                   _model.tournamentsManualOutoutManual!;
                             });
 
@@ -291,7 +292,7 @@ class _AddTournamentsManualWidgetState
                       stream: queryTournamentsRecord(
                         queryBuilder: (tournamentsRecord) =>
                             tournamentsRecord.where('randomCode',
-                                isEqualTo: FFAppState().addTournamentsCode),
+                                isEqualTo: FFAppState().tournamentsRandomCode),
                       ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
@@ -572,14 +573,12 @@ class _AddTournamentsManualWidgetState
                                                         false)
                                                       FFButtonWidget(
                                                         onPressed: () async {
-                                                          final tournamentsUpdateData =
-                                                              createTournamentsRecordData(
-                                                            isActive: true,
-                                                          );
                                                           await listViewTournamentsRecord
                                                               .reference
                                                               .update(
-                                                                  tournamentsUpdateData);
+                                                                  createTournamentsRecordData(
+                                                            isActive: true,
+                                                          ));
                                                         },
                                                         text: '',
                                                         icon: Icon(
@@ -638,14 +637,12 @@ class _AddTournamentsManualWidgetState
                                                         true)
                                                       FFButtonWidget(
                                                         onPressed: () async {
-                                                          final tournamentsUpdateData =
-                                                              createTournamentsRecordData(
-                                                            isActive: false,
-                                                          );
                                                           await listViewTournamentsRecord
                                                               .reference
                                                               .update(
-                                                                  tournamentsUpdateData);
+                                                                  createTournamentsRecordData(
+                                                            isActive: false,
+                                                          ));
                                                         },
                                                         text: '',
                                                         icon: Icon(

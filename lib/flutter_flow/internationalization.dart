@@ -194,6 +194,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Your Profile',
       'ar': 'ملفك الشخصي',
     },
+    '2r080iob': {
+      'en': 'Countries',
+      'ar': 'الدول',
+    },
+    'av91p30v': {
+      'en': 'Countries management',
+      'ar': 'ادارة الدول',
+    },
     'srckq6g5': {
       'en': 'Tournaments',
       'ar': 'البطولات',
@@ -549,6 +557,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'updbbsy2': {
       'en': '',
+      'ar': '',
+    },
+  },
+  // Countries
+  {
+    'l98zr14w': {
+      'en': 'Countries',
+      'ar': 'الدول',
+    },
+    '35u9suoe': {
+      'en': 'Home',
       'ar': '',
     },
   },

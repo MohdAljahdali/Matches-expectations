@@ -33,8 +33,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      final userUpdateData = createUserRecordData();
-      await currentUserReference!.update(userUpdateData);
+      await currentUserReference!.update(createUserRecordData());
     });
   }
 
@@ -340,12 +339,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       0.0, 0.0, 0.0, 0.0),
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).lineColor,
+                                  color: Color(0xFFF3F3F8),
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
                                         fontFamily: ' Shamel',
-                                        color: Color(0xFF1F1D2B),
+                                        color: FlutterFlowTheme.of(context)
+                                            .noColor,
                                         useGoogleFonts: false,
                                       ),
                                   elevation: 3.0,
@@ -394,10 +394,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         Stack(
                           children: [
                             if (FFLocalizations.of(context).languageCode ==
-                                'EN')
+                                'ar')
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('switchToEnglishB pressed ...');
+                                onPressed: () async {
+                                  setAppLanguage(context, 'en');
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   'p34uvxro' /* Change to English */,
@@ -426,10 +426,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 ),
                               ),
                             if (FFLocalizations.of(context).languageCode ==
-                                'AR')
+                                'en')
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('switchToEnglishB pressed ...');
+                                onPressed: () async {
+                                  setAppLanguage(context, 'ar');
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   'b0wft5ts' /* Change to Arabic */,

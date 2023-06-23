@@ -295,6 +295,47 @@ class _AdminWidgetState extends State<AdminWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      context.pushNamed('Countries');
+                    },
+                    child: ListTile(
+                      title: Text(
+                        FFLocalizations.of(context).getText(
+                          '2r080iob' /* Countries */,
+                        ),
+                        style: FlutterFlowTheme.of(context).titleLarge.override(
+                              fontFamily: ' Shamel',
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              useGoogleFonts: false,
+                            ),
+                      ),
+                      subtitle: Text(
+                        FFLocalizations.of(context).getText(
+                          'av91p30v' /* Countries management */,
+                        ),
+                        style: FlutterFlowTheme.of(context)
+                            .labelMedium
+                            .override(
+                              fontFamily: ' Shamel',
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              useGoogleFonts: false,
+                            ),
+                      ),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 20.0,
+                      ),
+                      tileColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      dense: false,
+                    ),
+                  ),
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
                       context.pushNamed(
                         'tournamentsList',
                         extra: <String, dynamic>{

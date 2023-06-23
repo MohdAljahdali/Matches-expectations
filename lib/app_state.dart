@@ -27,10 +27,10 @@ class FFAppState extends ChangeNotifier {
     _tournamentsListIsActive = _value;
   }
 
-  String _addTournamentsCode = '';
-  String get addTournamentsCode => _addTournamentsCode;
-  set addTournamentsCode(String _value) {
-    _addTournamentsCode = _value;
+  String _tournamentsRandomCode = '';
+  String get tournamentsRandomCode => _tournamentsRandomCode;
+  set tournamentsRandomCode(String _value) {
+    _tournamentsRandomCode = _value;
   }
 }
 

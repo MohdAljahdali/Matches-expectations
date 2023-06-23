@@ -40,7 +40,7 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
-        FFAppState().addTournamentsCode = '';
+        FFAppState().tournamentsRandomCode = '';
       });
     });
   }
@@ -106,7 +106,10 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
                       children: [
                         StreamBuilder<List<CountriesRecord>>(
                           stream: _model.countryQuery(
-                            requestFn: () => queryCountriesRecord(),
+                            requestFn: () => queryCountriesRecord(
+                              queryBuilder: (countriesRecord) => countriesRecord
+                                  .where('active', isEqualTo: true),
+                            ),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
@@ -264,7 +267,7 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
                               ),
                             );
                             setState(() {
-                              FFAppState().addTournamentsCode =
+                              FFAppState().tournamentsRandomCode =
                                   _model.newTournamentsOutput!;
                             });
 
@@ -310,7 +313,7 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
                       stream: queryTournamentsRecord(
                         queryBuilder: (tournamentsRecord) =>
                             tournamentsRecord.where('randomCode',
-                                isEqualTo: FFAppState().addTournamentsCode),
+                                isEqualTo: FFAppState().tournamentsRandomCode),
                       ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
@@ -591,14 +594,12 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
                                                         false)
                                                       FFButtonWidget(
                                                         onPressed: () async {
-                                                          final tournamentsUpdateData =
-                                                              createTournamentsRecordData(
-                                                            isActive: true,
-                                                          );
                                                           await listViewTournamentsRecord
                                                               .reference
                                                               .update(
-                                                                  tournamentsUpdateData);
+                                                                  createTournamentsRecordData(
+                                                            isActive: true,
+                                                          ));
                                                         },
                                                         text: '',
                                                         icon: Icon(
@@ -657,14 +658,12 @@ class _AddTournamentsWidgetState extends State<AddTournamentsWidget> {
                                                         true)
                                                       FFButtonWidget(
                                                         onPressed: () async {
-                                                          final tournamentsUpdateData =
-                                                              createTournamentsRecordData(
-                                                            isActive: false,
-                                                          );
                                                           await listViewTournamentsRecord
                                                               .reference
                                                               .update(
-                                                                  tournamentsUpdateData);
+                                                                  createTournamentsRecordData(
+                                                            isActive: false,
+                                                          ));
                                                         },
                                                         text: '',
                                                         icon: Icon(

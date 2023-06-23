@@ -15,3 +15,4 @@ export '/admin/tournaments/add_tournaments/add_tournaments_widget.dart'
     show AddTournamentsWidget;
 export '/admin/tournaments/tournaments_list/tournaments_list_widget.dart'
     show TournamentsListWidget;
+export '/admin/countries/countries/countries_widget.dart' show CountriesWidget;

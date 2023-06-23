@@ -148,10 +148,13 @@ CountriesDTStruct createCountriesDTStruct({
 CountriesDTStruct? updateCountriesDTStruct(
   CountriesDTStruct? countriesDT, {
   bool clearUnsetFields = true,
+  bool create = false,
 }) =>
     countriesDT
-      ?..firestoreUtilData =
-          FirestoreUtilData(clearUnsetFields: clearUnsetFields);
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
 
 void addCountriesDTStructData(
   Map<String, dynamic> firestoreData,

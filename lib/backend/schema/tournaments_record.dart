@@ -135,8 +135,8 @@ class TournamentsRecord extends FirestoreRecord {
   bool hasSetAwayGoalsPoints() => _setAwayGoalsPoints != null;
 
   void _initializeFields() {
-    _tournamentsID = snapshotData['tournamentsID'] as int?;
-    _seasonYear = snapshotData['seasonYear'] as int?;
+    _tournamentsID = castToType<int>(snapshotData['tournamentsID']);
+    _seasonYear = castToType<int>(snapshotData['seasonYear']);
     _seasonStart = snapshotData['seasonStart'] as String?;
     _seasonEnd = snapshotData['seasonEnd'] as String?;
     _name = snapshotData['name'] as String?;
@@ -150,15 +150,15 @@ class TournamentsRecord extends FirestoreRecord {
     _isActive = snapshotData['is_Active'] as bool?;
     _setEndMatche = snapshotData['setEndMatche'] as String?;
     _setHomeWin = snapshotData['setHomeWin'] as bool?;
-    _setHomeWinPoints = snapshotData['setHomeWinPoints'] as int?;
+    _setHomeWinPoints = castToType<int>(snapshotData['setHomeWinPoints']);
     _setAwayWin = snapshotData['setAwayWin'] as bool?;
-    _setAwayWinPoints = snapshotData['setAwayWinPoints'] as int?;
+    _setAwayWinPoints = castToType<int>(snapshotData['setAwayWinPoints']);
     _setDraw = snapshotData['setDraw'] as bool?;
-    _setDrawPoints = snapshotData['setDrawPoints'] as int?;
+    _setDrawPoints = castToType<int>(snapshotData['setDrawPoints']);
     _setHomeGoals = snapshotData['setHomeGoals'] as bool?;
-    _setHomeGoalsPoints = snapshotData['setHomeGoalsPoints'] as int?;
+    _setHomeGoalsPoints = castToType<int>(snapshotData['setHomeGoalsPoints']);
     _setAwayGoals = snapshotData['setAwayGoals'] as bool?;
-    _setAwayGoalsPoints = snapshotData['setAwayGoalsPoints'] as int?;
+    _setAwayGoalsPoints = castToType<int>(snapshotData['setAwayGoalsPoints']);
   }
 
   static CollectionReference get collection =>

@@ -130,9 +130,9 @@ class MatchesRecord extends FirestoreRecord {
   bool hasScorePenaltyAway() => _scorePenaltyAway != null;
 
   void _initializeFields() {
-    _fixtureID = snapshotData['fixtureID'] as int?;
+    _fixtureID = castToType<int>(snapshotData['fixtureID']);
     _fixtureDate = snapshotData['fixtureDate'] as DateTime?;
-    _fixtureTimestamp = snapshotData['fixtureTimestamp'] as int?;
+    _fixtureTimestamp = castToType<int>(snapshotData['fixtureTimestamp']);
     _fixturePeriodFirst = snapshotData['fixturePeriodFirst'] as String?;
     _fixturePeriodSecond = snapshotData['fixturePeriodSecond'] as String?;
     _tournamentsRef = snapshotData['tournamentsRef'] as DocumentReference?;
@@ -142,17 +142,18 @@ class MatchesRecord extends FirestoreRecord {
     _teamAwayWinner = snapshotData['teamAwayWinner'] as bool?;
     _fixtureStatusLong = snapshotData['fixtureStatusLong'] as String?;
     _fixtureStatusShort = snapshotData['fixtureStatusShort'] as String?;
-    _fixtureStatusElapsed = snapshotData['fixtureStatusElapsed'] as int?;
-    _goalsHome = snapshotData['goalsHome'] as int?;
-    _goalsAway = snapshotData['goalsAway'] as int?;
-    _scoreHalftimeHome = snapshotData['scoreHalftimeHome'] as int?;
-    _scoreHalftimeAway = snapshotData['scoreHalftimeAway'] as int?;
-    _scoreFulltimeHome = snapshotData['scoreFulltimeHome'] as int?;
-    _scoreFulltimeAway = snapshotData['scoreFulltimeAway'] as int?;
-    _scoreExtratimeHome = snapshotData['scoreExtratimeHome'] as int?;
-    _scoreExtratimeAway = snapshotData['scoreExtratimeAway'] as int?;
-    _scorePenaltyHome = snapshotData['scorePenaltyHome'] as int?;
-    _scorePenaltyAway = snapshotData['scorePenaltyAway'] as int?;
+    _fixtureStatusElapsed =
+        castToType<int>(snapshotData['fixtureStatusElapsed']);
+    _goalsHome = castToType<int>(snapshotData['goalsHome']);
+    _goalsAway = castToType<int>(snapshotData['goalsAway']);
+    _scoreHalftimeHome = castToType<int>(snapshotData['scoreHalftimeHome']);
+    _scoreHalftimeAway = castToType<int>(snapshotData['scoreHalftimeAway']);
+    _scoreFulltimeHome = castToType<int>(snapshotData['scoreFulltimeHome']);
+    _scoreFulltimeAway = castToType<int>(snapshotData['scoreFulltimeAway']);
+    _scoreExtratimeHome = castToType<int>(snapshotData['scoreExtratimeHome']);
+    _scoreExtratimeAway = castToType<int>(snapshotData['scoreExtratimeAway']);
+    _scorePenaltyHome = castToType<int>(snapshotData['scorePenaltyHome']);
+    _scorePenaltyAway = castToType<int>(snapshotData['scorePenaltyAway']);
   }
 
   static CollectionReference get collection =>

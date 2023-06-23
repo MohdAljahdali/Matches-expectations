@@ -34,11 +34,17 @@ class CountriesRecord extends FirestoreRecord {
   String get flag => _flag ?? '';
   bool hasFlag() => _flag != null;
 
+  // "active" field.
+  bool? _active;
+  bool get active => _active ?? false;
+  bool hasActive() => _active != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _nameAr = snapshotData['nameAr'] as String?;
     _code = snapshotData['code'] as String?;
     _flag = snapshotData['flag'] as String?;
+    _active = snapshotData['active'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -80,6 +86,7 @@ Map<String, dynamic> createCountriesRecordData({
   String? nameAr,
   String? code,
   String? flag,
+  bool? active,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -87,6 +94,7 @@ Map<String, dynamic> createCountriesRecordData({
       'nameAr': nameAr,
       'code': code,
       'flag': flag,
+      'active': active,
     }.withoutNulls,
   );
 

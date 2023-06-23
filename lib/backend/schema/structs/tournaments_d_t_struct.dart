@@ -219,8 +219,8 @@ class TournamentsDTStruct extends FFFirebaseStruct {
 
   static TournamentsDTStruct fromMap(Map<String, dynamic> data) =>
       TournamentsDTStruct(
-        tournamentsID: data['tournamentsID'] as int?,
-        seasonYear: data['seasonYear'] as int?,
+        tournamentsID: castToType<int>(data['tournamentsID']),
+        seasonYear: castToType<int>(data['seasonYear']),
         seasonStart: data['seasonStart'] as String?,
         seasonEnd: data['seasonEnd'] as String?,
         name: data['name'] as String?,
@@ -234,15 +234,15 @@ class TournamentsDTStruct extends FFFirebaseStruct {
         setEndMatche: data['setEndMatche'] as String?,
         setMatcheHasPenalty: data['setMatcheHasPenalty'] as bool?,
         setHomeWin: data['setHomeWin'] as bool?,
-        setHomeWinPoints: data['setHomeWinPoints'] as int?,
+        setHomeWinPoints: castToType<int>(data['setHomeWinPoints']),
         setAwayWin: data['setAwayWin'] as bool?,
-        setAwayWinPoints: data['setAwayWinPoints'] as int?,
+        setAwayWinPoints: castToType<int>(data['setAwayWinPoints']),
         setDraw: data['setDraw'] as bool?,
-        setDrawPoints: data['setDrawPoints'] as int?,
+        setDrawPoints: castToType<int>(data['setDrawPoints']),
         setHomeGoals: data['setHomeGoals'] as bool?,
-        setHomeGoalsPoints: data['setHomeGoalsPoints'] as int?,
+        setHomeGoalsPoints: castToType<int>(data['setHomeGoalsPoints']),
         setAwayGoals: data['setAwayGoals'] as bool?,
-        setAwayGoalsPoints: data['setAwayGoalsPoints'] as int?,
+        setAwayGoalsPoints: castToType<int>(data['setAwayGoalsPoints']),
       );
 
   static TournamentsDTStruct? maybeFromMap(dynamic data) =>
@@ -626,10 +626,13 @@ TournamentsDTStruct createTournamentsDTStruct({
 TournamentsDTStruct? updateTournamentsDTStruct(
   TournamentsDTStruct? tournamentsDT, {
   bool clearUnsetFields = true,
+  bool create = false,
 }) =>
     tournamentsDT
-      ?..firestoreUtilData =
-          FirestoreUtilData(clearUnsetFields: clearUnsetFields);
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
 
 void addTournamentsDTStructData(
   Map<String, dynamic> firestoreData,

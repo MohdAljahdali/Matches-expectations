@@ -170,6 +170,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             initialPage: '',
             page: TournamentsListWidget(),
           ),
+        ),
+        FFRoute(
+          name: 'Countries',
+          path: '/countries',
+          builder: (context, params) => CountriesWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

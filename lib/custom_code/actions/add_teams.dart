@@ -4,6 +4,7 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
@@ -13,11 +14,11 @@ import 'index.dart'; // Imports other custom actions
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
-Future<List<TeamsDTStruct>> addTeams(
-  int? league,
-  int? season,
+Future<String> addTeams(
+  int league,
+  int season,
+  String randomCode,
 ) async {
-  List<TeamsDTStruct> listOfNewTeams = [];
   final firestore = FirebaseFirestore.instance;
   final TeamsRef = firestore.collection('Teams');
   var headers = {
@@ -32,7 +33,6 @@ Future<List<TeamsDTStruct>> addTeams(
   request.headers.addAll(headers);
 
   http.StreamedResponse response = await request.send();
-
   if (response.statusCode == 200) {
     final teamsjson = convert.jsonDecode(await response.stream.bytesToString());
     final teamsresponse = teamsjson['response'];
@@ -49,10 +49,9 @@ Future<List<TeamsDTStruct>> addTeams(
       await TeamsRef.doc(team['team']['id'].toString()).get().then((doc) {
         if (!doc.exists) {
           TeamsRef.doc(team['team']['id'].toString()).set(addTeamsDoc);
-          listOfNewTeams.add(TeamsDTStruct.fromMap(addTeamsDoc));
         }
       });
     });
   } else {}
-  return listOfNewTeams;
+  return randomCode;
 }

@@ -224,11 +224,11 @@ class MatchesDTStruct extends FFFirebaseStruct {
   bool hasScorePenaltyAway() => _scorePenaltyAway != null;
 
   static MatchesDTStruct fromMap(Map<String, dynamic> data) => MatchesDTStruct(
-        fixtureID: data['fixtureID'] as int?,
+        fixtureID: castToType<int>(data['fixtureID']),
         fixtureDate: data['fixtureDate'] as DateTime?,
-        fixtureTimestamp: data['fixtureTimestamp'] as int?,
-        fixturePeriodFirst: data['fixturePeriodFirst'] as int?,
-        fixturePeriodSecond: data['fixturePeriodSecond'] as int?,
+        fixtureTimestamp: castToType<int>(data['fixtureTimestamp']),
+        fixturePeriodFirst: castToType<int>(data['fixturePeriodFirst']),
+        fixturePeriodSecond: castToType<int>(data['fixturePeriodSecond']),
         tournamentsRef: data['tournamentsRef'] as DocumentReference?,
         teamHomeRef: data['teamHomeRef'] as DocumentReference?,
         teamAwayRef: data['teamAwayRef'] as DocumentReference?,
@@ -236,17 +236,17 @@ class MatchesDTStruct extends FFFirebaseStruct {
         teamAwayWinner: data['teamAwayWinner'] as bool?,
         fixtureStatusLong: data['fixtureStatusLong'] as String?,
         fixtureStatusShort: data['fixtureStatusShort'] as String?,
-        fixtureStatusElapsed: data['fixtureStatusElapsed'] as int?,
-        goalsHome: data['goalsHome'] as int?,
-        goalsAway: data['goalsAway'] as int?,
-        scoreHalftimeHome: data['scoreHalftimeHome'] as int?,
-        scoreHalftimeAway: data['scoreHalftimeAway'] as int?,
-        scoreFulltimeHome: data['scoreFulltimeHome'] as int?,
-        scoreFulltimeAway: data['scoreFulltimeAway'] as int?,
-        scoreExtratimeHome: data['scoreExtratimeHome'] as int?,
-        scoreExtratimeAway: data['scoreExtratimeAway'] as int?,
-        scorePenaltyHome: data['scorePenaltyHome'] as int?,
-        scorePenaltyAway: data['scorePenaltyAway'] as int?,
+        fixtureStatusElapsed: castToType<int>(data['fixtureStatusElapsed']),
+        goalsHome: castToType<int>(data['goalsHome']),
+        goalsAway: castToType<int>(data['goalsAway']),
+        scoreHalftimeHome: castToType<int>(data['scoreHalftimeHome']),
+        scoreHalftimeAway: castToType<int>(data['scoreHalftimeAway']),
+        scoreFulltimeHome: castToType<int>(data['scoreFulltimeHome']),
+        scoreFulltimeAway: castToType<int>(data['scoreFulltimeAway']),
+        scoreExtratimeHome: castToType<int>(data['scoreExtratimeHome']),
+        scoreExtratimeAway: castToType<int>(data['scoreExtratimeAway']),
+        scorePenaltyHome: castToType<int>(data['scorePenaltyHome']),
+        scorePenaltyAway: castToType<int>(data['scorePenaltyAway']),
       );
 
   static MatchesDTStruct? maybeFromMap(dynamic data) =>
@@ -619,10 +619,13 @@ MatchesDTStruct createMatchesDTStruct({
 MatchesDTStruct? updateMatchesDTStruct(
   MatchesDTStruct? matchesDT, {
   bool clearUnsetFields = true,
+  bool create = false,
 }) =>
     matchesDT
-      ?..firestoreUtilData =
-          FirestoreUtilData(clearUnsetFields: clearUnsetFields);
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
 
 void addMatchesDTStructData(
   Map<String, dynamic> firestoreData,

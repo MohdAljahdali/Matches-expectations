@@ -44,13 +44,25 @@ class TeamsRecord extends FirestoreRecord {
   String get teamLogo => _teamLogo ?? '';
   bool hasTeamLogo() => _teamLogo != null;
 
+  // "tournamentsRef" field.
+  List<DocumentReference>? _tournamentsRef;
+  List<DocumentReference> get tournamentsRef => _tournamentsRef ?? const [];
+  bool hasTournamentsRef() => _tournamentsRef != null;
+
+  // "TournamentsID" field.
+  List<int>? _tournamentsID;
+  List<int> get tournamentsID => _tournamentsID ?? const [];
+  bool hasTournamentsID() => _tournamentsID != null;
+
   void _initializeFields() {
-    _teamID = snapshotData['teamID'] as int?;
+    _teamID = castToType<int>(snapshotData['teamID']);
     _teamName = snapshotData['teamName'] as String?;
     _teamNameAr = snapshotData['teamNameAr'] as String?;
     _teamCode = snapshotData['teamCode'] as String?;
     _teamCountry = snapshotData['teamCountry'] as String?;
     _teamLogo = snapshotData['teamLogo'] as String?;
+    _tournamentsRef = getDataList(snapshotData['tournamentsRef']);
+    _tournamentsID = getDataList(snapshotData['TournamentsID']);
   }
 
   static CollectionReference get collection =>

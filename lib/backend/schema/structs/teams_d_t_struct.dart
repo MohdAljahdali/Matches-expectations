@@ -62,7 +62,7 @@ class TeamsDTStruct extends FFFirebaseStruct {
   bool hasTeamLogo() => _teamLogo != null;
 
   static TeamsDTStruct fromMap(Map<String, dynamic> data) => TeamsDTStruct(
-        teamID: data['teamID'] as int?,
+        teamID: castToType<int>(data['teamID']),
         teamName: data['teamName'] as String?,
         teamNameAr: data['teamNameAr'] as String?,
         teamCode: data['teamCode'] as String?,
@@ -193,10 +193,13 @@ TeamsDTStruct createTeamsDTStruct({
 TeamsDTStruct? updateTeamsDTStruct(
   TeamsDTStruct? teamsDT, {
   bool clearUnsetFields = true,
+  bool create = false,
 }) =>
     teamsDT
-      ?..firestoreUtilData =
-          FirestoreUtilData(clearUnsetFields: clearUnsetFields);
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
 
 void addTeamsDTStructData(
   Map<String, dynamic> firestoreData,

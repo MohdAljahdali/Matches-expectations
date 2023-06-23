@@ -1399,8 +1399,8 @@ class _EditTournamentWidgetState extends State<EditTournamentWidget> {
                                     0.0, 10.0, 0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    final tournamentsUpdateData =
-                                        createTournamentsRecordData(
+                                    await widget.tournamentRef!
+                                        .update(createTournamentsRecordData(
                                       name: _model.nameTFController.text,
                                       nameAr: _model.nameArTFController.text,
                                       setEndMatche: _model.setEndMatcheDDValue,
@@ -1419,9 +1419,7 @@ class _EditTournamentWidgetState extends State<EditTournamentWidget> {
                                       setAwayGoals: _model.setAwayGoalsSLTValue,
                                       setAwayGoalsPoints:
                                           _model.setAwayGoalsPointsCCValue,
-                                    );
-                                    await widget.tournamentRef!
-                                        .update(tournamentsUpdateData);
+                                    ));
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     '4q1s3unj' /* Save modifications */,
