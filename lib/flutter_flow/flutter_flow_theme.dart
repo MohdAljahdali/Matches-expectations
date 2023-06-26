@@ -3,31 +3,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
-
-const kThemeModeKey = '__theme_mode__';
-SharedPreferences? _prefs;
+enum DeviceSize {
+  mobile,
+  tablet,
+  desktop,
+}
 
 abstract class FlutterFlowTheme {
-  static Future initialize() async =>
-      _prefs = await SharedPreferences.getInstance();
-  static ThemeMode get themeMode {
-    final darkMode = _prefs?.getBool(kThemeModeKey);
-    return darkMode == null
-        ? ThemeMode.system
-        : darkMode
-            ? ThemeMode.dark
-            : ThemeMode.light;
-  }
-
-  static void saveThemeMode(ThemeMode mode) => mode == ThemeMode.system
-      ? _prefs?.remove(kThemeModeKey)
-      : _prefs?.setBool(kThemeModeKey, mode == ThemeMode.dark);
+  static DeviceSize deviceSize = DeviceSize.mobile;
 
   static FlutterFlowTheme of(BuildContext context) {
-    return Theme.of(context).brightness == Brightness.dark
-        ? DarkModeTheme()
-        : LightModeTheme();
+    deviceSize = getDeviceSize(context);
+    return LightModeTheme();
   }
 
   @Deprecated('Use primary instead')
@@ -120,7 +107,22 @@ abstract class FlutterFlowTheme {
   String get bodySmallFamily => typography.bodySmallFamily;
   TextStyle get bodySmall => typography.bodySmall;
 
-  Typography get typography => ThemeTypography(this);
+  Typography get typography => {
+        DeviceSize.mobile: MobileTypography(this),
+        DeviceSize.tablet: TabletTypography(this),
+        DeviceSize.desktop: DesktopTypography(this),
+      }[deviceSize]!;
+}
+
+DeviceSize getDeviceSize(BuildContext context) {
+  final width = MediaQuery.of(context).size.width;
+  if (width < 479) {
+    return DeviceSize.mobile;
+  } else if (width < 991) {
+    return DeviceSize.tablet;
+  } else {
+    return DeviceSize.desktop;
+  }
 }
 
 class LightModeTheme extends FlutterFlowTheme {
@@ -131,14 +133,14 @@ class LightModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFF08A0F7);
-  late Color secondary = const Color(0xFF6A6AE3);
-  late Color tertiary = const Color(0xFFFFFFFF);
-  late Color alternate = const Color(0xFF525298);
-  late Color primaryText = const Color(0xFF2C2C63);
-  late Color secondaryText = const Color(0xFFA2A8AF);
-  late Color primaryBackground = const Color(0xFFF3F3F8);
-  late Color secondaryBackground = const Color(0xFFFFFFFF);
+  late Color primary = const Color(0xFF246BFD);
+  late Color secondary = const Color(0xFFF4A58A);
+  late Color tertiary = const Color(0xFF222232);
+  late Color alternate = const Color(0xFF222232);
+  late Color primaryText = const Color(0xFFFFFFFF);
+  late Color secondaryText = const Color(0xFF65656B);
+  late Color primaryBackground = const Color(0xFF181829);
+  late Color secondaryBackground = const Color(0xFF222232);
   late Color accent1 = const Color(0xFF616161);
   late Color accent2 = const Color(0xFF757575);
   late Color accent3 = const Color(0xFFE0E0E0);
@@ -150,8 +152,8 @@ class LightModeTheme extends FlutterFlowTheme {
 
   late Color lineColor = Color(0xFFE0E3E7);
   late Color primaryBtnText = Color(0xFFFFFFFF);
-  late Color customColor1 = Color(0xFF7D82E2);
-  late Color customColor2 = Color(0xFF7F5ED8);
+  late Color customColor1 = Color(0xFF14274D);
+  late Color customColor2 = Color(0xFF441818);
   late Color noColor = Color(0x00FFFFFF);
 }
 
@@ -188,149 +190,343 @@ abstract class Typography {
   TextStyle get bodySmall;
 }
 
-class ThemeTypography extends Typography {
-  ThemeTypography(this.theme);
+class MobileTypography extends Typography {
+  MobileTypography(this.theme);
 
   final FlutterFlowTheme theme;
 
-  String get displayLargeFamily => ' Shamel';
-  TextStyle get displayLarge => TextStyle(
-        fontFamily: ' Shamel',
+  String get displayLargeFamily => 'Noto Sans Arabic';
+  TextStyle get displayLarge => GoogleFonts.getFont(
+        'Noto Sans Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 57.0,
         fontStyle: FontStyle.normal,
       );
-  String get displayMediumFamily => ' Shamel';
-  TextStyle get displayMedium => TextStyle(
-        fontFamily: ' Shamel',
+  String get displayMediumFamily => 'Noto Sans Arabic';
+  TextStyle get displayMedium => GoogleFonts.getFont(
+        'Noto Sans Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
-        fontSize: 45.0,
+        fontSize: 40.0,
       );
-  String get displaySmallFamily => ' Shamel';
-  TextStyle get displaySmall => TextStyle(
-        fontFamily: ' Shamel',
+  String get displaySmallFamily => 'Noto Sans Arabic';
+  TextStyle get displaySmall => GoogleFonts.getFont(
+        'Noto Sans Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 36.0,
       );
-  String get headlineLargeFamily => ' Shamel';
-  TextStyle get headlineLarge => TextStyle(
-        fontFamily: ' Shamel',
+  String get headlineLargeFamily => 'Noto Sans Arabic';
+  TextStyle get headlineLarge => GoogleFonts.getFont(
+        'Noto Sans Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 32.0,
       );
-  String get headlineMediumFamily => ' Shamel';
-  TextStyle get headlineMedium => TextStyle(
-        fontFamily: ' Shamel',
+  String get headlineMediumFamily => 'Noto Sans Arabic';
+  TextStyle get headlineMedium => GoogleFonts.getFont(
+        'Noto Sans Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 28.0,
       );
-  String get headlineSmallFamily => ' Shamel';
-  TextStyle get headlineSmall => TextStyle(
-        fontFamily: ' Shamel',
+  String get headlineSmallFamily => 'Noto Sans Arabic';
+  TextStyle get headlineSmall => GoogleFonts.getFont(
+        'Noto Sans Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 24.0,
       );
-  String get titleLargeFamily => ' Shamel';
-  TextStyle get titleLarge => TextStyle(
-        fontFamily: ' Shamel',
+  String get titleLargeFamily => 'Noto Sans Arabic';
+  TextStyle get titleLarge => GoogleFonts.getFont(
+        'Noto Sans Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 22.0,
       );
-  String get titleMediumFamily => ' Shamel';
-  TextStyle get titleMedium => TextStyle(
-        fontFamily: ' Shamel',
+  String get titleMediumFamily => 'Noto Sans Arabic';
+  TextStyle get titleMedium => GoogleFonts.getFont(
+        'Noto Sans Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 16.0,
       );
-  String get titleSmallFamily => ' Shamel';
-  TextStyle get titleSmall => TextStyle(
-        fontFamily: ' Shamel',
+  String get titleSmallFamily => 'Noto Sans Arabic';
+  TextStyle get titleSmall => GoogleFonts.getFont(
+        'Noto Sans Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get labelLargeFamily => ' Shamel';
-  TextStyle get labelLarge => TextStyle(
-        fontFamily: ' Shamel',
+  String get labelLargeFamily => 'Noto Sans Arabic';
+  TextStyle get labelLarge => GoogleFonts.getFont(
+        'Noto Sans Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get labelMediumFamily => ' Shamel';
-  TextStyle get labelMedium => TextStyle(
-        fontFamily: ' Shamel',
+  String get labelMediumFamily => 'Noto Sans Arabic';
+  TextStyle get labelMedium => GoogleFonts.getFont(
+        'Noto Sans Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 12.0,
       );
-  String get labelSmallFamily => ' Shamel';
-  TextStyle get labelSmall => TextStyle(
-        fontFamily: ' Shamel',
+  String get labelSmallFamily => 'Noto Sans Arabic';
+  TextStyle get labelSmall => GoogleFonts.getFont(
+        'Noto Sans Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 11.0,
       );
-  String get bodyLargeFamily => ' Shamel';
-  TextStyle get bodyLarge => TextStyle(
-        fontFamily: ' Shamel',
+  String get bodyLargeFamily => 'Noto Sans Arabic';
+  TextStyle get bodyLarge => GoogleFonts.getFont(
+        'Noto Sans Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get bodyMediumFamily => ' Shamel';
-  TextStyle get bodyMedium => TextStyle(
-        fontFamily: ' Shamel',
+  String get bodyMediumFamily => 'Noto Sans Arabic';
+  TextStyle get bodyMedium => GoogleFonts.getFont(
+        'Noto Sans Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
-  String get bodySmallFamily => ' Shamel';
-  TextStyle get bodySmall => TextStyle(
-        fontFamily: ' Shamel',
+  String get bodySmallFamily => 'Noto Sans Arabic';
+  TextStyle get bodySmall => GoogleFonts.getFont(
+        'Noto Sans Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
       );
 }
 
-class DarkModeTheme extends FlutterFlowTheme {
-  @Deprecated('Use primary instead')
-  Color get primaryColor => primary;
-  @Deprecated('Use secondary instead')
-  Color get secondaryColor => secondary;
-  @Deprecated('Use tertiary instead')
-  Color get tertiaryColor => tertiary;
+class TabletTypography extends Typography {
+  TabletTypography(this.theme);
 
-  late Color primary = const Color(0xFF08A0F7);
-  late Color secondary = const Color(0xFF6A6AE3);
-  late Color tertiary = const Color(0xFFFFFFFF);
-  late Color alternate = const Color(0xFF525298);
-  late Color primaryText = const Color(0xFFFFFFFF);
-  late Color secondaryText = const Color(0xFF8B8D94);
-  late Color primaryBackground = const Color(0xFF1F1D2B);
-  late Color secondaryBackground = const Color(0xFF252836);
-  late Color accent1 = const Color(0xFFEEEEEE);
-  late Color accent2 = const Color(0xFFE0E0E0);
-  late Color accent3 = const Color(0xFF757575);
-  late Color accent4 = const Color(0xFF616161);
-  late Color success = const Color(0xFF04A24C);
-  late Color warning = const Color(0xFFFCDC0C);
-  late Color error = const Color(0xFFE21C3D);
-  late Color info = const Color(0xFF1C4494);
+  final FlutterFlowTheme theme;
 
-  late Color lineColor = Color(0xFF22282F);
-  late Color primaryBtnText = Color(0xFFFFFFFF);
-  late Color customColor1 = Color(0xFF7D82E2);
-  late Color customColor2 = Color(0xFF7F5ED8);
-  late Color noColor = Color(0x000F1113);
+  String get displayLargeFamily => 'Noto Sans Arabic';
+  TextStyle get displayLarge => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 57.0,
+        fontStyle: FontStyle.normal,
+      );
+  String get displayMediumFamily => 'Noto Sans Arabic';
+  TextStyle get displayMedium => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 45.0,
+      );
+  String get displaySmallFamily => 'Noto Sans Arabic';
+  TextStyle get displaySmall => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 36.0,
+      );
+  String get headlineLargeFamily => 'Noto Sans Arabic';
+  TextStyle get headlineLarge => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 32.0,
+      );
+  String get headlineMediumFamily => 'Noto Sans Arabic';
+  TextStyle get headlineMedium => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 28.0,
+      );
+  String get headlineSmallFamily => 'Noto Sans Arabic';
+  TextStyle get headlineSmall => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 24.0,
+      );
+  String get titleLargeFamily => 'Noto Sans Arabic';
+  TextStyle get titleLarge => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 22.0,
+      );
+  String get titleMediumFamily => 'Noto Sans Arabic';
+  TextStyle get titleMedium => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 16.0,
+      );
+  String get titleSmallFamily => 'Noto Sans Arabic';
+  TextStyle get titleSmall => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 14.0,
+      );
+  String get labelLargeFamily => 'Noto Sans Arabic';
+  TextStyle get labelLarge => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 14.0,
+      );
+  String get labelMediumFamily => 'Noto Sans Arabic';
+  TextStyle get labelMedium => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 12.0,
+      );
+  String get labelSmallFamily => 'Noto Sans Arabic';
+  TextStyle get labelSmall => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 11.0,
+      );
+  String get bodyLargeFamily => 'Noto Sans Arabic';
+  TextStyle get bodyLarge => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 16.0,
+      );
+  String get bodyMediumFamily => 'Noto Sans Arabic';
+  TextStyle get bodyMedium => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 14.0,
+      );
+  String get bodySmallFamily => 'Noto Sans Arabic';
+  TextStyle get bodySmall => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 12.0,
+      );
+}
+
+class DesktopTypography extends Typography {
+  DesktopTypography(this.theme);
+
+  final FlutterFlowTheme theme;
+
+  String get displayLargeFamily => 'Noto Sans Arabic';
+  TextStyle get displayLarge => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 57.0,
+        fontStyle: FontStyle.normal,
+      );
+  String get displayMediumFamily => 'Noto Sans Arabic';
+  TextStyle get displayMedium => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 45.0,
+      );
+  String get displaySmallFamily => 'Noto Sans Arabic';
+  TextStyle get displaySmall => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 36.0,
+      );
+  String get headlineLargeFamily => 'Noto Sans Arabic';
+  TextStyle get headlineLarge => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 32.0,
+      );
+  String get headlineMediumFamily => 'Noto Sans Arabic';
+  TextStyle get headlineMedium => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 28.0,
+      );
+  String get headlineSmallFamily => 'Noto Sans Arabic';
+  TextStyle get headlineSmall => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 24.0,
+      );
+  String get titleLargeFamily => 'Noto Sans Arabic';
+  TextStyle get titleLarge => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 22.0,
+      );
+  String get titleMediumFamily => 'Noto Sans Arabic';
+  TextStyle get titleMedium => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 16.0,
+      );
+  String get titleSmallFamily => 'Noto Sans Arabic';
+  TextStyle get titleSmall => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 14.0,
+      );
+  String get labelLargeFamily => 'Noto Sans Arabic';
+  TextStyle get labelLarge => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 14.0,
+      );
+  String get labelMediumFamily => 'Noto Sans Arabic';
+  TextStyle get labelMedium => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 12.0,
+      );
+  String get labelSmallFamily => 'Noto Sans Arabic';
+  TextStyle get labelSmall => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 11.0,
+      );
+  String get bodyLargeFamily => 'Noto Sans Arabic';
+  TextStyle get bodyLarge => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 16.0,
+      );
+  String get bodyMediumFamily => 'Noto Sans Arabic';
+  TextStyle get bodyMedium => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 14.0,
+      );
+  String get bodySmallFamily => 'Noto Sans Arabic';
+  TextStyle get bodySmall => GoogleFonts.getFont(
+        'Noto Sans Arabic',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 12.0,
+      );
 }
 
 extension TextStyleHelper on TextStyle {

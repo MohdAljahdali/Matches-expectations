@@ -105,76 +105,8 @@ Locale createLocale(String language) => language.contains('_')
     : Locale(language);
 
 final kTranslationsMap = <Map<String, Map<String, String>>>[
-  // logIn
-  {
-    'cpimxtr8': {
-      'en': 'Sign in',
-      'ar': 'تسجيل الدخول',
-    },
-    'esw5qf6c': {
-      'en': 'Email',
-      'ar': 'البريد إلكتروني',
-    },
-    'yczm0qrm': {
-      'en': 'Password',
-      'ar': 'كلمة المرور',
-    },
-    '9ium5h9e': {
-      'en': 'Sign in',
-      'ar': 'تسجيل الدخول',
-    },
-    'oa9qf75t': {
-      'en': 'Forgot password',
-      'ar': 'هل نسيت كلمة السر',
-    },
-    '5blnyd3y': {
-      'en': 'Or sign in with',
-      'ar': 'أو قم بتسجيل الدخول باستخدام',
-    },
-    'pk20cyus': {
-      'en': 'Google',
-      'ar': 'Google',
-    },
-    'egjwe9sj': {
-      'en': 'Apple',
-      'ar': 'Apple',
-    },
-    'mwyllrkm': {
-      'en': 'Home',
-      'ar': 'بيت',
-    },
-  },
-  // ForgotPassword
-  {
-    'ozncuavk': {
-      'en':
-          'We will send you an email with a link to reset your password, please enter the email associated with your account below.',
-      'ar':
-          'سنرسل لك بريدًا إلكترونيًا يحتوي على رابط لإعادة تعيين كلمة المرور الخاصة بك ، يرجى إدخال البريد الإلكتروني المرتبط بحسابك أدناه.',
-    },
-    '81pvwb75': {
-      'en': 'Send Link',
-      'ar': 'أرسل الرابط',
-    },
-    'zycqsnor': {
-      'en': 'Forgot Password',
-      'ar': 'هل نسيت كلمة السر',
-    },
-    '46dm3lb6': {
-      'en': 'Home',
-      'ar': 'بيت',
-    },
-  },
   // Home
   {
-    'mpr9hs2r': {
-      'en': 'Button',
-      'ar': '',
-    },
-    '32i39ac5': {
-      'en': 'Page Title',
-      'ar': '',
-    },
     'vvtkszi3': {
       'en': 'Home',
       'ar': '',
@@ -233,9 +165,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Profile
   {
-    'aldch780': {
-      'en': 'Your profile',
-      'ar': 'ملفك الشخصي',
+    'ewzyprlm': {
+      'en': 'Edit profile',
+      'ar': 'تعديل الملف الشخصي',
     },
     'sr4zev66': {
       'en': 'Log out',
@@ -245,395 +177,245 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Admin',
       'ar': 'الاداري',
     },
-    'rr017r9r': {
-      'en': 'Switch to light mode',
-      'ar': 'التحويل الى المظهر الفاتح',
-    },
-    'mk4ytka8': {
-      'en': 'Switch to dark mode',
-      'ar': 'التحويل الى المظهر الداكن',
-    },
-    'p34uvxro': {
-      'en': 'Change to English',
-      'ar': 'تغير اللغة الى الانجليزية',
-    },
-    'b0wft5ts': {
-      'en': 'Change to Arabic',
-      'ar': 'تغير اللغة الى العربية',
-    },
     '0wma2b5x': {
-      'en': 'Title',
-      'ar': '',
+      'en': 'Edit profile',
+      'ar': 'تعديل الملف الشخصي',
     },
     '0436g3zd': {
-      'en': 'Subtitle goes here...',
+      'en': '',
+      'ar': '',
+    },
+    '7d1kl9mn': {
+      'en': 'Edit profile',
+      'ar': 'تعديل الملف الشخصي',
+    },
+    '0x5r2iwu': {
+      'en': '',
       'ar': '',
     },
     '5byhc1ud': {
-      'en': 'Home',
-      'ar': '',
-    },
-  },
-  // Teams
-  {
-    'dfyh9gkf': {
-      'en': 'Page Title',
-      'ar': '',
-    },
-    '08od7gi4': {
-      'en': 'Home',
-      'ar': '',
-    },
-  },
-  // Members
-  {
-    'xp624fhy': {
-      'en': 'Edit',
-      'ar': 'تعديل',
-    },
-    'yic0qsnj': {
-      'en': 'Members',
-      'ar': 'الاعضاء',
-    },
-    '4xsruki1': {
-      'en': 'Home',
-      'ar': '',
-    },
-  },
-  // addTournamentsManual
-  {
-    '17dljnwo': {
-      'en': 'Label here...',
-      'ar': '',
-    },
-    '1fpu3giu': {
-      'en': 'Label here...',
-      'ar': '',
-    },
-    'uk4jaios': {
-      'en': 'Search',
-      'ar': 'ابحث',
-    },
-    '83ceoxpj': {
-      'en': 'Start ',
-      'ar': 'يبدا',
-    },
-    '3s19271w': {
-      'en': ':',
-      'ar': '',
-    },
-    '8qxmcmuz': {
-      'en': 'End',
-      'ar': 'ينتهي',
-    },
-    '4wzt5aq0': {
-      'en': ':',
-      'ar': '',
-    },
-    'fo82k3ye': {
-      'en': 'Edit',
-      'ar': 'تعديل',
-    },
-    'rz0jtbvt': {
-      'en': 'Add tournaments',
-      'ar': 'اضافة البطولات',
-    },
-    '0eem94dk': {
-      'en': 'sssss',
-      'ar': '',
-    },
-  },
-  // editTournament
-  {
-    'kvwhok8x': {
-      'en': 'Start  ',
-      'ar': 'يبدأ  ',
-    },
-    'f6spt5wi': {
-      'en': 'End  ',
-      'ar': 'ينتهي  ',
-    },
-    'bg1k721a': {
-      'en': 'Name',
-      'ar': 'الاسم',
-    },
-    'd95my35x': {
-      'en': 'Arabic name',
-      'ar': 'الاسم العربي',
-    },
-    '1x9pq2xi': {
-      'en': 'Settings',
-      'ar': 'الاعدادات',
-    },
-    'i2ipsqv6': {
-      'en': 'Match ends with',
-      'ar': 'تنتهي المباراة بـ',
-    },
-    'qiuzq3eq': {
-      'en': 'Full time',
-      'ar': 'الأشواط الاصلية',
-    },
-    'dgnxn298': {
-      'en': 'Extra time',
-      'ar': 'الاشواط الاضافية',
-    },
-    'oli5pbtc': {
-      'en': 'Penalty',
-      'ar': 'ركلات الترجيح',
-    },
-    'q2azmcjj': {
-      'en': 'Please select...',
-      'ar': '',
-    },
-    'ttf27iaz': {
-      'en': 'Search for an item...',
-      'ar': '',
-    },
-    'tct5lfb5': {
-      'en': 'If home team win',
-      'ar': 'إذا فاز الفريق المضيف',
-    },
-    'qm89qs5t': {
-      'en': 'Score points if correct',
-      'ar': 'يحصل على النقاط لو صحيح',
-    },
-    'patxh0oa': {
-      'en': 'If away team win',
-      'ar': 'إذا فاز الفريق الضيف',
-    },
-    'g41rhlf9': {
-      'en': 'Score points if correct',
-      'ar': 'يحصل على النقاط لو صحيح',
-    },
-    'snz2icne': {
-      'en': 'If the two teams draw',
-      'ar': 'اذا تعادل الفريقين',
-    },
-    'z0vng7sb': {
-      'en': 'Score points if correct',
-      'ar': 'يحصل على النقاط لو صحيح',
-    },
-    'bd9m8es7': {
-      'en': 'Goals of the home team',
-      'ar': 'اذا توقع اهداف الفريق المضيف',
-    },
-    'eraq8klp': {
-      'en': 'Score points if correct',
-      'ar': 'يحصل على النقاط لو صحيح',
-    },
-    'c3qdsggm': {
-      'en': 'Goals of the away team',
-      'ar': 'اذا توقع اهداف الفريق الضيف',
-    },
-    '7bs6t5wt': {
-      'en': 'Score points if correct',
-      'ar': 'يحصل على النقاط لو صحيح',
-    },
-    '4q1s3unj': {
-      'en': 'Save modifications',
-      'ar': 'حفظ التعديلات',
-    },
-    'atie4ev6': {
-      'en': 'Edit tournament',
-      'ar': 'تعديل البطولة',
-    },
-    'qyef2onu': {
-      'en': 'Home',
-      'ar': '',
-    },
-  },
-  // addTournaments
-  {
-    'j22yf5x1': {
-      'en': 'Please select...',
-      'ar': '',
-    },
-    'd9o0icap': {
-      'en': 'Search for an item...',
-      'ar': '',
-    },
-    'p6s8qrnw': {
-      'en': '2022',
-      'ar': '2022',
-    },
-    '9j5e0jw2': {
-      'en': '2023',
-      'ar': '2023',
-    },
-    '6wz68jxq': {
-      'en': '2024',
-      'ar': '2024',
-    },
-    'laakpi75': {
-      'en': '2025',
-      'ar': '2025',
-    },
-    'ov1im916': {
-      'en': '2026',
-      'ar': '2026',
-    },
-    '4apdi7vt': {
-      'en': 'Search for an item...',
-      'ar': '',
-    },
-    'ggbdn9a8': {
-      'en': 'league',
-      'ar': 'دوري',
-    },
-    'ochabfgk': {
-      'en': 'league',
-      'ar': 'دوري',
-    },
-    'xfwglfxm': {
-      'en': 'cup',
-      'ar': 'كاس',
-    },
-    'rjc38868': {
-      'en': 'Search',
-      'ar': 'ابحث',
-    },
-    'zcw8g8nc': {
-      'en': 'Start ',
-      'ar': 'يبدا',
-    },
-    'w1mlr4nz': {
-      'en': ':',
-      'ar': ':',
-    },
-    'k6253rno': {
-      'en': 'End',
-      'ar': 'ينتهي',
-    },
-    'idarejzq': {
-      'en': ':',
-      'ar': ':',
-    },
-    'de1kj3f2': {
-      'en': 'Edit',
-      'ar': 'تعديل',
-    },
-    'mftvf5k1': {
-      'en': 'Add tournaments',
-      'ar': 'اضافة البطولات',
-    },
-    'qzt5p3cs': {
-      'en': 'sssss',
-      'ar': '',
-    },
-  },
-  // tournamentsList
-  {
-    'zkb2el6z': {
-      'en': 'add Manual',
-      'ar': 'ابحث',
-    },
-    '15yc9izt': {
-      'en': 'addTournaments',
-      'ar': 'أضافة البطولات',
-    },
-    'prhz08ey': {
-      'en': 'Start ',
-      'ar': 'يبدا',
-    },
-    '5meqg443': {
-      'en': ':',
-      'ar': ':',
-    },
-    'veqbn0b8': {
-      'en': 'End',
-      'ar': 'ينتهي',
-    },
-    'nueq4f2a': {
-      'en': ':',
-      'ar': ':',
-    },
-    '0imm2xvr': {
-      'en': 'Edit',
-      'ar': 'تعديل',
-    },
-    'xwodnklz': {
-      'en': 'Add tournaments',
-      'ar': 'اضافة البطولات',
-    },
-    'updbbsy2': {
       'en': '',
       'ar': '',
     },
   },
-  // Countries
+  // entryPage
   {
-    'l98zr14w': {
-      'en': 'Countries',
-      'ar': 'الدول',
+    'ha1gkwsn': {
+      'en': 'Welcome',
+      'ar': 'مرحباً',
     },
-    '35u9suoe': {
+    'oqnysxcu': {
+      'en':
+          'It is a special application for a group of members for predictions of football leagues',
+      'ar': 'إنه تطبيق خاص لمجموعة من الأعضاء لتوقعات بطولات كرة القدم ',
+    },
+    '8p88wry2': {
+      'en': 'Sign in',
+      'ar': 'تسجيل الدخول',
+    },
+    'e5cgopxs': {
+      'en': 'Sign Up',
+      'ar': 'اشتراك',
+    },
+    '7rm1pj5j': {
       'en': 'Home',
       'ar': '',
     },
   },
-  // UpdateMemberData
+  // signUpPage
   {
-    'cy1rltak': {
+    'j4wlfa65': {
       'en': 'Email',
       'ar': 'بريد إلكتروني',
     },
-    '430n45vq': {
-      'en': 'Name',
-      'ar': 'الاسم',
-    },
-    'wwqen8tw': {
-      'en': 'Active member',
-      'ar': 'عضو نشط',
-    },
-    'hhqr0jld': {
-      'en': 'Admin member',
-      'ar': 'عضو إداري',
-    },
-    'w196sqry': {
-      'en': 'Update member data',
-      'ar': 'تحديث بيانات العضو',
-    },
-  },
-  // addNewMember
-  {
-    's7a5db50': {
-      'en': 'Email',
-      'ar': 'بريد إلكتروني',
-    },
-    'knglov3y': {
+    '7e4rd28f': {
       'en': 'Password',
       'ar': 'كلمة المرور',
     },
-    'rsr51lxw': {
-      'en': '',
-      'ar': '',
+    'mky5u79j': {
+      'en': 'Confirm password',
+      'ar': 'تأكيد كلمة المرور',
     },
-    'k87zt5d4': {
+    'dbqdipgd': {
       'en': 'Name',
       'ar': 'الاسم',
     },
-    'sx6l5h1t': {
-      'en': 'Active member',
-      'ar': 'عضو نشط',
+    '22j3ui4l': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
     },
-    'bd6swm07': {
-      'en': 'Admin member',
-      'ar': 'عضو إداري',
+    '3yinku0m': {
+      'en': '',
+      'ar': '',
     },
-    'uoj01qjx': {
-      'en': 'Create member account',
-      'ar': 'إنشاء حساب عضو',
+    'hydfltv0': {
+      'en': 'Mxnimum 25 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    'yysleihy': {
+      'en': 'Invalid Email Format',
+      'ar': 'تنسيق بريد إلكتروني غير صالح',
+    },
+    '0yso3w3s': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'sxkpxeba': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    '2hp7thhe': {
+      'en': 'Minimum eight characters',
+      'ar': 'ثمانية أحرف على الأقل',
+    },
+    '96vvfkr1': {
+      'en': 'Mxnimum 16 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    'jom40mdk': {
+      'en':
+          'at least one uppercase letter, one lowercase letter and one number',
+      'ar': 'حرف كبير واحد على الأقل وحرف صغير واحد ورقم واحد',
+    },
+    '9d4y9nyv': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'nw42vjzg': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    'kpcvgy14': {
+      'en': 'Minimum eight characters',
+      'ar': 'ثمانية أحرف على الأقل',
+    },
+    'iww0teue': {
+      'en': 'Mxnimum 16 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    'x2bs1vlm': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '2uq34y9h': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    'rzmtblbn': {
+      'en': 'Minimum 8 characters',
+      'ar': '8 أحرف على الأقل',
+    },
+    'u4tx38fa': {
+      'en': 'Mxnimum 20 characters',
+      'ar': '20 حرفًا بحد أقصى',
+    },
+    'l4tb0tve': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '1d9wi9s8': {
+      'en': 'Sign Up new user',
+      'ar': 'تسجيل مستخدم جديد',
+    },
+    'qqda0tvh': {
+      'en': 'Register a new user',
+      'ar': 'تسجيل عضوية جديدة',
+    },
+    'uluqornx': {
+      'en': 'Home',
+      'ar': '',
     },
   },
-  // emptyTournamentsList
+  // editProfile
   {
-    'wb6e6exi': {
-      'en': 'No new tournaments have been added',
-      'ar': 'لا توجد بطولات جديدة قد تم اضافتها ',
+    '90twvsq1': {
+      'en': 'Name',
+      'ar': 'الاسم',
     },
-    '7w4ux9nz': {
-      'en': 'Or it may have been added previously',
-      'ar': 'او قد تم اضافتها سابقا',
+    '661u79xd': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    'm6a0hg7h': {
+      'en': '',
+      'ar': '',
+    },
+    '0k0ifeqs': {
+      'en': 'Mxnimum 25 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    '2hspnzkb': {
+      'en': 'Invalid Email Format',
+      'ar': 'تنسيق بريد إلكتروني غير صالح',
+    },
+    'n841b0qe': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '7h85spik': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    'i74q9qp4': {
+      'en': 'Minimum eight characters',
+      'ar': 'ثمانية أحرف على الأقل',
+    },
+    '91se0fw8': {
+      'en': 'Mxnimum 16 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    'i0mlfdry': {
+      'en':
+          'at least one uppercase letter, one lowercase letter and one number',
+      'ar': 'حرف كبير واحد على الأقل وحرف صغير واحد ورقم واحد',
+    },
+    '07qr7k4p': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'ae1v9d0y': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    'xytg7ob5': {
+      'en': 'Minimum eight characters',
+      'ar': 'ثمانية أحرف على الأقل',
+    },
+    'wasx76m3': {
+      'en': 'Mxnimum 16 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    'sqi6hjhu': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'swvpiwrg': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    'gnxp4lm4': {
+      'en': 'Minimum 8 characters',
+      'ar': '8 أحرف على الأقل',
+    },
+    'x214pqk0': {
+      'en': 'Mxnimum 20 characters',
+      'ar': '20 حرفًا بحد أقصى',
+    },
+    'zu0k0veb': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'xtovmyqt': {
+      'en': 'Save your edite',
+      'ar': 'حفظ التعديل',
+    },
+    '7obxr4eb': {
+      'en': 'Edit profile',
+      'ar': 'تعديل الملف الشخصي',
+    },
+    'oda98gpe': {
+      'en': 'Home',
+      'ar': '',
     },
   },
   // Miscellaneous

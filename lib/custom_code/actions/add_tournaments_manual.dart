@@ -9,8 +9,6 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'index.dart'; // Imports other custom actions
-
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
@@ -58,6 +56,7 @@ Future<String> addTournamentsManual(
           'countryFlog': tournament['country']['flag'].toString(),
           'randomCode': randomCode,
           'is_Active': false,
+          'randomRef': getRandomString25(),
         };
         await TournamentsRef.doc(tournament['league']['id'].toString() +
                 seasons['year'].toString())

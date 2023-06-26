@@ -6,8 +6,8 @@ import '/backend/schema/util/schema_util.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class UserRecord extends FirestoreRecord {
-  UserRecord._(
+class UsersRecord extends FirestoreRecord {
+  UsersRecord._(
     DocumentReference reference,
     Map<String, dynamic> data,
   ) : super(reference, data) {
@@ -44,15 +44,10 @@ class UserRecord extends FirestoreRecord {
   String get phoneNumber => _phoneNumber ?? '';
   bool hasPhoneNumber() => _phoneNumber != null;
 
-  // "is_admin" field.
-  bool? _isAdmin;
-  bool get isAdmin => _isAdmin ?? false;
-  bool hasIsAdmin() => _isAdmin != null;
-
-  // "is_active" field.
-  bool? _isActive;
-  bool get isActive => _isActive ?? false;
-  bool hasIsActive() => _isActive != null;
+  // "roleIaAdmin" field.
+  bool? _roleIaAdmin;
+  bool get roleIaAdmin => _roleIaAdmin ?? false;
+  bool hasRoleIaAdmin() => _roleIaAdmin != null;
 
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
@@ -61,52 +56,50 @@ class UserRecord extends FirestoreRecord {
     _uid = snapshotData['uid'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
-    _isAdmin = snapshotData['is_admin'] as bool?;
-    _isActive = snapshotData['is_active'] as bool?;
+    _roleIaAdmin = snapshotData['roleIaAdmin'] as bool?;
   }
 
   static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('user');
+      FirebaseFirestore.instance.collection('users');
 
-  static Stream<UserRecord> getDocument(DocumentReference ref) =>
-      ref.snapshots().map((s) => UserRecord.fromSnapshot(s));
+  static Stream<UsersRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => UsersRecord.fromSnapshot(s));
 
-  static Future<UserRecord> getDocumentOnce(DocumentReference ref) =>
-      ref.get().then((s) => UserRecord.fromSnapshot(s));
+  static Future<UsersRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => UsersRecord.fromSnapshot(s));
 
-  static UserRecord fromSnapshot(DocumentSnapshot snapshot) => UserRecord._(
+  static UsersRecord fromSnapshot(DocumentSnapshot snapshot) => UsersRecord._(
         snapshot.reference,
         mapFromFirestore(snapshot.data() as Map<String, dynamic>),
       );
 
-  static UserRecord getDocumentFromData(
+  static UsersRecord getDocumentFromData(
     Map<String, dynamic> data,
     DocumentReference reference,
   ) =>
-      UserRecord._(reference, mapFromFirestore(data));
+      UsersRecord._(reference, mapFromFirestore(data));
 
   @override
   String toString() =>
-      'UserRecord(reference: ${reference.path}, data: $snapshotData)';
+      'UsersRecord(reference: ${reference.path}, data: $snapshotData)';
 
   @override
   int get hashCode => reference.path.hashCode;
 
   @override
   bool operator ==(other) =>
-      other is UserRecord &&
+      other is UsersRecord &&
       reference.path.hashCode == other.reference.path.hashCode;
 }
 
-Map<String, dynamic> createUserRecordData({
+Map<String, dynamic> createUsersRecordData({
   String? email,
   String? displayName,
   String? photoUrl,
   String? uid,
   DateTime? createdTime,
   String? phoneNumber,
-  bool? isAdmin,
-  bool? isActive,
+  bool? roleIaAdmin,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -116,8 +109,7 @@ Map<String, dynamic> createUserRecordData({
       'uid': uid,
       'created_time': createdTime,
       'phone_number': phoneNumber,
-      'is_admin': isAdmin,
-      'is_active': isActive,
+      'roleIaAdmin': roleIaAdmin,
     }.withoutNulls,
   );
 

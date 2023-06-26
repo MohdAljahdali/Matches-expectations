@@ -13,21 +13,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '/backend/schema/structs/index.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
-String? newCustomFunction(
-  String? league,
-  String? season,
-  String? teamID,
-) {
-  // get data from firestoer
-  return 'Hello, World!';
-  final db = FirebaseFirestore.instance;
-  // First, initialize Firestore
-  final docRef = db.collection("cities").doc("SF");
-  docRef.get().then(
-    (DocumentSnapshot doc) {
-      final data = doc.data() as Map<String, dynamic>;
-      // ...
-    },
-    onError: (e) => print("Error getting document: $e"),
-  );
+String getRandomString25() {
+  //  generate random string
+  var random = math.Random();
+  const chars =
+      'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  return String.fromCharCodes(Iterable.generate(
+      25, (_) => chars.codeUnitAt(random.nextInt(chars.length))));
 }

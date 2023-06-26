@@ -23,7 +23,6 @@ void main() async {
   usePathUrlStrategy();
   await initFirebase();
 
-  await FlutterFlowTheme.initialize();
   await FFLocalizations.initialize();
 
   final appState = FFAppState(); // Initialize FFAppState
@@ -46,7 +45,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Locale? _locale = FFLocalizations.getStoredLocale();
-  ThemeMode _themeMode = FlutterFlowTheme.themeMode;
+  ThemeMode _themeMode = ThemeMode.system;
 
   late Stream<BaseAuthUser> userStream;
 
@@ -83,7 +82,6 @@ class _MyAppState extends State<MyApp> {
 
   void setThemeMode(ThemeMode mode) => setState(() {
         _themeMode = mode;
-        FlutterFlowTheme.saveThemeMode(mode);
       });
 
   @override
@@ -102,7 +100,6 @@ class _MyAppState extends State<MyApp> {
         Locale('ar'),
       ],
       theme: ThemeData(brightness: Brightness.light),
-      darkTheme: ThemeData(brightness: Brightness.dark),
       themeMode: _themeMode,
       routerConfig: _router,
     );
@@ -134,7 +131,6 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'admin': AdminWidget(),
       'Home': HomeWidget(),
       'Profile': ProfileWidget(),
     };
@@ -177,7 +173,7 @@ class _NavBarPageState extends State<NavBarPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
-                    currentIndex == 0 ? Icons.person : Icons.perm_identity,
+                    Icons.home_outlined,
                     color: currentIndex == 0
                         ? FlutterFlowTheme.of(context).primaryText
                         : FlutterFlowTheme.of(context).primaryText,
@@ -185,7 +181,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   ),
                   Text(
                     FFLocalizations.of(context).getText(
-                      'myjm1s5y' /* settings */,
+                      'vvtkszi3' /* Home */,
                     ),
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -203,49 +199,11 @@ class _NavBarPageState extends State<NavBarPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
-                    Icons.home_outlined,
+                    Icons.person_2_sharp,
                     color: currentIndex == 1
                         ? FlutterFlowTheme.of(context).primaryText
                         : FlutterFlowTheme.of(context).primaryText,
                     size: 24.0,
-                  ),
-                  Text(
-                    FFLocalizations.of(context).getText(
-                      'vvtkszi3' /* Home */,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: currentIndex == 1
-                          ? FlutterFlowTheme.of(context).primaryText
-                          : FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 11.0,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            FloatingNavbarItem(
-              customWidget: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.home_outlined,
-                    color: currentIndex == 2
-                        ? FlutterFlowTheme.of(context).primaryText
-                        : FlutterFlowTheme.of(context).primaryText,
-                    size: 24.0,
-                  ),
-                  Text(
-                    FFLocalizations.of(context).getText(
-                      '5byhc1ud' /* Home */,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: currentIndex == 2
-                          ? FlutterFlowTheme.of(context).primaryText
-                          : FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 11.0,
-                    ),
                   ),
                 ],
               ),

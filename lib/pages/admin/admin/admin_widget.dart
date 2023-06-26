@@ -71,7 +71,8 @@ class _AdminWidgetState extends State<AdminWidget> {
                   color: FlutterFlowTheme.of(context).primaryText,
                   fontSize: 16.0,
                   fontWeight: FontWeight.bold,
-                  useGoogleFonts: false,
+                  useGoogleFonts: GoogleFonts.asMap().containsKey(
+                      FlutterFlowTheme.of(context).headlineMediumFamily),
                 ),
           ),
           actions: [],
@@ -153,7 +154,12 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                         .override(
                                                           fontFamily: ' Shamel',
                                                           fontSize: 18.0,
-                                                          useGoogleFonts: false,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
                                                         ),
                                               ),
                                             ),
@@ -185,7 +191,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                   .clearRedirectLocation();
 
                                               context.goNamedAuth(
-                                                  'logIn', context.mounted);
+                                                  'entryPage', context.mounted);
                                             },
                                             text: FFLocalizations.of(context)
                                                 .getText(
@@ -205,7 +211,12 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                       .override(
                                                         fontFamily: ' Shamel',
                                                         color: Colors.white,
-                                                        useGoogleFonts: false,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmallFamily),
                                                       ),
                                               elevation: 3.0,
                                               borderSide: BorderSide(
@@ -216,52 +227,46 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                   BorderRadius.circular(8.0),
                                             ),
                                           ),
-                                          if (valueOrDefault<bool>(
-                                              currentUserDocument?.isAdmin,
-                                              false))
-                                            AuthUserStreamWidget(
-                                              builder: (context) =>
-                                                  FFButtonWidget(
-                                                onPressed: () async {
-                                                  context.pushNamed('Profile');
-                                                },
-                                                text:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  'fkn2hqr6' /* Your Profile */,
-                                                ),
-                                                options: FFButtonOptions(
-                                                  width: 130.0,
-                                                  height: 40.0,
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 0.0),
-                                                  iconPadding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
+                                          FFButtonWidget(
+                                            onPressed: () async {
+                                              context.pushNamed('Profile');
+                                            },
+                                            text: FFLocalizations.of(context)
+                                                .getText(
+                                              'fkn2hqr6' /* Your Profile */,
+                                            ),
+                                            options: FFButtonOptions(
+                                              width: 130.0,
+                                              height: 40.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
                                                       .primary,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
                                                       .titleSmall
                                                       .override(
                                                         fontFamily: ' Shamel',
                                                         color: Colors.white,
-                                                        useGoogleFonts: false,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmallFamily),
                                                       ),
-                                                  elevation: 3.0,
-                                                  borderSide: BorderSide(
-                                                    color: Colors.transparent,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
+                                              elevation: 3.0,
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1.0,
                                               ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
                                             ),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -289,111 +294,29 @@ class _AdminWidgetState extends State<AdminWidget> {
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 children: [
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      context.pushNamed('Countries');
-                    },
-                    child: ListTile(
-                      title: Text(
-                        FFLocalizations.of(context).getText(
-                          '2r080iob' /* Countries */,
-                        ),
-                        style: FlutterFlowTheme.of(context).titleLarge.override(
-                              fontFamily: ' Shamel',
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              useGoogleFonts: false,
-                            ),
-                      ),
-                      subtitle: Text(
-                        FFLocalizations.of(context).getText(
-                          'av91p30v' /* Countries management */,
-                        ),
-                        style: FlutterFlowTheme.of(context)
-                            .labelMedium
-                            .override(
-                              fontFamily: ' Shamel',
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              useGoogleFonts: false,
-                            ),
-                      ),
-                      trailing: Icon(
-                        Icons.arrow_forward_ios,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 20.0,
-                      ),
-                      tileColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      dense: false,
-                    ),
-                  ),
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      context.pushNamed(
-                        'tournamentsList',
-                        extra: <String, dynamic>{
-                          kTransitionInfoKey: TransitionInfo(
-                            hasTransition: true,
-                            transitionType: PageTransitionType.leftToRight,
-                          ),
-                        },
-                      );
-                    },
-                    child: ListTile(
-                      title: Text(
-                        FFLocalizations.of(context).getText(
-                          'srckq6g5' /* Tournaments */,
-                        ),
-                        style: FlutterFlowTheme.of(context).titleLarge,
-                      ),
-                      subtitle: Text(
-                        FFLocalizations.of(context).getText(
-                          'tqnmndkf' /* Tournaments settings */,
-                        ),
-                        style: FlutterFlowTheme.of(context)
-                            .labelMedium
-                            .override(
-                              fontFamily: ' Shamel',
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              useGoogleFonts: false,
-                            ),
-                      ),
-                      trailing: Icon(
-                        Icons.arrow_forward_ios,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 20.0,
-                      ),
-                      tileColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      dense: false,
-                    ),
-                  ),
                   ListTile(
                     title: Text(
                       FFLocalizations.of(context).getText(
-                        'zzwpli0v' /* Clubs */,
+                        '2r080iob' /* Countries */,
                       ),
                       style: FlutterFlowTheme.of(context).titleLarge.override(
-                            fontFamily: ' Shamel',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleLargeFamily,
                             color: FlutterFlowTheme.of(context).primaryText,
-                            useGoogleFonts: false,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).titleLargeFamily),
                           ),
                     ),
                     subtitle: Text(
                       FFLocalizations.of(context).getText(
-                        'up56z3dj' /* Subtitle goes here... */,
+                        'av91p30v' /* Countries management */,
                       ),
                       style: FlutterFlowTheme.of(context).labelMedium.override(
-                            fontFamily: ' Shamel',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).labelMediumFamily,
                             color: FlutterFlowTheme.of(context).secondaryText,
-                            useGoogleFonts: false,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).labelMediumFamily),
                           ),
                     ),
                     trailing: Icon(
@@ -404,46 +327,98 @@ class _AdminWidgetState extends State<AdminWidget> {
                     tileColor: FlutterFlowTheme.of(context).secondaryBackground,
                     dense: false,
                   ),
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      context.pushNamed('Members');
-                    },
-                    child: ListTile(
-                      title: Text(
-                        FFLocalizations.of(context).getText(
-                          'hdw80cqi' /* Members */,
-                        ),
-                        style: FlutterFlowTheme.of(context).titleLarge.override(
-                              fontFamily: ' Shamel',
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              useGoogleFonts: false,
-                            ),
+                  ListTile(
+                    title: Text(
+                      FFLocalizations.of(context).getText(
+                        'srckq6g5' /* Tournaments */,
                       ),
-                      subtitle: Text(
-                        FFLocalizations.of(context).getText(
-                          'cvol3j2e' /* Member management */,
-                        ),
-                        style: FlutterFlowTheme.of(context)
-                            .labelMedium
-                            .override(
-                              fontFamily: ' Shamel',
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              useGoogleFonts: false,
-                            ),
-                      ),
-                      trailing: Icon(
-                        Icons.arrow_forward_ios,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 20.0,
-                      ),
-                      tileColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      dense: false,
+                      style: FlutterFlowTheme.of(context).titleLarge,
                     ),
+                    subtitle: Text(
+                      FFLocalizations.of(context).getText(
+                        'tqnmndkf' /* Tournaments settings */,
+                      ),
+                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).labelMediumFamily,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).labelMediumFamily),
+                          ),
+                    ),
+                    trailing: Icon(
+                      Icons.arrow_forward_ios,
+                      color: FlutterFlowTheme.of(context).secondaryText,
+                      size: 20.0,
+                    ),
+                    tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+                    dense: false,
+                  ),
+                  ListTile(
+                    title: Text(
+                      FFLocalizations.of(context).getText(
+                        'zzwpli0v' /* Clubs */,
+                      ),
+                      style: FlutterFlowTheme.of(context).titleLarge.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleLargeFamily,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).titleLargeFamily),
+                          ),
+                    ),
+                    subtitle: Text(
+                      FFLocalizations.of(context).getText(
+                        'up56z3dj' /* Subtitle goes here... */,
+                      ),
+                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).labelMediumFamily,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).labelMediumFamily),
+                          ),
+                    ),
+                    trailing: Icon(
+                      Icons.arrow_forward_ios,
+                      color: FlutterFlowTheme.of(context).secondaryText,
+                      size: 20.0,
+                    ),
+                    tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+                    dense: false,
+                  ),
+                  ListTile(
+                    title: Text(
+                      FFLocalizations.of(context).getText(
+                        'hdw80cqi' /* Members */,
+                      ),
+                      style: FlutterFlowTheme.of(context).titleLarge.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleLargeFamily,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).titleLargeFamily),
+                          ),
+                    ),
+                    subtitle: Text(
+                      FFLocalizations.of(context).getText(
+                        'cvol3j2e' /* Member management */,
+                      ),
+                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).labelMediumFamily,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).labelMediumFamily),
+                          ),
+                    ),
+                    trailing: Icon(
+                      Icons.arrow_forward_ios,
+                      color: FlutterFlowTheme.of(context).secondaryText,
+                      size: 20.0,
+                    ),
+                    tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+                    dense: false,
                   ),
                 ],
               ),

@@ -12,32 +12,27 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class UpdateMemberDataModel extends FlutterFlowModel {
-  ///  State fields for stateful widgets in this component.
+class EditProfileModel extends FlutterFlowModel {
+  ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
+  final formKey = GlobalKey<FormState>();
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl = '';
 
-  // State field(s) for emailTextField widget.
-  TextEditingController? emailTextFieldController;
-  String? Function(BuildContext, String?)? emailTextFieldControllerValidator;
-  // State field(s) for nameTextField widget.
-  TextEditingController? nameTextFieldController;
-  String? Function(BuildContext, String?)? nameTextFieldControllerValidator;
-  // State field(s) for ActivememberSLT widget.
-  bool? activememberSLTValue;
-  // State field(s) for adminMemberSLT widget.
-  bool? adminMemberSLTValue;
+  // State field(s) for nameTF widget.
+  TextEditingController? nameTFController;
+  String? Function(BuildContext, String?)? nameTFControllerValidator;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
   void dispose() {
-    emailTextFieldController?.dispose();
-    nameTextFieldController?.dispose();
+    unfocusNode.dispose();
+    nameTFController?.dispose();
   }
 
   /// Action blocks are added here.

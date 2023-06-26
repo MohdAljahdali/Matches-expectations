@@ -79,102 +79,56 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : LogInWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : EntryPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : LogInWidget(),
-        ),
-        FFRoute(
-          name: 'logIn',
-          path: '/logIn',
-          builder: (context, params) => LogInWidget(),
-        ),
-        FFRoute(
-          name: 'ForgotPassword',
-          path: '/forgotPassword',
-          builder: (context, params) => ForgotPasswordWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : EntryPageWidget(),
         ),
         FFRoute(
           name: 'Home',
           path: '/home',
-          builder: (context, params) =>
-              params.isEmpty ? NavBarPage(initialPage: 'Home') : HomeWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'Home')
+              : NavBarPage(
+                  initialPage: 'Home',
+                  page: HomeWidget(),
+                ),
         ),
         FFRoute(
           name: 'admin',
           path: '/admin',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'admin')
-              : NavBarPage(
-                  initialPage: 'admin',
-                  page: AdminWidget(),
-                ),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AdminWidget(),
+          ),
         ),
         FFRoute(
           name: 'Profile',
           path: '/profile',
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'Profile')
-              : ProfileWidget(),
+              : NavBarPage(
+                  initialPage: 'Profile',
+                  page: ProfileWidget(),
+                ),
         ),
         FFRoute(
-          name: 'Teams',
-          path: '/teams',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: TeamsWidget(),
-          ),
+          name: 'entryPage',
+          path: '/entryPage',
+          builder: (context, params) => EntryPageWidget(),
         ),
         FFRoute(
-          name: 'Members',
-          path: '/members',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: MembersWidget(),
-          ),
+          name: 'signUpPage',
+          path: '/signUpPage',
+          builder: (context, params) => SignUpPageWidget(),
         ),
         FFRoute(
-          name: 'addTournamentsManual',
-          path: '/addTournamentsManual',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: AddTournamentsManualWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'editTournament',
-          path: '/editTournament',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: EditTournamentWidget(
-              tournamentRef: params.getParam('tournamentRef',
-                  ParamType.DocumentReference, false, ['Tournaments']),
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'addTournaments',
-          path: '/addTournaments',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: AddTournamentsWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'tournamentsList',
-          path: '/tournamentsList',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: TournamentsListWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'Countries',
-          path: '/countries',
-          builder: (context, params) => CountriesWidget(),
+          name: 'editProfile',
+          path: '/editProfile',
+          builder: (context, params) => EditProfileWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -341,7 +295,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/logIn';
+            return '/entryPage';
           }
           return null;
         },
@@ -354,14 +308,11 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: SpinKitFadingCircle(
-                      color: FlutterFlowTheme.of(context).primary,
-                      size: 50.0,
-                    ),
+              ? Container(
+                  color: Colors.transparent,
+                  child: Image.asset(
+                    'assets/images/add-photo-dark.png',
+                    fit: BoxFit.none,
                   ),
                 )
               : page;

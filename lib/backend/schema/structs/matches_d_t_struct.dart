@@ -14,9 +14,6 @@ class MatchesDTStruct extends FFFirebaseStruct {
     int? fixtureTimestamp,
     int? fixturePeriodFirst,
     int? fixturePeriodSecond,
-    DocumentReference? tournamentsRef,
-    DocumentReference? teamHomeRef,
-    DocumentReference? teamAwayRef,
     bool? teamHomeWinner,
     bool? teamAwayWinner,
     String? fixtureStatusLong,
@@ -38,9 +35,6 @@ class MatchesDTStruct extends FFFirebaseStruct {
         _fixtureTimestamp = fixtureTimestamp,
         _fixturePeriodFirst = fixturePeriodFirst,
         _fixturePeriodSecond = fixturePeriodSecond,
-        _tournamentsRef = tournamentsRef,
-        _teamHomeRef = teamHomeRef,
-        _teamAwayRef = teamAwayRef,
         _teamHomeWinner = teamHomeWinner,
         _teamAwayWinner = teamAwayWinner,
         _fixtureStatusLong = fixtureStatusLong,
@@ -94,24 +88,6 @@ class MatchesDTStruct extends FFFirebaseStruct {
   void incrementFixturePeriodSecond(int amount) =>
       _fixturePeriodSecond = fixturePeriodSecond + amount;
   bool hasFixturePeriodSecond() => _fixturePeriodSecond != null;
-
-  // "tournamentsRef" field.
-  DocumentReference? _tournamentsRef;
-  DocumentReference? get tournamentsRef => _tournamentsRef;
-  set tournamentsRef(DocumentReference? val) => _tournamentsRef = val;
-  bool hasTournamentsRef() => _tournamentsRef != null;
-
-  // "teamHomeRef" field.
-  DocumentReference? _teamHomeRef;
-  DocumentReference? get teamHomeRef => _teamHomeRef;
-  set teamHomeRef(DocumentReference? val) => _teamHomeRef = val;
-  bool hasTeamHomeRef() => _teamHomeRef != null;
-
-  // "teamAwayRef" field.
-  DocumentReference? _teamAwayRef;
-  DocumentReference? get teamAwayRef => _teamAwayRef;
-  set teamAwayRef(DocumentReference? val) => _teamAwayRef = val;
-  bool hasTeamAwayRef() => _teamAwayRef != null;
 
   // "teamHomeWinner" field.
   bool? _teamHomeWinner;
@@ -229,9 +205,6 @@ class MatchesDTStruct extends FFFirebaseStruct {
         fixtureTimestamp: castToType<int>(data['fixtureTimestamp']),
         fixturePeriodFirst: castToType<int>(data['fixturePeriodFirst']),
         fixturePeriodSecond: castToType<int>(data['fixturePeriodSecond']),
-        tournamentsRef: data['tournamentsRef'] as DocumentReference?,
-        teamHomeRef: data['teamHomeRef'] as DocumentReference?,
-        teamAwayRef: data['teamAwayRef'] as DocumentReference?,
         teamHomeWinner: data['teamHomeWinner'] as bool?,
         teamAwayWinner: data['teamAwayWinner'] as bool?,
         fixtureStatusLong: data['fixtureStatusLong'] as String?,
@@ -258,9 +231,6 @@ class MatchesDTStruct extends FFFirebaseStruct {
         'fixtureTimestamp': _fixtureTimestamp,
         'fixturePeriodFirst': _fixturePeriodFirst,
         'fixturePeriodSecond': _fixturePeriodSecond,
-        'tournamentsRef': _tournamentsRef,
-        'teamHomeRef': _teamHomeRef,
-        'teamAwayRef': _teamAwayRef,
         'teamHomeWinner': _teamHomeWinner,
         'teamAwayWinner': _teamAwayWinner,
         'fixtureStatusLong': _fixtureStatusLong,
@@ -299,18 +269,6 @@ class MatchesDTStruct extends FFFirebaseStruct {
         'fixturePeriodSecond': serializeParam(
           _fixturePeriodSecond,
           ParamType.int,
-        ),
-        'tournamentsRef': serializeParam(
-          _tournamentsRef,
-          ParamType.DocumentReference,
-        ),
-        'teamHomeRef': serializeParam(
-          _teamHomeRef,
-          ParamType.DocumentReference,
-        ),
-        'teamAwayRef': serializeParam(
-          _teamAwayRef,
-          ParamType.DocumentReference,
         ),
         'teamHomeWinner': serializeParam(
           _teamHomeWinner,
@@ -401,24 +359,6 @@ class MatchesDTStruct extends FFFirebaseStruct {
           ParamType.int,
           false,
         ),
-        tournamentsRef: deserializeParam(
-          data['tournamentsRef'],
-          ParamType.DocumentReference,
-          false,
-          collectionNamePath: ['Tournaments'],
-        ),
-        teamHomeRef: deserializeParam(
-          data['teamHomeRef'],
-          ParamType.DocumentReference,
-          false,
-          collectionNamePath: ['Teams'],
-        ),
-        teamAwayRef: deserializeParam(
-          data['teamAwayRef'],
-          ParamType.DocumentReference,
-          false,
-          collectionNamePath: ['Teams'],
-        ),
         teamHomeWinner: deserializeParam(
           data['teamHomeWinner'],
           ParamType.bool,
@@ -507,9 +447,6 @@ class MatchesDTStruct extends FFFirebaseStruct {
         fixtureTimestamp == other.fixtureTimestamp &&
         fixturePeriodFirst == other.fixturePeriodFirst &&
         fixturePeriodSecond == other.fixturePeriodSecond &&
-        tournamentsRef == other.tournamentsRef &&
-        teamHomeRef == other.teamHomeRef &&
-        teamAwayRef == other.teamAwayRef &&
         teamHomeWinner == other.teamHomeWinner &&
         teamAwayWinner == other.teamAwayWinner &&
         fixtureStatusLong == other.fixtureStatusLong &&
@@ -534,9 +471,6 @@ class MatchesDTStruct extends FFFirebaseStruct {
         fixtureTimestamp,
         fixturePeriodFirst,
         fixturePeriodSecond,
-        tournamentsRef,
-        teamHomeRef,
-        teamAwayRef,
         teamHomeWinner,
         teamAwayWinner,
         fixtureStatusLong,
@@ -561,9 +495,6 @@ MatchesDTStruct createMatchesDTStruct({
   int? fixtureTimestamp,
   int? fixturePeriodFirst,
   int? fixturePeriodSecond,
-  DocumentReference? tournamentsRef,
-  DocumentReference? teamHomeRef,
-  DocumentReference? teamAwayRef,
   bool? teamHomeWinner,
   bool? teamAwayWinner,
   String? fixtureStatusLong,
@@ -590,9 +521,6 @@ MatchesDTStruct createMatchesDTStruct({
       fixtureTimestamp: fixtureTimestamp,
       fixturePeriodFirst: fixturePeriodFirst,
       fixturePeriodSecond: fixturePeriodSecond,
-      tournamentsRef: tournamentsRef,
-      teamHomeRef: teamHomeRef,
-      teamAwayRef: teamAwayRef,
       teamHomeWinner: teamHomeWinner,
       teamAwayWinner: teamAwayWinner,
       fixtureStatusLong: fixtureStatusLong,

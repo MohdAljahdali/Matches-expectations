@@ -59,6 +59,7 @@ Future<String> addTournaments(
           'countryFlog': tournament['country']['flag'].toString(),
           'randomCode': randomCode,
           'is_Active': false,
+          'randomRef': getRandomString25(),
         };
         await TournamentsRef.doc(tournament['league']['id'].toString() +
                 seasons['year'].toString())
