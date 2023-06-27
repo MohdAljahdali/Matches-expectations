@@ -128,7 +128,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'editProfile',
           path: '/editProfile',
-          builder: (context, params) => EditProfileWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: EditProfileWidget(),
+          ),
+        ),
+        FFRoute(
+          name: 'updatePassword',
+          path: '/updatePassword',
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: UpdatePasswordWidget(),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

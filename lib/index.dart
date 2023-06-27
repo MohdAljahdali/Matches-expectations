@@ -7,3 +7,5 @@ export '/pages/auth/sign_up_page/sign_up_page_widget.dart'
     show SignUpPageWidget;
 export '/pages/user_profile/edit_profile/edit_profile_widget.dart'
     show EditProfileWidget;
+export '/pages/user_profile/update_password/update_password_widget.dart'
+    show UpdatePasswordWidget;

@@ -186,8 +186,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     '7d1kl9mn': {
-      'en': 'Edit profile',
-      'ar': 'تعديل الملف الشخصي',
+      'en': 'Change password',
+      'ar': 'تغير كلمة المرور',
     },
     '0x5r2iwu': {
       'en': '',
@@ -275,7 +275,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'jom40mdk': {
       'en':
           'at least one uppercase letter, one lowercase letter and one number',
-      'ar': 'حرف كبير واحد على الأقل وحرف صغير واحد ورقم واحد',
+      'ar': 'حرف كبير واحد وحرف صغير واحد ورقم واحد على الأقل ',
     },
     '9d4y9nyv': {
       'en': 'Please choose an option from the dropdown',
@@ -416,6 +416,93 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'oda98gpe': {
       'en': 'Home',
       'ar': '',
+    },
+  },
+  // updatePassword
+  {
+    'z5jmjhdy': {
+      'en': 'Old password',
+      'ar': 'كلمة المرور القديمة',
+    },
+    'm91f1eam': {
+      'en': 'New password',
+      'ar': 'كلمة المرور الجديدة',
+    },
+    'jbtxbxar': {
+      'en': 'Confirm password',
+      'ar': 'تاكيد كلمة  المرور',
+    },
+    'ohblzfaf': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'ejq7wkia': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'h1hvy212': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    'ovg5styg': {
+      'en': 'Minimum eight characters',
+      'ar': 'ثمانية أحرف على الأقل',
+    },
+    '206so7dm': {
+      'en': 'Mxnimum 16 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    '1laxp3d3': {
+      'en':
+          'at least one uppercase letter, one lowercase letter and one number',
+      'ar': 'حرف كبير واحد وحرف صغير واحد ورقم واحد على الأقل',
+    },
+    'dhg6l8p5': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'rumk776v': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    '5xqdoeeo': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'mkqlx0hz': {
+      'en': 'Change new password',
+      'ar': 'تغير كلمة المرور الجديدة',
+    },
+    '9u6ayeru': {
+      'en': 'Change password',
+      'ar': 'تغير الرقم السري',
+    },
+    'x5nhqrd3': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // signInComponent
+  {
+    '73htmsl1': {
+      'en': 'Sign In',
+      'ar': 'تسجيل الدخول',
+    },
+    'hu4hv7qb': {
+      'en': 'Email',
+      'ar': 'البريد الالكتروني',
+    },
+    '350x7yti': {
+      'en': 'Password',
+      'ar': 'كلمة المرور',
+    },
+    'nwsf5k6z': {
+      'en': 'Sign In',
+      'ar': 'تسجيل الدخول',
+    },
+    '9pmnm3ja': {
+      'en': 'Forgot your password ',
+      'ar': 'نسيت كلمة المرور',
     },
   },
   // Miscellaneous

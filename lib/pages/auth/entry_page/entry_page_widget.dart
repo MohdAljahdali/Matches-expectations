@@ -1,3 +1,4 @@
+import '/components/sign_in_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -104,8 +105,26 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        await showModalBottomSheet(
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          enableDrag: false,
+                          context: context,
+                          builder: (context) {
+                            return GestureDetector(
+                              onTap: () => FocusScope.of(context)
+                                  .requestFocus(_model.unfocusNode),
+                              child: Padding(
+                                padding: MediaQuery.of(context).viewInsets,
+                                child: Container(
+                                  height: 400.0,
+                                  child: SignInComponentWidget(),
+                                ),
+                              ),
+                            );
+                          },
+                        ).then((value) => setState(() {}));
                       },
                       text: FFLocalizations.of(context).getText(
                         '8p88wry2' /* Sign in */,

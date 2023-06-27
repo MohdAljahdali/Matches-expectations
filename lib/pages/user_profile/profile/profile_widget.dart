@@ -335,31 +335,40 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      ListTile(
-                        title: Text(
-                          FFLocalizations.of(context).getText(
-                            '7d1kl9mn' /* Edit profile */,
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('updatePassword');
+                        },
+                        child: ListTile(
+                          title: Text(
+                            FFLocalizations.of(context).getText(
+                              '7d1kl9mn' /* Change password */,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .titleLargeFamily,
+                                  fontSize: 18.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .titleLargeFamily),
+                                  lineHeight: 3.0,
+                                ),
                           ),
-                          style: FlutterFlowTheme.of(context)
-                              .titleLarge
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .titleLargeFamily,
-                                fontSize: 18.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .titleLargeFamily),
-                                lineHeight: 3.0,
-                              ),
+                          trailing: Icon(
+                            Icons.arrow_forward_ios,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 30.0,
+                          ),
+                          tileColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          dense: false,
                         ),
-                        trailing: Icon(
-                          Icons.arrow_forward_ios,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 30.0,
-                        ),
-                        tileColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        dense: false,
                       ),
                       Divider(
                         height: 1.0,
