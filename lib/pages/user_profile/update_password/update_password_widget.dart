@@ -449,6 +449,26 @@ class _UpdatePasswordWidgetState extends State<UpdatePasswordWidget> {
                                         _model.oldPasswordTFController.text,
                                         _model.newPasswordTFController.text,
                                         _model.confirmPasswordTFController.text,
+                                        FFLocalizations.of(context)
+                                            .languageCode,
+                                      );
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            _model.outputUpdatePassword!,
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondary,
+                                        ),
                                       );
 
                                       setState(() {});

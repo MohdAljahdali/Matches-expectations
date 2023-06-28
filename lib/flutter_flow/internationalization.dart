@@ -492,6 +492,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Email',
       'ar': 'البريد الالكتروني',
     },
+    '431ds5c7': {
+      'en': 'mohd.aljahdali@gmail.com',
+      'ar': '',
+    },
     '350x7yti': {
       'en': 'Password',
       'ar': 'كلمة المرور',

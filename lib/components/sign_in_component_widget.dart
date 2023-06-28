@@ -32,6 +32,11 @@ class _SignInComponentWidgetState extends State<SignInComponentWidget> {
 
     _model.emailTFController ??= TextEditingController();
     _model.passwordTFController ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
+          _model.emailTFController?.text = FFLocalizations.of(context).getText(
+            '431ds5c7' /* mohd.aljahdali@gmail.com */,
+          );
+        }));
   }
 
   @override
