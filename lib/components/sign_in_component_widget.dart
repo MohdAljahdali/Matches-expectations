@@ -84,6 +84,7 @@ class _SignInComponentWidgetState extends State<SignInComponentWidget> {
                       autofocus: true,
                       obscureText: false,
                       decoration: InputDecoration(
+                        isDense: true,
                         labelText: FFLocalizations.of(context).getText(
                           'hu4hv7qb' /* Email */,
                         ),
@@ -135,7 +136,7 @@ class _SignInComponentWidgetState extends State<SignInComponentWidget> {
                           size: 24.0,
                         ),
                       ),
-                      style: FlutterFlowTheme.of(context).bodyLarge,
+                      style: FlutterFlowTheme.of(context).bodyMedium,
                       keyboardType: TextInputType.emailAddress,
                       validator: _model.emailTFControllerValidator
                           .asValidator(context),
@@ -155,6 +156,7 @@ class _SignInComponentWidgetState extends State<SignInComponentWidget> {
                       autofocus: true,
                       obscureText: !_model.passwordTFVisibility,
                       decoration: InputDecoration(
+                        isDense: true,
                         labelText: FFLocalizations.of(context).getText(
                           '350x7yti' /* Password */,
                         ),
@@ -220,7 +222,7 @@ class _SignInComponentWidgetState extends State<SignInComponentWidget> {
                           ),
                         ),
                       ),
-                      style: FlutterFlowTheme.of(context).bodyLarge,
+                      style: FlutterFlowTheme.of(context).bodyMedium,
                       keyboardType: TextInputType.emailAddress,
                       validator: _model.passwordTFControllerValidator
                           .asValidator(context),
@@ -255,7 +257,7 @@ class _SignInComponentWidgetState extends State<SignInComponentWidget> {
                       ),
                       options: FFButtonOptions(
                         width: 150.0,
-                        height: 60.0,
+                        height: 50.0,
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:

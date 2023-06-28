@@ -109,7 +109,6 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
-                          enableDrag: false,
                           context: context,
                           builder: (context) {
                             return GestureDetector(
@@ -118,7 +117,7 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                               child: Padding(
                                 padding: MediaQuery.of(context).viewInsets,
                                 child: Container(
-                                  height: 400.0,
+                                  height: double.infinity,
                                   child: SignInComponentWidget(),
                                 ),
                               ),

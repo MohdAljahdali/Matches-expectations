@@ -112,6 +112,7 @@ class _UpdatePasswordWidgetState extends State<UpdatePasswordWidget> {
                                       obscureText:
                                           !_model.oldPasswordTFVisibility,
                                       decoration: InputDecoration(
+                                        isDense: true,
                                         labelText:
                                             FFLocalizations.of(context).getText(
                                           'z5jmjhdy' /* Old password */,
@@ -198,7 +199,7 @@ class _UpdatePasswordWidgetState extends State<UpdatePasswordWidget> {
                                         ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyLarge,
+                                          .bodyMedium,
                                       keyboardType: TextInputType.emailAddress,
                                       validator: _model
                                           .oldPasswordTFControllerValidator
@@ -222,6 +223,7 @@ class _UpdatePasswordWidgetState extends State<UpdatePasswordWidget> {
                                       obscureText:
                                           !_model.newPasswordTFVisibility,
                                       decoration: InputDecoration(
+                                        isDense: true,
                                         labelText:
                                             FFLocalizations.of(context).getText(
                                           'm91f1eam' /* New password */,
@@ -308,7 +310,7 @@ class _UpdatePasswordWidgetState extends State<UpdatePasswordWidget> {
                                         ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyLarge,
+                                          .bodyMedium,
                                       keyboardType: TextInputType.emailAddress,
                                       validator: _model
                                           .newPasswordTFControllerValidator
@@ -332,6 +334,7 @@ class _UpdatePasswordWidgetState extends State<UpdatePasswordWidget> {
                                       obscureText:
                                           !_model.confirmPasswordTFVisibility,
                                       decoration: InputDecoration(
+                                        isDense: true,
                                         labelText:
                                             FFLocalizations.of(context).getText(
                                           'jbtxbxar' /* Confirm password */,
@@ -419,7 +422,7 @@ class _UpdatePasswordWidgetState extends State<UpdatePasswordWidget> {
                                         ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyLarge,
+                                          .bodyMedium,
                                       keyboardType: TextInputType.emailAddress,
                                       validator: _model
                                           .confirmPasswordTFControllerValidator
@@ -477,8 +480,8 @@ class _UpdatePasswordWidgetState extends State<UpdatePasswordWidget> {
                                       'mkqlx0hz' /* Change new password */,
                                     ),
                                     options: FFButtonOptions(
-                                      width: 150.0,
-                                      height: 60.0,
+                                      width: 140.0,
+                                      height: 50.0,
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
@@ -487,18 +490,7 @@ class _UpdatePasswordWidgetState extends State<UpdatePasswordWidget> {
                                       color:
                                           FlutterFlowTheme.of(context).primary,
                                       textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmallFamily,
-                                            color: Colors.white,
-                                            fontSize: 20.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmallFamily),
-                                          ),
+                                          .bodyLarge,
                                       elevation: 3.0,
                                       borderSide: BorderSide(
                                         color: Colors.transparent,

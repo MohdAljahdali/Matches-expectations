@@ -304,7 +304,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           ),
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyLarge,
+                                            .bodySmall,
                                         keyboardType:
                                             TextInputType.emailAddress,
                                         validator: _model
