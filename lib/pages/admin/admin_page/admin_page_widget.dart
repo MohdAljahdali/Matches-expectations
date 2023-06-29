@@ -8,25 +8,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'profile_model.dart';
-export 'profile_model.dart';
+import 'admin_page_model.dart';
+export 'admin_page_model.dart';
 
-class ProfileWidget extends StatefulWidget {
-  const ProfileWidget({Key? key}) : super(key: key);
+class AdminPageWidget extends StatefulWidget {
+  const AdminPageWidget({Key? key}) : super(key: key);
 
   @override
-  _ProfileWidgetState createState() => _ProfileWidgetState();
+  _AdminPageWidgetState createState() => _AdminPageWidgetState();
 }
 
-class _ProfileWidgetState extends State<ProfileWidget> {
-  late ProfileModel _model;
+class _AdminPageWidgetState extends State<AdminPageWidget> {
+  late AdminPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ProfileModel());
+    _model = createModel(context, () => AdminPageModel());
   }
 
   @override
@@ -64,7 +64,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
           ),
           title: Text(
             FFLocalizations.of(context).getText(
-              'ewzyprlm' /* Edit profile */,
+              'g68blc5o' /* Admin control */,
             ),
             style: FlutterFlowTheme.of(context).titleLarge,
           ),
@@ -185,7 +185,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
-                                            'sr4zev66' /* Log out */,
+                                            '8n30lm2h' /* Log out */,
                                           ),
                                           options: FFButtonOptions(
                                             width: 120.0,
@@ -222,11 +222,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         ),
                                         FFButtonWidget(
                                           onPressed: () async {
-                                            context.pushNamed('adminPage');
+                                            context.pushNamed('Profile');
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
-                                            'xwicembv' /* Admin */,
+                                            'zihcwu0d' /* Profile */,
                                           ),
                                           options: FFButtonOptions(
                                             width: 120.0,
@@ -272,17 +272,17 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           ),
                         ],
                       ),
-                      StyledDivider(
-                        height: 1.0,
-                        thickness: 1.0,
-                        indent: 0.0,
-                        endIndent: 0.0,
-                        color: FlutterFlowTheme.of(context).accent4,
-                        lineStyle: DividerLineStyle.dashed,
-                      ),
                     ],
                   ),
                 ),
+              ),
+              StyledDivider(
+                height: 1.0,
+                thickness: 1.0,
+                indent: 0.0,
+                endIndent: 0.0,
+                color: FlutterFlowTheme.of(context).accent4,
+                lineStyle: DividerLineStyle.dashed,
               ),
               ListView(
                 padding: EdgeInsets.zero,
@@ -303,7 +303,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         child: ListTile(
                           title: Text(
                             FFLocalizations.of(context).getText(
-                              '0wma2b5x' /* Edit profile */,
+                              'a6cbyqq4' /* Members */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .titleMedium
@@ -317,14 +317,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                   lineHeight: 3.0,
                                 ),
                           ),
-                          trailing: Icon(
-                            Icons.arrow_forward_ios,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 30.0,
-                          ),
                           tileColor:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          dense: false,
+                          dense: true,
                         ),
                       ),
                       Divider(
@@ -343,33 +338,27 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed('updatePassword');
+                          context.pushNamed('adminCountriesList');
                         },
                         child: ListTile(
                           title: Text(
                             FFLocalizations.of(context).getText(
-                              '7d1kl9mn' /* Change password */,
+                              'ru4og5w1' /* Countries */,
                             ),
                             style: FlutterFlowTheme.of(context)
-                                .titleLarge
+                                .titleMedium
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
-                                      .titleLargeFamily,
-                                  fontSize: 18.0,
+                                      .titleMediumFamily,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .titleLargeFamily),
+                                          .titleMediumFamily),
                                   lineHeight: 3.0,
                                 ),
                           ),
-                          trailing: Icon(
-                            Icons.arrow_forward_ios,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 30.0,
-                          ),
                           tileColor:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          dense: false,
+                          dense: true,
                         ),
                       ),
                       Divider(

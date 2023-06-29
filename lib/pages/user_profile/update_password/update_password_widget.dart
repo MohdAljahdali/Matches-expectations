@@ -49,6 +49,7 @@ class _UpdatePasswordWidgetState extends State<UpdatePasswordWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: NestedScrollView(
+          floatHeaderSlivers: true,
           headerSliverBuilder: (context, _) => [
             SliverAppBar(
               pinned: false,

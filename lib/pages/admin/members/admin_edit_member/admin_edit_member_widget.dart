@@ -2,7 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_language_selector.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -12,25 +11,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'edit_profile_model.dart';
-export 'edit_profile_model.dart';
+import 'admin_edit_member_model.dart';
+export 'admin_edit_member_model.dart';
 
-class EditProfileWidget extends StatefulWidget {
-  const EditProfileWidget({Key? key}) : super(key: key);
+class AdminEditMemberWidget extends StatefulWidget {
+  const AdminEditMemberWidget({Key? key}) : super(key: key);
 
   @override
-  _EditProfileWidgetState createState() => _EditProfileWidgetState();
+  _AdminEditMemberWidgetState createState() => _AdminEditMemberWidgetState();
 }
 
-class _EditProfileWidgetState extends State<EditProfileWidget> {
-  late EditProfileModel _model;
+class _AdminEditMemberWidgetState extends State<AdminEditMemberWidget> {
+  late AdminEditMemberModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => EditProfileModel());
+    _model = createModel(context, () => AdminEditMemberModel());
 
     _model.nameTFController ??=
         TextEditingController(text: currentUserDisplayName);
@@ -77,7 +76,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
               ),
               title: Text(
                 FFLocalizations.of(context).getText(
-                  '7obxr4eb' /* Edit profile */,
+                  '4mv9s4ih' /* Edit Member */,
                 ),
                 style: FlutterFlowTheme.of(context).titleLarge,
               ),
@@ -261,7 +260,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                         decoration: InputDecoration(
                                           labelText: FFLocalizations.of(context)
                                               .getText(
-                                            '90twvsq1' /* Name */,
+                                            'focov9ky' /* Name */,
                                           ),
                                           labelStyle: FlutterFlowTheme.of(
                                                   context)
@@ -348,131 +347,76 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 ],
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 7.0, 0.0, 7.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: Container(
-                                      width: 100.0,
-                                      height: 60.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        borderRadius:
-                                            BorderRadius.circular(15.0),
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          width: 2.0,
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 0.0, 5.0, 0.0),
-                                        child: FlutterFlowLanguageSelector(
-                                          width: 200.0,
-                                          height: double.infinity,
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .tertiary,
-                                          borderColor: Colors.transparent,
-                                          dropdownIconColor: Colors.white,
-                                          borderRadius: 8.0,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium,
-                                          hideFlags: false,
-                                          flagSize: 24.0,
-                                          flagTextGap: 8.0,
-                                          currentLanguage:
-                                              FFLocalizations.of(context)
-                                                  .languageCode,
-                                          languages:
-                                              FFLocalizations.languages(),
-                                          onChanged: (lang) =>
-                                              setAppLanguage(context, lang),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Expanded(
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      await currentUserReference!
-                                          .update(createUsersRecordData(
-                                        displayName:
-                                            _model.nameTFController.text,
-                                        photoUrl: _model.uploadedFileUrl,
-                                      ));
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'تم تحديث بيناتك الشخصية',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                    },
-                                    text: FFLocalizations.of(context).getText(
-                                      'xtovmyqt' /* Save your edite */,
-                                    ),
-                                    options: FFButtonOptions(
-                                      width: 150.0,
-                                      height: 60.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmallFamily,
-                                            color: Colors.white,
-                                            fontSize: 20.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 5.0, 0.0, 0.0),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        await currentUserReference!
+                                            .update(createUsersRecordData(
+                                          displayName:
+                                              _model.nameTFController.text,
+                                          photoUrl: _model.uploadedFileUrl,
+                                        ));
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'تم تحديث بيناتك الشخصية',
+                                              style: TextStyle(
+                                                color:
                                                     FlutterFlowTheme.of(context)
-                                                        .titleSmallFamily),
+                                                        .primaryText,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondary,
                                           ),
-                                      elevation: 3.0,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
+                                        );
+                                      },
+                                      text: FFLocalizations.of(context).getText(
+                                        '76hkg0yd' /* Save your edite */,
                                       ),
-                                      borderRadius: BorderRadius.circular(18.0),
+                                      options: FFButtonOptions(
+                                        width: 150.0,
+                                        height: 50.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmallFamily,
+                                              color: Colors.white,
+                                              fontSize: 20.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmallFamily),
+                                            ),
+                                        elevation: 3.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(18.0),
+                                      ),
                                     ),
                                   ),
                                 ),

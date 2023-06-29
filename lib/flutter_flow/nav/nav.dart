@@ -140,6 +140,40 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             initialPage: '',
             page: UpdatePasswordWidget(),
           ),
+        ),
+        FFRoute(
+          name: 'adminPage',
+          path: '/adminPage',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'adminPage')
+              : NavBarPage(
+                  initialPage: 'adminPage',
+                  page: AdminPageWidget(),
+                ),
+        ),
+        FFRoute(
+          name: 'adminMembers',
+          path: '/adminMembers',
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AdminMembersWidget(),
+          ),
+        ),
+        FFRoute(
+          name: 'adminEditMember',
+          path: '/adminEditMember',
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AdminEditMemberWidget(),
+          ),
+        ),
+        FFRoute(
+          name: 'adminCountriesList',
+          path: '/adminCountriesList',
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AdminCountriesListWidget(),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

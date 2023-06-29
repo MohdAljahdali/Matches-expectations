@@ -21,16 +21,10 @@ class FFAppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool _tournamentsListIsActive = true;
-  bool get tournamentsListIsActive => _tournamentsListIsActive;
-  set tournamentsListIsActive(bool _value) {
-    _tournamentsListIsActive = _value;
-  }
-
-  String _tournamentsRandomCode = '';
-  String get tournamentsRandomCode => _tournamentsRandomCode;
-  set tournamentsRandomCode(String _value) {
-    _tournamentsRandomCode = _value;
+  bool _jhgj = false;
+  bool get jhgj => _jhgj;
+  set jhgj(bool _value) {
+    _jhgj = _value;
   }
 }
 

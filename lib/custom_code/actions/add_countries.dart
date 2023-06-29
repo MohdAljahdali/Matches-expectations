@@ -14,10 +14,9 @@ import 'index.dart'; // Imports other custom actions
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
-Future<List<CountriesDTStruct>> addCountries() async {
-  List<CountriesDTStruct> listOfNewCountries = [];
+Future<String> addCountries() async {
   final firestore = FirebaseFirestore.instance;
-  final TeamsRef = firestore.collection('Countries');
+  final CountriesRef = firestore.collection('Countries');
   var headers = {
     'x-rapidapi-key': 'ba825d70e7634e7015d2f116c1a07e03',
     'x-rapidapi-host': 'v3.football.api-sports.io'
@@ -37,17 +36,17 @@ Future<List<CountriesDTStruct>> addCountries() async {
     countriesresponse.forEach((country) async {
       final addTeamsDoc = {
         'name': country['name'].toString(),
-        'nameAr': country['nameAr'].toString(),
+        'nameAr': '',
         'code': country['code'].toString(),
         'flag': country['flag'].toString(),
+        'isActive': false,
       };
-      await TeamsRef.doc(country['code'].toString()).get().then((doc) {
+      await CountriesRef.doc(country['code'].toString()).get().then((doc) {
         if (!doc.exists) {
-          TeamsRef.doc(country['code'].toString()).set(addTeamsDoc);
-          listOfNewCountries.add(CountriesDTStruct.fromMap(addTeamsDoc));
+          CountriesRef.doc(country['code'].toString()).set(addTeamsDoc);
         }
       });
     });
   } else {}
-  return listOfNewCountries;
+  return "listOfNewCountries";
 }

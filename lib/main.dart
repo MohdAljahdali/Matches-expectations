@@ -133,6 +133,7 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'Home': HomeWidget(),
       'Profile': ProfileWidget(),
+      'adminPage': AdminPageWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -201,6 +202,20 @@ class _NavBarPageState extends State<NavBarPage> {
                   Icon(
                     Icons.person_2_sharp,
                     color: currentIndex == 1
+                        ? FlutterFlowTheme.of(context).primaryText
+                        : FlutterFlowTheme.of(context).primaryText,
+                    size: 24.0,
+                  ),
+                ],
+              ),
+            ),
+            FloatingNavbarItem(
+              customWidget: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.person_2_sharp,
+                    color: currentIndex == 2
                         ? FlutterFlowTheme.of(context).primaryText
                         : FlutterFlowTheme.of(context).primaryText,
                     size: 24.0,

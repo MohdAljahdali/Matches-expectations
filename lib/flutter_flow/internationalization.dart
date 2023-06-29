@@ -482,6 +482,163 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
+  // adminPage
+  {
+    'g68blc5o': {
+      'en': 'Admin control',
+      'ar': 'تحكم الاداري',
+    },
+    '8n30lm2h': {
+      'en': 'Log out',
+      'ar': 'تسجيل خروج',
+    },
+    'zihcwu0d': {
+      'en': 'Profile',
+      'ar': 'الملف الشخصي',
+    },
+    'a6cbyqq4': {
+      'en': 'Members',
+      'ar': 'الأعضاء',
+    },
+    'a7ne7km4': {
+      'en': '',
+      'ar': '',
+    },
+    'ru4og5w1': {
+      'en': 'Countries',
+      'ar': 'الدول',
+    },
+    'c2lqul1g': {
+      'en': '',
+      'ar': '',
+    },
+    'p4z0veqy': {
+      'en': '',
+      'ar': '',
+    },
+  },
+  // adminMembers
+  {
+    'yyt6gev0': {
+      'en': 'Edit',
+      'ar': 'تعديل',
+    },
+    'abwl4kbp': {
+      'en': 'Edit profile',
+      'ar': 'تعديل الملف الشخصي',
+    },
+    '062svchd': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // adminEditMember
+  {
+    'focov9ky': {
+      'en': 'Name',
+      'ar': 'الاسم',
+    },
+    '76hkg0yd': {
+      'en': 'Save your edite',
+      'ar': 'حفظ التعديل',
+    },
+    'qifu6l25': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    'gzvnfkhm': {
+      'en': '',
+      'ar': '',
+    },
+    '2x390i6z': {
+      'en': 'Mxnimum 25 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    'jveqdyft': {
+      'en': 'Invalid Email Format',
+      'ar': 'تنسيق بريد إلكتروني غير صالح',
+    },
+    'b293909w': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '6bspw134': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    '7x4c3g3j': {
+      'en': 'Minimum eight characters',
+      'ar': 'ثمانية أحرف على الأقل',
+    },
+    '43dhd8om': {
+      'en': 'Mxnimum 16 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    'aoho5odh': {
+      'en':
+          'at least one uppercase letter, one lowercase letter and one number',
+      'ar': 'حرف كبير واحد على الأقل وحرف صغير واحد ورقم واحد',
+    },
+    'y66fb0ol': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '70ckzccr': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    '9zieejrn': {
+      'en': 'Minimum eight characters',
+      'ar': 'ثمانية أحرف على الأقل',
+    },
+    'gytp1yha': {
+      'en': 'Mxnimum 16 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    'e20g6vo4': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'wq9mpr3b': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    '7gcas2ae': {
+      'en': 'Minimum 8 characters',
+      'ar': '8 أحرف على الأقل',
+    },
+    'fx6uizrp': {
+      'en': 'Mxnimum 20 characters',
+      'ar': '20 حرفًا بحد أقصى',
+    },
+    'a4wljn4x': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '4mv9s4ih': {
+      'en': 'Edit Member',
+      'ar': 'تعديل بيانات العضو',
+    },
+    'z4hfyabm': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // adminCountriesList
+  {
+    '8fslagjl': {
+      'en': 'List Item Title',
+      'ar': '',
+    },
+    'rjwugg1n': {
+      'en': 'Countries List',
+      'ar': 'قائمة الدول',
+    },
+    'l2v96hef': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
   // signInComponent
   {
     '73htmsl1': {
@@ -548,44 +705,44 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'xqzg432p': {
-      'en': '',
-      'ar': '',
+      'en': 'Invalid file format',
+      'ar': 'تنسيق ملف غير صالح',
     },
     'y4vkdd6m': {
-      'en': '',
-      'ar': '',
+      'en': 'Uploading File',
+      'ar': 'تحميل الملف',
     },
     'nd0vx833': {
-      'en': '',
-      'ar': '',
+      'en': ' Success',
+      'ar': 'نجاح',
     },
     '6sqqp824': {
-      'en': '',
-      'ar': '',
+      'en': 'Failed to upload data ',
+      'ar': 'فشل تحميل البيانات',
     },
     'u8v02bec': {
       'en': '',
       'ar': '',
     },
     'rlv7863u': {
-      'en': '',
-      'ar': '',
+      'en': 'Choose source',
+      'ar': 'اختر المصدر',
     },
     '1gp8ulqa': {
-      'en': '',
-      'ar': '',
+      'en': 'Gallery',
+      'ar': 'معرض',
     },
     'mzm4q5me': {
-      'en': '',
-      'ar': '',
+      'en': 'Gallery (Photo)',
+      'ar': 'معرض (صور)',
     },
     's6pv9qpd': {
-      'en': '',
-      'ar': '',
+      'en': 'Gallery (Video)',
+      'ar': 'معرض (فيديو)',
     },
     'szogxh1r': {
-      'en': '',
-      'ar': '',
+      'en': 'Camera',
+      'ar': 'الكاميرا',
     },
     '3bfnvj4i': {
       'en': '',

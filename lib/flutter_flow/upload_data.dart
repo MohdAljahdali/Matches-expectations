@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:blurhash_dart/blurhash_dart.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
@@ -7,14 +8,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mime_type/mime_type.dart';
 import 'package:video_player/video_player.dart';
+import 'package:image/image.dart' as img;
 
 import '../auth/firebase_auth/auth_util.dart';
 import 'flutter_flow_util.dart';
 
 const allowedFormats = {'image/png', 'image/jpeg', 'video/mp4', 'image/gif'};
 
-class SelectedMedia {
-  const SelectedMedia({
+class SelectedFile {
+  const SelectedFile({
     this.storagePath = '',
     this.filePath,
     required this.bytes,
@@ -43,7 +45,7 @@ enum MediaSource {
   camera,
 }
 
-Future<List<SelectedMedia>?> selectMediaWithSourceBottomSheet({
+Future<List<SelectedFile>?> selectMediaWithSourceBottomSheet({
   required BuildContext context,
   String? storageFolderPath,
   double? maxWidth,
@@ -88,7 +90,9 @@ Future<List<SelectedMedia>?> selectMediaWithSourceBottomSheet({
                 padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
                 child: ListTile(
                   title: Text(
-                    'Choose Source',
+                    FFLocalizations.of(context).getText(
+                      'rlv7863u' /* Choose source */,
+                    ),
                     textAlign: TextAlign.center,
                     style: GoogleFonts.getFont(
                       pickerFontFamily,
@@ -105,27 +109,39 @@ Future<List<SelectedMedia>?> selectMediaWithSourceBottomSheet({
             ],
             if (allowPhoto && allowVideo) ...[
               createUploadMediaListTile(
-                'Gallery (Photo)',
+                FFLocalizations.of(context).getText(
+                  'mzm4q5me' /* Gallery (Photo) */,
+                ),
                 MediaSource.photoGallery,
               ),
               const Divider(),
               createUploadMediaListTile(
-                'Gallery (Video)',
+                FFLocalizations.of(context).getText(
+                  's6pv9qpd' /* Gallery (Video) */,
+                ),
                 MediaSource.videoGallery,
               ),
             ] else if (allowPhoto)
               createUploadMediaListTile(
-                'Gallery',
+                FFLocalizations.of(context).getText(
+                  '1gp8ulqa' /* Gallery */,
+                ),
                 MediaSource.photoGallery,
               )
             else
               createUploadMediaListTile(
-                'Gallery',
+                FFLocalizations.of(context).getText(
+                  '1gp8ulqa' /* Gallery */,
+                ),
                 MediaSource.videoGallery,
               ),
             if (!kIsWeb) ...[
               const Divider(),
-              createUploadMediaListTile('Camera', MediaSource.camera),
+              createUploadMediaListTile(
+                  FFLocalizations.of(context).getText(
+                    'szogxh1r' /* Camera */,
+                  ),
+                  MediaSource.camera),
               const Divider(),
             ],
             const SizedBox(height: 10),
@@ -148,7 +164,7 @@ Future<List<SelectedMedia>?> selectMediaWithSourceBottomSheet({
   );
 }
 
-Future<List<SelectedMedia>?> selectMedia({
+Future<List<SelectedFile>?> selectMedia({
   String? storageFolderPath,
   double? maxWidth,
   double? maxHeight,
@@ -181,12 +197,17 @@ Future<List<SelectedMedia>?> selectMedia({
               ? _getVideoDimensions(media.path)
               : _getImageDimensions(mediaBytes)
           : null;
-
-      return SelectedMedia(
+      final blurHash = includeBlurHash
+          ? isVideo
+              ? null
+              : await _getImageBlurHash(mediaBytes)
+          : null;
+      return SelectedFile(
         storagePath: path,
         filePath: media.path,
         bytes: mediaBytes,
         dimensions: await dimensions,
+        blurHash: blurHash,
       );
     }));
   }
@@ -213,13 +234,18 @@ Future<List<SelectedMedia>?> selectMedia({
           ? _getVideoDimensions(pickedMedia.path)
           : _getImageDimensions(mediaBytes)
       : null;
-
+  final blurHash = includeBlurHash
+      ? isVideo
+          ? null
+          : await _getImageBlurHash(mediaBytes)
+      : null;
   return [
-    SelectedMedia(
+    SelectedFile(
       storagePath: path,
       filePath: pickedMedia.path,
       bytes: mediaBytes,
       dimensions: await dimensions,
+      blurHash: blurHash,
     ),
   ];
 }
@@ -231,12 +257,14 @@ bool validateFileFormat(String filePath, BuildContext context) {
   ScaffoldMessenger.of(context)
     ..hideCurrentSnackBar()
     ..showSnackBar(SnackBar(
-      content: Text('Invalid file format: ${mime(filePath)}'),
+      content: Text(FFLocalizations.of(context).getText(
+        'xqzg432p' /* Invalid file format */,
+      )),
     ));
   return false;
 }
 
-Future<SelectedMedia?> selectFile({
+Future<SelectedFile?> selectFile({
   String? storageFolderPath,
   List<String>? allowedExtensions,
 }) =>
@@ -246,7 +274,7 @@ Future<SelectedMedia?> selectFile({
       multiFile: false,
     ).then((value) => value?.first);
 
-Future<List<SelectedMedia>?> selectFiles({
+Future<List<SelectedFile>?> selectFiles({
   String? storageFolderPath,
   List<String>? allowedExtensions,
   bool multiFile = false,
@@ -266,7 +294,7 @@ Future<List<SelectedMedia>?> selectFiles({
       final file = e.value;
       final storagePath =
           _getStoragePath(storageFolderPath, file.name, false, index);
-      return SelectedMedia(
+      return SelectedFile(
         storagePath: storagePath,
         filePath: isWeb ? null : file.path,
         bytes: file.bytes!,
@@ -279,13 +307,33 @@ Future<List<SelectedMedia>?> selectFiles({
   }
   final storagePath = _getStoragePath(storageFolderPath, file.name, false);
   return [
-    SelectedMedia(
+    SelectedFile(
       storagePath: storagePath,
       filePath: isWeb ? null : file.path,
       bytes: file.bytes!,
     )
   ];
 }
+
+List<SelectedFile> selectedFilesFromUploadedFiles(
+  List<FFUploadedFile> uploadedFiles, {
+  String? storageFolderPath,
+  bool isMultiData = false,
+}) =>
+    uploadedFiles.asMap().entries.map(
+      (entry) {
+        final index = entry.key;
+        final file = entry.value;
+        return SelectedFile(
+            storagePath: _getStoragePath(
+              storageFolderPath != null ? storageFolderPath : null,
+              file.name!,
+              false,
+              isMultiData ? index : null,
+            ),
+            bytes: file.bytes!);
+      },
+    ).toList();
 
 Future<MediaDimensions> _getImageDimensions(Uint8List mediaBytes) async {
   final image = await decodeImageFromList(mediaBytes);
@@ -302,6 +350,19 @@ Future<MediaDimensions> _getVideoDimensions(String path) async {
   final size = videoPlayerController.value.size;
   return MediaDimensions(width: size.width, height: size.height);
 }
+
+String? _generateBlurHash(Uint8List mediaBytes) {
+  final image = img.decodeImage(mediaBytes);
+  if (image != null) {
+    final resizedImg = img.copyResize(image, width: 64);
+    final blurHash = BlurHash.encode(resizedImg);
+    return blurHash.hash;
+  }
+  return null;
+}
+
+Future<String?> _getImageBlurHash(Uint8List mediaBytes) async =>
+    await compute(_generateBlurHash, mediaBytes);
 
 String _getStoragePath(
   String? pathPrefix,

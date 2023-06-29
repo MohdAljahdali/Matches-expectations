@@ -52,6 +52,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: NestedScrollView(
+          floatHeaderSlivers: true,
           headerSliverBuilder: (context, _) => [
             SliverAppBar(
               pinned: false,
@@ -131,6 +132,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                             _model.isDataUploading = true);
                                         var selectedUploadedFiles =
                                             <FFUploadedFile>[];
+
                                         var downloadUrls = <String>[];
                                         try {
                                           selectedUploadedFiles = selectedMedia
