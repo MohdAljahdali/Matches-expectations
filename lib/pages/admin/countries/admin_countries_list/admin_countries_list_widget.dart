@@ -190,7 +190,7 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                                 Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    '8fslagjl' /* List Item Title */,
+                                                    '6020n0rr' /* List Item Title */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)

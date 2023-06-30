@@ -136,7 +136,10 @@ class _AdminMembersWidgetState extends State<AdminMembersWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(
                             10.0, 10.0, 10.0, 60.0),
                         child: StreamBuilder<List<UsersRecord>>(
-                          stream: queryUsersRecord(),
+                          stream: queryUsersRecord(
+                            queryBuilder: (usersRecord) =>
+                                usersRecord.where('uid', isEqualTo: '255'),
+                          ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
