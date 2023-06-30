@@ -14,7 +14,12 @@ import 'admin_members_model.dart';
 export 'admin_members_model.dart';
 
 class AdminMembersWidget extends StatefulWidget {
-  const AdminMembersWidget({Key? key}) : super(key: key);
+  const AdminMembersWidget({
+    Key? key,
+    required this.jghgfjh,
+  }) : super(key: key);
+
+  final DocumentReference? jghgfjh;
 
   @override
   _AdminMembersWidgetState createState() => _AdminMembersWidgetState();
@@ -136,10 +141,10 @@ class _AdminMembersWidgetState extends State<AdminMembersWidget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  await currentUserReference!
-                                      .update(createUsersRecordData(
-                                    displayName: '5655',
-                                    phoneNumber: '558',
+                                  await widget.jghgfjh!
+                                      .update(createCountriesRecordData(
+                                    name: '552',
+                                    code: '545',
                                   ));
                                 },
                               ),

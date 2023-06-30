@@ -156,7 +156,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/adminMembers',
           builder: (context, params) => NavBarPage(
             initialPage: '',
-            page: AdminMembersWidget(),
+            page: AdminMembersWidget(
+              jghgfjh: params.getParam(
+                  'jghgfjh', ParamType.DocumentReference, false, ['Countries']),
+            ),
           ),
         ),
         FFRoute(
