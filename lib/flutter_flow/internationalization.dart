@@ -626,10 +626,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // adminCountriesList
   {
-    'oj7lfqhs': {
-      'en': 'List Item Title',
-      'ar': '',
-    },
     'rjwugg1n': {
       'en': 'Countries List',
       'ar': 'قائمة الدول',
@@ -664,6 +660,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '9pmnm3ja': {
       'en': 'Forgot your password ',
       'ar': 'نسيت كلمة المرور',
+    },
+  },
+  // adminCountriesEidt
+  {
+    'qjluq91b': {
+      'en': 'English name',
+      'ar': 'الاسم الانجليزي',
+    },
+    'aytsfecw': {
+      'en': 'Arabic name',
+      'ar': 'الاسم العربي',
+    },
+    'udzy0oqe': {
+      'en': 'Active country',
+      'ar': 'تفعيل الدولة',
+    },
+    'zq3juaox': {
+      'en': 'Edit',
+      'ar': 'تعديل',
     },
   },
   // Miscellaneous

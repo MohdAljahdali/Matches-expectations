@@ -34,16 +34,26 @@ Future<String> addCountries() async {
     final countriesresponse = countriesjson['response'];
 
     countriesresponse.forEach((country) async {
-      final addTeamsDoc = {
-        'name': country['name'].toString(),
-        'nameAr': '',
-        'code': country['code'].toString(),
-        'flag': country['flag'].toString(),
-        'isActive': false,
-      };
-      await CountriesRef.doc(country['code'].toString()).get().then((doc) {
+      final _modelgfdvh = await queryCountriesRecordOnce(
+        queryBuilder: (countriesRecord) => countriesRecord
+            .where('code', isEqualTo: 'sa')
+            .where('nameAr', isEqualTo: 'gjkhj'),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
+
+      await CountriesRef.doc(country['code'].toString())
+          .get()
+          .then((doc) async {
         if (!doc.exists) {
-          CountriesRef.doc(country['code'].toString()).set(addTeamsDoc);
+          await CountriesRecord.collection
+              .doc(country['code'].toString())
+              .set(createCountriesRecordData(
+                name: country['name'].toString(),
+                nameAr: '',
+                code: country['code'].toString(),
+                flag: country['flag'].toString(),
+                isActive: false,
+              ));
         }
       });
     });

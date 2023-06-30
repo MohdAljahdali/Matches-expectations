@@ -124,7 +124,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                         maxWidth: 100.00,
                                         maxHeight: 100.00,
                                         allowPhoto: true,
-                                        includeBlurHash: true,
                                       );
                                       if (selectedMedia != null &&
                                           selectedMedia.every((m) =>
@@ -384,7 +383,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium,
-                                          hideFlags: false,
+                                          hideFlags: true,
                                           flagSize: 24.0,
                                           flagTextGap: 8.0,
                                           currentLanguage:
