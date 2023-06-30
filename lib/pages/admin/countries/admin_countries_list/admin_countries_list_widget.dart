@@ -305,7 +305,7 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                                                   .viewInsetsOf(
                                                                       context),
                                                               child: Container(
-                                                                height: 300.0,
+                                                                height: 350.0,
                                                                 child:
                                                                     AdminCountriesEidtWidget(
                                                                   countrieRef:
