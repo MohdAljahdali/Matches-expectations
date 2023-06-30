@@ -143,9 +143,7 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: StreamBuilder<List<CountriesRecord>>(
-                            stream: FFAppState().adminCountriesList(
-                              requestFn: () => queryCountriesRecord(),
-                            ),
+                            stream: queryCountriesRecord(),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -341,8 +339,6 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                                               createCountriesRecordData(
                                                         isActive: true,
                                                       ));
-                                                      FFAppState()
-                                                          .clearAdminCountriesListCache();
                                                     },
                                                   );
                                                 } else {
@@ -374,8 +370,6 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                                               createCountriesRecordData(
                                                         isActive: false,
                                                       ));
-                                                      FFAppState()
-                                                          .clearAdminCountriesListCache();
                                                     },
                                                   );
                                                 }

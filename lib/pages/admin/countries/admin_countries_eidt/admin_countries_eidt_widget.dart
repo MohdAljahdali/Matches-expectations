@@ -287,7 +287,6 @@ class _AdminCountriesEidtWidgetState extends State<AdminCountriesEidtWidget> {
                               nameAr: _model.arabicNameTFController.text,
                               isActive: _model.activeCountryTLValue,
                             ));
-                            FFAppState().clearAdminCountriesListCache();
                             Navigator.pop(context);
                           },
                           text: FFLocalizations.of(context).getText(

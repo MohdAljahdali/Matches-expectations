@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'flutter_flow/request_manager.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import 'backend/api_requests/api_manager.dart';
@@ -27,22 +26,6 @@ class FFAppState extends ChangeNotifier {
   set jhgj(bool _value) {
     _jhgj = _value;
   }
-
-  final _adminCountriesListManager =
-      StreamRequestManager<List<CountriesRecord>>();
-  Stream<List<CountriesRecord>> adminCountriesList({
-    String? uniqueQueryKey,
-    bool? overrideCache,
-    required Stream<List<CountriesRecord>> Function() requestFn,
-  }) =>
-      _adminCountriesListManager.performRequest(
-        uniqueQueryKey: uniqueQueryKey,
-        overrideCache: overrideCache,
-        requestFn: requestFn,
-      );
-  void clearAdminCountriesListCache() => _adminCountriesListManager.clear();
-  void clearAdminCountriesListCacheKey(String? uniqueKey) =>
-      _adminCountriesListManager.clearRequest(uniqueKey);
 }
 
 LatLng? _latLngFromString(String? val) {
