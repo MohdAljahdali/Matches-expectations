@@ -137,8 +137,11 @@ class _AdminMembersWidgetState extends State<AdminMembersWidget> {
                             10.0, 10.0, 10.0, 60.0),
                         child: StreamBuilder<List<UsersRecord>>(
                           stream: queryUsersRecord(
-                            queryBuilder: (usersRecord) =>
-                                usersRecord.where('uid', isEqualTo: '255'),
+                            queryBuilder: (usersRecord) => usersRecord
+                                .where('uid', isEqualTo: '255')
+                                .where('email', isEqualTo: '5254')
+                                .orderBy('display_name')
+                                .orderBy('photo_url'),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
