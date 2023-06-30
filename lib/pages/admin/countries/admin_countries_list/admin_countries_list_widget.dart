@@ -137,6 +137,7 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                         lineStyle: DividerLineStyle.dashed,
                       ),
                       SingleChildScrollView(
+                        primary: false,
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
