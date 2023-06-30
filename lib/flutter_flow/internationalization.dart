@@ -626,7 +626,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // adminCountriesList
   {
-    'gfq57wac': {
+    'oj7lfqhs': {
       'en': 'List Item Title',
       'ar': '',
     },
