@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:styled_divider/styled_divider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -118,6 +119,52 @@ class _AdminMembersWidgetState extends State<AdminMembersWidget> {
                                 ),
                                 onPressed: () async {
                                   setState(() {});
+                                },
+                              ),
+                              FlutterFlowIconButton(
+                                borderColor:
+                                    FlutterFlowTheme.of(context).primaryText,
+                                borderRadius: 20.0,
+                                borderWidth: 1.0,
+                                buttonSize: 40.0,
+                                fillColor:
+                                    FlutterFlowTheme.of(context).primaryText,
+                                icon: Icon(
+                                  Icons.edit,
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  size: 24.0,
+                                ),
+                                onPressed: () async {
+                                  await currentUserReference!
+                                      .update(createUsersRecordData(
+                                    displayName: '5655',
+                                    phoneNumber: '558',
+                                  ));
+                                },
+                              ),
+                              FlutterFlowIconButton(
+                                borderColor:
+                                    FlutterFlowTheme.of(context).primaryText,
+                                borderRadius: 20.0,
+                                borderWidth: 1.0,
+                                buttonSize: 40.0,
+                                fillColor:
+                                    FlutterFlowTheme.of(context).primaryText,
+                                icon: Icon(
+                                  Icons.add,
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  size: 24.0,
+                                ),
+                                onPressed: () async {
+                                  await CountriesRecord.collection
+                                      .doc()
+                                      .set(createCountriesRecordData(
+                                        name: '525',
+                                        nameAr: '55888',
+                                        code: '5656',
+                                      ));
                                 },
                               ),
                             ],
