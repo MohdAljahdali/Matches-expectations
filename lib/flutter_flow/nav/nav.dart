@@ -177,6 +177,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             initialPage: '',
             page: AdminCountriesListWidget(),
           ),
+        ),
+        FFRoute(
+          name: 'adminTournamentsAdd',
+          path: '/adminTournamentsAdd',
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AdminTournamentsAddWidget(),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -357,10 +365,10 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: Colors.transparent,
+                  color: FlutterFlowTheme.of(context).primaryBackground,
                   child: Image.asset(
-                    'assets/images/add-photo-dark.png',
-                    fit: BoxFit.none,
+                    'assets/images/Swet.gif',
+                    fit: BoxFit.fitWidth,
                   ),
                 )
               : page;

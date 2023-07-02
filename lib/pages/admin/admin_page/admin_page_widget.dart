@@ -303,23 +303,18 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                         child: ListTile(
                           title: Text(
                             FFLocalizations.of(context).getText(
-                              'a6cbyqq4' /* Members */,
+                              'dgvk0tnk' /* Member */,
                             ),
-                            style: FlutterFlowTheme.of(context)
-                                .titleMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .titleMediumFamily,
-                                  fontSize: 18.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleMediumFamily),
-                                  lineHeight: 3.0,
-                                ),
+                            style: FlutterFlowTheme.of(context).titleLarge,
+                          ),
+                          trailing: Icon(
+                            Icons.arrow_forward_ios,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 30.0,
                           ),
                           tileColor:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          dense: true,
+                          dense: false,
                         ),
                       ),
                       Divider(
@@ -343,22 +338,53 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                         child: ListTile(
                           title: Text(
                             FFLocalizations.of(context).getText(
-                              'ru4og5w1' /* Countries */,
+                              'b9axb78m' /* Countries */,
                             ),
-                            style: FlutterFlowTheme.of(context)
-                                .titleMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .titleMediumFamily,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleMediumFamily),
-                                  lineHeight: 3.0,
-                                ),
+                            style: FlutterFlowTheme.of(context).titleLarge,
+                          ),
+                          trailing: Icon(
+                            Icons.arrow_forward_ios,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 30.0,
                           ),
                           tileColor:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          dense: true,
+                          dense: false,
+                        ),
+                      ),
+                      Divider(
+                        height: 1.0,
+                        thickness: 1.0,
+                        color: FlutterFlowTheme.of(context).accent4,
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('adminTournamentsAdd');
+                        },
+                        child: ListTile(
+                          title: Text(
+                            FFLocalizations.of(context).getText(
+                              'by4o5ylx' /* Tournaments */,
+                            ),
+                            style: FlutterFlowTheme.of(context).titleLarge,
+                          ),
+                          trailing: Icon(
+                            Icons.arrow_forward_ios,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 30.0,
+                          ),
+                          tileColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          dense: false,
                         ),
                       ),
                       Divider(

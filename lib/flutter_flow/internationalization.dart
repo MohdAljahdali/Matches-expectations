@@ -496,21 +496,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Profile',
       'ar': 'الملف الشخصي',
     },
-    'a6cbyqq4': {
-      'en': 'Members',
-      'ar': 'الأعضاء',
+    'dgvk0tnk': {
+      'en': 'Member',
+      'ar': 'الاعضاء',
     },
-    'a7ne7km4': {
-      'en': '',
-      'ar': '',
-    },
-    'ru4og5w1': {
+    'b9axb78m': {
       'en': 'Countries',
       'ar': 'الدول',
     },
-    'c2lqul1g': {
-      'en': '',
-      'ar': '',
+    'by4o5ylx': {
+      'en': 'Tournaments',
+      'ar': 'البطولات',
     },
     'p4z0veqy': {
       'en': '',
@@ -631,6 +627,61 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'قائمة الدول',
     },
     'l2v96hef': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // adminTournamentsAdd
+  {
+    'n8gnz9gs': {
+      'en': 'Option 1',
+      'ar': '',
+    },
+    'qbimm6nk': {
+      'en': 'Country',
+      'ar': 'الدولة',
+    },
+    '3wa7lagy': {
+      'en': 'Search for an Country...',
+      'ar': 'البحث عن الدولة ...',
+    },
+    '46dmj54o': {
+      'en': '2022',
+      'ar': '2022',
+    },
+    'zhnzdd7v': {
+      'en': '2023',
+      'ar': '2023',
+    },
+    'vkxd2f0q': {
+      'en': '2024',
+      'ar': '2024',
+    },
+    'z0b7l9r1': {
+      'en': '2025',
+      'ar': '2025',
+    },
+    'afpdh0u9': {
+      'en': '2026',
+      'ar': '2026',
+    },
+    'tqngvb78': {
+      'en': '2027',
+      'ar': '2027',
+    },
+    'mng90tob': {
+      'en': 'Please select...',
+      'ar': '',
+    },
+    'nbwl5xx3': {
+      'en': 'Search for an item...',
+      'ar': '',
+    },
+    'rcrsp1mh': {
+      'en': 'Add tournaments',
+      'ar': 'أضافة بطولات',
+    },
+    'z72dk26j': {
       'en': 'Home',
       'ar': '',
     },

@@ -1,35 +1,36 @@
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/pages/admin/countries/admin_countries_eidt/admin_countries_eidt_widget.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:styled_divider/styled_divider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'admin_countries_list_model.dart';
-export 'admin_countries_list_model.dart';
+import 'admin_tournaments_add_model.dart';
+export 'admin_tournaments_add_model.dart';
 
-class AdminCountriesListWidget extends StatefulWidget {
-  const AdminCountriesListWidget({Key? key}) : super(key: key);
+class AdminTournamentsAddWidget extends StatefulWidget {
+  const AdminTournamentsAddWidget({Key? key}) : super(key: key);
 
   @override
-  _AdminCountriesListWidgetState createState() =>
-      _AdminCountriesListWidgetState();
+  _AdminTournamentsAddWidgetState createState() =>
+      _AdminTournamentsAddWidgetState();
 }
 
-class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
-  late AdminCountriesListModel _model;
+class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
+  late AdminTournamentsAddModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AdminCountriesListModel());
+    _model = createModel(context, () => AdminTournamentsAddModel());
   }
 
   @override
@@ -68,12 +69,12 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                   size: 30.0,
                 ),
                 onPressed: () async {
-                  context.pop();
+                  context.safePop();
                 },
               ),
               title: Text(
                 FFLocalizations.of(context).getText(
-                  'rjwugg1n' /* Countries List */,
+                  'rcrsp1mh' /* Add tournaments */,
                 ),
                 style: FlutterFlowTheme.of(context).titleLarge,
               ),
@@ -106,8 +107,147 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                 10.0, 0.0, 10.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
+                                StreamBuilder<List<CountriesRecord>>(
+                                  stream: queryCountriesRecord(
+                                    queryBuilder: (countriesRecord) =>
+                                        countriesRecord.where('isActive',
+                                            isEqualTo: true),
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: SpinKitFadingCircle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            size: 50.0,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<CountriesRecord>
+                                        dropDownCountriesRecordList =
+                                        snapshot.data!;
+                                    return FlutterFlowDropDown<String>(
+                                      controller:
+                                          _model.dropDownValueController1 ??=
+                                              FormFieldController<String>(null),
+                                      options: dropDownCountriesRecordList
+                                          .map((e) => e.code)
+                                          .toList(),
+                                      optionLabels: FFLocalizations.of(context)
+                                                  .languageCode ==
+                                              'en'
+                                          ? dropDownCountriesRecordList
+                                              .map((e) => e.name)
+                                              .toList()
+                                          : dropDownCountriesRecordList
+                                              .map((e) => e.nameAr)
+                                              .toList(),
+                                      onChanged: (val) => setState(
+                                          () => _model.dropDownValue1 = val),
+                                      width: 170.0,
+                                      height: 50.0,
+                                      searchHintTextStyle:
+                                          FlutterFlowTheme.of(context)
+                                              .labelMedium,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                      hintText:
+                                          FFLocalizations.of(context).getText(
+                                        'qbimm6nk' /* Country */,
+                                      ),
+                                      searchHintText:
+                                          FFLocalizations.of(context).getText(
+                                        '3wa7lagy' /* Search for an Country... */,
+                                      ),
+                                      icon: Icon(
+                                        Icons.keyboard_arrow_down_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      elevation: 2.0,
+                                      borderColor: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      borderWidth: 2.0,
+                                      borderRadius: 8.0,
+                                      margin: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 4.0, 16.0, 4.0),
+                                      hidesUnderline: true,
+                                      isSearchable: true,
+                                    );
+                                  },
+                                ),
+                                FlutterFlowDropDown<String>(
+                                  controller:
+                                      _model.dropDownValueController2 ??=
+                                          FormFieldController<String>(
+                                    _model.dropDownValue2 ??=
+                                        DateTime.now().year.toString(),
+                                  ),
+                                  options: [
+                                    '2022',
+                                    '2023',
+                                    '2024',
+                                    '2025',
+                                    '2026',
+                                    '2027'
+                                  ],
+                                  optionLabels: [
+                                    FFLocalizations.of(context).getText(
+                                      '46dmj54o' /* 2022 */,
+                                    ),
+                                    FFLocalizations.of(context).getText(
+                                      'zhnzdd7v' /* 2023 */,
+                                    ),
+                                    FFLocalizations.of(context).getText(
+                                      'vkxd2f0q' /* 2024 */,
+                                    ),
+                                    FFLocalizations.of(context).getText(
+                                      'z0b7l9r1' /* 2025 */,
+                                    ),
+                                    FFLocalizations.of(context).getText(
+                                      'afpdh0u9' /* 2026 */,
+                                    ),
+                                    FFLocalizations.of(context).getText(
+                                      'tqngvb78' /* 2027 */,
+                                    )
+                                  ],
+                                  onChanged: (val) => setState(
+                                      () => _model.dropDownValue2 = val),
+                                  width: 120.0,
+                                  height: 50.0,
+                                  textStyle:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  hintText: FFLocalizations.of(context).getText(
+                                    'mng90tob' /* Please select... */,
+                                  ),
+                                  icon: Icon(
+                                    Icons.keyboard_arrow_down_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
+                                  ),
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  elevation: 2.0,
+                                  borderColor:
+                                      FlutterFlowTheme.of(context).alternate,
+                                  borderWidth: 2.0,
+                                  borderRadius: 8.0,
+                                  margin: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 4.0, 16.0, 4.0),
+                                  hidesUnderline: true,
+                                  isSearchable: false,
+                                ),
                                 FlutterFlowIconButton(
                                   borderColor:
                                       FlutterFlowTheme.of(context).primaryText,
@@ -117,13 +257,13 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                   fillColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                   icon: Icon(
-                                    Icons.person_add,
+                                    Icons.add,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
                                     size: 24.0,
                                   ),
-                                  onPressed: () async {
-                                    await actions.addCountries();
+                                  onPressed: () {
+                                    print('IconButton pressed ...');
                                   },
                                 ),
                               ],

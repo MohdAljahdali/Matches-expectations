@@ -16,3 +16,5 @@ export '/pages/admin/members/admin_edit_member/admin_edit_member_widget.dart'
     show AdminEditMemberWidget;
 export '/pages/admin/countries/admin_countries_list/admin_countries_list_widget.dart'
     show AdminCountriesListWidget;
+export '/pages/admin/tournaments/admin_tournaments_add/admin_tournaments_add_widget.dart'
+    show AdminTournamentsAddWidget;
