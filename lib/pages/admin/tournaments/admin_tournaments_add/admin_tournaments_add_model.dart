@@ -5,6 +5,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pages/admin/countries/admin_countries_eidt/admin_countries_eidt_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:styled_divider/styled_divider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -16,12 +18,14 @@ class AdminTournamentsAddModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for DropDown widget.
-  String? dropDownValue1;
-  FormFieldController<String>? dropDownValueController1;
-  // State field(s) for DropDown widget.
-  String? dropDownValue2;
-  FormFieldController<String>? dropDownValueController2;
+  // State field(s) for countryCodeDD widget.
+  String? countryCodeDDValue;
+  FormFieldController<String>? countryCodeDDValueController;
+  // State field(s) for seasonDD widget.
+  String? seasonDDValue;
+  FormFieldController<String>? seasonDDValueController;
+  // Stores action output result for [Custom Action - addTournaments] action in IconButton widget.
+  String? outputAddTournaments;
 
   /// Initialization and disposal methods.
 

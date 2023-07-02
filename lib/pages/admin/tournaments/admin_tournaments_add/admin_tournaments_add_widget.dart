@@ -5,6 +5,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pages/admin/countries/admin_countries_eidt/admin_countries_eidt_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:styled_divider/styled_divider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -131,26 +133,26 @@ class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
                                       );
                                     }
                                     List<CountriesRecord>
-                                        dropDownCountriesRecordList =
+                                        countryCodeDDCountriesRecordList =
                                         snapshot.data!;
                                     return FlutterFlowDropDown<String>(
-                                      controller:
-                                          _model.dropDownValueController1 ??=
-                                              FormFieldController<String>(null),
-                                      options: dropDownCountriesRecordList
+                                      controller: _model
+                                              .countryCodeDDValueController ??=
+                                          FormFieldController<String>(null),
+                                      options: countryCodeDDCountriesRecordList
                                           .map((e) => e.code)
                                           .toList(),
                                       optionLabels: FFLocalizations.of(context)
                                                   .languageCode ==
                                               'en'
-                                          ? dropDownCountriesRecordList
+                                          ? countryCodeDDCountriesRecordList
                                               .map((e) => e.name)
                                               .toList()
-                                          : dropDownCountriesRecordList
+                                          : countryCodeDDCountriesRecordList
                                               .map((e) => e.nameAr)
                                               .toList(),
-                                      onChanged: (val) => setState(
-                                          () => _model.dropDownValue1 = val),
+                                      onChanged: (val) => setState(() =>
+                                          _model.countryCodeDDValue = val),
                                       width: 170.0,
                                       height: 50.0,
                                       searchHintTextStyle:
@@ -187,10 +189,9 @@ class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
                                   },
                                 ),
                                 FlutterFlowDropDown<String>(
-                                  controller:
-                                      _model.dropDownValueController2 ??=
-                                          FormFieldController<String>(
-                                    _model.dropDownValue2 ??=
+                                  controller: _model.seasonDDValueController ??=
+                                      FormFieldController<String>(
+                                    _model.seasonDDValue ??=
                                         DateTime.now().year.toString(),
                                   ),
                                   options: [
@@ -222,7 +223,7 @@ class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
                                     )
                                   ],
                                   onChanged: (val) => setState(
-                                      () => _model.dropDownValue2 = val),
+                                      () => _model.seasonDDValue = val),
                                   width: 120.0,
                                   height: 50.0,
                                   textStyle:
@@ -262,8 +263,21 @@ class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
                                         .primaryBackground,
                                     size: 24.0,
                                   ),
-                                  onPressed: () {
-                                    print('IconButton pressed ...');
+                                  onPressed: () async {
+                                    _model.outputAddTournaments =
+                                        await actions.addTournaments(
+                                      _model.countryCodeDDValue!,
+                                      _model.seasonDDValue!,
+                                      random_data.randomString(
+                                        25,
+                                        25,
+                                        true,
+                                        true,
+                                        true,
+                                      ),
+                                    );
+
+                                    setState(() {});
                                   },
                                 ),
                               ],

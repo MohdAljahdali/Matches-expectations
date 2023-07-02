@@ -17,7 +17,6 @@ import 'package:http/http.dart' as http;
 Future<String> addTournaments(
   String countryCode,
   String season,
-  String type,
   String randomCode,
 ) async {
   //List<TournamentsDTStruct> listOfNewTournaments = [];
@@ -32,7 +31,7 @@ Future<String> addTournaments(
   var request = http.Request(
       'GET',
       Uri.parse(
-          'https://v3.football.api-sports.io/leagues?code=${countryCode.toString()}&season=${season.toString()}&type=${type.toString()}'));
+          'https://v3.football.api-sports.io/leagues?code=${countryCode.toString()}&season=${season.toString()}'));
 //https://v3.football.api-sports.io/teams?code=${code.toString()}&type=${type.toString()}
   request.headers.addAll(headers);
 
@@ -59,7 +58,7 @@ Future<String> addTournaments(
           'countryFlog': tournament['country']['flag'].toString(),
           'randomCode': randomCode,
           'is_Active': false,
-          'randomRef': getRandomString25(),
+          'randomRef': '',
         };
         await TournamentsRef.doc(tournament['league']['id'].toString() +
                 seasons['year'].toString())
