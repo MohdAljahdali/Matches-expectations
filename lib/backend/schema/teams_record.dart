@@ -51,6 +51,11 @@ class TeamsRecord extends FirestoreRecord {
   String get logo => _logo ?? '';
   bool hasLogo() => _logo != null;
 
+  // "tournamentsList" field.
+  List<DocumentReference>? _tournamentsList;
+  List<DocumentReference> get tournamentsList => _tournamentsList ?? const [];
+  bool hasTournamentsList() => _tournamentsList != null;
+
   void _initializeFields() {
     _teamID = castToType<int>(snapshotData['teamID']);
     _teamRef = snapshotData['teamRef'] as String?;
@@ -59,6 +64,7 @@ class TeamsRecord extends FirestoreRecord {
     _code = snapshotData['code'] as String?;
     _country = snapshotData['country'] as String?;
     _logo = snapshotData['logo'] as String?;
+    _tournamentsList = getDataList(snapshotData['tournamentsList']);
   }
 
   static CollectionReference get collection =>
@@ -123,13 +129,15 @@ class TeamsRecordDocumentEquality implements Equality<TeamsRecord> {
 
   @override
   bool equals(TeamsRecord? e1, TeamsRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.teamID == e2?.teamID &&
         e1?.teamRef == e2?.teamRef &&
         e1?.name == e2?.name &&
         e1?.nameAr == e2?.nameAr &&
         e1?.code == e2?.code &&
         e1?.country == e2?.country &&
-        e1?.logo == e2?.logo;
+        e1?.logo == e2?.logo &&
+        listEquality.equals(e1?.tournamentsList, e2?.tournamentsList);
   }
 
   @override
@@ -140,7 +148,8 @@ class TeamsRecordDocumentEquality implements Equality<TeamsRecord> {
         e?.nameAr,
         e?.code,
         e?.country,
-        e?.logo
+        e?.logo,
+        e?.tournamentsList
       ]);
 
   @override

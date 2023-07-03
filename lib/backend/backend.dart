@@ -9,6 +9,7 @@ import 'schema/users_record.dart';
 import 'schema/countries_record.dart';
 import 'schema/tournaments_record.dart';
 import 'schema/teams_record.dart';
+import 'schema/tournament_teams_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -20,6 +21,7 @@ export 'schema/users_record.dart';
 export 'schema/countries_record.dart';
 export 'schema/tournaments_record.dart';
 export 'schema/teams_record.dart';
+export 'schema/tournament_teams_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -223,6 +225,62 @@ Future<FFFirestorePage<TeamsRecord>> queryTeamsRecordPage({
     queryCollectionPage(
       TeamsRecord.collection,
       TeamsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query TournamentTeamsRecords (as a Stream and as a Future).
+Future<int> queryTournamentTeamsRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      TournamentTeamsRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<TournamentTeamsRecord>> queryTournamentTeamsRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      TournamentTeamsRecord.collection(parent),
+      TournamentTeamsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<TournamentTeamsRecord>> queryTournamentTeamsRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      TournamentTeamsRecord.collection(parent),
+      TournamentTeamsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<TournamentTeamsRecord>> queryTournamentTeamsRecordPage({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      TournamentTeamsRecord.collection(parent),
+      TournamentTeamsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,
