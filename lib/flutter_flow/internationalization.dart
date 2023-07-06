@@ -677,11 +677,82 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'ar': '',
     },
+    'qhynmdg8': {
+      'en': 'Season',
+      'ar': 'الموسم',
+    },
+    '36ykpnrz': {
+      'en': ' : ',
+      'ar': ' : ',
+    },
+    'oaskeep9': {
+      'en': 'Type',
+      'ar': 'نوع',
+    },
+    '5urxba25': {
+      'en': ' : ',
+      'ar': ' : ',
+    },
     'rcrsp1mh': {
       'en': 'Add tournaments',
       'ar': 'أضافة بطولات',
     },
     'z72dk26j': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // adminTournamentsList
+  {
+    'ygjkak8w': {
+      'en': 'Active',
+      'ar': '',
+    },
+    '3nubukrw': {
+      'en': 'Active',
+      'ar': 'نشط',
+    },
+    'a673pgy3': {
+      'en': 'Not active',
+      'ar': 'غير نشط',
+    },
+    'ezuy0x0o': {
+      'en': 'Not translated',
+      'ar': 'غير مترجم',
+    },
+    'lw9lpn77': {
+      'en': 'List Item Title',
+      'ar': '',
+    },
+    '6yy6pbye': {
+      'en': 'Season',
+      'ar': 'الموسم',
+    },
+    'vqdi7gj1': {
+      'en': ' : ',
+      'ar': ' : ',
+    },
+    'nejk0dix': {
+      'en': 'Hello World ',
+      'ar': '',
+    },
+    '35vlaenp': {
+      'en': 'Type',
+      'ar': 'نوع',
+    },
+    'epxlvliy': {
+      'en': ' : ',
+      'ar': ' : ',
+    },
+    'ruh8d00n': {
+      'en': 'Hello World ',
+      'ar': '',
+    },
+    'ejatipx8': {
+      'en': 'Add tournaments',
+      'ar': 'أضافة بطولات',
+    },
+    'ufe43z3x': {
       'en': 'Home',
       'ar': '',
     },

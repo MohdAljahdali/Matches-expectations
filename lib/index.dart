@@ -18,3 +18,5 @@ export '/pages/admin/countries/admin_countries_list/admin_countries_list_widget.
     show AdminCountriesListWidget;
 export '/pages/admin/tournaments/admin_tournaments_add/admin_tournaments_add_widget.dart'
     show AdminTournamentsAddWidget;
+export '/pages/admin/tournaments/admin_tournaments_list/admin_tournaments_list_widget.dart'
+    show AdminTournamentsListWidget;

@@ -185,6 +185,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             initialPage: '',
             page: AdminTournamentsAddWidget(),
           ),
+        ),
+        FFRoute(
+          name: 'adminTournamentsList',
+          path: '/adminTournamentsList',
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AdminTournamentsListWidget(),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

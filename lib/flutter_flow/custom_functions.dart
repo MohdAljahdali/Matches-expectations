@@ -21,3 +21,14 @@ String getRandomString25() {
   return String.fromCharCodes(Iterable.generate(
       25, (_) => chars.codeUnitAt(random.nextInt(chars.length))));
 }
+
+List<TournamentsRecord> adminTournamentsList(
+  TournamentsRecord? tournamentsList,
+  String filter,
+) {
+  List<TournamentsRecord> outputTournamentsList = [];
+  if (filter == 'Active') {
+  } else if (filter == '') {
+  } else if (filter == '') {}
+  return outputTournamentsList;
+}

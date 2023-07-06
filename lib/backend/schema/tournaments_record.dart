@@ -141,6 +141,16 @@ class TournamentsRecord extends FirestoreRecord {
   String get addRandomCode => _addRandomCode ?? '';
   bool hasAddRandomCode() => _addRandomCode != null;
 
+  // "Teams" field.
+  List<DocumentReference>? _teams;
+  List<DocumentReference> get teams => _teams ?? const [];
+  bool hasTeams() => _teams != null;
+
+  // "active" field.
+  bool? _active;
+  bool get active => _active ?? false;
+  bool hasActive() => _active != null;
+
   void _initializeFields() {
     _tournamentsID = castToType<int>(snapshotData['tournamentsID']);
     _tournamentsRef = snapshotData['tournamentsRef'] as String?;
@@ -167,6 +177,8 @@ class TournamentsRecord extends FirestoreRecord {
     _roleAwayGoals = snapshotData['roleAwayGoals'] as bool?;
     _roleAwayGoalsPoints = castToType<int>(snapshotData['roleAwayGoalsPoints']);
     _addRandomCode = snapshotData['addRandomCode'] as String?;
+    _teams = getDataList(snapshotData['Teams']);
+    _active = snapshotData['active'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -229,6 +241,7 @@ Map<String, dynamic> createTournamentsRecordData({
   bool? roleAwayGoals,
   int? roleAwayGoalsPoints,
   String? addRandomCode,
+  bool? active,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -257,6 +270,7 @@ Map<String, dynamic> createTournamentsRecordData({
       'roleAwayGoals': roleAwayGoals,
       'roleAwayGoalsPoints': roleAwayGoalsPoints,
       'addRandomCode': addRandomCode,
+      'active': active,
     }.withoutNulls,
   );
 
@@ -268,6 +282,7 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
 
   @override
   bool equals(TournamentsRecord? e1, TournamentsRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.tournamentsID == e2?.tournamentsID &&
         e1?.tournamentsRef == e2?.tournamentsRef &&
         e1?.seasonYear == e2?.seasonYear &&
@@ -292,7 +307,9 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
         e1?.roleHomeGoalsPoints == e2?.roleHomeGoalsPoints &&
         e1?.roleAwayGoals == e2?.roleAwayGoals &&
         e1?.roleAwayGoalsPoints == e2?.roleAwayGoalsPoints &&
-        e1?.addRandomCode == e2?.addRandomCode;
+        e1?.addRandomCode == e2?.addRandomCode &&
+        listEquality.equals(e1?.teams, e2?.teams) &&
+        e1?.active == e2?.active;
   }
 
   @override
@@ -321,7 +338,9 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
         e?.roleHomeGoalsPoints,
         e?.roleAwayGoals,
         e?.roleAwayGoalsPoints,
-        e?.addRandomCode
+        e?.addRandomCode,
+        e?.teams,
+        e?.active
       ]);
 
   @override

@@ -22,10 +22,20 @@ class FFAppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool _jhgj = false;
-  bool get jhgj => _jhgj;
-  set jhgj(bool _value) {
-    _jhgj = _value;
+  PTournamentsStruct _PTournaments = PTournamentsStruct();
+  PTournamentsStruct get PTournaments => _PTournaments;
+  set PTournaments(PTournamentsStruct _value) {
+    _PTournaments = _value;
+  }
+
+  void updatePTournamentsStruct(Function(PTournamentsStruct) updateFn) {
+    updateFn(_PTournaments);
+  }
+
+  String _aTournamentsListFilter = '';
+  String get aTournamentsListFilter => _aTournamentsListFilter;
+  set aTournamentsListFilter(String _value) {
+    _aTournamentsListFilter = _value;
   }
 
   final _adminCountriesListManager =

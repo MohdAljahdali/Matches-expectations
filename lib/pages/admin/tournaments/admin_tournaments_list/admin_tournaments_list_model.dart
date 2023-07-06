@@ -1,14 +1,14 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
-import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/custom_code/actions/index.dart' as actions;
-import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:styled_divider/styled_divider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -16,18 +16,14 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class AdminTournamentsAddModel extends FlutterFlowModel {
+class AdminTournamentsListModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for countryCodeDD widget.
-  String? countryCodeDDValue;
-  FormFieldController<String>? countryCodeDDValueController;
-  // State field(s) for seasonDD widget.
-  String? seasonDDValue;
-  FormFieldController<String>? seasonDDValueController;
-  // Stores action output result for [Custom Action - addTournaments] action in IconButton widget.
-  String? outputAddTournaments;
+  // Stores action output result for [Firestore Query - Query a collection] action in adminTournamentsList widget.
+  List<TournamentsRecord>? tournamentsList;
+  // State field(s) for RadioButton widget.
+  FormFieldController<String>? radioButtonValueController;
 
   /// Initialization and disposal methods.
 
@@ -40,4 +36,6 @@ class AdminTournamentsAddModel extends FlutterFlowModel {
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
+
+  String? get radioButtonValue => radioButtonValueController?.value;
 }
