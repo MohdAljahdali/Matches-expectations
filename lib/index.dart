@@ -22,3 +22,5 @@ export '/pages/admin/tournaments/admin_tournaments_list/admin_tournaments_list_w
     show AdminTournamentsListWidget;
 export '/pages/admin/tournaments/admin_tournament_edit/admin_tournament_edit_widget.dart'
     show AdminTournamentEditWidget;
+export '/pages/admin/matches/admin_matches_add/admin_matches_add_widget.dart'
+    show AdminMatchesAddWidget;

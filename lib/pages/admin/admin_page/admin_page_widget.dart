@@ -394,6 +394,41 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                       ),
                     ],
                   ),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('adminMatchesAdd');
+                        },
+                        child: ListTile(
+                          title: Text(
+                            FFLocalizations.of(context).getText(
+                              'slqr9i0n' /* Matches */,
+                            ),
+                            style: FlutterFlowTheme.of(context).titleLarge,
+                          ),
+                          trailing: Icon(
+                            Icons.arrow_forward_ios,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 30.0,
+                          ),
+                          tileColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          dense: false,
+                        ),
+                      ),
+                      Divider(
+                        height: 1.0,
+                        thickness: 1.0,
+                        color: FlutterFlowTheme.of(context).accent4,
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ],

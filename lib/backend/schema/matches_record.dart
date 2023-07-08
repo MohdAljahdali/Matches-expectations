@@ -258,6 +258,11 @@ class MatchesRecord extends FirestoreRecord {
   int get scorePenaltyAway => _scorePenaltyAway ?? 0;
   bool hasScorePenaltyAway() => _scorePenaltyAway != null;
 
+  // "addRandomCode" field.
+  String? _addRandomCode;
+  String get addRandomCode => _addRandomCode ?? '';
+  bool hasAddRandomCode() => _addRandomCode != null;
+
   void _initializeFields() {
     _matcheID = snapshotData['MatcheID'] as String?;
     _fixtureID = castToType<int>(snapshotData['fixtureID']);
@@ -312,6 +317,7 @@ class MatchesRecord extends FirestoreRecord {
     _scoreExtratimeAway = castToType<int>(snapshotData['scoreExtratimeAway']);
     _scorePenaltyHome = castToType<int>(snapshotData['scorePenaltyHome']);
     _scorePenaltyAway = castToType<int>(snapshotData['scorePenaltyAway']);
+    _addRandomCode = snapshotData['addRandomCode'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -397,6 +403,7 @@ Map<String, dynamic> createMatchesRecordData({
   int? scoreExtratimeAway,
   int? scorePenaltyHome,
   int? scorePenaltyAway,
+  String? addRandomCode,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -448,6 +455,7 @@ Map<String, dynamic> createMatchesRecordData({
       'scoreExtratimeAway': scoreExtratimeAway,
       'scorePenaltyHome': scorePenaltyHome,
       'scorePenaltyAway': scorePenaltyAway,
+      'addRandomCode': addRandomCode,
     }.withoutNulls,
   );
 
@@ -508,7 +516,8 @@ class MatchesRecordDocumentEquality implements Equality<MatchesRecord> {
         e1?.scoreExtratimeHome == e2?.scoreExtratimeHome &&
         e1?.scoreExtratimeAway == e2?.scoreExtratimeAway &&
         e1?.scorePenaltyHome == e2?.scorePenaltyHome &&
-        e1?.scorePenaltyAway == e2?.scorePenaltyAway;
+        e1?.scorePenaltyAway == e2?.scorePenaltyAway &&
+        e1?.addRandomCode == e2?.addRandomCode;
   }
 
   @override
@@ -560,7 +569,8 @@ class MatchesRecordDocumentEquality implements Equality<MatchesRecord> {
         e?.scoreExtratimeHome,
         e?.scoreExtratimeAway,
         e?.scorePenaltyHome,
-        e?.scorePenaltyAway
+        e?.scorePenaltyAway,
+        e?.addRandomCode
       ]);
 
   @override

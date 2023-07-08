@@ -508,6 +508,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Tournaments',
       'ar': 'البطولات',
     },
+    'slqr9i0n': {
+      'en': 'Matches',
+      'ar': 'المباريات',
+    },
     'p4z0veqy': {
       'en': '',
       'ar': '',
@@ -873,6 +877,41 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تعديل بيانات العضو',
     },
     'i5sbvbml': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // adminMatchesAdd
+  {
+    'vyrxb0hh': {
+      'en': 'Search for an item...',
+      'ar': '',
+    },
+    'nh0650zo': {
+      'en': 'Hello World',
+      'ar': '',
+    },
+    'suksjoau': {
+      'en': 'Season',
+      'ar': 'الموسم',
+    },
+    'gchdiyw1': {
+      'en': ' : ',
+      'ar': ' : ',
+    },
+    'zmam5au0': {
+      'en': 'Type',
+      'ar': 'نوع',
+    },
+    'v360aij7': {
+      'en': ' : ',
+      'ar': ' : ',
+    },
+    'vrmd6yg3': {
+      'en': 'Add tgdgdgdg',
+      'ar': 'أضافة بطولات',
+    },
+    'udhuh86e': {
       'en': 'Home',
       'ar': '',
     },
