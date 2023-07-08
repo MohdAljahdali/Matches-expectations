@@ -4,7 +4,6 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
-import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
@@ -51,8 +50,23 @@ Future<String> addCountries() async {
                 name: country['name'].toString(),
                 nameAr: '',
                 code: country['code'].toString(),
-                flag: country['flag'].toString(),
                 isActive: false,
+                flagSvg: country['flag'].toString(),
+                flagW20: 'https://flagcdn.com/w20/' +
+                    country['code'].toString().toLowerCase() +
+                    '.png',
+                flagW40: 'https://flagcdn.com/w40/' +
+                    country['code'].toString().toLowerCase() +
+                    '.png',
+                flagW80: 'https://flagcdn.com/w80/' +
+                    country['code'].toString().toLowerCase() +
+                    '.png',
+                flagW160: 'https://flagcdn.com/w160/' +
+                    country['code'].toString().toLowerCase() +
+                    '.png',
+                flagW320: 'https://flagcdn.com/w320/' +
+                    country['code'].toString().toLowerCase() +
+                    '.png',
               ));
         }
       });

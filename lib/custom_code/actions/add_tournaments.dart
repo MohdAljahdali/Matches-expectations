@@ -4,7 +4,6 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
-import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
@@ -58,12 +57,13 @@ Future<String> addTournaments(
               seasonStart: seasons['start'].toString(),
               seasonEnd: seasons['end'].toString(),
               name: tournament['league']['name'].toString(),
-              nameAr: '',
+              nameAr: '-',
               type: tournament['league']['type'].toString(),
               logo: tournament['league']['logo'].toString(),
               countryName: tournament['country']['name'].toString(),
               countryCode: tournament['country']['code'].toString(),
               countryFlog: tournament['country']['flag'].toString(),
+              active: false,
               addRandomCode: randomCode,
             ))
                 .then((value) async {
@@ -90,7 +90,7 @@ Future<String> addTournaments(
                           teamRef: teamRefID,
                           teamID: int.parse(teamRefID),
                           name: team['team']['name'].toString(),
-                          nameAr: '',
+                          nameAr: '-',
                           code: team['team']['code'].toString(),
                           country: team['team']['country'].toString(),
                           logo: team['team']['logo'].toString(),

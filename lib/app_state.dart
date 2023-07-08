@@ -38,6 +38,20 @@ class FFAppState extends ChangeNotifier {
     _aTournamentsListFilter = _value;
   }
 
+  PAdminTournamentsLiatStruct _PAdminTournamentsList =
+      PAdminTournamentsLiatStruct.fromSerializableMap(
+          jsonDecode('{\"Translated\":\"\"}'));
+  PAdminTournamentsLiatStruct get PAdminTournamentsList =>
+      _PAdminTournamentsList;
+  set PAdminTournamentsList(PAdminTournamentsLiatStruct _value) {
+    _PAdminTournamentsList = _value;
+  }
+
+  void updatePAdminTournamentsListStruct(
+      Function(PAdminTournamentsLiatStruct) updateFn) {
+    updateFn(_PAdminTournamentsList);
+  }
+
   final _adminCountriesListManager =
       StreamRequestManager<List<CountriesRecord>>();
   Stream<List<CountriesRecord>> adminCountriesList({

@@ -193,6 +193,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             initialPage: '',
             page: AdminTournamentsListWidget(),
           ),
+        ),
+        FFRoute(
+          name: 'adminTournamentEdit',
+          path: '/adminTournamentEdit',
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AdminTournamentEditWidget(
+              aTournamentRef: params.getParam('aTournamentRef',
+                  ParamType.DocumentReference, false, ['Tournaments']),
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

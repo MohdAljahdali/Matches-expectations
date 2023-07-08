@@ -201,9 +201,10 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                                   BorderRadius.circular(8.0),
                                               child: CachedNetworkImage(
                                                 imageUrl:
-                                                    'https://picsum.photos/seed/559/600',
+                                                    listViewCountriesRecord
+                                                        .flagW80,
                                                 width: 60.0,
-                                                height: 40.0,
+                                                height: 50.0,
                                                 fit: BoxFit.cover,
                                               ),
                                             ),
@@ -233,7 +234,7 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
-                                                                fontSize: 16.0,
+                                                                fontSize: 14.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,

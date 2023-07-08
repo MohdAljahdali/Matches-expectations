@@ -29,16 +29,11 @@ service cloud.firestore {
       allow delete: if true;
     }
 
-    match /Tournaments/{parent}/TournamentTeams/{document} {
+    match /Matches/{document} {
       allow create: if true;
       allow read: if true;
       allow write: if true;
       allow delete: if true;
     }
-
-    match /{path=**}/TournamentTeams/{document} {
-      allow read: if true;
-    }
-
   }
 }

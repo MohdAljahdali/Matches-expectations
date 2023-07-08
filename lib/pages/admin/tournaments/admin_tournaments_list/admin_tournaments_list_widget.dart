@@ -1,14 +1,10 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/form_field_controller.dart';
 import 'package:styled_divider/styled_divider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -39,7 +35,11 @@ class _AdminTournamentsListWidgetState
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.tournamentsList = await queryTournamentsRecordOnce();
+      setState(() {
+        FFAppState().updatePAdminTournamentsListStruct(
+          (e) => e..active = null,
+        );
+      });
     });
   }
 
@@ -107,82 +107,102 @@ class _AdminTournamentsListWidgetState
                       children: [
                         Container(
                           width: double.infinity,
-                          height: 60.0,
+                          height: 55.0,
                           decoration: BoxDecoration(
                             color:
                                 FlutterFlowTheme.of(context).primaryBackground,
                           ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 0.0, 10.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                FlutterFlowRadioButton(
-                                  options: [
-                                    FFLocalizations.of(context).getText(
-                                      '3nubukrw' /* Active */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'a673pgy3' /* Not active */,
-                                    ),
-                                    FFLocalizations.of(context).getText(
-                                      'ezuy0x0o' /* Not translated */,
-                                    )
-                                  ].toList(),
-                                  onChanged: (val) => setState(() {}),
-                                  controller: _model
-                                          .radioButtonValueController ??=
-                                      FormFieldController<String>(
-                                          FFLocalizations.of(context).getText(
-                                    'ygjkak8w' /* Active */,
-                                  )),
-                                  optionHeight: 32.0,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .labelMediumFamily,
-                                        fontSize: 16.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 0.0, 15.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Theme(
+                                          data: ThemeData(
+                                            checkboxTheme: CheckboxThemeData(
+                                              visualDensity:
+                                                  VisualDensity.compact,
+                                              materialTapTargetSize:
+                                                  MaterialTapTargetSize
+                                                      .shrinkWrap,
+                                              shape: CircleBorder(),
+                                            ),
+                                            unselectedWidgetColor:
                                                 FlutterFlowTheme.of(context)
-                                                    .labelMediumFamily),
+                                                    .secondaryText,
+                                          ),
+                                          child: Checkbox(
+                                            value: _model.activeCBValue ??=
+                                                false,
+                                            onChanged: (newValue) async {
+                                              setState(() => _model
+                                                  .activeCBValue = newValue!);
+                                              if (newValue!) {
+                                                setState(() {
+                                                  FFAppState()
+                                                      .updatePAdminTournamentsListStruct(
+                                                    (e) => e..active = true,
+                                                  );
+                                                });
+                                              } else {
+                                                setState(() {
+                                                  FFAppState()
+                                                      .updatePAdminTournamentsListStruct(
+                                                    (e) => e..active = false,
+                                                  );
+                                                });
+                                              }
+                                            },
+                                            activeColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            checkColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .info,
+                                          ),
+                                        ),
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'tqo56ygg' /* Active */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                      ],
+                                    ),
+                                    FlutterFlowIconButton(
+                                      borderColor:
+                                          FlutterFlowTheme.of(context).accent4,
+                                      borderRadius: 20.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 40.0,
+                                      fillColor:
+                                          FlutterFlowTheme.of(context).accent4,
+                                      icon: Icon(
+                                        Icons.add,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        size: 24.0,
                                       ),
-                                  selectedTextStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                  buttonPosition: RadioButtonPosition.left,
-                                  direction: Axis.horizontal,
-                                  radioButtonColor:
-                                      FlutterFlowTheme.of(context).primary,
-                                  inactiveRadioButtonColor:
-                                      FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                  toggleable: false,
-                                  horizontalAlignment: WrapAlignment.start,
-                                  verticalAlignment: WrapCrossAlignment.start,
+                                      onPressed: () async {
+                                        context
+                                            .pushNamed('adminTournamentsAdd');
+                                      },
+                                    ),
+                                  ],
                                 ),
-                                FlutterFlowIconButton(
-                                  borderColor:
-                                      FlutterFlowTheme.of(context).primary,
-                                  borderRadius: 20.0,
-                                  borderWidth: 1.0,
-                                  buttonSize: 40.0,
-                                  fillColor:
-                                      FlutterFlowTheme.of(context).accent1,
-                                  icon: Icon(
-                                    Icons.add,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 24.0,
-                                  ),
-                                  onPressed: () {
-                                    print('IconButton pressed ...');
-                                  },
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                         StyledDivider(
@@ -197,12 +217,7 @@ class _AdminTournamentsListWidgetState
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: StreamBuilder<List<TournamentsRecord>>(
-                            stream: queryTournamentsRecord(
-                              queryBuilder: (tournamentsRecord) =>
-                                  tournamentsRecord
-                                      .where('active', isEqualTo: false)
-                                      .where('nameAr', isEqualTo: ''),
-                            ),
+                            stream: queryTournamentsRecord(),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -267,6 +282,9 @@ class _AdminTournamentsListWidgetState
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
                                                     crossAxisAlignment:
                                                         CrossAxisAlignment.end,
                                                     children: [
@@ -277,7 +295,8 @@ class _AdminTournamentsListWidgetState
                                                         child:
                                                             CachedNetworkImage(
                                                           imageUrl:
-                                                              'https://picsum.photos/seed/559/600',
+                                                              listViewTournamentsRecord
+                                                                  .logo,
                                                           width: 90.0,
                                                           height: 90.0,
                                                           fit: BoxFit.cover,
@@ -301,7 +320,7 @@ class _AdminTournamentsListWidgetState
                                                                     .center,
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment
-                                                                    .start,
+                                                                    .stretch,
                                                             children: [
                                                               Row(
                                                                 mainAxisSize:
@@ -309,11 +328,8 @@ class _AdminTournamentsListWidgetState
                                                                         .max,
                                                                 children: [
                                                                   Text(
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                      'lw9lpn77' /* List Item Title */,
-                                                                    ),
+                                                                    listViewTournamentsRecord
+                                                                        .name,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium,
@@ -361,9 +377,7 @@ class _AdminTournamentsListWidgetState
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium,
                                                                               ),
                                                                               TextSpan(
-                                                                                text: FFLocalizations.of(context).getText(
-                                                                                  'nejk0dix' /* Hello World  */,
-                                                                                ),
+                                                                                text: listViewTournamentsRecord.seasonYear.toString(),
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium,
                                                                               )
                                                                             ],
@@ -393,9 +407,7 @@ class _AdminTournamentsListWidgetState
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium,
                                                                               ),
                                                                               TextSpan(
-                                                                                text: FFLocalizations.of(context).getText(
-                                                                                  'ruh8d00n' /* Hello World  */,
-                                                                                ),
+                                                                                text: listViewTournamentsRecord.type,
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium,
                                                                               )
                                                                             ],
@@ -405,42 +417,61 @@ class _AdminTournamentsListWidgetState
                                                                         ),
                                                                       ],
                                                                     ),
-                                                                    Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .end,
-                                                                      children: [
-                                                                        FlutterFlowIconButton(
-                                                                          borderColor:
-                                                                              Color(0x9AA2A8AF),
-                                                                          borderRadius:
-                                                                              8.0,
-                                                                          borderWidth:
-                                                                              2.0,
-                                                                          buttonSize:
-                                                                              50.0,
-                                                                          fillColor:
-                                                                              FlutterFlowTheme.of(context).accent3,
-                                                                          icon:
-                                                                              Icon(
-                                                                            Icons.edit_square,
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).secondaryBackground,
-                                                                            size:
-                                                                                20.0,
-                                                                          ),
-                                                                          onPressed:
-                                                                              () {
-                                                                            print('IconButton pressed ...');
-                                                                          },
-                                                                        ),
-                                                                      ],
-                                                                    ),
                                                                   ],
                                                                 ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  1.0, 0.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              FlutterFlowIconButton(
+                                                                borderColor: Color(
+                                                                    0x9AA2A8AF),
+                                                                borderRadius:
+                                                                    8.0,
+                                                                borderWidth:
+                                                                    2.0,
+                                                                buttonSize:
+                                                                    50.0,
+                                                                fillColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .accent3,
+                                                                icon: Icon(
+                                                                  Icons
+                                                                      .edit_square,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  size: 20.0,
+                                                                ),
+                                                                onPressed:
+                                                                    () async {
+                                                                  context
+                                                                      .pushNamed(
+                                                                    'adminTournamentEdit',
+                                                                    queryParameters:
+                                                                        {
+                                                                      'aTournamentRef':
+                                                                          serializeParam(
+                                                                        listViewTournamentsRecord
+                                                                            .reference,
+                                                                        ParamType
+                                                                            .DocumentReference,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                  );
+                                                                },
                                                               ),
                                                             ],
                                                           ),

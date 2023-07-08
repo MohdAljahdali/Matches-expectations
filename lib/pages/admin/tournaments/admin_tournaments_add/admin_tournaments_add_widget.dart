@@ -553,8 +553,16 @@ class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
                                                                                 20.0,
                                                                           ),
                                                                           onPressed:
-                                                                              () {
-                                                                            print('IconButton pressed ...');
+                                                                              () async {
+                                                                            context.pushNamed(
+                                                                              'adminTournamentEdit',
+                                                                              queryParameters: {
+                                                                                'aTournamentRef': serializeParam(
+                                                                                  listViewTournamentsRecord.reference,
+                                                                                  ParamType.DocumentReference,
+                                                                                ),
+                                                                              }.withoutNulls,
+                                                                            );
                                                                           },
                                                                         ),
                                                                       ],

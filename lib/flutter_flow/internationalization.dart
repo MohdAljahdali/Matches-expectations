@@ -704,24 +704,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // adminTournamentsList
   {
-    'ygjkak8w': {
+    'tqo56ygg': {
       'en': 'Active',
-      'ar': '',
-    },
-    '3nubukrw': {
-      'en': 'Active',
-      'ar': 'نشط',
-    },
-    'a673pgy3': {
-      'en': 'Not active',
-      'ar': 'غير نشط',
-    },
-    'ezuy0x0o': {
-      'en': 'Not translated',
-      'ar': 'غير مترجم',
-    },
-    'lw9lpn77': {
-      'en': 'List Item Title',
       'ar': '',
     },
     '6yy6pbye': {
@@ -732,10 +716,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': ' : ',
       'ar': ' : ',
     },
-    'nejk0dix': {
-      'en': 'Hello World ',
-      'ar': '',
-    },
     '35vlaenp': {
       'en': 'Type',
       'ar': 'نوع',
@@ -744,15 +724,155 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': ' : ',
       'ar': ' : ',
     },
-    'ruh8d00n': {
-      'en': 'Hello World ',
-      'ar': '',
-    },
     'ejatipx8': {
       'en': 'Add tournaments',
       'ar': 'أضافة بطولات',
     },
     'ufe43z3x': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // adminTournamentEdit
+  {
+    'qy2x0tb8': {
+      'en': 'Logo URL',
+      'ar': 'رابط الشعار',
+    },
+    'fc2ssg9i': {
+      'en': 'English name',
+      'ar': 'الاسم بالانجليزية',
+    },
+    'rl2uu226': {
+      'en': 'Arabic name',
+      'ar': 'الاسم بالعربية',
+    },
+    'u03nts7r': {
+      'en': 'Tournament is active',
+      'ar': 'البطولة نشطة',
+    },
+    'q29u7u53': {
+      'en': 'If home team win',
+      'ar': 'إذا فاز الفريق المضيف',
+    },
+    'y2iqwlfc': {
+      'en': 'Points',
+      'ar': 'النقاط',
+    },
+    'c4qlt1ux': {
+      'en': 'If away team win',
+      'ar': 'إذا فاز الفريق الضيف',
+    },
+    'bmxnjgxz': {
+      'en': 'Points',
+      'ar': 'النقاط',
+    },
+    '3g1z1skk': {
+      'en': 'If tow teams are Draw',
+      'ar': 'إذا تعادل الفريقين',
+    },
+    'v7wp0atg': {
+      'en': 'Points',
+      'ar': 'النقاط',
+    },
+    'hwbopdv9': {
+      'en': 'Home team goals',
+      'ar': 'أهداف الفريق المضيف',
+    },
+    '3qrclkd4': {
+      'en': 'Points',
+      'ar': 'النقاط',
+    },
+    'mxucrqvf': {
+      'en': 'Away team goals',
+      'ar': 'أهداف الفريق الضيف',
+    },
+    '1hu8vhep': {
+      'en': 'Points',
+      'ar': 'النقاط',
+    },
+    'yv80clto': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    '8hejdzei': {
+      'en': '',
+      'ar': '',
+    },
+    '0snn3630': {
+      'en': 'Mxnimum 25 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    '871a5q75': {
+      'en': 'Invalid Email Format',
+      'ar': 'تنسيق بريد إلكتروني غير صالح',
+    },
+    'g762vob0': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '1cfutcw8': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    'lrxeuh42': {
+      'en': 'Minimum eight characters',
+      'ar': 'ثمانية أحرف على الأقل',
+    },
+    '2egpjzu3': {
+      'en': 'Mxnimum 16 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    'mbg2xf9a': {
+      'en':
+          'at least one uppercase letter, one lowercase letter and one number',
+      'ar': 'حرف كبير واحد على الأقل وحرف صغير واحد ورقم واحد',
+    },
+    'odnod4tx': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'vznxfbgi': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    'h41u0x8r': {
+      'en': 'Minimum eight characters',
+      'ar': 'ثمانية أحرف على الأقل',
+    },
+    'udn92x6q': {
+      'en': 'Mxnimum 16 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    'tct83x5j': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'ynx0ju2c': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    '0qgolyjv': {
+      'en': 'Minimum 8 characters',
+      'ar': '8 أحرف على الأقل',
+    },
+    'y3gpvlzp': {
+      'en': 'Mxnimum 20 characters',
+      'ar': '20 حرفًا بحد أقصى',
+    },
+    'amcnjcs5': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'zdwcvv5d': {
+      'en': 'Save your edite',
+      'ar': 'حفظ التعديل',
+    },
+    'ldnybeqm': {
+      'en': 'Edit Member',
+      'ar': 'تعديل بيانات العضو',
+    },
+    'i5sbvbml': {
       'en': 'Home',
       'ar': '',
     },

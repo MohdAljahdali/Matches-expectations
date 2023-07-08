@@ -4,7 +4,6 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
-import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
@@ -13,7 +12,7 @@ import 'index.dart'; // Imports other custom actions
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
-Future<List<MatchesDTStruct>> addNewMatch(
+Future<String> addNewMatch(
   int leagueID,
   int season,
   DateTime fromDate,
@@ -23,7 +22,6 @@ Future<List<MatchesDTStruct>> addNewMatch(
   var outputFormat = DateFormat('yyyy-MM-dd');
   var fromDateFormat = outputFormat.format(fromDate);
   var toDateFormat = outputFormat.format(toDate);
-  List<MatchesDTStruct> listOfNewMatches = [];
   final firestore = FirebaseFirestore.instance;
   final MatchesRef = firestore.collection('Matches');
 
@@ -91,10 +89,9 @@ Future<List<MatchesDTStruct>> addNewMatch(
           .then((doc) {
         if (!doc.exists) {
           MatchesRef.doc(matche['fixture']['id'].toString()).set(addTeamsDoc);
-          listOfNewMatches.add(MatchesDTStruct.fromMap(addTeamsDoc));
         }
       });
     });
   }
-  return listOfNewMatches;
+  return "listOfNewMatches";
 }
