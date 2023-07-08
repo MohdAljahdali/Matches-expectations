@@ -13,8 +13,7 @@ import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
 Future<String> addNewMatch(
-  int leagueID,
-  int season,
+  DocumentReference tournamentRef,
   DateTime fromDate,
   DateTime toDate,
 ) async {
@@ -23,7 +22,7 @@ Future<String> addNewMatch(
   var fromDateFormat = outputFormat.format(fromDate);
   var toDateFormat = outputFormat.format(toDate);
   final firestore = FirebaseFirestore.instance;
-  final MatchesRef = firestore.collection('Matches');
+  final MatchesCol = firestore.collection('Matches');
 
   // API
   var headers = {
@@ -33,7 +32,7 @@ Future<String> addNewMatch(
   var request = http.Request(
       'GET',
       Uri.parse(
-          'https://v3.football.api-sports.io/fixtures?league=${leagueID.toString()}&season=${season.toString()}&from=${fromDateFormat.toString()}&to=${toDateFormat.toString()}&timezone=Asia/Riyadh'));
+          'https://v3.football.api-sports.io/fixtures?league=${toDate.toString()}&season=${toDate.toString()}&from=${fromDateFormat.toString()}&to=${toDateFormat.toString()}&timezone=Asia/Riyadh'));
 
   request.headers.addAll(headers);
 
@@ -84,11 +83,11 @@ Future<String> addNewMatch(
         'scorePenaltyAway':
             int.parse(matche['score']['penalty']['away'].toString()),
       };
-      await MatchesRef.doc(matche['fixture']['id'].toString())
+      await MatchesCol.doc(matche['fixture']['id'].toString())
           .get()
           .then((doc) {
         if (!doc.exists) {
-          MatchesRef.doc(matche['fixture']['id'].toString()).set(addTeamsDoc);
+          MatchesCol.doc(matche['fixture']['id'].toString()).set(addTeamsDoc);
         }
       });
     });
