@@ -218,6 +218,24 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                             true,
                                           ),
                                         );
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              _model.outputAddNewMatches!,
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondary,
+                                          ),
+                                        );
 
                                         setState(() {});
                                       },
@@ -426,7 +444,7 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                         ),
                         Text(
                           FFLocalizations.of(context).getText(
-                            'nh0650zo' /* Hello World */,
+                            'dqzu0ee3' /* Hello World */,
                           ),
                           style: FlutterFlowTheme.of(context).bodyMedium,
                         ),
