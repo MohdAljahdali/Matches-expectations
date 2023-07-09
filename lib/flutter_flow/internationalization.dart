@@ -883,11 +883,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // adminMatchesAdd
   {
-    'd87vefej': {
+    '8rs11k16': {
       'en': 'Search for an item...',
       'ar': '',
     },
-    'dqzu0ee3': {
+    'ccptnzxj': {
       'en': 'Hello World',
       'ar': '',
     },

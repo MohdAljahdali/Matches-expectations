@@ -8,10 +8,9 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'dart:math' as math;
 import 'index.dart'; // Imports other custom actions
 
-import 'index.dart'; // Imports other custom actions
+import 'dart:math' as math;
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
@@ -27,6 +26,18 @@ Future<String> addNewMatch(
   var toDateFormat = outputFormat.format(toDate);
   final firestore = FirebaseFirestore.instance;
   final MatchesCol = firestore.collection('Matches');
+
+  var getteamHomeRef;
+  var getteamHomeName;
+  var getteamHomeNameAr;
+  var getteamHomeCode;
+  var getteamHomeLogo;
+  var getteamAwayRef;
+  var getteamAwayName;
+  var getteamAwayNameAr;
+  var getteamAwayCode;
+  var getteamHAwayLogo;
+
   var dsadad = '';
   var headers = {
     'x-rapidapi-key': 'ba825d70e7634e7015d2f116c1a07e03',
@@ -47,10 +58,25 @@ Future<String> addNewMatch(
           convert.jsonDecode(await response.stream.bytesToString());
       final Matchesresponse = Matchesjson['response'];
       Matchesresponse.forEach((matche) async {
-        TeamsRecord? teamHome =
-            getTeamData(matche['teams']['home']['id'].toString());
-        TeamsRecord? teamAway =
-            getTeamData(matche['teams']['away']['id'].toString());
+        TeamsRecord.getDocumentOnce(firestore
+                .doc('Teams/' + matche['teams']['home']['id'].toString()))
+            .then((teamHomeDoc) async {
+          getteamHomeRef = teamHomeDoc.reference;
+          getteamHomeName = teamHomeDoc.name;
+          getteamHomeNameAr = teamHomeDoc.nameAr;
+          getteamHomeCode = teamHomeDoc.code;
+          getteamHomeLogo = teamHomeDoc.logo;
+        });
+        TeamsRecord.getDocumentOnce(firestore
+                .doc('Teams/' + matche['teams']['away']['id'].toString()))
+            .then((teamAwayDoc) async {
+          getteamAwayRef = teamAwayDoc.reference;
+          getteamAwayName = teamAwayDoc.name;
+          getteamAwayNameAr = teamAwayDoc.nameAr;
+          getteamAwayCode = teamAwayDoc.code;
+          getteamHAwayLogo = teamAwayDoc.logo;
+        });
+
         await MatchesCol.doc(matche['fixture']['id'].toString())
             .get()
             .then((matcheDoc) {
@@ -82,16 +108,16 @@ Future<String> addNewMatch(
               tournamentroleHomeGoalsPoints: tournamentDoc.roleHomeGoalsPoints,
               tournamentroleAwayGoals: tournamentDoc.roleAwayGoals,
               tournamentroleAwayGoalsPoints: tournamentDoc.roleAwayGoalsPoints,
-              teamHomeRef: teamHome?.reference,
-              teamHomeName: teamHome?.name,
-              teamHomeNameAr: teamHome?.nameAr,
-              teamHomeCode: teamHome?.code,
-              teamHomeLogo: teamHome?.logo,
-              teamAwayRef: teamAway?.reference,
-              teamAwayName: teamAway?.name,
-              teamAwayNameAr: teamAway?.nameAr,
-              teamAwayCode: teamAway?.code,
-              teamHAwayLogo: teamAway?.logo,
+              teamHomeRef: getteamHomeRef,
+              teamHomeName: getteamHomeName,
+              teamHomeNameAr: getteamHomeNameAr,
+              teamHomeCode: getteamHomeCode,
+              teamHomeLogo: getteamHomeLogo,
+              teamAwayRef: getteamAwayRef,
+              teamAwayName: getteamAwayName,
+              teamAwayNameAr: getteamAwayNameAr,
+              teamAwayCode: getteamAwayCode,
+              teamHAwayLogo: getteamHAwayLogo,
               fixtureStatusGeneral: getStatusGeneral(
                   matche['fixture']['status']['short'].toString()),
               fixtureStatusLong: matche['fixture']['status']['long'].toString(),
@@ -118,14 +144,6 @@ Future<String> addNewMatch(
     //TournamentsRecord.getDocumentOnce End
   });
   return dsadad;
-}
-
-TeamsRecord? getTeamData(String teamId) {
-  final firestore = FirebaseFirestore.instance;
-  TeamsRecord.getDocumentOnce(firestore.doc('Teams/$teamId'))
-      .then((teamDoc) async {
-    return teamDoc;
-  });
 }
 
 String? getStatusGeneral(String statusShort) {

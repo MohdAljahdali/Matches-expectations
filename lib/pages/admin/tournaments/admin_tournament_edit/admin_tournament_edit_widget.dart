@@ -764,7 +764,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                   value: _model
                                                           .activeSTValue ??=
                                                       adminTournamentEditTournamentsRecord
-                                                          .active,
+                                                          .isActive,
                                                   onChanged: (newValue) async {
                                                     setState(() =>
                                                         _model.activeSTValue =
@@ -1995,7 +1995,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                               _model.awayGoalsSTValue,
                                           roleAwayGoalsPoints:
                                               _model.awayGoalsPointsCCValue,
-                                          active: _model.activeSTValue,
+                                          isActive: false,
                                         ));
 
                                         context

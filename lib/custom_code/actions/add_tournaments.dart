@@ -63,7 +63,6 @@ Future<String> addTournaments(
               countryName: tournament['country']['name'].toString(),
               countryCode: tournament['country']['code'].toString(),
               countryFlog: tournament['country']['flag'].toString(),
-              active: false,
               addRandomCode: randomCode,
             ))
                 .then((value) async {
@@ -100,7 +99,7 @@ Future<String> addTournaments(
                                   firestore.doc('Teams/$teamRefID'))
                               .then((teamDoc) async {
                             await TournamentsDoc.doc(tournamentRefID).update({
-                              'Teams':
+                              'teamsList':
                                   FieldValue.arrayUnion([teamDoc.reference])
                             });
                           });
@@ -110,7 +109,8 @@ Future<String> addTournaments(
                                 firestore.doc('Teams/$teamRefID'))
                             .then((teamDoc) async {
                           await TournamentsDoc.doc(tournamentRefID).update({
-                            'Teams': FieldValue.arrayUnion([teamDoc.reference])
+                            'teamsList':
+                                FieldValue.arrayUnion([teamDoc.reference])
                           });
                         });
                       }

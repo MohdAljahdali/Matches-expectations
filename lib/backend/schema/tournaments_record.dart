@@ -136,20 +136,25 @@ class TournamentsRecord extends FirestoreRecord {
   int get roleAwayGoalsPoints => _roleAwayGoalsPoints ?? 0;
   bool hasRoleAwayGoalsPoints() => _roleAwayGoalsPoints != null;
 
+  // "roleHasDoubleMatches" field.
+  bool? _roleHasDoubleMatches;
+  bool get roleHasDoubleMatches => _roleHasDoubleMatches ?? false;
+  bool hasRoleHasDoubleMatches() => _roleHasDoubleMatches != null;
+
   // "addRandomCode" field.
   String? _addRandomCode;
   String get addRandomCode => _addRandomCode ?? '';
   bool hasAddRandomCode() => _addRandomCode != null;
 
-  // "Teams" field.
-  List<DocumentReference>? _teams;
-  List<DocumentReference> get teams => _teams ?? const [];
-  bool hasTeams() => _teams != null;
+  // "teamsList" field.
+  DocumentReference? _teamsList;
+  DocumentReference? get teamsList => _teamsList;
+  bool hasTeamsList() => _teamsList != null;
 
-  // "active" field.
-  bool? _active;
-  bool get active => _active ?? false;
-  bool hasActive() => _active != null;
+  // "is_Active" field.
+  bool? _isActive;
+  bool get isActive => _isActive ?? false;
+  bool hasIsActive() => _isActive != null;
 
   void _initializeFields() {
     _tournamentsID = castToType<int>(snapshotData['tournamentsID']);
@@ -176,9 +181,10 @@ class TournamentsRecord extends FirestoreRecord {
     _roleHomeGoalsPoints = castToType<int>(snapshotData['roleHomeGoalsPoints']);
     _roleAwayGoals = snapshotData['roleAwayGoals'] as bool?;
     _roleAwayGoalsPoints = castToType<int>(snapshotData['roleAwayGoalsPoints']);
+    _roleHasDoubleMatches = snapshotData['roleHasDoubleMatches'] as bool?;
     _addRandomCode = snapshotData['addRandomCode'] as String?;
-    _teams = getDataList(snapshotData['Teams']);
-    _active = snapshotData['active'] as bool?;
+    _teamsList = snapshotData['teamsList'] as DocumentReference?;
+    _isActive = snapshotData['is_Active'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -240,8 +246,10 @@ Map<String, dynamic> createTournamentsRecordData({
   int? roleHomeGoalsPoints,
   bool? roleAwayGoals,
   int? roleAwayGoalsPoints,
+  bool? roleHasDoubleMatches,
   String? addRandomCode,
-  bool? active,
+  DocumentReference? teamsList,
+  bool? isActive,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -269,8 +277,10 @@ Map<String, dynamic> createTournamentsRecordData({
       'roleHomeGoalsPoints': roleHomeGoalsPoints,
       'roleAwayGoals': roleAwayGoals,
       'roleAwayGoalsPoints': roleAwayGoalsPoints,
+      'roleHasDoubleMatches': roleHasDoubleMatches,
       'addRandomCode': addRandomCode,
-      'active': active,
+      'teamsList': teamsList,
+      'is_Active': isActive,
     }.withoutNulls,
   );
 
@@ -282,7 +292,6 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
 
   @override
   bool equals(TournamentsRecord? e1, TournamentsRecord? e2) {
-    const listEquality = ListEquality();
     return e1?.tournamentsID == e2?.tournamentsID &&
         e1?.tournamentsRef == e2?.tournamentsRef &&
         e1?.seasonYear == e2?.seasonYear &&
@@ -307,9 +316,10 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
         e1?.roleHomeGoalsPoints == e2?.roleHomeGoalsPoints &&
         e1?.roleAwayGoals == e2?.roleAwayGoals &&
         e1?.roleAwayGoalsPoints == e2?.roleAwayGoalsPoints &&
+        e1?.roleHasDoubleMatches == e2?.roleHasDoubleMatches &&
         e1?.addRandomCode == e2?.addRandomCode &&
-        listEquality.equals(e1?.teams, e2?.teams) &&
-        e1?.active == e2?.active;
+        e1?.teamsList == e2?.teamsList &&
+        e1?.isActive == e2?.isActive;
   }
 
   @override
@@ -338,9 +348,10 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
         e?.roleHomeGoalsPoints,
         e?.roleAwayGoals,
         e?.roleAwayGoalsPoints,
+        e?.roleHasDoubleMatches,
         e?.addRandomCode,
-        e?.teams,
-        e?.active
+        e?.teamsList,
+        e?.isActive
       ]);
 
   @override

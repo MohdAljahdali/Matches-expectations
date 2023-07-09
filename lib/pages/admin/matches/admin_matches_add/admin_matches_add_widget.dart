@@ -127,7 +127,11 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     StreamBuilder<List<TournamentsRecord>>(
-                                      stream: queryTournamentsRecord(),
+                                      stream: queryTournamentsRecord(
+                                        queryBuilder: (tournamentsRecord) =>
+                                            tournamentsRecord.where('is_Active',
+                                                isEqualTo: true),
+                                      ),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
                                         if (!snapshot.hasData) {
@@ -444,7 +448,7 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                         ),
                         Text(
                           FFLocalizations.of(context).getText(
-                            'dqzu0ee3' /* Hello World */,
+                            'ccptnzxj' /* Hello World */,
                           ),
                           style: FlutterFlowTheme.of(context).bodyMedium,
                         ),
