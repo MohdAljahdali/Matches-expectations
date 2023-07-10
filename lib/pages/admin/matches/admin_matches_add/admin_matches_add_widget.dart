@@ -147,12 +147,13 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                                   FormFieldController<String>(
                                             _model.dropDownValue ??= '',
                                           ),
-                                          options: ['3072022'],
-                                          optionLabels: [
-                                            FFLocalizations.of(context).getText(
-                                              'fz847r2w' /* Pro League */,
-                                            )
-                                          ],
+                                          options: dropDownTournamentsRecordList
+                                              .map((e) => e.tournamentsRef)
+                                              .toList(),
+                                          optionLabels:
+                                              dropDownTournamentsRecordList
+                                                  .map((e) => e.name)
+                                                  .toList(),
                                           onChanged: (val) => setState(
                                               () => _model.dropDownValue = val),
                                           width: 300.0,

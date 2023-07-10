@@ -90,30 +90,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Home',
           path: '/home',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'Home')
-              : NavBarPage(
-                  initialPage: 'Home',
-                  page: HomeWidget(),
-                ),
-        ),
-        FFRoute(
-          name: 'admin',
-          path: '/admin',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: AdminWidget(),
-          ),
+          builder: (context, params) =>
+              params.isEmpty ? NavBarPage(initialPage: 'Home') : HomeWidget(),
         ),
         FFRoute(
           name: 'Profile',
           path: '/profile',
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'Profile')
-              : NavBarPage(
-                  initialPage: 'Profile',
-                  page: ProfileWidget(),
-                ),
+              : ProfileWidget(),
         ),
         FFRoute(
           name: 'entryPage',
@@ -128,90 +113,60 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'editProfile',
           path: '/editProfile',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: EditProfileWidget(),
-          ),
+          builder: (context, params) => EditProfileWidget(),
         ),
         FFRoute(
           name: 'updatePassword',
           path: '/updatePassword',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: UpdatePasswordWidget(),
-          ),
+          builder: (context, params) => UpdatePasswordWidget(),
         ),
         FFRoute(
           name: 'adminPage',
           path: '/adminPage',
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'adminPage')
-              : NavBarPage(
-                  initialPage: 'adminPage',
-                  page: AdminPageWidget(),
-                ),
+              : AdminPageWidget(),
         ),
         FFRoute(
           name: 'adminMembers',
           path: '/adminMembers',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: AdminMembersWidget(
-              jghgfjh: params.getParam(
-                  'jghgfjh', ParamType.DocumentReference, false, ['Countries']),
-            ),
+          builder: (context, params) => AdminMembersWidget(
+            jghgfjh: params.getParam(
+                'jghgfjh', ParamType.DocumentReference, false, ['Countries']),
           ),
         ),
         FFRoute(
           name: 'adminEditMember',
           path: '/adminEditMember',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: AdminEditMemberWidget(),
-          ),
+          builder: (context, params) => AdminEditMemberWidget(),
         ),
         FFRoute(
           name: 'adminCountriesList',
           path: '/adminCountriesList',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: AdminCountriesListWidget(),
-          ),
+          builder: (context, params) => AdminCountriesListWidget(),
         ),
         FFRoute(
           name: 'adminTournamentsAdd',
           path: '/adminTournamentsAdd',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: AdminTournamentsAddWidget(),
-          ),
+          builder: (context, params) => AdminTournamentsAddWidget(),
         ),
         FFRoute(
           name: 'adminTournamentsList',
           path: '/adminTournamentsList',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: AdminTournamentsListWidget(),
-          ),
+          builder: (context, params) => AdminTournamentsListWidget(),
         ),
         FFRoute(
           name: 'adminTournamentEdit',
           path: '/adminTournamentEdit',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: AdminTournamentEditWidget(
-              aTournamentRef: params.getParam('aTournamentRef',
-                  ParamType.DocumentReference, false, ['Tournaments']),
-            ),
+          builder: (context, params) => AdminTournamentEditWidget(
+            aTournamentRef: params.getParam('aTournamentRef',
+                ParamType.DocumentReference, false, ['Tournaments']),
           ),
         ),
         FFRoute(
           name: 'adminMatchesAdd',
           path: '/adminMatchesAdd',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: AdminMatchesAddWidget(),
-          ),
+          builder: (context, params) => AdminMatchesAddWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

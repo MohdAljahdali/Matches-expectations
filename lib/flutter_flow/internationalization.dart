@@ -112,57 +112,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
-  // admin
-  {
-    'z72vwg1v': {
-      'en': 'Admin contol',
-      'ar': 'تحكم المشرف',
-    },
-    'cso9gf2y': {
-      'en': 'Log out',
-      'ar': 'تسجيل خروج',
-    },
-    'fkn2hqr6': {
-      'en': 'Your Profile',
-      'ar': 'ملفك الشخصي',
-    },
-    '2r080iob': {
-      'en': 'Countries',
-      'ar': 'الدول',
-    },
-    'av91p30v': {
-      'en': 'Countries management',
-      'ar': 'ادارة الدول',
-    },
-    'srckq6g5': {
-      'en': 'Tournaments',
-      'ar': 'البطولات',
-    },
-    'tqnmndkf': {
-      'en': 'Tournaments settings',
-      'ar': 'اعدادات البطولات',
-    },
-    'zzwpli0v': {
-      'en': 'Clubs',
-      'ar': 'الاندية',
-    },
-    'up56z3dj': {
-      'en': 'Subtitle goes here...',
-      'ar': '',
-    },
-    'hdw80cqi': {
-      'en': 'Members',
-      'ar': 'الاعضاء',
-    },
-    'cvol3j2e': {
-      'en': 'Member management',
-      'ar': 'ادارة الاعضاء',
-    },
-    'myjm1s5y': {
-      'en': 'settings',
-      'ar': 'الاعدادات',
-    },
-  },
   // Profile
   {
     'ewzyprlm': {
@@ -194,7 +143,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     '5byhc1ud': {
-      'en': '',
+      'en': 'Profile',
       'ar': '',
     },
   },
@@ -414,7 +363,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تعديل الملف الشخصي',
     },
     'oda98gpe': {
-      'en': 'Home',
+      'en': '',
       'ar': '',
     },
   },
@@ -513,7 +462,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'المباريات',
     },
     'p4z0veqy': {
-      'en': '',
+      'en': 'Admin',
       'ar': '',
     },
   },
