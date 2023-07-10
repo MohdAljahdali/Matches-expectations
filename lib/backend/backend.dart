@@ -11,7 +11,6 @@ import 'schema/tournaments_record.dart';
 import 'schema/teams_record.dart';
 import 'schema/matches_record.dart';
 import 'schema/t_standings_record.dart';
-import 'schema/m_standings_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -25,7 +24,6 @@ export 'schema/tournaments_record.dart';
 export 'schema/teams_record.dart';
 export 'schema/matches_record.dart';
 export 'schema/t_standings_record.dart';
-export 'schema/m_standings_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -337,62 +335,6 @@ Future<FFFirestorePage<TStandingsRecord>> queryTStandingsRecordPage({
     queryCollectionPage(
       TStandingsRecord.collection(parent),
       TStandingsRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    );
-
-/// Functions to query MStandingsRecords (as a Stream and as a Future).
-Future<int> queryMStandingsRecordCount({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      MStandingsRecord.collection(parent),
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<MStandingsRecord>> queryMStandingsRecord({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      MStandingsRecord.collection(parent),
-      MStandingsRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<MStandingsRecord>> queryMStandingsRecordOnce({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      MStandingsRecord.collection(parent),
-      MStandingsRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<FFFirestorePage<MStandingsRecord>> queryMStandingsRecordPage({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-    queryCollectionPage(
-      MStandingsRecord.collection(parent),
-      MStandingsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,
