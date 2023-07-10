@@ -10,7 +10,6 @@ import 'schema/countries_record.dart';
 import 'schema/tournaments_record.dart';
 import 'schema/teams_record.dart';
 import 'schema/matches_record.dart';
-import 'schema/t_standings_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -23,7 +22,6 @@ export 'schema/countries_record.dart';
 export 'schema/tournaments_record.dart';
 export 'schema/teams_record.dart';
 export 'schema/matches_record.dart';
-export 'schema/t_standings_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -279,62 +277,6 @@ Future<FFFirestorePage<MatchesRecord>> queryMatchesRecordPage({
     queryCollectionPage(
       MatchesRecord.collection,
       MatchesRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    );
-
-/// Functions to query TStandingsRecords (as a Stream and as a Future).
-Future<int> queryTStandingsRecordCount({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      TStandingsRecord.collection(parent),
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<TStandingsRecord>> queryTStandingsRecord({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      TStandingsRecord.collection(parent),
-      TStandingsRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<TStandingsRecord>> queryTStandingsRecordOnce({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      TStandingsRecord.collection(parent),
-      TStandingsRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<FFFirestorePage<TStandingsRecord>> queryTStandingsRecordPage({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-    queryCollectionPage(
-      TStandingsRecord.collection(parent),
-      TStandingsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,
