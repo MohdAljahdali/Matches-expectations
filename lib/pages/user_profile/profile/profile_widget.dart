@@ -94,18 +94,16 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 10.0),
-                            child: AuthUserStreamWidget(
-                              builder: (context) => Container(
-                                width: 80.0,
-                                height: 80.0,
-                                clipBehavior: Clip.antiAlias,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Image.network(
-                                  currentUserPhoto,
-                                  fit: BoxFit.cover,
-                                ),
+                            child: Container(
+                              width: 80.0,
+                              height: 80.0,
+                              clipBehavior: Clip.antiAlias,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                              ),
+                              child: Image.network(
+                                'https://picsum.photos/seed/52/600',
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
