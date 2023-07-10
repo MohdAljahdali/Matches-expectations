@@ -38,11 +38,9 @@ class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().updatePTournamentsStruct(
-          (e) => e..lastAddedTournaments = '',
-        );
-      });
+      FFAppState().updatePTournamentsStruct(
+        (e) => e..lastAddedTournaments = '',
+      );
     });
   }
 
