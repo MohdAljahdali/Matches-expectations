@@ -38,7 +38,6 @@ Future<String> addNewMatch(
   var getteamAwayCode;
   var getteamHAwayLogo;
 
-  var dsadad = '';
   var headers = {
     'x-rapidapi-key': 'ba825d70e7634e7015d2f116c1a07e03',
     'x-rapidapi-host': 'v3.football.api-sports.io'
@@ -46,7 +45,6 @@ Future<String> addNewMatch(
   await TournamentsRecord.getDocumentOnce(
           firestore.doc('Tournaments/$tournamentRef'))
       .then((tournamentDoc) async {
-    dsadad = tournamentDoc.name;
     var request = http.Request(
         'GET',
         Uri.parse(
@@ -92,7 +90,8 @@ Future<String> addNewMatch(
                   int.parse(matche['fixture']['periods']['first'].toString()),
               fixturePeriodSecond:
                   int.parse(matche['fixture']['periods']['second'].toString()),
-              tournamentsRef: tournamentDoc.reference,
+              tournamentRef: tournamentDoc.reference,
+              tournamentID: tournamentDoc.reference.id,
               tournamentseasonYear: tournamentDoc.seasonYear.toString(),
               tournamentName: tournamentDoc.name,
               tournamentNameAr: tournamentDoc.nameAr,
@@ -120,7 +119,10 @@ Future<String> addNewMatch(
               teamHAwayLogo: getteamHAwayLogo,
               fixtureStatusGeneral: getStatusGeneral(
                   matche['fixture']['status']['short'].toString()),
-              fixtureStatusLong: matche['fixture']['status']['long'].toString(),
+              fixtureStatusLongEn:
+                  matche['fixture']['status']['long'].toString(),
+              fixtureStatusLongAr:
+                  matche['fixture']['status']['long'].toString(),
               fixtureStatusShort:
                   matche['fixture']['status']['short'].toString(),
               fixtureStatusElapsed:
@@ -143,7 +145,7 @@ Future<String> addNewMatch(
     }
     //TournamentsRecord.getDocumentOnce End
   });
-  return dsadad;
+  return randomCode;
 }
 
 String? getStatusGeneral(String statusShort) {
@@ -177,5 +179,73 @@ String? getStatusGeneral(String statusShort) {
     return 'Abandoned';
   } else {
     return 'NoData';
+  }
+}
+
+String fixtureStatusLong(String currentLanguage, String statusShort) {
+  var MsgAr = Map<String, String>();
+  var MsgEn = Map<String, String>();
+  MsgAr['TBD'] = 'الوقت سيتم تحديده لاحقا';
+  MsgEn['TBD'] = 'Time To Be Defined';
+
+  MsgAr['NS'] = 'لم يبدأ';
+  MsgEn['NS'] = 'Not Started';
+
+  MsgAr['1H'] = '';
+  MsgEn['1H'] = '';
+
+  MsgAr['HT'] = '';
+  MsgEn['HT'] = '';
+
+  MsgAr['2H'] = '';
+  MsgEn['2H'] = '';
+
+  MsgAr['ET'] = '';
+  MsgEn['ET'] = '';
+
+  MsgAr['BT'] = '';
+  MsgEn['BT'] = '';
+
+  MsgAr['P'] = '';
+  MsgEn['P'] = '';
+
+  MsgAr['SUSP'] = '';
+  MsgEn['SUSP'] = '';
+
+  MsgAr['INT'] = '';
+  MsgEn['INT'] = '';
+
+  MsgAr['FT'] = '';
+  MsgEn['FT'] = '';
+
+  MsgAr['AET'] = '';
+  MsgEn['AET'] = '';
+
+  MsgAr['PEN'] = '';
+  MsgEn['PEN'] = '';
+
+  MsgAr['PST'] = '';
+  MsgEn['PST'] = '';
+
+  MsgAr['CANC'] = '';
+  MsgEn['CANC'] = '';
+
+  MsgAr['ABD'] = '';
+  MsgEn['ABD'] = '';
+
+  MsgAr['AWD'] = '';
+  MsgEn['AWD'] = '';
+
+  MsgAr['WO'] = '';
+  MsgEn['WO'] = '';
+
+  MsgAr['LIVE'] = '';
+  MsgEn['LIVE'] = '';
+  if (currentLanguage == 'en') {
+    return MsgEn[statusShort].toString();
+  } else if (currentLanguage == 'ar') {
+    return MsgAr[statusShort].toString();
+  } else {
+    return MsgEn[statusShort].toString();
   }
 }

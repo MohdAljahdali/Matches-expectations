@@ -52,6 +52,17 @@ class FFAppState extends ChangeNotifier {
     updateFn(_PAdminTournamentsList);
   }
 
+  PMatchesStruct _PAdminMatches =
+      PMatchesStruct.fromSerializableMap(jsonDecode('{}'));
+  PMatchesStruct get PAdminMatches => _PAdminMatches;
+  set PAdminMatches(PMatchesStruct _value) {
+    _PAdminMatches = _value;
+  }
+
+  void updatePAdminMatchesStruct(Function(PMatchesStruct) updateFn) {
+    updateFn(_PAdminMatches);
+  }
+
   final _adminCountriesListManager =
       StreamRequestManager<List<CountriesRecord>>();
   Stream<List<CountriesRecord>> adminCountriesList({

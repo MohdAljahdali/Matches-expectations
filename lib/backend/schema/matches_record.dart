@@ -46,10 +46,20 @@ class MatchesRecord extends FirestoreRecord {
   int get fixturePeriodSecond => _fixturePeriodSecond ?? 0;
   bool hasFixturePeriodSecond() => _fixturePeriodSecond != null;
 
-  // "tournamentsRef" field.
-  DocumentReference? _tournamentsRef;
-  DocumentReference? get tournamentsRef => _tournamentsRef;
-  bool hasTournamentsRef() => _tournamentsRef != null;
+  // "fixtureIsDouble" field.
+  bool? _fixtureIsDouble;
+  bool get fixtureIsDouble => _fixtureIsDouble ?? false;
+  bool hasFixtureIsDouble() => _fixtureIsDouble != null;
+
+  // "tournamentRef" field.
+  DocumentReference? _tournamentRef;
+  DocumentReference? get tournamentRef => _tournamentRef;
+  bool hasTournamentRef() => _tournamentRef != null;
+
+  // "tournamentID" field.
+  String? _tournamentID;
+  String get tournamentID => _tournamentID ?? '';
+  bool hasTournamentID() => _tournamentID != null;
 
   // "tournamentseasonYear" field.
   String? _tournamentseasonYear;
@@ -193,10 +203,15 @@ class MatchesRecord extends FirestoreRecord {
   String get fixtureStatusGeneral => _fixtureStatusGeneral ?? '';
   bool hasFixtureStatusGeneral() => _fixtureStatusGeneral != null;
 
-  // "fixtureStatusLong" field.
-  String? _fixtureStatusLong;
-  String get fixtureStatusLong => _fixtureStatusLong ?? '';
-  bool hasFixtureStatusLong() => _fixtureStatusLong != null;
+  // "fixtureStatusLongEn" field.
+  String? _fixtureStatusLongEn;
+  String get fixtureStatusLongEn => _fixtureStatusLongEn ?? '';
+  bool hasFixtureStatusLongEn() => _fixtureStatusLongEn != null;
+
+  // "fixtureStatusLongAr" field.
+  String? _fixtureStatusLongAr;
+  String get fixtureStatusLongAr => _fixtureStatusLongAr ?? '';
+  bool hasFixtureStatusLongAr() => _fixtureStatusLongAr != null;
 
   // "fixtureStatusShort" field.
   String? _fixtureStatusShort;
@@ -270,7 +285,9 @@ class MatchesRecord extends FirestoreRecord {
     _fixtureTimestamp = castToType<int>(snapshotData['fixtureTimestamp']);
     _fixturePeriodFirst = castToType<int>(snapshotData['fixturePeriodFirst']);
     _fixturePeriodSecond = castToType<int>(snapshotData['fixturePeriodSecond']);
-    _tournamentsRef = snapshotData['tournamentsRef'] as DocumentReference?;
+    _fixtureIsDouble = snapshotData['fixtureIsDouble'] as bool?;
+    _tournamentRef = snapshotData['tournamentRef'] as DocumentReference?;
+    _tournamentID = snapshotData['tournamentID'] as String?;
     _tournamentseasonYear = snapshotData['tournamentseasonYear'] as String?;
     _tournamentName = snapshotData['tournamentName'] as String?;
     _tournamentNameAr = snapshotData['tournamentNameAr'] as String?;
@@ -304,7 +321,8 @@ class MatchesRecord extends FirestoreRecord {
     _teamHAwayLogo = snapshotData['teamHAwayLogo'] as String?;
     _teamAwayWinner = snapshotData['teamAwayWinner'] as bool?;
     _fixtureStatusGeneral = snapshotData['fixtureStatusGeneral'] as String?;
-    _fixtureStatusLong = snapshotData['fixtureStatusLong'] as String?;
+    _fixtureStatusLongEn = snapshotData['fixtureStatusLongEn'] as String?;
+    _fixtureStatusLongAr = snapshotData['fixtureStatusLongAr'] as String?;
     _fixtureStatusShort = snapshotData['fixtureStatusShort'] as String?;
     _fixtureStatusElapsed = snapshotData['fixtureStatusElapsed'] as String?;
     _goalsHome = castToType<int>(snapshotData['goalsHome']);
@@ -361,7 +379,9 @@ Map<String, dynamic> createMatchesRecordData({
   int? fixtureTimestamp,
   int? fixturePeriodFirst,
   int? fixturePeriodSecond,
-  DocumentReference? tournamentsRef,
+  bool? fixtureIsDouble,
+  DocumentReference? tournamentRef,
+  String? tournamentID,
   String? tournamentseasonYear,
   String? tournamentName,
   String? tournamentNameAr,
@@ -390,7 +410,8 @@ Map<String, dynamic> createMatchesRecordData({
   String? teamHAwayLogo,
   bool? teamAwayWinner,
   String? fixtureStatusGeneral,
-  String? fixtureStatusLong,
+  String? fixtureStatusLongEn,
+  String? fixtureStatusLongAr,
   String? fixtureStatusShort,
   String? fixtureStatusElapsed,
   int? goalsHome,
@@ -413,7 +434,9 @@ Map<String, dynamic> createMatchesRecordData({
       'fixtureTimestamp': fixtureTimestamp,
       'fixturePeriodFirst': fixturePeriodFirst,
       'fixturePeriodSecond': fixturePeriodSecond,
-      'tournamentsRef': tournamentsRef,
+      'fixtureIsDouble': fixtureIsDouble,
+      'tournamentRef': tournamentRef,
+      'tournamentID': tournamentID,
       'tournamentseasonYear': tournamentseasonYear,
       'tournamentName': tournamentName,
       'tournamentNameAr': tournamentNameAr,
@@ -442,7 +465,8 @@ Map<String, dynamic> createMatchesRecordData({
       'teamHAwayLogo': teamHAwayLogo,
       'teamAwayWinner': teamAwayWinner,
       'fixtureStatusGeneral': fixtureStatusGeneral,
-      'fixtureStatusLong': fixtureStatusLong,
+      'fixtureStatusLongEn': fixtureStatusLongEn,
+      'fixtureStatusLongAr': fixtureStatusLongAr,
       'fixtureStatusShort': fixtureStatusShort,
       'fixtureStatusElapsed': fixtureStatusElapsed,
       'goalsHome': goalsHome,
@@ -473,7 +497,9 @@ class MatchesRecordDocumentEquality implements Equality<MatchesRecord> {
         e1?.fixtureTimestamp == e2?.fixtureTimestamp &&
         e1?.fixturePeriodFirst == e2?.fixturePeriodFirst &&
         e1?.fixturePeriodSecond == e2?.fixturePeriodSecond &&
-        e1?.tournamentsRef == e2?.tournamentsRef &&
+        e1?.fixtureIsDouble == e2?.fixtureIsDouble &&
+        e1?.tournamentRef == e2?.tournamentRef &&
+        e1?.tournamentID == e2?.tournamentID &&
         e1?.tournamentseasonYear == e2?.tournamentseasonYear &&
         e1?.tournamentName == e2?.tournamentName &&
         e1?.tournamentNameAr == e2?.tournamentNameAr &&
@@ -504,7 +530,8 @@ class MatchesRecordDocumentEquality implements Equality<MatchesRecord> {
         e1?.teamHAwayLogo == e2?.teamHAwayLogo &&
         e1?.teamAwayWinner == e2?.teamAwayWinner &&
         e1?.fixtureStatusGeneral == e2?.fixtureStatusGeneral &&
-        e1?.fixtureStatusLong == e2?.fixtureStatusLong &&
+        e1?.fixtureStatusLongEn == e2?.fixtureStatusLongEn &&
+        e1?.fixtureStatusLongAr == e2?.fixtureStatusLongAr &&
         e1?.fixtureStatusShort == e2?.fixtureStatusShort &&
         e1?.fixtureStatusElapsed == e2?.fixtureStatusElapsed &&
         e1?.goalsHome == e2?.goalsHome &&
@@ -528,7 +555,9 @@ class MatchesRecordDocumentEquality implements Equality<MatchesRecord> {
         e?.fixtureTimestamp,
         e?.fixturePeriodFirst,
         e?.fixturePeriodSecond,
-        e?.tournamentsRef,
+        e?.fixtureIsDouble,
+        e?.tournamentRef,
+        e?.tournamentID,
         e?.tournamentseasonYear,
         e?.tournamentName,
         e?.tournamentNameAr,
@@ -557,7 +586,8 @@ class MatchesRecordDocumentEquality implements Equality<MatchesRecord> {
         e?.teamHAwayLogo,
         e?.teamAwayWinner,
         e?.fixtureStatusGeneral,
-        e?.fixtureStatusLong,
+        e?.fixtureStatusLongEn,
+        e?.fixtureStatusLongAr,
         e?.fixtureStatusShort,
         e?.fixtureStatusElapsed,
         e?.goalsHome,

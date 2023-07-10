@@ -1995,7 +1995,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                               _model.awayGoalsSTValue,
                                           roleAwayGoalsPoints:
                                               _model.awayGoalsPointsCCValue,
-                                          isActive: false,
+                                          isActive: true,
                                         ));
 
                                         context

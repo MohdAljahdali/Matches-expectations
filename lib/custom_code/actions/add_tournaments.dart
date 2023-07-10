@@ -64,6 +64,7 @@ Future<String> addTournaments(
               countryCode: tournament['country']['code'].toString(),
               countryFlog: tournament['country']['flag'].toString(),
               addRandomCode: randomCode,
+              isActive: false,
             ))
                 .then((value) async {
               await TournamentsRecord.getDocumentOnce(

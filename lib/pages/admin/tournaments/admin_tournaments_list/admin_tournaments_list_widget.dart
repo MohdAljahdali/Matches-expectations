@@ -84,7 +84,7 @@ class _AdminTournamentsListWidgetState
               ),
               title: Text(
                 FFLocalizations.of(context).getText(
-                  'ejatipx8' /* Add tournaments */,
+                  'ejatipx8' /* Tournaments list */,
                 ),
                 style: FlutterFlowTheme.of(context).titleLarge,
               ),

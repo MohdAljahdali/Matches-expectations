@@ -151,7 +151,7 @@ class TournamentsRecord extends FirestoreRecord {
   DocumentReference? get teamsList => _teamsList;
   bool hasTeamsList() => _teamsList != null;
 
-  // "is_Active" field.
+  // "isActive" field.
   bool? _isActive;
   bool get isActive => _isActive ?? false;
   bool hasIsActive() => _isActive != null;
@@ -184,7 +184,7 @@ class TournamentsRecord extends FirestoreRecord {
     _roleHasDoubleMatches = snapshotData['roleHasDoubleMatches'] as bool?;
     _addRandomCode = snapshotData['addRandomCode'] as String?;
     _teamsList = snapshotData['teamsList'] as DocumentReference?;
-    _isActive = snapshotData['is_Active'] as bool?;
+    _isActive = snapshotData['isActive'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -280,7 +280,7 @@ Map<String, dynamic> createTournamentsRecordData({
       'roleHasDoubleMatches': roleHasDoubleMatches,
       'addRandomCode': addRandomCode,
       'teamsList': teamsList,
-      'is_Active': isActive,
+      'isActive': isActive,
     }.withoutNulls,
   );
 
