@@ -669,6 +669,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // adminTournamentsList
   {
+    'lw9lpn77': {
+      'en': 'List Item Title',
+      'ar': '',
+    },
     '6yy6pbye': {
       'en': 'Season',
       'ar': 'الموسم',
@@ -677,6 +681,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': ' : ',
       'ar': ' : ',
     },
+    'nejk0dix': {
+      'en': 'Hello World ',
+      'ar': '',
+    },
     '35vlaenp': {
       'en': 'Type',
       'ar': 'نوع',
@@ -684,6 +692,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'epxlvliy': {
       'en': ' : ',
       'ar': ' : ',
+    },
+    'ruh8d00n': {
+      'en': 'Hello World ',
+      'ar': '',
     },
     'ejatipx8': {
       'en': 'Tournaments list',

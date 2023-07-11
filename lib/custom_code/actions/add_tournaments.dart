@@ -19,8 +19,8 @@ Future<String> addTournaments(
   String randomCode,
 ) async {
   final firestore = FirebaseFirestore.instance;
-  final TournamentsDoc = firestore.collection('Tournaments');
-  final TeamsDoc = firestore.collection('Teams');
+  final TournamentsDoc = TournamentsRecord.collection;
+  final TeamsDoc = TeamsRecord.collection;
 
   var headers = {
     'x-rapidapi-key': 'ba825d70e7634e7015d2f116c1a07e03',
