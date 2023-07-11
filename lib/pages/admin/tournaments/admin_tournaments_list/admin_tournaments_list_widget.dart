@@ -149,8 +149,8 @@ class _AdminTournamentsListWidgetState
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                        child: StreamBuilder<List<TeamsRecord>>(
-                          stream: queryTeamsRecord(),
+                        child: StreamBuilder<List<TournamentsRecord>>(
+                          stream: queryTournamentsRecord(),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -165,17 +165,18 @@ class _AdminTournamentsListWidgetState
                                 ),
                               );
                             }
-                            List<TeamsRecord> listViewTeamsRecordList =
-                                snapshot.data!;
+                            List<TournamentsRecord>
+                                listViewTournamentsRecordList = snapshot.data!;
                             return ListView.builder(
                               padding: EdgeInsets.zero,
                               primary: false,
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
-                              itemCount: listViewTeamsRecordList.length,
+                              itemCount: listViewTournamentsRecordList.length,
                               itemBuilder: (context, listViewIndex) {
-                                final listViewTeamsRecord =
-                                    listViewTeamsRecordList[listViewIndex];
+                                final listViewTournamentsRecord =
+                                    listViewTournamentsRecordList[
+                                        listViewIndex];
                                 return Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 6.0),
@@ -212,7 +213,8 @@ class _AdminTournamentsListWidgetState
                                                     BorderRadius.circular(8.0),
                                                 child: CachedNetworkImage(
                                                   imageUrl:
-                                                      listViewTeamsRecord.logo,
+                                                      listViewTournamentsRecord
+                                                          .logo,
                                                   width: 90.0,
                                                   height: 90.0,
                                                   fit: BoxFit.cover,
