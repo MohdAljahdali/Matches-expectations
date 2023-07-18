@@ -149,8 +149,8 @@ class _AdminTournamentsListWidgetState
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                        child: StreamBuilder<List<TournamentsRecord>>(
-                          stream: queryTournamentsRecord(),
+                        child: StreamBuilder<List<TournamentssRecord>>(
+                          stream: queryTournamentssRecord(),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -165,17 +165,17 @@ class _AdminTournamentsListWidgetState
                                 ),
                               );
                             }
-                            List<TournamentsRecord>
-                                listViewTournamentsRecordList = snapshot.data!;
+                            List<TournamentssRecord>
+                                listViewTournamentssRecordList = snapshot.data!;
                             return ListView.builder(
                               padding: EdgeInsets.zero,
                               primary: false,
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
-                              itemCount: listViewTournamentsRecordList.length,
+                              itemCount: listViewTournamentssRecordList.length,
                               itemBuilder: (context, listViewIndex) {
-                                final listViewTournamentsRecord =
-                                    listViewTournamentsRecordList[
+                                final listViewTournamentssRecord =
+                                    listViewTournamentssRecordList[
                                         listViewIndex];
                                 return Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -212,8 +212,12 @@ class _AdminTournamentsListWidgetState
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                                 child: CachedNetworkImage(
+                                                  fadeInDuration: Duration(
+                                                      milliseconds: 500),
+                                                  fadeOutDuration: Duration(
+                                                      milliseconds: 500),
                                                   imageUrl:
-                                                      listViewTournamentsRecord
+                                                      listViewTournamentssRecord
                                                           .logo,
                                                   width: 90.0,
                                                   height: 90.0,
@@ -240,11 +244,8 @@ class _AdminTournamentsListWidgetState
                                                             MainAxisSize.max,
                                                         children: [
                                                           Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'lw9lpn77' /* List Item Title */,
-                                                            ),
+                                                            listViewTournamentssRecord
+                                                                .name,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium,
@@ -296,10 +297,9 @@ class _AdminTournamentsListWidgetState
                                                                             .bodyMedium,
                                                                       ),
                                                                       TextSpan(
-                                                                        text: FFLocalizations.of(context)
-                                                                            .getText(
-                                                                          'nejk0dix' /* Hello World  */,
-                                                                        ),
+                                                                        text: listViewTournamentssRecord
+                                                                            .seasonYear
+                                                                            .toString(),
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium,
                                                                       )
@@ -336,10 +336,8 @@ class _AdminTournamentsListWidgetState
                                                                             .bodyMedium,
                                                                       ),
                                                                       TextSpan(
-                                                                        text: FFLocalizations.of(context)
-                                                                            .getText(
-                                                                          'ruh8d00n' /* Hello World  */,
-                                                                        ),
+                                                                        text: listViewTournamentssRecord
+                                                                            .type,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium,
                                                                       )

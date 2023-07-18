@@ -669,10 +669,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // adminTournamentsList
   {
-    'lw9lpn77': {
-      'en': 'List Item Title',
-      'ar': '',
-    },
     '6yy6pbye': {
       'en': 'Season',
       'ar': 'الموسم',
@@ -681,10 +677,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': ' : ',
       'ar': ' : ',
     },
-    'nejk0dix': {
-      'en': 'Hello World ',
-      'ar': '',
-    },
     '35vlaenp': {
       'en': 'Type',
       'ar': 'نوع',
@@ -692,10 +684,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'epxlvliy': {
       'en': ' : ',
       'ar': ' : ',
-    },
-    'ruh8d00n': {
-      'en': 'Hello World ',
-      'ar': '',
     },
     'ejatipx8': {
       'en': 'Tournaments list',
@@ -724,35 +712,35 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Tournament is active',
       'ar': 'البطولة نشطة',
     },
-    'q29u7u53': {
-      'en': 'If home team win',
-      'ar': 'إذا فاز الفريق المضيف',
+    'idiur6rq': {
+      'en': 'Tournament is active',
+      'ar': 'البطولة نشطة',
     },
-    'y2iqwlfc': {
+    '7gc651ds': {
       'en': 'Points',
       'ar': 'النقاط',
     },
-    'c4qlt1ux': {
-      'en': 'If away team win',
-      'ar': 'إذا فاز الفريق الضيف',
+    '0fegv2l9': {
+      'en': 'Tournament is active',
+      'ar': 'البطولة نشطة',
     },
-    'bmxnjgxz': {
+    'yzvs45da': {
       'en': 'Points',
       'ar': 'النقاط',
     },
-    '3g1z1skk': {
-      'en': 'If tow teams are Draw',
-      'ar': 'إذا تعادل الفريقين',
+    '5mfqh6jg': {
+      'en': 'Tournament is active',
+      'ar': 'البطولة نشطة',
     },
-    'v7wp0atg': {
+    'ubzt7pmb': {
       'en': 'Points',
       'ar': 'النقاط',
     },
-    'hwbopdv9': {
-      'en': 'Home team goals',
-      'ar': 'أهداف الفريق المضيف',
+    'kz8nzg79': {
+      'en': 'Tournament is active',
+      'ar': 'البطولة نشطة',
     },
-    '3qrclkd4': {
+    'hac9916b': {
       'en': 'Points',
       'ar': 'النقاط',
     },

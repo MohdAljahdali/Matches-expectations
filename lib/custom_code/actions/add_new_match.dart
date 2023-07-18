@@ -42,7 +42,7 @@ Future<String> addNewMatch(
     'x-rapidapi-key': 'ba825d70e7634e7015d2f116c1a07e03',
     'x-rapidapi-host': 'v3.football.api-sports.io'
   };
-  await TournamentsRecord.getDocumentOnce(
+  await TournamentssRecord.getDocumentOnce(
           firestore.doc('Tournaments/$tournamentRef'))
       .then((tournamentDoc) async {
     var request = http.Request(

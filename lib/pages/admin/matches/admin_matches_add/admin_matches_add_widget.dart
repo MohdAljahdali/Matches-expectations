@@ -120,8 +120,8 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    StreamBuilder<List<TournamentsRecord>>(
-                                      stream: queryTournamentsRecord(),
+                                    StreamBuilder<List<TournamentssRecord>>(
+                                      stream: queryTournamentssRecord(),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
                                         if (!snapshot.hasData) {
@@ -138,8 +138,8 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                             ),
                                           );
                                         }
-                                        List<TournamentsRecord>
-                                            dropDownTournamentsRecordList =
+                                        List<TournamentssRecord>
+                                            dropDownTournamentssRecordList =
                                             snapshot.data!;
                                         return FlutterFlowDropDown<String>(
                                           controller:
@@ -147,11 +147,12 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                                   FormFieldController<String>(
                                             _model.dropDownValue ??= '',
                                           ),
-                                          options: dropDownTournamentsRecordList
-                                              .map((e) => e.tournamentsRef)
-                                              .toList(),
+                                          options:
+                                              dropDownTournamentssRecordList
+                                                  .map((e) => e.tournamentsRef)
+                                                  .toList(),
                                           optionLabels:
-                                              dropDownTournamentsRecordList
+                                              dropDownTournamentssRecordList
                                                   .map((e) => e.name)
                                                   .toList(),
                                           onChanged: (val) => setState(

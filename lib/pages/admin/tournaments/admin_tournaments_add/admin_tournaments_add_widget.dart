@@ -355,6 +355,10 @@ class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
                                                       BorderRadius.circular(
                                                           8.0),
                                                   child: CachedNetworkImage(
+                                                    fadeInDuration: Duration(
+                                                        milliseconds: 500),
+                                                    fadeOutDuration: Duration(
+                                                        milliseconds: 500),
                                                     imageUrl:
                                                         'https://picsum.photos/seed/559/600',
                                                     width: 90.0,

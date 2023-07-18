@@ -160,7 +160,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/adminTournamentEdit',
           builder: (context, params) => AdminTournamentEditWidget(
             aTournamentRef: params.getParam('aTournamentRef',
-                ParamType.DocumentReference, false, ['Tournaments']),
+                ParamType.DocumentReference, false, ['Tournamentss']),
           ),
         ),
         FFRoute(

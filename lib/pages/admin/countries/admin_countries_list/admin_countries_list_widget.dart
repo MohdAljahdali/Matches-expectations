@@ -200,6 +200,10 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               child: CachedNetworkImage(
+                                                fadeInDuration:
+                                                    Duration(milliseconds: 500),
+                                                fadeOutDuration:
+                                                    Duration(milliseconds: 500),
                                                 imageUrl:
                                                     listViewCountriesRecord
                                                         .flagW80,

@@ -19,7 +19,7 @@ Future<String> addTournaments(
   String randomCode,
 ) async {
   final firestore = FirebaseFirestore.instance;
-  final TournamentsDoc = TournamentsRecord.collection;
+  final TournamentsDoc = TournamentssRecord.collection;
   final TeamsDoc = TeamsRecord.collection;
 
   var headers = {
@@ -50,7 +50,7 @@ Future<String> addTournaments(
             .then((DocumentSnapshot doc) {
           if (!doc.exists) {
             TournamentsDoc.doc(tournamentRefID)
-                .set(createTournamentsRecordData(
+                .set(createTournamentssRecordData(
               tournamentsRef: tournamentRefID,
               tournamentsID: int.parse(tournament['league']['id'].toString()),
               seasonYear: int.parse(seasons['year'].toString()),
@@ -67,7 +67,7 @@ Future<String> addTournaments(
               isActive: false,
             ))
                 .then((value) async {
-              await TournamentsRecord.getDocumentOnce(
+              await TournamentssRecord.getDocumentOnce(
                       firestore.doc('Tournaments/$tournamentRefID'))
                   .then((tournamentDoc) async {
                 var teamsrequest = http.Request(

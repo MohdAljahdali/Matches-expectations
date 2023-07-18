@@ -384,7 +384,7 @@ final List<Map<String, String>> _defaultLanguagesList = [
   {"isoCode": "pi", "name": "पाऴि"},
   {"isoCode": "pa", "name": "ਪੰਜਾਬੀ"},
   {"isoCode": "fa", "name": "فارسی"},
-  {"isoCode": "pl", "name": "polszczyzna"},
+  {"isoCode": "pl", "name": "Polski"},
   {"isoCode": "pt", "name": "Português"},
   {"isoCode": "ps", "name": "پښتو"},
   {"isoCode": "qu", "name": "Runa Simi, Kichwa"},

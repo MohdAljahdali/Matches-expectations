@@ -8,8 +8,8 @@ import '/backend/schema/util/schema_util.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class TournamentsRecord extends FirestoreRecord {
-  TournamentsRecord._(
+class TournamentssRecord extends FirestoreRecord {
+  TournamentssRecord._(
     DocumentReference reference,
     Map<String, dynamic> data,
   ) : super(reference, data) {
@@ -188,40 +188,40 @@ class TournamentsRecord extends FirestoreRecord {
   }
 
   static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('Tournaments');
+      FirebaseFirestore.instance.collection('Tournamentss');
 
-  static Stream<TournamentsRecord> getDocument(DocumentReference ref) =>
-      ref.snapshots().map((s) => TournamentsRecord.fromSnapshot(s));
+  static Stream<TournamentssRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => TournamentssRecord.fromSnapshot(s));
 
-  static Future<TournamentsRecord> getDocumentOnce(DocumentReference ref) =>
-      ref.get().then((s) => TournamentsRecord.fromSnapshot(s));
+  static Future<TournamentssRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => TournamentssRecord.fromSnapshot(s));
 
-  static TournamentsRecord fromSnapshot(DocumentSnapshot snapshot) =>
-      TournamentsRecord._(
+  static TournamentssRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      TournamentssRecord._(
         snapshot.reference,
         mapFromFirestore(snapshot.data() as Map<String, dynamic>),
       );
 
-  static TournamentsRecord getDocumentFromData(
+  static TournamentssRecord getDocumentFromData(
     Map<String, dynamic> data,
     DocumentReference reference,
   ) =>
-      TournamentsRecord._(reference, mapFromFirestore(data));
+      TournamentssRecord._(reference, mapFromFirestore(data));
 
   @override
   String toString() =>
-      'TournamentsRecord(reference: ${reference.path}, data: $snapshotData)';
+      'TournamentssRecord(reference: ${reference.path}, data: $snapshotData)';
 
   @override
   int get hashCode => reference.path.hashCode;
 
   @override
   bool operator ==(other) =>
-      other is TournamentsRecord &&
+      other is TournamentssRecord &&
       reference.path.hashCode == other.reference.path.hashCode;
 }
 
-Map<String, dynamic> createTournamentsRecordData({
+Map<String, dynamic> createTournamentssRecordData({
   int? tournamentsID,
   String? tournamentsRef,
   int? seasonYear,
@@ -287,11 +287,12 @@ Map<String, dynamic> createTournamentsRecordData({
   return firestoreData;
 }
 
-class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
-  const TournamentsRecordDocumentEquality();
+class TournamentssRecordDocumentEquality
+    implements Equality<TournamentssRecord> {
+  const TournamentssRecordDocumentEquality();
 
   @override
-  bool equals(TournamentsRecord? e1, TournamentsRecord? e2) {
+  bool equals(TournamentssRecord? e1, TournamentssRecord? e2) {
     return e1?.tournamentsID == e2?.tournamentsID &&
         e1?.tournamentsRef == e2?.tournamentsRef &&
         e1?.seasonYear == e2?.seasonYear &&
@@ -323,7 +324,7 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
   }
 
   @override
-  int hash(TournamentsRecord? e) => const ListEquality().hash([
+  int hash(TournamentssRecord? e) => const ListEquality().hash([
         e?.tournamentsID,
         e?.tournamentsRef,
         e?.seasonYear,
@@ -355,5 +356,5 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
       ]);
 
   @override
-  bool isValidKey(Object? o) => o is TournamentsRecord;
+  bool isValidKey(Object? o) => o is TournamentssRecord;
 }

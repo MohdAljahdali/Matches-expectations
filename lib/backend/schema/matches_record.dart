@@ -51,11 +51,6 @@ class MatchesRecord extends FirestoreRecord {
   bool get fixtureIsDouble => _fixtureIsDouble ?? false;
   bool hasFixtureIsDouble() => _fixtureIsDouble != null;
 
-  // "tournamentRef" field.
-  DocumentReference? _tournamentRef;
-  DocumentReference? get tournamentRef => _tournamentRef;
-  bool hasTournamentRef() => _tournamentRef != null;
-
   // "tournamentID" field.
   String? _tournamentID;
   String get tournamentID => _tournamentID ?? '';
@@ -278,6 +273,11 @@ class MatchesRecord extends FirestoreRecord {
   String get addRandomCode => _addRandomCode ?? '';
   bool hasAddRandomCode() => _addRandomCode != null;
 
+  // "tournamentRef" field.
+  DocumentReference? _tournamentRef;
+  DocumentReference? get tournamentRef => _tournamentRef;
+  bool hasTournamentRef() => _tournamentRef != null;
+
   void _initializeFields() {
     _matcheID = snapshotData['MatcheID'] as String?;
     _fixtureID = castToType<int>(snapshotData['fixtureID']);
@@ -286,7 +286,6 @@ class MatchesRecord extends FirestoreRecord {
     _fixturePeriodFirst = castToType<int>(snapshotData['fixturePeriodFirst']);
     _fixturePeriodSecond = castToType<int>(snapshotData['fixturePeriodSecond']);
     _fixtureIsDouble = snapshotData['fixtureIsDouble'] as bool?;
-    _tournamentRef = snapshotData['tournamentRef'] as DocumentReference?;
     _tournamentID = snapshotData['tournamentID'] as String?;
     _tournamentseasonYear = snapshotData['tournamentseasonYear'] as String?;
     _tournamentName = snapshotData['tournamentName'] as String?;
@@ -336,6 +335,7 @@ class MatchesRecord extends FirestoreRecord {
     _scorePenaltyHome = castToType<int>(snapshotData['scorePenaltyHome']);
     _scorePenaltyAway = castToType<int>(snapshotData['scorePenaltyAway']);
     _addRandomCode = snapshotData['addRandomCode'] as String?;
+    _tournamentRef = snapshotData['tournamentRef'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -380,7 +380,6 @@ Map<String, dynamic> createMatchesRecordData({
   int? fixturePeriodFirst,
   int? fixturePeriodSecond,
   bool? fixtureIsDouble,
-  DocumentReference? tournamentRef,
   String? tournamentID,
   String? tournamentseasonYear,
   String? tournamentName,
@@ -425,6 +424,7 @@ Map<String, dynamic> createMatchesRecordData({
   int? scorePenaltyHome,
   int? scorePenaltyAway,
   String? addRandomCode,
+  DocumentReference? tournamentRef,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -435,7 +435,6 @@ Map<String, dynamic> createMatchesRecordData({
       'fixturePeriodFirst': fixturePeriodFirst,
       'fixturePeriodSecond': fixturePeriodSecond,
       'fixtureIsDouble': fixtureIsDouble,
-      'tournamentRef': tournamentRef,
       'tournamentID': tournamentID,
       'tournamentseasonYear': tournamentseasonYear,
       'tournamentName': tournamentName,
@@ -480,6 +479,7 @@ Map<String, dynamic> createMatchesRecordData({
       'scorePenaltyHome': scorePenaltyHome,
       'scorePenaltyAway': scorePenaltyAway,
       'addRandomCode': addRandomCode,
+      'tournamentRef': tournamentRef,
     }.withoutNulls,
   );
 
@@ -498,7 +498,6 @@ class MatchesRecordDocumentEquality implements Equality<MatchesRecord> {
         e1?.fixturePeriodFirst == e2?.fixturePeriodFirst &&
         e1?.fixturePeriodSecond == e2?.fixturePeriodSecond &&
         e1?.fixtureIsDouble == e2?.fixtureIsDouble &&
-        e1?.tournamentRef == e2?.tournamentRef &&
         e1?.tournamentID == e2?.tournamentID &&
         e1?.tournamentseasonYear == e2?.tournamentseasonYear &&
         e1?.tournamentName == e2?.tournamentName &&
@@ -544,7 +543,8 @@ class MatchesRecordDocumentEquality implements Equality<MatchesRecord> {
         e1?.scoreExtratimeAway == e2?.scoreExtratimeAway &&
         e1?.scorePenaltyHome == e2?.scorePenaltyHome &&
         e1?.scorePenaltyAway == e2?.scorePenaltyAway &&
-        e1?.addRandomCode == e2?.addRandomCode;
+        e1?.addRandomCode == e2?.addRandomCode &&
+        e1?.tournamentRef == e2?.tournamentRef;
   }
 
   @override
@@ -556,7 +556,6 @@ class MatchesRecordDocumentEquality implements Equality<MatchesRecord> {
         e?.fixturePeriodFirst,
         e?.fixturePeriodSecond,
         e?.fixtureIsDouble,
-        e?.tournamentRef,
         e?.tournamentID,
         e?.tournamentseasonYear,
         e?.tournamentName,
@@ -600,7 +599,8 @@ class MatchesRecordDocumentEquality implements Equality<MatchesRecord> {
         e?.scoreExtratimeAway,
         e?.scorePenaltyHome,
         e?.scorePenaltyAway,
-        e?.addRandomCode
+        e?.addRandomCode,
+        e?.tournamentRef
       ]);
 
   @override

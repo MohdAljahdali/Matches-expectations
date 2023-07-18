@@ -53,8 +53,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return StreamBuilder<TournamentsRecord>(
-      stream: TournamentsRecord.getDocument(widget.aTournamentRef!),
+    return StreamBuilder<TournamentssRecord>(
+      stream: TournamentssRecord.getDocument(widget.aTournamentRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -72,7 +72,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
             ),
           );
         }
-        final adminTournamentEditTournamentsRecord = snapshot.data!;
+        final adminTournamentEditTournamentssRecord = snapshot.data!;
         return GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
@@ -295,7 +295,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                           BorderRadius.circular(
                                                               25.0),
                                                       child: Image.network(
-                                                        adminTournamentEditTournamentsRecord
+                                                        adminTournamentEditTournamentssRecord
                                                             .logo,
                                                         width: 100.0,
                                                         height: 100.0,
@@ -485,7 +485,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                           .nameEnTFController ??=
                                                       TextEditingController(
                                                     text:
-                                                        adminTournamentEditTournamentsRecord
+                                                        adminTournamentEditTournamentssRecord
                                                             .name,
                                                   ),
                                                   autofocus: true,
@@ -627,7 +627,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                           .nameArTFController ??=
                                                       TextEditingController(
                                                     text:
-                                                        adminTournamentEditTournamentsRecord
+                                                        adminTournamentEditTournamentssRecord
                                                             .nameAr,
                                                   ),
                                                   autofocus: true,
@@ -763,7 +763,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                 child: SwitchListTile.adaptive(
                                                   value: _model
                                                           .activeSTValue ??=
-                                                      adminTournamentEditTournamentsRecord
+                                                      adminTournamentEditTournamentssRecord
                                                           .isActive,
                                                   onChanged: (newValue) async {
                                                     setState(() =>
@@ -785,7 +785,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryText,
+                                                              .primaryText,
                                                           fontSize: 16.0,
                                                           useGoogleFonts: GoogleFonts
                                                                   .asMap()
@@ -861,8 +861,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                         SwitchListTile.adaptive(
                                                           value: _model
                                                                   .homeWinSTValue ??=
-                                                              adminTournamentEditTournamentsRecord
-                                                                  .roleHomeWin,
+                                                              adminTournamentEditTournamentssRecord
+                                                                  .isActive,
                                                           onChanged:
                                                               (newValue) async {
                                                             setState(() => _model
@@ -873,7 +873,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                              'q29u7u53' /* If home team win */,
+                                                              'idiur6rq' /* Tournament is active */,
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -884,7 +884,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                       .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryText,
+                                                                      .primaryText,
                                                                   fontSize:
                                                                       16.0,
                                                                   useGoogleFonts: GoogleFonts
@@ -944,7 +944,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  'y2iqwlfc' /* Points */,
+                                                                  '7gc651ds' /* Points */,
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -955,7 +955,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                               .bodyMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondaryText,
+                                                                          .primaryText,
                                                                       fontSize:
                                                                           16.0,
                                                                       useGoogleFonts: GoogleFonts
@@ -1031,7 +1031,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   ),
                                                                   count: _model
                                                                           .homeWinPointsCCValue ??=
-                                                                      adminTournamentEditTournamentsRecord
+                                                                      adminTournamentEditTournamentssRecord
                                                                           .roleHomeWinPoints,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
@@ -1086,8 +1086,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                         SwitchListTile.adaptive(
                                                           value: _model
                                                                   .awayWinSTValue ??=
-                                                              adminTournamentEditTournamentsRecord
-                                                                  .roleAwayWin,
+                                                              adminTournamentEditTournamentssRecord
+                                                                  .isActive,
                                                           onChanged:
                                                               (newValue) async {
                                                             setState(() => _model
@@ -1098,7 +1098,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                              'c4qlt1ux' /* If away team win */,
+                                                              '0fegv2l9' /* Tournament is active */,
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -1109,7 +1109,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                       .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryText,
+                                                                      .primaryText,
                                                                   fontSize:
                                                                       16.0,
                                                                   useGoogleFonts: GoogleFonts
@@ -1169,7 +1169,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  'bmxnjgxz' /* Points */,
+                                                                  'yzvs45da' /* Points */,
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -1180,7 +1180,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                               .bodyMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondaryText,
+                                                                          .primaryText,
                                                                       fontSize:
                                                                           16.0,
                                                                       useGoogleFonts: GoogleFonts
@@ -1256,7 +1256,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   ),
                                                                   count: _model
                                                                           .awayWinPointsCCValue ??=
-                                                                      adminTournamentEditTournamentsRecord
+                                                                      adminTournamentEditTournamentssRecord
                                                                           .roleAwayWinPoints,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
@@ -1311,8 +1311,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                         SwitchListTile.adaptive(
                                                           value: _model
                                                                   .drawSTValue ??=
-                                                              adminTournamentEditTournamentsRecord
-                                                                  .roleDraw,
+                                                              adminTournamentEditTournamentssRecord
+                                                                  .isActive,
                                                           onChanged:
                                                               (newValue) async {
                                                             setState(() => _model
@@ -1323,7 +1323,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                              '3g1z1skk' /* If tow teams are Draw */,
+                                                              '5mfqh6jg' /* Tournament is active */,
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -1334,7 +1334,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                       .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryText,
+                                                                      .primaryText,
                                                                   fontSize:
                                                                       16.0,
                                                                   useGoogleFonts: GoogleFonts
@@ -1394,7 +1394,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  'v7wp0atg' /* Points */,
+                                                                  'ubzt7pmb' /* Points */,
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -1405,7 +1405,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                               .bodyMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondaryText,
+                                                                          .primaryText,
                                                                       fontSize:
                                                                           16.0,
                                                                       useGoogleFonts: GoogleFonts
@@ -1481,7 +1481,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   ),
                                                                   count: _model
                                                                           .drawPointsCCValue ??=
-                                                                      adminTournamentEditTournamentsRecord
+                                                                      adminTournamentEditTournamentssRecord
                                                                           .roleDrawPoints,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
@@ -1536,8 +1536,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                         SwitchListTile.adaptive(
                                                           value: _model
                                                                   .homeGoalsSTValue ??=
-                                                              adminTournamentEditTournamentsRecord
-                                                                  .roleHomeGoals,
+                                                              adminTournamentEditTournamentssRecord
+                                                                  .isActive,
                                                           onChanged:
                                                               (newValue) async {
                                                             setState(() => _model
@@ -1548,7 +1548,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                              'hwbopdv9' /* Home team goals */,
+                                                              'kz8nzg79' /* Tournament is active */,
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -1559,7 +1559,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                       .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryText,
+                                                                      .primaryText,
                                                                   fontSize:
                                                                       16.0,
                                                                   useGoogleFonts: GoogleFonts
@@ -1619,7 +1619,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  '3qrclkd4' /* Points */,
+                                                                  'hac9916b' /* Points */,
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -1630,7 +1630,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                               .bodyMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondaryText,
+                                                                          .primaryText,
                                                                       fontSize:
                                                                           16.0,
                                                                       useGoogleFonts: GoogleFonts
@@ -1706,7 +1706,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   ),
                                                                   count: _model
                                                                           .homeGoalsPointsCCValue ??=
-                                                                      adminTournamentEditTournamentsRecord
+                                                                      adminTournamentEditTournamentssRecord
                                                                           .roleHomeGoalsPoints,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
@@ -1761,7 +1761,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                         SwitchListTile.adaptive(
                                                           value: _model
                                                                   .awayGoalsSTValue ??=
-                                                              adminTournamentEditTournamentsRecord
+                                                              adminTournamentEditTournamentssRecord
                                                                   .roleAwayGoals,
                                                           onChanged:
                                                               (newValue) async {
@@ -1784,7 +1784,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                       .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryText,
+                                                                      .primaryText,
                                                                   fontSize:
                                                                       16.0,
                                                                   useGoogleFonts: GoogleFonts
@@ -1855,7 +1855,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                               .bodyMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondaryText,
+                                                                          .primaryText,
                                                                       fontSize:
                                                                           16.0,
                                                                       useGoogleFonts: GoogleFonts
@@ -1931,7 +1931,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   ),
                                                                   count: _model
                                                                           .awayGoalsPointsCCValue ??=
-                                                                      adminTournamentEditTournamentsRecord
+                                                                      adminTournamentEditTournamentssRecord
                                                                           .roleAwayGoalsPoints,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
@@ -1965,41 +1965,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 5.0, 0.0, 0.0),
                                     child: FFButtonWidget(
-                                      onPressed: () async {
-                                        await adminTournamentEditTournamentsRecord
-                                            .reference
-                                            .update(createTournamentsRecordData(
-                                          name: _model.nameEnTFController.text,
-                                          nameAr:
-                                              _model.nameArTFController.text,
-                                          logo: _model.logoUrlTFController
-                                                      .text ==
-                                                  ''
-                                              ? adminTournamentEditTournamentsRecord
-                                                  .logo
-                                              : _model.logoUrlTFController.text,
-                                          roleHomeWin: _model.homeWinSTValue,
-                                          roleHomeWinPoints:
-                                              _model.homeWinPointsCCValue,
-                                          roleAwayWin: _model.awayWinSTValue,
-                                          roleAwayWinPoints:
-                                              _model.awayWinPointsCCValue,
-                                          roleDraw: _model.drawSTValue,
-                                          roleDrawPoints:
-                                              _model.drawPointsCCValue,
-                                          roleHomeGoals:
-                                              _model.homeGoalsSTValue,
-                                          roleHomeGoalsPoints:
-                                              _model.homeGoalsPointsCCValue,
-                                          roleAwayGoals:
-                                              _model.awayGoalsSTValue,
-                                          roleAwayGoalsPoints:
-                                              _model.awayGoalsPointsCCValue,
-                                          isActive: true,
-                                        ));
-
-                                        context
-                                            .pushNamed('adminTournamentsList');
+                                      onPressed: () {
+                                        print('signUpB pressed ...');
                                       },
                                       text: FFLocalizations.of(context).getText(
                                         'zdwcvv5d' /* Save your edite */,
