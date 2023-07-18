@@ -147,8 +147,8 @@ class TournamentssRecord extends FirestoreRecord {
   bool hasAddRandomCode() => _addRandomCode != null;
 
   // "teamsList" field.
-  DocumentReference? _teamsList;
-  DocumentReference? get teamsList => _teamsList;
+  List<DocumentReference>? _teamsList;
+  List<DocumentReference> get teamsList => _teamsList ?? const [];
   bool hasTeamsList() => _teamsList != null;
 
   // "isActive" field.
@@ -183,7 +183,7 @@ class TournamentssRecord extends FirestoreRecord {
     _roleAwayGoalsPoints = castToType<int>(snapshotData['roleAwayGoalsPoints']);
     _roleHasDoubleMatches = snapshotData['roleHasDoubleMatches'] as bool?;
     _addRandomCode = snapshotData['addRandomCode'] as String?;
-    _teamsList = snapshotData['teamsList'] as DocumentReference?;
+    _teamsList = getDataList(snapshotData['teamsList']);
     _isActive = snapshotData['isActive'] as bool?;
   }
 
@@ -248,7 +248,6 @@ Map<String, dynamic> createTournamentssRecordData({
   int? roleAwayGoalsPoints,
   bool? roleHasDoubleMatches,
   String? addRandomCode,
-  DocumentReference? teamsList,
   bool? isActive,
 }) {
   final firestoreData = mapToFirestore(
@@ -279,7 +278,6 @@ Map<String, dynamic> createTournamentssRecordData({
       'roleAwayGoalsPoints': roleAwayGoalsPoints,
       'roleHasDoubleMatches': roleHasDoubleMatches,
       'addRandomCode': addRandomCode,
-      'teamsList': teamsList,
       'isActive': isActive,
     }.withoutNulls,
   );
@@ -293,6 +291,7 @@ class TournamentssRecordDocumentEquality
 
   @override
   bool equals(TournamentssRecord? e1, TournamentssRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.tournamentsID == e2?.tournamentsID &&
         e1?.tournamentsRef == e2?.tournamentsRef &&
         e1?.seasonYear == e2?.seasonYear &&
@@ -319,7 +318,7 @@ class TournamentssRecordDocumentEquality
         e1?.roleAwayGoalsPoints == e2?.roleAwayGoalsPoints &&
         e1?.roleHasDoubleMatches == e2?.roleHasDoubleMatches &&
         e1?.addRandomCode == e2?.addRandomCode &&
-        e1?.teamsList == e2?.teamsList &&
+        listEquality.equals(e1?.teamsList, e2?.teamsList) &&
         e1?.isActive == e2?.isActive;
   }
 
