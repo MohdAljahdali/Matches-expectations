@@ -68,7 +68,7 @@ Future<String> addTournaments(
             ))
                 .then((value) async {
               await TournamentssRecord.getDocumentOnce(
-                      firestore.doc('Tournaments/$tournamentRefID'))
+                      firestore.doc('Tournamentss/$tournamentRefID'))
                   .then((tournamentDoc) async {
                 var teamsrequest = http.Request(
                     'GET',
