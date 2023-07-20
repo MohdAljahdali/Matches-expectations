@@ -840,16 +840,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // adminMatchesAdd
   {
-    'fz847r2w': {
+    'vgjc2hju': {
+      'en': 'Choose the tournament',
+      'ar': 'قم باختيار البطولة',
+    },
+    'c55ift8b': {
       'en': 'Pro League',
       'ar': '',
     },
-    '8rs11k16': {
+    'd11nujaz': {
       'en': 'Search for an item...',
       'ar': '',
     },
-    'ekamtrj7': {
-      'en': 'VS',
+    'wc9u701e': {
+      'en': 'Tournament is active',
+      'ar': 'البطولة نشطة',
+    },
+    'sjoj4y4b': {
+      'en': 'YYYY-MM-DD',
       'ar': '',
     },
     'vrmd6yg3': {
@@ -857,6 +865,29 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'أضافة بطولات',
     },
     'udhuh86e': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // adminMatchesAddCopy
+  {
+    'ahcpeme7': {
+      'en': 'Pro League',
+      'ar': '',
+    },
+    'fvesn2ld': {
+      'en': 'Search for an item...',
+      'ar': '',
+    },
+    'yj3r8rff': {
+      'en': 'VS',
+      'ar': '',
+    },
+    'ozjcfion': {
+      'en': 'Add tgdgdgdg',
+      'ar': 'أضافة بطولات',
+    },
+    '30d15deu': {
       'en': 'Home',
       'ar': '',
     },

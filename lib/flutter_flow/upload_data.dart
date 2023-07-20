@@ -11,6 +11,7 @@ import 'package:video_player/video_player.dart';
 import 'package:image/image.dart' as img;
 
 import '../auth/firebase_auth/auth_util.dart';
+import 'flutter_flow_theme.dart';
 import 'flutter_flow_util.dart';
 
 const allowedFormats = {'image/png', 'image/jpeg', 'video/mp4', 'image/gif'};
@@ -387,8 +388,11 @@ String getSignatureStoragePath([String? pathPrefix]) {
   return '$pathPrefix/signature_$timestamp.png';
 }
 
-void showUploadMessage(BuildContext context, String message,
-    {bool showLoading = false}) {
+void showUploadMessage(
+  BuildContext context,
+  String message, {
+  bool showLoading = false,
+}) {
   ScaffoldMessenger.of(context)
     ..hideCurrentSnackBar()
     ..showSnackBar(
@@ -398,11 +402,17 @@ void showUploadMessage(BuildContext context, String message,
             if (showLoading)
               Padding(
                 padding: EdgeInsetsDirectional.only(end: 10.0),
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  valueColor: Theme.of(context).brightness == Brightness.dark
+                      ? AlwaysStoppedAnimation<Color>(
+                          FlutterFlowTheme.of(context).accent4)
+                      : null,
+                ),
               ),
             Text(message),
           ],
         ),
+        duration: showLoading ? Duration(days: 1) : Duration(seconds: 4),
       ),
     );
 }
