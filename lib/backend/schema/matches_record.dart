@@ -278,6 +278,16 @@ class MatchesRecord extends FirestoreRecord {
   DocumentReference? get tournamentRef => _tournamentRef;
   bool hasTournamentRef() => _tournamentRef != null;
 
+  // "isDouble" field.
+  bool? _isDouble;
+  bool get isDouble => _isDouble ?? false;
+  bool hasIsDouble() => _isDouble != null;
+
+  // "isActive" field.
+  bool? _isActive;
+  bool get isActive => _isActive ?? false;
+  bool hasIsActive() => _isActive != null;
+
   void _initializeFields() {
     _matcheID = snapshotData['MatcheID'] as String?;
     _fixtureID = castToType<int>(snapshotData['fixtureID']);
@@ -336,6 +346,8 @@ class MatchesRecord extends FirestoreRecord {
     _scorePenaltyAway = castToType<int>(snapshotData['scorePenaltyAway']);
     _addRandomCode = snapshotData['addRandomCode'] as String?;
     _tournamentRef = snapshotData['tournamentRef'] as DocumentReference?;
+    _isDouble = snapshotData['isDouble'] as bool?;
+    _isActive = snapshotData['isActive'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -425,6 +437,8 @@ Map<String, dynamic> createMatchesRecordData({
   int? scorePenaltyAway,
   String? addRandomCode,
   DocumentReference? tournamentRef,
+  bool? isDouble,
+  bool? isActive,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -480,6 +494,8 @@ Map<String, dynamic> createMatchesRecordData({
       'scorePenaltyAway': scorePenaltyAway,
       'addRandomCode': addRandomCode,
       'tournamentRef': tournamentRef,
+      'isDouble': isDouble,
+      'isActive': isActive,
     }.withoutNulls,
   );
 
@@ -544,7 +560,9 @@ class MatchesRecordDocumentEquality implements Equality<MatchesRecord> {
         e1?.scorePenaltyHome == e2?.scorePenaltyHome &&
         e1?.scorePenaltyAway == e2?.scorePenaltyAway &&
         e1?.addRandomCode == e2?.addRandomCode &&
-        e1?.tournamentRef == e2?.tournamentRef;
+        e1?.tournamentRef == e2?.tournamentRef &&
+        e1?.isDouble == e2?.isDouble &&
+        e1?.isActive == e2?.isActive;
   }
 
   @override
@@ -600,7 +618,9 @@ class MatchesRecordDocumentEquality implements Equality<MatchesRecord> {
         e?.scorePenaltyHome,
         e?.scorePenaltyAway,
         e?.addRandomCode,
-        e?.tournamentRef
+        e?.tournamentRef,
+        e?.isDouble,
+        e?.isActive
       ]);
 
   @override

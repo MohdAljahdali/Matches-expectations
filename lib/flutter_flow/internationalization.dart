@@ -840,6 +840,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // adminMatchesAdd
   {
+    'vrmd6yg3': {
+      'en': 'Add tgdgdgdg',
+      'ar': 'أضافة بطولات',
+    },
     'vgjc2hju': {
       'en': 'Choose the tournament',
       'ar': 'قم باختيار البطولة',
@@ -853,39 +857,99 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'wc9u701e': {
-      'en': 'Tournament is active',
-      'ar': 'البطولة نشطة',
+      'en': 'Start Date',
+      'ar': 'تاريخ البداية',
     },
-    'sjoj4y4b': {
-      'en': 'YYYY-MM-DD',
+    'ex2yq1ud': {
+      'en': '',
       'ar': '',
     },
-    'vrmd6yg3': {
-      'en': 'Add tgdgdgdg',
-      'ar': 'أضافة بطولات',
+    'nu3qtm2b': {
+      'en': 'Start Date',
+      'ar': 'تاريخ البداية',
+    },
+    'b35claa2': {
+      'en': '',
+      'ar': '',
+    },
+    'vzmt93yy': {
+      'en': 'Match status',
+      'ar': 'حالة المباراة',
+    },
+    'tn5khx4q': {
+      'en': '',
+      'ar': '',
+    },
+    'np4ecc0g': {
+      'en': 'Not Started\t',
+      'ar': 'لم تبدأ بعد',
+    },
+    'ankhvcp5': {
+      'en': 'Time To Be Defined\t',
+      'ar': 'لم يتم تحديد التاريخ بعد',
+    },
+    'sn1cq8qp': {
+      'en': 'In Play\t',
+      'ar': 'قيد اللعب',
+    },
+    'xevr2dlv': {
+      'en': 'Match Finished\t',
+      'ar': 'انتهت المباراة',
+    },
+    'loeeo95m': {
+      'en': 'Match Postponed\t',
+      'ar': 'المباراة مؤجلة',
+    },
+    '6g0lgu0j': {
+      'en': 'Match Cancelled\t',
+      'ar': 'تم إلغاء المباراة',
+    },
+    'zdq6za3c': {
+      'en': 'Match Abandoned\t',
+      'ar': 'تم التخلي عن المباراة',
+    },
+    'zou9ptyn': {
+      'en': 'Search for an item...',
+      'ar': '',
+    },
+    'c521ruo7': {
+      'en': 'Add new matches',
+      'ar': 'إضافة مباريات جديدة',
     },
     'udhuh86e': {
       'en': 'Home',
       'ar': '',
     },
   },
-  // adminMatchesAddCopy
+  // adminMatchesList
   {
-    'ahcpeme7': {
-      'en': 'Pro League',
-      'ar': '',
-    },
-    'fvesn2ld': {
-      'en': 'Search for an item...',
-      'ar': '',
-    },
-    'yj3r8rff': {
+    'n255kbji': {
       'en': 'VS',
       'ar': '',
     },
+    'm6ug5u60': {
+      'en': 'X2',
+      'ar': 'X2',
+    },
+    'ot6fplxv': {
+      'en': 'X1',
+      'ar': 'X1',
+    },
+    'huegtbor': {
+      'en': '',
+      'ar': '',
+    },
+    '2pn1rfdc': {
+      'en': '',
+      'ar': '',
+    },
+    'on6eo3x6': {
+      'en': 'Edit',
+      'ar': 'تعديل',
+    },
     'ozjcfion': {
-      'en': 'Add tgdgdgdg',
-      'ar': 'أضافة بطولات',
+      'en': 'List of matches added',
+      'ar': 'قائمة المباريات المظافة',
     },
     '30d15deu': {
       'en': 'Home',

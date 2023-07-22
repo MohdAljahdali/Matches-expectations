@@ -16,17 +16,32 @@ import 'package:http/http.dart' as http;
 
 Future<String> addNewMatch(
   String tournamentRef,
-  DateTime fromDate,
-  DateTime toDate,
+  bool startDate,
+  DateTime? fromDate,
+  bool endDate,
+  DateTime? toDate,
+  String matchStatusB,
+  String? matchStatusT,
   String randomCode,
 ) async {
   // Date format
   var outputFormat = DateFormat('yyyy-MM-dd');
-  var fromDateFormat = outputFormat.format(fromDate);
-  var toDateFormat = outputFormat.format(toDate);
   final firestore = FirebaseFirestore.instance;
   final MatchesCol = firestore.collection('Matches');
 
+  String filtterSearch = "";
+  if (startDate == true) {
+    var fromDateFormat = outputFormat.format(fromDate!);
+    filtterSearch = filtterSearch + "&from=${fromDateFormat.toString()}";
+  }
+  if (endDate == true) {
+    var toDateFormat = outputFormat.format(toDate!);
+    filtterSearch = filtterSearch + "&to=${toDateFormat.toString()}";
+  }
+  if (matchStatusB == true) {
+    var toDateFormat = outputFormat.format(toDate!);
+    filtterSearch = filtterSearch + "&statusto=${matchStatusT.toString()}";
+  }
   var getteamHomeRef;
   var getteamHomeName;
   var getteamHomeNameAr;
@@ -48,7 +63,7 @@ Future<String> addNewMatch(
     var request = http.Request(
         'GET',
         Uri.parse(
-            'https://v3.football.api-sports.io/fixtures?league=${tournamentDoc.tournamentsID.toString()}&season=${tournamentDoc.seasonYear.toString()}&from=${fromDateFormat.toString()}&to=${toDateFormat.toString()}&timezone=Asia/Riyadh'));
+            'https://v3.football.api-sports.io/fixtures?league=${tournamentDoc.tournamentsID.toString()}&season=${tournamentDoc.seasonYear.toString()}${filtterSearch.toString()}&timezone=Asia/Riyadh'));
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
     if (response.statusCode == 200) {
@@ -137,6 +152,8 @@ Future<String> addNewMatch(
               scoreExtratimeAway: 0,
               scorePenaltyHome: 0,
               scorePenaltyAway: 0,
+              isDouble: false,
+              isActive: false,
               addRandomCode: randomCode,
             ));
           }

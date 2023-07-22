@@ -169,9 +169,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => AdminMatchesAddWidget(),
         ),
         FFRoute(
-          name: 'adminMatchesAddCopy',
-          path: '/adminMatchesAddCopy',
-          builder: (context, params) => AdminMatchesAddCopyWidget(),
+          name: 'adminMatchesList',
+          path: '/adminMatchesList',
+          builder: (context, params) => AdminMatchesListWidget(
+            addMatchesRC: params.getParam('addMatchesRC', ParamType.String),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
