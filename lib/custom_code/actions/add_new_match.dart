@@ -17,8 +17,8 @@ import 'package:http/http.dart' as http;
 Future<String> addNewMatch(
   String tournamentRef,
   bool dateB,
-  DateTime? fromDate,
-  DateTime? toDate,
+  DateTime fromDate,
+  DateTime toDate,
   String matchStatusB,
   String? matchStatusT,
   String randomCode,
@@ -30,13 +30,12 @@ Future<String> addNewMatch(
 
   String filtterSearch = "";
   if (dateB == true) {
-    var fromDateFormat = outputFormat.format(fromDate!);
-    var toDateFormat = outputFormat.format(toDate!);
+    var fromDateFormat = outputFormat.format(fromDate);
+    var toDateFormat = outputFormat.format(toDate);
     filtterSearch = filtterSearch +
         "&from=${fromDateFormat.toString()}&to=${toDateFormat.toString()}";
   }
   if (matchStatusB == true) {
-    var toDateFormat = outputFormat.format(toDate!);
     filtterSearch = filtterSearch + "&statusto=${matchStatusT.toString()}";
   }
   var getteamHomeRef;
