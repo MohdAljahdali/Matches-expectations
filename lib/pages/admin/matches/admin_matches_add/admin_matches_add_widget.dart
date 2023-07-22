@@ -343,240 +343,185 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    18.0, 5.0, 18.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
-                                                  valueOrDefault<String>(
-                                                    dateTimeFormat(
-                                                      'yyyy-MM-dd',
-                                                      _model.datePicked1,
-                                                      locale:
-                                                          FFLocalizations.of(
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        18.0, 5.0, 18.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Text(
+                                                      valueOrDefault<String>(
+                                                        dateTimeFormat(
+                                                          'yyyy-MM-dd',
+                                                          _model.datePicked1,
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                        ),
+                                                        'Start date',
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
                                                                   context)
-                                                              .languageCode,
+                                                              .bodyMedium,
                                                     ),
-                                                    'Start date',
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                                FlutterFlowIconButton(
-                                                  borderColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .noColor,
-                                                  borderRadius: 0.0,
-                                                  borderWidth: 1.0,
-                                                  buttonSize: 40.0,
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .noColor,
-                                                  icon: Icon(
-                                                    Icons.date_range,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .accent4,
-                                                    size: 24.0,
-                                                  ),
-                                                  onPressed: () async {
-                                                    final _datePicked1Date =
-                                                        await showDatePicker(
-                                                      context: context,
-                                                      initialDate:
-                                                          getCurrentTimestamp,
-                                                      firstDate:
-                                                          getCurrentTimestamp,
-                                                      lastDate: DateTime(2050),
-                                                    );
-
-                                                    if (_datePicked1Date !=
-                                                        null) {
-                                                      setState(() {
-                                                        _model.datePicked1 =
-                                                            DateTime(
-                                                          _datePicked1Date.year,
-                                                          _datePicked1Date
-                                                              .month,
-                                                          _datePicked1Date.day,
-                                                        );
-                                                      });
-                                                    }
-                                                  },
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 7.0, 0.0, 7.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 100.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        borderRadius:
-                                            BorderRadius.circular(15.0),
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          width: 2.0,
-                                        ),
-                                      ),
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          SwitchListTile.adaptive(
-                                            value: _model.endDateSTValue ??=
-                                                true,
-                                            onChanged: (newValue) async {
-                                              setState(() => _model
-                                                  .endDateSTValue = newValue!);
-                                            },
-                                            title: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'nu3qtm2b' /* Start Date */,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMediumFamily,
+                                                    FlutterFlowIconButton(
+                                                      borderColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .noColor,
+                                                      borderRadius: 0.0,
+                                                      borderWidth: 1.0,
+                                                      buttonSize: 40.0,
+                                                      fillColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .noColor,
+                                                      icon: Icon(
+                                                        Icons.date_range,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryText,
-                                                        fontSize: 16.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily),
+                                                                .accent4,
+                                                        size: 24.0,
                                                       ),
-                                            ),
-                                            tileColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            activeColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                            activeTrackColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .accent1,
-                                            dense: true,
-                                            controlAffinity:
-                                                ListTileControlAffinity
-                                                    .trailing,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(15.0),
-                                            ),
-                                          ),
-                                          Divider(
-                                            height: 0.0,
-                                            thickness: 1.0,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    18.0, 5.0, 18.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
-                                                  valueOrDefault<String>(
-                                                    dateTimeFormat(
-                                                      'yyyy-MM-dd',
-                                                      _model.datePicked2,
-                                                      locale:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .languageCode,
-                                                    ),
-                                                    'End date',
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                                FlutterFlowIconButton(
-                                                  borderColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .noColor,
-                                                  borderRadius: 0.0,
-                                                  borderWidth: 1.0,
-                                                  buttonSize: 40.0,
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .noColor,
-                                                  icon: Icon(
-                                                    Icons.date_range,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .accent4,
-                                                    size: 24.0,
-                                                  ),
-                                                  onPressed: () async {
-                                                    final _datePicked2Date =
-                                                        await showDatePicker(
-                                                      context: context,
-                                                      initialDate:
-                                                          getCurrentTimestamp,
-                                                      firstDate:
-                                                          getCurrentTimestamp,
-                                                      lastDate: DateTime(2050),
-                                                    );
-
-                                                    if (_datePicked2Date !=
-                                                        null) {
-                                                      setState(() {
-                                                        _model.datePicked2 =
-                                                            DateTime(
-                                                          _datePicked2Date.year,
-                                                          _datePicked2Date
-                                                              .month,
-                                                          _datePicked2Date.day,
+                                                      onPressed: () async {
+                                                        final _datePicked1Date =
+                                                            await showDatePicker(
+                                                          context: context,
+                                                          initialDate:
+                                                              getCurrentTimestamp,
+                                                          firstDate:
+                                                              getCurrentTimestamp,
+                                                          lastDate:
+                                                              DateTime(2050),
                                                         );
-                                                      });
-                                                    }
-                                                  },
+
+                                                        if (_datePicked1Date !=
+                                                            null) {
+                                                          setState(() {
+                                                            _model.datePicked1 =
+                                                                DateTime(
+                                                              _datePicked1Date
+                                                                  .year,
+                                                              _datePicked1Date
+                                                                  .month,
+                                                              _datePicked1Date
+                                                                  .day,
+                                                            );
+                                                          });
+                                                        }
+                                                      },
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 3.0, 0.0, 0.0),
+                                                child: Icon(
+                                                  Icons
+                                                      .keyboard_double_arrow_right_sharp,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .accent3,
+                                                  size: 30.0,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        18.0, 5.0, 18.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Text(
+                                                      valueOrDefault<String>(
+                                                        dateTimeFormat(
+                                                          'yyyy-MM-dd',
+                                                          _model.datePicked2,
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                        ),
+                                                        'End date',
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    ),
+                                                    FlutterFlowIconButton(
+                                                      borderColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .noColor,
+                                                      borderRadius: 0.0,
+                                                      borderWidth: 1.0,
+                                                      buttonSize: 40.0,
+                                                      fillColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .noColor,
+                                                      icon: Icon(
+                                                        Icons.date_range,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent4,
+                                                        size: 24.0,
+                                                      ),
+                                                      onPressed: () async {
+                                                        final _datePicked2Date =
+                                                            await showDatePicker(
+                                                          context: context,
+                                                          initialDate:
+                                                              getCurrentTimestamp,
+                                                          firstDate:
+                                                              getCurrentTimestamp,
+                                                          lastDate:
+                                                              DateTime(2050),
+                                                        );
+
+                                                        if (_datePicked2Date !=
+                                                            null) {
+                                                          setState(() {
+                                                            _model.datePicked2 =
+                                                                DateTime(
+                                                              _datePicked2Date
+                                                                  .year,
+                                                              _datePicked2Date
+                                                                  .month,
+                                                              _datePicked2Date
+                                                                  .day,
+                                                            );
+                                                          });
+                                                        }
+                                                      },
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
@@ -767,7 +712,6 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                             _model.activeTournamentDDValue!,
                             _model.startDateSTValue!,
                             _model.datePicked1,
-                            _model.endDateSTValue!,
                             _model.datePicked2,
                             _model.matchStatusSTValue!.toString(),
                             _model.matchStatusDDValue,

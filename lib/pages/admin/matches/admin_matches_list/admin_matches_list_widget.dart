@@ -4,11 +4,13 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:octo_image/octo_image.dart';
 import 'package:provider/provider.dart';
 import 'admin_matches_list_model.dart';
 export 'admin_matches_list_model.dart';
@@ -128,7 +130,6 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                 snapshot.data!;
                             return ListView.builder(
                               padding: EdgeInsets.zero,
-                              primary: false,
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
                               itemCount: listViewMatchesRecordList.length,
@@ -178,9 +179,14 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),
-                                                    child: Image.network(
-                                                      listViewMatchesRecord
-                                                          .teamHomeLogo,
+                                                    child: CachedNetworkImage(
+                                                      fadeInDuration: Duration(
+                                                          milliseconds: 3000),
+                                                      fadeOutDuration: Duration(
+                                                          milliseconds: 3000),
+                                                      imageUrl:
+                                                          listViewMatchesRecord
+                                                              .teamHomeLogo,
                                                       width: 50.0,
                                                       height: 50.0,
                                                       fit: BoxFit.cover,

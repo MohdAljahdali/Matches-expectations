@@ -16,9 +16,8 @@ import 'package:http/http.dart' as http;
 
 Future<String> addNewMatch(
   String tournamentRef,
-  bool startDate,
+  bool dateB,
   DateTime? fromDate,
-  bool endDate,
   DateTime? toDate,
   String matchStatusB,
   String? matchStatusT,
@@ -30,13 +29,11 @@ Future<String> addNewMatch(
   final MatchesCol = firestore.collection('Matches');
 
   String filtterSearch = "";
-  if (startDate == true) {
+  if (dateB == true) {
     var fromDateFormat = outputFormat.format(fromDate!);
-    filtterSearch = filtterSearch + "&from=${fromDateFormat.toString()}";
-  }
-  if (endDate == true) {
     var toDateFormat = outputFormat.format(toDate!);
-    filtterSearch = filtterSearch + "&to=${toDateFormat.toString()}";
+    filtterSearch = filtterSearch +
+        "&from=${fromDateFormat.toString()}&to=${toDateFormat.toString()}";
   }
   if (matchStatusB == true) {
     var toDateFormat = outputFormat.format(toDate!);
@@ -58,7 +55,7 @@ Future<String> addNewMatch(
     'x-rapidapi-host': 'v3.football.api-sports.io'
   };
   await TournamentssRecord.getDocumentOnce(
-          firestore.doc('Tournaments/$tournamentRef'))
+          firestore.doc('Tournamentss/$tournamentRef'))
       .then((tournamentDoc) async {
     var request = http.Request(
         'GET',

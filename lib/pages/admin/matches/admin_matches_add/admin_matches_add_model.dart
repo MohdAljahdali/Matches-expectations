@@ -24,8 +24,6 @@ class AdminMatchesAddModel extends FlutterFlowModel {
   // State field(s) for startDateST widget.
   bool? startDateSTValue;
   DateTime? datePicked1;
-  // State field(s) for endDateST widget.
-  bool? endDateSTValue;
   DateTime? datePicked2;
   // State field(s) for matchStatusST widget.
   bool? matchStatusSTValue;

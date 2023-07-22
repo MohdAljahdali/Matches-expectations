@@ -864,14 +864,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'ar': '',
     },
-    'nu3qtm2b': {
-      'en': 'Start Date',
-      'ar': 'تاريخ البداية',
-    },
-    'b35claa2': {
-      'en': '',
-      'ar': '',
-    },
     'vzmt93yy': {
       'en': 'Match status',
       'ar': 'حالة المباراة',
@@ -952,6 +944,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'قائمة المباريات المظافة',
     },
     '30d15deu': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // adminMatchesListCopy
+  {
+    '5vmr7ykr': {
+      'en': 'List of matches added',
+      'ar': 'قائمة المباريات المظافة',
+    },
+    'lrcliryi': {
       'en': 'Home',
       'ar': '',
     },

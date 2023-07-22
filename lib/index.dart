@@ -25,3 +25,5 @@ export '/pages/admin/matches/admin_matches_add/admin_matches_add_widget.dart'
     show AdminMatchesAddWidget;
 export '/pages/admin/matches/admin_matches_list/admin_matches_list_widget.dart'
     show AdminMatchesListWidget;
+export '/pages/admin/matches/admin_matches_list_copy/admin_matches_list_copy_widget.dart'
+    show AdminMatchesListCopyWidget;
