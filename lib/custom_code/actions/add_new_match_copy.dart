@@ -15,7 +15,7 @@ import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
 Future<String> addNewMatchCopy(
-  List<dynamic> response,
+  dynamic response,
   String randomCode,
   String tournamentRef,
 ) async {
@@ -33,110 +33,96 @@ Future<String> addNewMatchCopy(
   var getteamAwayCode;
   var getteamHAwayLogo;
 
-  var headers = {
-    'x-rapidapi-key': 'ba825d70e7634e7015d2f116c1a07e03',
-    'x-rapidapi-host': 'v3.football.api-sports.io'
-  };
   await TournamentssRecord.getDocumentOnce(
           firestore.doc('Tournamentss/$tournamentRef'))
       .then((tournamentDoc) async {
-    var request = http.Request('GET', Uri.parse(''));
-    request.headers.addAll(headers);
-    http.StreamedResponse response = await request.send();
-    if (response.statusCode == 200) {
-      final Matchesjson =
-          convert.jsonDecode(await response.stream.bytesToString());
-      final Matchesresponse = Matchesjson['response'];
-      Matchesresponse.forEach((matche) async {
-        TeamsRecord.getDocumentOnce(firestore
-                .doc('Teams/' + matche['teams']['home']['id'].toString()))
-            .then((teamHomeDoc) async {
-          getteamHomeRef = teamHomeDoc.reference;
-          getteamHomeName = teamHomeDoc.name;
-          getteamHomeNameAr = teamHomeDoc.nameAr;
-          getteamHomeCode = teamHomeDoc.code;
-          getteamHomeLogo = teamHomeDoc.logo;
-        });
-        TeamsRecord.getDocumentOnce(firestore
-                .doc('Teams/' + matche['teams']['away']['id'].toString()))
-            .then((teamAwayDoc) async {
-          getteamAwayRef = teamAwayDoc.reference;
-          getteamAwayName = teamAwayDoc.name;
-          getteamAwayNameAr = teamAwayDoc.nameAr;
-          getteamAwayCode = teamAwayDoc.code;
-          getteamHAwayLogo = teamAwayDoc.logo;
-        });
-
-        await MatchesCol.doc(matche['fixture']['id'].toString())
-            .get()
-            .then((matcheDoc) {
-          if (!matcheDoc.exists) {
-            matcheDoc.reference.set(createMatchesRecordData(
-              matcheID: matche['fixture']['id'].toString(),
-              fixtureID: int.parse(matche['fixture']['id'].toString()),
-              //YYYY-MM-DDThh:mm:ssTZD
-              fixtureDate: DateTime.parse(matche['fixture']['date'].toString()),
-              fixtureTimestamp:
-                  int.parse(matche['fixture']['timestamp'].toString()),
-              fixturePeriodFirst:
-                  int.parse(matche['fixture']['periods']['first'].toString()),
-              fixturePeriodSecond:
-                  int.parse(matche['fixture']['periods']['second'].toString()),
-              tournamentRef: tournamentDoc.reference,
-              tournamentID: tournamentDoc.reference.id,
-              tournamentseasonYear: tournamentDoc.seasonYear.toString(),
-              tournamentName: tournamentDoc.name,
-              tournamentNameAr: tournamentDoc.nameAr,
-              tournamentType: tournamentDoc.type,
-              tournamentLogo: tournamentDoc.logo,
-              tournamentroleHomeWin: tournamentDoc.roleHomeWin,
-              tournamentroleHomeWinPoints: tournamentDoc.roleHomeWinPoints,
-              tournamentroleAwayWin: tournamentDoc.roleAwayWin,
-              tournamentroleAwayWinPoints: tournamentDoc.roleAwayWinPoints,
-              tournamentroleDraw: tournamentDoc.roleDraw,
-              tournamentroleDrawPoints: tournamentDoc.roleDrawPoints,
-              tournamentroleHomeGoals: tournamentDoc.roleHomeGoals,
-              tournamentroleHomeGoalsPoints: tournamentDoc.roleHomeGoalsPoints,
-              tournamentroleAwayGoals: tournamentDoc.roleAwayGoals,
-              tournamentroleAwayGoalsPoints: tournamentDoc.roleAwayGoalsPoints,
-              teamHomeRef: getteamHomeRef,
-              teamHomeName: getteamHomeName,
-              teamHomeNameAr: getteamHomeNameAr,
-              teamHomeCode: getteamHomeCode,
-              teamHomeLogo: getteamHomeLogo,
-              teamAwayRef: getteamAwayRef,
-              teamAwayName: getteamAwayName,
-              teamAwayNameAr: getteamAwayNameAr,
-              teamAwayCode: getteamAwayCode,
-              teamHAwayLogo: getteamHAwayLogo,
-              fixtureStatusGeneral: getStatusGeneral(
-                  matche['fixture']['status']['short'].toString()),
-              fixtureStatusLongEn:
-                  matche['fixture']['status']['long'].toString(),
-              fixtureStatusLongAr:
-                  matche['fixture']['status']['long'].toString(),
-              fixtureStatusShort:
-                  matche['fixture']['status']['short'].toString(),
-              fixtureStatusElapsed:
-                  matche['fixture']['status']['elapsed'].toString(),
-              goalsHome: 0,
-              goalsAway: 0,
-              scoreHalftimeHome: 0,
-              scoreHalftimeAway: 0,
-              scoreFulltimeHome: 0,
-              scoreFulltimeAway: 0,
-              scoreExtratimeHome: 0,
-              scoreExtratimeAway: 0,
-              scorePenaltyHome: 0,
-              scorePenaltyAway: 0,
-              isDouble: false,
-              isActive: false,
-              addRandomCode: randomCode,
-            ));
-          }
-        });
+    final Matchesjson = convert.jsonDecode(response.toString());
+    Matchesjson.forEach((matche) async {
+      TeamsRecord.getDocumentOnce(firestore
+              .doc('Teams/' + matche['teams']['home']['id'].toString()))
+          .then((teamHomeDoc) async {
+        getteamHomeRef = teamHomeDoc.reference;
+        getteamHomeName = teamHomeDoc.name;
+        getteamHomeNameAr = teamHomeDoc.nameAr;
+        getteamHomeCode = teamHomeDoc.code;
+        getteamHomeLogo = teamHomeDoc.logo;
       });
-    }
+      TeamsRecord.getDocumentOnce(firestore
+              .doc('Teams/' + matche['teams']['away']['id'].toString()))
+          .then((teamAwayDoc) async {
+        getteamAwayRef = teamAwayDoc.reference;
+        getteamAwayName = teamAwayDoc.name;
+        getteamAwayNameAr = teamAwayDoc.nameAr;
+        getteamAwayCode = teamAwayDoc.code;
+        getteamHAwayLogo = teamAwayDoc.logo;
+      });
+
+      await MatchesCol.doc(matche['fixture']['id'].toString())
+          .get()
+          .then((matcheDoc) {
+        if (!matcheDoc.exists) {
+          matcheDoc.reference.set(createMatchesRecordData(
+            matcheID: matche['fixture']['id'].toString(),
+            fixtureID: int.parse(matche['fixture']['id'].toString()),
+            //YYYY-MM-DDThh:mm:ssTZD
+            fixtureDate: DateTime.parse(matche['fixture']['date'].toString()),
+            fixtureTimestamp:
+                int.parse(matche['fixture']['timestamp'].toString()),
+            fixturePeriodFirst:
+                int.parse(matche['fixture']['periods']['first'].toString()),
+            fixturePeriodSecond:
+                int.parse(matche['fixture']['periods']['second'].toString()),
+            tournamentRef: tournamentDoc.reference,
+            tournamentID: tournamentDoc.reference.id,
+            tournamentseasonYear: tournamentDoc.seasonYear.toString(),
+            tournamentName: tournamentDoc.name,
+            tournamentNameAr: tournamentDoc.nameAr,
+            tournamentType: tournamentDoc.type,
+            tournamentLogo: tournamentDoc.logo,
+            tournamentroleHomeWin: tournamentDoc.roleHomeWin,
+            tournamentroleHomeWinPoints: tournamentDoc.roleHomeWinPoints,
+            tournamentroleAwayWin: tournamentDoc.roleAwayWin,
+            tournamentroleAwayWinPoints: tournamentDoc.roleAwayWinPoints,
+            tournamentroleDraw: tournamentDoc.roleDraw,
+            tournamentroleDrawPoints: tournamentDoc.roleDrawPoints,
+            tournamentroleHomeGoals: tournamentDoc.roleHomeGoals,
+            tournamentroleHomeGoalsPoints: tournamentDoc.roleHomeGoalsPoints,
+            tournamentroleAwayGoals: tournamentDoc.roleAwayGoals,
+            tournamentroleAwayGoalsPoints: tournamentDoc.roleAwayGoalsPoints,
+            teamHomeRef: getteamHomeRef,
+            teamHomeName: getteamHomeName,
+            teamHomeNameAr: getteamHomeNameAr,
+            teamHomeCode: getteamHomeCode,
+            teamHomeLogo: getteamHomeLogo,
+            teamAwayRef: getteamAwayRef,
+            teamAwayName: getteamAwayName,
+            teamAwayNameAr: getteamAwayNameAr,
+            teamAwayCode: getteamAwayCode,
+            teamHAwayLogo: getteamHAwayLogo,
+            fixtureStatusGeneral: getStatusGeneral(
+                matche['fixture']['status']['short'].toString()),
+            fixtureStatusLongEn: matche['fixture']['status']['long'].toString(),
+            fixtureStatusLongAr: matche['fixture']['status']['long'].toString(),
+            fixtureStatusShort: matche['fixture']['status']['short'].toString(),
+            fixtureStatusElapsed:
+                matche['fixture']['status']['elapsed'].toString(),
+            goalsHome: 0,
+            goalsAway: 0,
+            scoreHalftimeHome: 0,
+            scoreHalftimeAway: 0,
+            scoreFulltimeHome: 0,
+            scoreFulltimeAway: 0,
+            scoreExtratimeHome: 0,
+            scoreExtratimeAway: 0,
+            scorePenaltyHome: 0,
+            scorePenaltyAway: 0,
+            isDouble: false,
+            isActive: false,
+            addRandomCode: randomCode,
+          ));
+        }
+      });
+    });
     //TournamentsRecord.getDocumentOnce End
   });
   return randomCode;
