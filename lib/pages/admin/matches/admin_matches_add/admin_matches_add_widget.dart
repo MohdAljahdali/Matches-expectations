@@ -876,25 +876,6 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                 int.tryParse(_model.leagueTFController.text),
                             season:
                                 int.tryParse(_model.seasonTFController.text),
-                            from: _model.startDateSTValue == true
-                                ? dateTimeFormat(
-                                    'yyyy-MM-dd',
-                                    _model.datePicked1,
-                                    locale: FFLocalizations.of(context)
-                                        .languageCode,
-                                  )
-                                : '',
-                            to: _model.startDateSTValue == true
-                                ? dateTimeFormat(
-                                    'yyyy-MM-dd',
-                                    _model.datePicked2,
-                                    locale: FFLocalizations.of(context)
-                                        .languageCode,
-                                  )
-                                : '',
-                            status: _model.matchStatusSTValue == true
-                                ? _model.matchStatusDDValue
-                                : '',
                           );
                           _shouldSetState = true;
                           if ((_model.apiResultc5b?.succeeded ?? true)) {
@@ -933,7 +914,7 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                           if (_shouldSetState) setState(() {});
                         },
                         text: FFLocalizations.of(context).getText(
-                          'kqfgoqvx' /* Button */,
+                          'u0nojqst' /* Button */,
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
