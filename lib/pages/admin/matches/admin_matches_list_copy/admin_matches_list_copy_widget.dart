@@ -132,13 +132,9 @@ class _AdminMatchesListCopyWidgetState
                             scrollDirection: Axis.vertical,
                             children: [
                               Text(
-                                (ApisportsGroup.fixturesCall.leagueName(
-                                  listViewFixturesResponse.jsonBody,
-                                ) as List)
-                                    .map<String>((s) => s.toString())
-                                    .toList()
-                                    .contains(null)
-                                    .toString(),
+                                FFLocalizations.of(context).getText(
+                                  '10sq2x4d' /* Hello World */,
+                                ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                             ],

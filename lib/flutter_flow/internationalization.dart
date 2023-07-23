@@ -904,6 +904,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'ar': '',
     },
+    'pgw5jitu': {
+      'en': 'Button',
+      'ar': '',
+    },
     'c521ruo7': {
       'en': 'Add new matches',
       'ar': 'إضافة مباريات جديدة',
@@ -953,6 +957,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '5vmr7ykr': {
       'en': 'List of matches added',
       'ar': 'قائمة المباريات المظافة',
+    },
+    '10sq2x4d': {
+      'en': 'Hello World',
+      'ar': '',
     },
     'lrcliryi': {
       'en': 'Home',
