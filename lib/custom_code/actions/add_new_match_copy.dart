@@ -15,7 +15,7 @@ import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
 Future<String> addNewMatchCopy(
-  dynamic response,
+  List<dynamic> response,
   String randomCode,
   String tournamentRef,
 ) async {

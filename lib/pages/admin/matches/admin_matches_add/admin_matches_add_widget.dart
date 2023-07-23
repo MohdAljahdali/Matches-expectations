@@ -933,7 +933,7 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                           if (_shouldSetState) setState(() {});
                         },
                         text: FFLocalizations.of(context).getText(
-                          'wwvg3mzw' /* Button */,
+                          'vyn4cf58' /* Button */,
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
