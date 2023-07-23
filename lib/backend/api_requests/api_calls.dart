@@ -25,6 +25,9 @@ class FixturesCall {
     int? league = 307,
     int? season = 2023,
     String? timezone = 'Asia/Riyadh',
+    String? from = '',
+    String? to = '',
+    String? status = '',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'fixtures',

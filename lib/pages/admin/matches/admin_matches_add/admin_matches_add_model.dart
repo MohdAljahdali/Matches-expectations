@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -7,6 +9,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -21,6 +25,14 @@ class AdminMatchesAddModel extends FlutterFlowModel {
   // State field(s) for activeTournamentDD widget.
   String? activeTournamentDDValue;
   FormFieldController<String>? activeTournamentDDValueController;
+  // Stores action output result for [Firestore Query - Query a collection] action in activeTournamentDD widget.
+  TournamentssRecord? tournamentResCopy;
+  // State field(s) for leagueTF widget.
+  TextEditingController? leagueTFController;
+  String? Function(BuildContext, String?)? leagueTFControllerValidator;
+  // State field(s) for seasonTF widget.
+  TextEditingController? seasonTFController;
+  String? Function(BuildContext, String?)? seasonTFControllerValidator;
   // State field(s) for startDateST widget.
   bool? startDateSTValue;
   DateTime? datePicked1;
@@ -30,6 +42,10 @@ class AdminMatchesAddModel extends FlutterFlowModel {
   // State field(s) for matchStatusDD widget.
   String? matchStatusDDValue;
   FormFieldController<String>? matchStatusDDValueController;
+  // Stores action output result for [Backend Call - API (fixtures)] action in Button widget.
+  ApiCallResponse? apiResultc5b;
+  // Stores action output result for [Custom Action - addNewMatchCopy] action in Button widget.
+  String? addNewmatchesRsp;
   // Stores action output result for [Custom Action - addNewMatch] action in saveAddNewMatchsB widget.
   String? outputAddNewMatches;
 
@@ -39,6 +55,8 @@ class AdminMatchesAddModel extends FlutterFlowModel {
 
   void dispose() {
     unfocusNode.dispose();
+    leagueTFController?.dispose();
+    seasonTFController?.dispose();
   }
 
   /// Action blocks are added here.

@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -7,6 +9,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -37,6 +41,11 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {});
     });
+
+    _model.leagueTFController ??= TextEditingController(
+        text: _model.tournamentResCopy?.tournamentsID?.toString());
+    _model.seasonTFController ??= TextEditingController(
+        text: _model.tournamentResCopy?.seasonYear?.toString());
   }
 
   @override
@@ -115,7 +124,7 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                   Expanded(
                                     child: Container(
                                       width: double.infinity,
-                                      height: 98.0,
+                                      height: 130.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -215,10 +224,39 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                                       activeTournamentDDTournamentssRecordList
                                                           .map((e) => e.name)
                                                           .toList(),
-                                                  onChanged: (val) => setState(
-                                                      () => _model
-                                                              .activeTournamentDDValue =
-                                                          val),
+                                                  onChanged: (val) async {
+                                                    setState(() => _model
+                                                            .activeTournamentDDValue =
+                                                        val);
+                                                    _model.tournamentResCopy =
+                                                        await queryTournamentssRecordOnce(
+                                                      queryBuilder: (tournamentssRecord) =>
+                                                          tournamentssRecord.where(
+                                                              'tournamentsRef',
+                                                              isEqualTo: _model
+                                                                  .activeTournamentDDValue),
+                                                      singleRecord: true,
+                                                    ).then((s) =>
+                                                            s.firstOrNull);
+                                                    setState(() {
+                                                      _model.leagueTFController
+                                                              ?.text =
+                                                          _model
+                                                              .tournamentResCopy!
+                                                              .tournamentsID
+                                                              .toString();
+                                                    });
+                                                    setState(() {
+                                                      _model.seasonTFController
+                                                              ?.text =
+                                                          _model
+                                                              .tournamentResCopy!
+                                                              .seasonYear
+                                                              .toString();
+                                                    });
+
+                                                    setState(() {});
+                                                  },
                                                   width: double.infinity,
                                                   height: 50.0,
                                                   textStyle:
@@ -246,11 +284,135 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                                   borderRadius: 25.0,
                                                   margin: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          16.0, 4.0, 16.0, 4.0),
+                                                          16.0, 0.0, 16.0, 0.0),
                                                   hidesUnderline: true,
                                                   isSearchable: false,
                                                 );
                                               },
+                                            ),
+                                          ),
+                                          Divider(
+                                            height: 0.0,
+                                            thickness: 1.0,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 2.0, 10.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 0.0,
+                                                                8.0, 0.0),
+                                                    child: TextFormField(
+                                                      controller: _model
+                                                          .leagueTFController,
+                                                      readOnly: true,
+                                                      obscureText: false,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        isDense: true,
+                                                        labelStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium,
+                                                        hintStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium,
+                                                        enabledBorder:
+                                                            InputBorder.none,
+                                                        focusedBorder:
+                                                            InputBorder.none,
+                                                        errorBorder:
+                                                            InputBorder.none,
+                                                        focusedErrorBorder:
+                                                            InputBorder.none,
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                fontSize: 12.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      validator: _model
+                                                          .leagueTFControllerValidator
+                                                          .asValidator(context),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 0.0,
+                                                                8.0, 0.0),
+                                                    child: TextFormField(
+                                                      controller: _model
+                                                          .seasonTFController,
+                                                      readOnly: true,
+                                                      obscureText: false,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        isDense: true,
+                                                        labelStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium,
+                                                        hintStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium,
+                                                        enabledBorder:
+                                                            InputBorder.none,
+                                                        focusedBorder:
+                                                            InputBorder.none,
+                                                        errorBorder:
+                                                            InputBorder.none,
+                                                        focusedErrorBorder:
+                                                            InputBorder.none,
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                fontSize: 12.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      validator: _model
+                                                          .seasonTFControllerValidator
+                                                          .asValidator(context),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         ],
@@ -539,7 +701,7 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                   Expanded(
                                     child: Container(
                                       width: double.infinity,
-                                      height: 100.0,
+                                      height: 103.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -706,11 +868,72 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                         ),
                       ),
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          var _shouldSetState = false;
+                          _model.apiResultc5b =
+                              await ApisportsGroup.fixturesCall.call(
+                            league:
+                                int.tryParse(_model.leagueTFController.text),
+                            season:
+                                int.tryParse(_model.seasonTFController.text),
+                            from: _model.startDateSTValue == true
+                                ? dateTimeFormat(
+                                    'yyyy-MM-dd',
+                                    _model.datePicked1,
+                                    locale: FFLocalizations.of(context)
+                                        .languageCode,
+                                  )
+                                : '',
+                            to: _model.startDateSTValue == true
+                                ? dateTimeFormat(
+                                    'yyyy-MM-dd',
+                                    _model.datePicked2,
+                                    locale: FFLocalizations.of(context)
+                                        .languageCode,
+                                  )
+                                : '',
+                            status: _model.matchStatusSTValue == true
+                                ? _model.matchStatusDDValue
+                                : '',
+                          );
+                          _shouldSetState = true;
+                          if ((_model.apiResultc5b?.succeeded ?? true)) {
+                            _model.addNewmatchesRsp =
+                                await actions.addNewMatchCopy(
+                              (_model.apiResultc5b?.jsonBody ?? ''),
+                              random_data.randomString(
+                                25,
+                                25,
+                                true,
+                                true,
+                                true,
+                              ),
+                              _model.activeTournamentDDValue!,
+                            );
+                            _shouldSetState = true;
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'fsdfsdf',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).secondary,
+                              ),
+                            );
+                            if (_shouldSetState) setState(() {});
+                            return;
+                          }
+
+                          if (_shouldSetState) setState(() {});
                         },
                         text: FFLocalizations.of(context).getText(
-                          'pgw5jitu' /* Button */,
+                          'wwvg3mzw' /* Button */,
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
