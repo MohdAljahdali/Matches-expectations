@@ -299,9 +299,19 @@ class _AdminTournamentsListWidgetState
                         child: StreamBuilder<List<TournamentsRecord>>(
                           stream: queryTournamentsRecord(
                             queryBuilder: (tournamentsRecord) =>
-                                tournamentsRecord.where('isActive',
-                                    isEqualTo:
-                                        FFAppState().PTournaments.active),
+                                tournamentsRecord
+                                    .where('isActive',
+                                        isEqualTo:
+                                            FFAppState().PTournaments.active)
+                                    .where('nameAr',
+                                        isEqualTo: FFAppState()
+                                                    .PTournaments
+                                                    .translation !=
+                                                ''
+                                            ? FFAppState()
+                                                .PTournaments
+                                                .translation
+                                            : null),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
