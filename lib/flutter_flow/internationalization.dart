@@ -944,7 +944,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'ar': '',
     },
-    'gll3em64': {
+    'a2eejklg': {
       'en': 'Button',
       'ar': '',
     },
