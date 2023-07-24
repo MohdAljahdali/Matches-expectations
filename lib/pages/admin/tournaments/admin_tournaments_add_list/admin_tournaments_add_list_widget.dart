@@ -100,13 +100,7 @@ class _AdminTournamentsAddListWidgetState
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: StreamBuilder<List<TournamentssRecord>>(
-                          stream: queryTournamentssRecord(
-                            queryBuilder: (tournamentssRecord) =>
-                                tournamentssRecord.where('addRandomCode',
-                                    isEqualTo: FFAppState()
-                                        .PTournaments
-                                        .lastAddedTournaments),
-                          ),
+                          stream: queryTournamentssRecord(),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
