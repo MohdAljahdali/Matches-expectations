@@ -10,8 +10,12 @@ import '/flutter_flow/flutter_flow_util.dart';
 class PTournamentsStruct extends FFFirebaseStruct {
   PTournamentsStruct({
     String? lastAddedTournaments,
+    bool? active,
+    String? translation,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _lastAddedTournaments = lastAddedTournaments,
+        _active = active,
+        _translation = translation,
         super(firestoreUtilData);
 
   // "lastAddedTournaments" field.
@@ -20,9 +24,23 @@ class PTournamentsStruct extends FFFirebaseStruct {
   set lastAddedTournaments(String? val) => _lastAddedTournaments = val;
   bool hasLastAddedTournaments() => _lastAddedTournaments != null;
 
+  // "Active" field.
+  bool? _active;
+  bool get active => _active ?? false;
+  set active(bool? val) => _active = val;
+  bool hasActive() => _active != null;
+
+  // "Translation" field.
+  String? _translation;
+  String get translation => _translation ?? '';
+  set translation(String? val) => _translation = val;
+  bool hasTranslation() => _translation != null;
+
   static PTournamentsStruct fromMap(Map<String, dynamic> data) =>
       PTournamentsStruct(
         lastAddedTournaments: data['lastAddedTournaments'] as String?,
+        active: data['Active'] as bool?,
+        translation: data['Translation'] as String?,
       );
 
   static PTournamentsStruct? maybeFromMap(dynamic data) =>
@@ -30,12 +48,22 @@ class PTournamentsStruct extends FFFirebaseStruct {
 
   Map<String, dynamic> toMap() => {
         'lastAddedTournaments': _lastAddedTournaments,
+        'Active': _active,
+        'Translation': _translation,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
         'lastAddedTournaments': serializeParam(
           _lastAddedTournaments,
+          ParamType.String,
+        ),
+        'Active': serializeParam(
+          _active,
+          ParamType.bool,
+        ),
+        'Translation': serializeParam(
+          _translation,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -47,6 +75,16 @@ class PTournamentsStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        active: deserializeParam(
+          data['Active'],
+          ParamType.bool,
+          false,
+        ),
+        translation: deserializeParam(
+          data['Translation'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -55,15 +93,20 @@ class PTournamentsStruct extends FFFirebaseStruct {
   @override
   bool operator ==(Object other) {
     return other is PTournamentsStruct &&
-        lastAddedTournaments == other.lastAddedTournaments;
+        lastAddedTournaments == other.lastAddedTournaments &&
+        active == other.active &&
+        translation == other.translation;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([lastAddedTournaments]);
+  int get hashCode =>
+      const ListEquality().hash([lastAddedTournaments, active, translation]);
 }
 
 PTournamentsStruct createPTournamentsStruct({
   String? lastAddedTournaments,
+  bool? active,
+  String? translation,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -71,6 +114,8 @@ PTournamentsStruct createPTournamentsStruct({
 }) =>
     PTournamentsStruct(
       lastAddedTournaments: lastAddedTournaments,
+      active: active,
+      translation: translation,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
