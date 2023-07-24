@@ -103,7 +103,9 @@ class _AdminTournamentsAddListWidgetState
                           stream: queryTournamentssRecord(
                             queryBuilder: (tournamentssRecord) =>
                                 tournamentssRecord.where('addRandomCode',
-                                    isEqualTo: widget.randomCode),
+                                    isEqualTo: FFAppState()
+                                        .PTournaments
+                                        .lastAddedTournaments),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.

@@ -399,6 +399,14 @@ class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
                                                 true,
                                               ),
                                             );
+                                            setState(() {
+                                              FFAppState()
+                                                  .updatePTournamentsStruct(
+                                                (e) => e
+                                                  ..lastAddedTournaments =
+                                                      _model.addTournamentResp,
+                                              );
+                                            });
 
                                             context.pushNamed(
                                               'adminTournamentsAddList',
