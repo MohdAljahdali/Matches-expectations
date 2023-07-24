@@ -462,9 +462,19 @@ class _AdminTournamentsListWidgetState
                                                               .secondaryBackground,
                                                           size: 20.0,
                                                         ),
-                                                        onPressed: () {
-                                                          print(
-                                                              'IconButton pressed ...');
+                                                        onPressed: () async {
+                                                          context.pushNamed(
+                                                            'adminTournamentEdit',
+                                                            queryParameters: {
+                                                              'aTournamentRef':
+                                                                  serializeParam(
+                                                                listViewTournamentsRecord
+                                                                    .reference,
+                                                                ParamType
+                                                                    .DocumentReference,
+                                                              ),
+                                                            }.withoutNulls,
+                                                          );
                                                         },
                                                       ),
                                                     ],
