@@ -940,7 +940,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'ar': '',
     },
-    'pvdfdcd9': {
+    'nvezv1ye': {
       'en': 'Button',
       'ar': '',
     },
@@ -999,6 +999,33 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'lrcliryi': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // adminTournamentsAddList
+  {
+    '6t2porny': {
+      'en': 'Season',
+      'ar': 'الموسم',
+    },
+    'ybwkr7al': {
+      'en': ' : ',
+      'ar': ' : ',
+    },
+    '4qj0cg42': {
+      'en': 'Type',
+      'ar': 'نوع',
+    },
+    'ntmpogwb': {
+      'en': ' : ',
+      'ar': ' : ',
+    },
+    'xyzyymxk': {
+      'en': 'Tournaments list',
+      'ar': 'أضافة بطولات',
+    },
+    'jtt8xl2e': {
       'en': 'Home',
       'ar': '',
     },

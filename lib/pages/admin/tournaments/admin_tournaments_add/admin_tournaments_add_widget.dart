@@ -400,6 +400,16 @@ class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
                                               ),
                                             );
 
+                                            context.pushNamed(
+                                              'adminTournamentsAddList',
+                                              queryParameters: {
+                                                'randomCode': serializeParam(
+                                                  _model.addTournamentResp,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+
                                             setState(() {});
                                           },
                                           text: FFLocalizations.of(context)

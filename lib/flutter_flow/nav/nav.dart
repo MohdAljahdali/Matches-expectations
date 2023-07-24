@@ -181,6 +181,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => AdminMatchesListCopyWidget(
             addMatchesRC: params.getParam('addMatchesRC', ParamType.String),
           ),
+        ),
+        FFRoute(
+          name: 'adminTournamentsAddList',
+          path: '/adminTournamentsAddList',
+          builder: (context, params) => AdminTournamentsAddListWidget(
+            randomCode: params.getParam('randomCode', ParamType.String),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
