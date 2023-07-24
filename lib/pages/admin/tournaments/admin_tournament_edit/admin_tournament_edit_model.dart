@@ -34,7 +34,9 @@ class AdminTournamentEditModel extends FlutterFlowModel {
   TextEditingController? nameArTFController;
   String? Function(BuildContext, String?)? nameArTFControllerValidator;
   // State field(s) for ActiveST widget.
-  bool? activeSTValue;
+  bool? activeSTValue1;
+  // State field(s) for ActiveST widget.
+  bool? activeSTValue2;
   // State field(s) for homeWinST widget.
   bool? homeWinSTValue;
   // State field(s) for homeWinPointsCC widget.

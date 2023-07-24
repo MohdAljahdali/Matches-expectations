@@ -748,6 +748,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Tournament is active',
       'ar': 'البطولة نشطة',
     },
+    '5qirfox3': {
+      'en': 'Tournament is active',
+      'ar': 'البطولة نشطة',
+    },
     'idiur6rq': {
       'en': 'Tournament is active',
       'ar': 'البطولة نشطة',
@@ -940,7 +944,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'ar': '',
     },
-    '97z9rmzk': {
+    'fg0wkpza': {
       'en': 'Button',
       'ar': '',
     },

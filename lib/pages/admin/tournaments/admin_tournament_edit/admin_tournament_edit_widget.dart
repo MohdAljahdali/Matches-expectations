@@ -53,8 +53,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return StreamBuilder<TournamentssRecord>(
-      stream: TournamentssRecord.getDocument(widget.aTournamentRef!),
+    return StreamBuilder<TournamentsRecord>(
+      stream: TournamentsRecord.getDocument(widget.aTournamentRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -72,7 +72,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
             ),
           );
         }
-        final adminTournamentEditTournamentssRecord = snapshot.data!;
+        final adminTournamentEditTournamentsRecord = snapshot.data!;
         return GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
@@ -295,7 +295,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                           BorderRadius.circular(
                                                               25.0),
                                                       child: Image.network(
-                                                        adminTournamentEditTournamentssRecord
+                                                        adminTournamentEditTournamentsRecord
                                                             .logo,
                                                         width: 100.0,
                                                         height: 100.0,
@@ -485,7 +485,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                           .nameEnTFController ??=
                                                       TextEditingController(
                                                     text:
-                                                        adminTournamentEditTournamentssRecord
+                                                        adminTournamentEditTournamentsRecord
                                                             .name,
                                                   ),
                                                   autofocus: true,
@@ -627,7 +627,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                           .nameArTFController ??=
                                                       TextEditingController(
                                                     text:
-                                                        adminTournamentEditTournamentssRecord
+                                                        adminTournamentEditTournamentsRecord
                                                             .nameAr,
                                                   ),
                                                   autofocus: true,
@@ -762,18 +762,106 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                     0.0, 0.0),
                                                 child: SwitchListTile.adaptive(
                                                   value: _model
-                                                          .activeSTValue ??=
-                                                      adminTournamentEditTournamentssRecord
+                                                          .activeSTValue1 ??=
+                                                      adminTournamentEditTournamentsRecord
                                                           .isActive,
                                                   onChanged: (newValue) async {
                                                     setState(() =>
-                                                        _model.activeSTValue =
+                                                        _model.activeSTValue1 =
                                                             newValue!);
                                                   },
                                                   title: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
                                                       'u03nts7r' /* Tournament is active */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          fontSize: 16.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                                  ),
+                                                  tileColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  activeColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                  activeTrackColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .accent1,
+                                                  dense: true,
+                                                  controlAffinity:
+                                                      ListTileControlAffinity
+                                                          .trailing,
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15.0),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 7.0, 0.0, 7.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 52.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15.0),
+                                                  border: Border.all(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    width: 2.0,
+                                                  ),
+                                                ),
+                                                alignment: AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: SwitchListTile.adaptive(
+                                                  value: _model
+                                                          .activeSTValue2 ??=
+                                                      adminTournamentEditTournamentsRecord
+                                                          .isActive,
+                                                  onChanged: (newValue) async {
+                                                    setState(() =>
+                                                        _model.activeSTValue2 =
+                                                            newValue!);
+                                                  },
+                                                  title: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '5qirfox3' /* Tournament is active */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -861,7 +949,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                         SwitchListTile.adaptive(
                                                           value: _model
                                                                   .homeWinSTValue ??=
-                                                              adminTournamentEditTournamentssRecord
+                                                              adminTournamentEditTournamentsRecord
                                                                   .isActive,
                                                           onChanged:
                                                               (newValue) async {
@@ -1031,7 +1119,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   ),
                                                                   count: _model
                                                                           .homeWinPointsCCValue ??=
-                                                                      adminTournamentEditTournamentssRecord
+                                                                      adminTournamentEditTournamentsRecord
                                                                           .roleHomeWinPoints,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
@@ -1086,7 +1174,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                         SwitchListTile.adaptive(
                                                           value: _model
                                                                   .awayWinSTValue ??=
-                                                              adminTournamentEditTournamentssRecord
+                                                              adminTournamentEditTournamentsRecord
                                                                   .isActive,
                                                           onChanged:
                                                               (newValue) async {
@@ -1256,7 +1344,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   ),
                                                                   count: _model
                                                                           .awayWinPointsCCValue ??=
-                                                                      adminTournamentEditTournamentssRecord
+                                                                      adminTournamentEditTournamentsRecord
                                                                           .roleAwayWinPoints,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
@@ -1311,7 +1399,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                         SwitchListTile.adaptive(
                                                           value: _model
                                                                   .drawSTValue ??=
-                                                              adminTournamentEditTournamentssRecord
+                                                              adminTournamentEditTournamentsRecord
                                                                   .isActive,
                                                           onChanged:
                                                               (newValue) async {
@@ -1481,7 +1569,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   ),
                                                                   count: _model
                                                                           .drawPointsCCValue ??=
-                                                                      adminTournamentEditTournamentssRecord
+                                                                      adminTournamentEditTournamentsRecord
                                                                           .roleDrawPoints,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
@@ -1536,7 +1624,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                         SwitchListTile.adaptive(
                                                           value: _model
                                                                   .homeGoalsSTValue ??=
-                                                              adminTournamentEditTournamentssRecord
+                                                              adminTournamentEditTournamentsRecord
                                                                   .isActive,
                                                           onChanged:
                                                               (newValue) async {
@@ -1706,7 +1794,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   ),
                                                                   count: _model
                                                                           .homeGoalsPointsCCValue ??=
-                                                                      adminTournamentEditTournamentssRecord
+                                                                      adminTournamentEditTournamentsRecord
                                                                           .roleHomeGoalsPoints,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
@@ -1761,7 +1849,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                         SwitchListTile.adaptive(
                                                           value: _model
                                                                   .awayGoalsSTValue ??=
-                                                              adminTournamentEditTournamentssRecord
+                                                              adminTournamentEditTournamentsRecord
                                                                   .roleAwayGoals,
                                                           onChanged:
                                                               (newValue) async {
@@ -1931,7 +2019,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   ),
                                                                   count: _model
                                                                           .awayGoalsPointsCCValue ??=
-                                                                      adminTournamentEditTournamentssRecord
+                                                                      adminTournamentEditTournamentsRecord
                                                                           .roleAwayGoalsPoints,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
