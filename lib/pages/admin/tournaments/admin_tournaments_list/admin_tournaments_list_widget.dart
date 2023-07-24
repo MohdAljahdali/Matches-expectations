@@ -222,8 +222,8 @@ class _AdminTournamentsListWidgetState
                         lineStyle: DividerLineStyle.dashed,
                       ),
                       Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 10.0, 10.0, 0.0),
                         child: StreamBuilder<List<TournamentsRecord>>(
                           stream: queryTournamentsRecord(
                             queryBuilder: (tournamentsRecord) =>
