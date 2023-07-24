@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
@@ -19,7 +21,7 @@ Future<String> addTournaments(
   String randomCode,
 ) async {
   final firestore = FirebaseFirestore.instance;
-  final TournamentsDoc = TournamentssRecord.collection;
+  final TournamentsDoc = TournamentsRecord.collection;
   final TeamsDoc = TeamsRecord.collection;
 
   var headers = {
@@ -51,8 +53,8 @@ Future<String> addTournaments(
           if (!doc.exists) {
             TournamentsDoc.doc(tournamentRefID)
                 .set(createTournamentssRecordData(
-              tournamentsRef: tournamentRefID,
               tournamentsID: int.parse(tournament['league']['id'].toString()),
+              tournamentsRef: tournamentRefID,
               seasonYear: int.parse(seasons['year'].toString()),
               seasonStart: seasons['start'].toString(),
               seasonEnd: seasons['end'].toString(),
@@ -63,12 +65,23 @@ Future<String> addTournaments(
               countryName: tournament['country']['name'].toString(),
               countryCode: tournament['country']['code'].toString(),
               countryFlog: tournament['country']['flag'].toString(),
+              roleHomeWin: true,
+              roleHomeWinPoints: 3,
+              roleAwayWin: true,
+              roleAwayWinPoints: 3,
+              roleDraw: true,
+              roleDrawPoints: 0,
+              roleHomeGoals: true,
+              roleHomeGoalsPoints: 1,
+              roleAwayGoals: true,
+              roleAwayGoalsPoints: 1,
+              roleHasDoubleMatches: true,
               addRandomCode: randomCode,
               isActive: false,
             ))
                 .then((value) async {
-              await TournamentssRecord.getDocumentOnce(
-                      firestore.doc('Tournamentss/$tournamentRefID'))
+              await TournamentsRecord.getDocumentOnce(
+                      firestore.doc('Tournaments/$tournamentRefID'))
                   .then((tournamentDoc) async {
                 var teamsrequest = http.Request(
                     'GET',

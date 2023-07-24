@@ -76,16 +76,6 @@ class TournamentsRecord extends FirestoreRecord {
   String get countryFlog => _countryFlog ?? '';
   bool hasCountryFlog() => _countryFlog != null;
 
-  // "roleEndMatche" field.
-  String? _roleEndMatche;
-  String get roleEndMatche => _roleEndMatche ?? '';
-  bool hasRoleEndMatche() => _roleEndMatche != null;
-
-  // "roleMatcheHasPenalty" field.
-  bool? _roleMatcheHasPenalty;
-  bool get roleMatcheHasPenalty => _roleMatcheHasPenalty ?? false;
-  bool hasRoleMatcheHasPenalty() => _roleMatcheHasPenalty != null;
-
   // "roleHomeWin" field.
   bool? _roleHomeWin;
   bool get roleHomeWin => _roleHomeWin ?? false;
@@ -156,11 +146,6 @@ class TournamentsRecord extends FirestoreRecord {
   bool get isActive => _isActive ?? false;
   bool hasIsActive() => _isActive != null;
 
-  // "roleMatcheHasDouble" field.
-  bool? _roleMatcheHasDouble;
-  bool get roleMatcheHasDouble => _roleMatcheHasDouble ?? false;
-  bool hasRoleMatcheHasDouble() => _roleMatcheHasDouble != null;
-
   void _initializeFields() {
     _tournamentsID = castToType<int>(snapshotData['tournamentsID']);
     _tournamentsRef = snapshotData['tournamentsRef'] as String?;
@@ -174,8 +159,6 @@ class TournamentsRecord extends FirestoreRecord {
     _countryName = snapshotData['countryName'] as String?;
     _countryCode = snapshotData['countryCode'] as String?;
     _countryFlog = snapshotData['countryFlog'] as String?;
-    _roleEndMatche = snapshotData['roleEndMatche'] as String?;
-    _roleMatcheHasPenalty = snapshotData['roleMatcheHasPenalty'] as bool?;
     _roleHomeWin = snapshotData['roleHomeWin'] as bool?;
     _roleHomeWinPoints = castToType<int>(snapshotData['roleHomeWinPoints']);
     _roleAwayWin = snapshotData['roleAwayWin'] as bool?;
@@ -190,7 +173,6 @@ class TournamentsRecord extends FirestoreRecord {
     _addRandomCode = snapshotData['addRandomCode'] as String?;
     _teamsList = getDataList(snapshotData['teamsList']);
     _isActive = snapshotData['isActive'] as bool?;
-    _roleMatcheHasDouble = snapshotData['roleMatcheHasDouble'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -240,8 +222,6 @@ Map<String, dynamic> createTournamentsRecordData({
   String? countryName,
   String? countryCode,
   String? countryFlog,
-  String? roleEndMatche,
-  bool? roleMatcheHasPenalty,
   bool? roleHomeWin,
   int? roleHomeWinPoints,
   bool? roleAwayWin,
@@ -255,7 +235,6 @@ Map<String, dynamic> createTournamentsRecordData({
   bool? roleHasDoubleMatches,
   String? addRandomCode,
   bool? isActive,
-  bool? roleMatcheHasDouble,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -271,8 +250,6 @@ Map<String, dynamic> createTournamentsRecordData({
       'countryName': countryName,
       'countryCode': countryCode,
       'countryFlog': countryFlog,
-      'roleEndMatche': roleEndMatche,
-      'roleMatcheHasPenalty': roleMatcheHasPenalty,
       'roleHomeWin': roleHomeWin,
       'roleHomeWinPoints': roleHomeWinPoints,
       'roleAwayWin': roleAwayWin,
@@ -286,7 +263,6 @@ Map<String, dynamic> createTournamentsRecordData({
       'roleHasDoubleMatches': roleHasDoubleMatches,
       'addRandomCode': addRandomCode,
       'isActive': isActive,
-      'roleMatcheHasDouble': roleMatcheHasDouble,
     }.withoutNulls,
   );
 
@@ -311,8 +287,6 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
         e1?.countryName == e2?.countryName &&
         e1?.countryCode == e2?.countryCode &&
         e1?.countryFlog == e2?.countryFlog &&
-        e1?.roleEndMatche == e2?.roleEndMatche &&
-        e1?.roleMatcheHasPenalty == e2?.roleMatcheHasPenalty &&
         e1?.roleHomeWin == e2?.roleHomeWin &&
         e1?.roleHomeWinPoints == e2?.roleHomeWinPoints &&
         e1?.roleAwayWin == e2?.roleAwayWin &&
@@ -326,8 +300,7 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
         e1?.roleHasDoubleMatches == e2?.roleHasDoubleMatches &&
         e1?.addRandomCode == e2?.addRandomCode &&
         listEquality.equals(e1?.teamsList, e2?.teamsList) &&
-        e1?.isActive == e2?.isActive &&
-        e1?.roleMatcheHasDouble == e2?.roleMatcheHasDouble;
+        e1?.isActive == e2?.isActive;
   }
 
   @override
@@ -344,8 +317,6 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
         e?.countryName,
         e?.countryCode,
         e?.countryFlog,
-        e?.roleEndMatche,
-        e?.roleMatcheHasPenalty,
         e?.roleHomeWin,
         e?.roleHomeWinPoints,
         e?.roleAwayWin,
@@ -359,8 +330,7 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
         e?.roleHasDoubleMatches,
         e?.addRandomCode,
         e?.teamsList,
-        e?.isActive,
-        e?.roleMatcheHasDouble
+        e?.isActive
       ]);
 
   @override

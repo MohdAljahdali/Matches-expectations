@@ -6,6 +6,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -22,6 +24,8 @@ class AdminTournamentsAddModel extends FlutterFlowModel {
   // State field(s) for seasonDD widget.
   String? seasonDDValue1;
   FormFieldController<String>? seasonDDValueController1;
+  // Stores action output result for [Custom Action - addTournaments] action in addTournamentCB widget.
+  String? addTournamentResp;
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
