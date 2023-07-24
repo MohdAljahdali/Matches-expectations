@@ -749,44 +749,44 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'البطولة نشطة',
     },
     '5qirfox3': {
-      'en': 'Tournament is active',
-      'ar': 'البطولة نشطة',
+      'en': 'Activate the double feature',
+      'ar': 'تفعيل خاصية الدبل في البطولة',
     },
     'idiur6rq': {
-      'en': 'Tournament is active',
-      'ar': 'البطولة نشطة',
+      'en': 'If home team win',
+      'ar': 'في حال فوز فريق المضيف',
     },
     '7gc651ds': {
       'en': 'Points',
       'ar': 'النقاط',
     },
     '0fegv2l9': {
-      'en': 'Tournament is active',
-      'ar': 'البطولة نشطة',
+      'en': 'If away team win',
+      'ar': 'في حال فوز فريق الضيف',
     },
     'yzvs45da': {
       'en': 'Points',
       'ar': 'النقاط',
     },
     '5mfqh6jg': {
-      'en': 'Tournament is active',
-      'ar': 'البطولة نشطة',
+      'en': 'If two teams draw',
+      'ar': 'في حال تعادل الفريقين',
     },
     'ubzt7pmb': {
       'en': 'Points',
       'ar': 'النقاط',
     },
     'kz8nzg79': {
-      'en': 'Tournament is active',
-      'ar': 'البطولة نشطة',
+      'en': 'Anticipate the goals of home team',
+      'ar': 'في حال توقع اهداف الفريق المضيف',
     },
     'hac9916b': {
       'en': 'Points',
       'ar': 'النقاط',
     },
     'mxucrqvf': {
-      'en': 'Away team goals',
-      'ar': 'أهداف الفريق الضيف',
+      'en': 'Anticipate the goals of away team',
+      'ar': 'في حال توقع اهداف الفريق المضيف',
     },
     '1hu8vhep': {
       'en': 'Points',
@@ -944,7 +944,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'ar': '',
     },
-    'hafpderc': {
+    'dzszwpql': {
       'en': 'Button',
       'ar': '',
     },

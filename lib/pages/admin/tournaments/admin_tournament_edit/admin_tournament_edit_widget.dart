@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -285,23 +286,21 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                     width: 2.0,
                                                   ),
                                                 ),
-                                                child: Visibility(
-                                                  visible:
-                                                      currentUserPhoto != '',
-                                                  child: AuthUserStreamWidget(
-                                                    builder: (context) =>
-                                                        ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              25.0),
-                                                      child: Image.network(
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          25.0),
+                                                  child: CachedNetworkImage(
+                                                    fadeInDuration: Duration(
+                                                        milliseconds: 500),
+                                                    fadeOutDuration: Duration(
+                                                        milliseconds: 500),
+                                                    imageUrl:
                                                         adminTournamentEditTournamentsRecord
                                                             .logo,
-                                                        width: 100.0,
-                                                        height: 100.0,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
+                                                    width: 100.0,
+                                                    height: 100.0,
+                                                    fit: BoxFit.cover,
                                                   ),
                                                 ),
                                               ),
@@ -762,12 +761,12 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                     0.0, 0.0),
                                                 child: SwitchListTile.adaptive(
                                                   value: _model
-                                                          .activeSTValue1 ??=
+                                                          .activeSTValue ??=
                                                       adminTournamentEditTournamentsRecord
                                                           .isActive,
                                                   onChanged: (newValue) async {
                                                     setState(() =>
-                                                        _model.activeSTValue1 =
+                                                        _model.activeSTValue =
                                                             newValue!);
                                                   },
                                                   title: Text(
@@ -850,18 +849,18 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                     0.0, 0.0),
                                                 child: SwitchListTile.adaptive(
                                                   value: _model
-                                                          .activeSTValue2 ??=
+                                                          .doubleSTValue ??=
                                                       adminTournamentEditTournamentsRecord
                                                           .isActive,
                                                   onChanged: (newValue) async {
                                                     setState(() =>
-                                                        _model.activeSTValue2 =
+                                                        _model.doubleSTValue =
                                                             newValue!);
                                                   },
                                                   title: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      '5qirfox3' /* Tournament is active */,
+                                                      '5qirfox3' /* Activate the double feature */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -961,7 +960,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                              'idiur6rq' /* Tournament is active */,
+                                                              'idiur6rq' /* If home team win */,
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -1186,7 +1185,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                              '0fegv2l9' /* Tournament is active */,
+                                                              '0fegv2l9' /* If away team win */,
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -1411,7 +1410,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                              '5mfqh6jg' /* Tournament is active */,
+                                                              '5mfqh6jg' /* If two teams draw */,
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -1636,7 +1635,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                              'kz8nzg79' /* Tournament is active */,
+                                                              'kz8nzg79' /* Anticipate the goals of home t... */,
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -1861,7 +1860,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                              'mxucrqvf' /* Away team goals */,
+                                                              'mxucrqvf' /* Anticipate the goals of away t... */,
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -2053,8 +2052,34 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 5.0, 0.0, 0.0),
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('signUpB pressed ...');
+                                      onPressed: () async {
+                                        await adminTournamentEditTournamentsRecord
+                                            .reference
+                                            .update(createTournamentsRecordData(
+                                          name: _model.nameEnTFController.text,
+                                          nameAr:
+                                              _model.nameArTFController.text,
+                                          roleHomeWin: _model.homeWinSTValue,
+                                          roleHomeWinPoints:
+                                              _model.homeWinPointsCCValue,
+                                          roleAwayWin: _model.awayWinSTValue,
+                                          roleAwayWinPoints:
+                                              _model.awayWinPointsCCValue,
+                                          roleDraw: _model.drawSTValue,
+                                          roleDrawPoints:
+                                              _model.drawPointsCCValue,
+                                          roleHomeGoals:
+                                              _model.homeGoalsSTValue,
+                                          roleHomeGoalsPoints:
+                                              _model.homeGoalsPointsCCValue,
+                                          roleAwayGoals:
+                                              _model.awayGoalsSTValue,
+                                          roleAwayGoalsPoints:
+                                              _model.awayGoalsPointsCCValue,
+                                          roleHasDoubleMatches:
+                                              _model.doubleSTValue,
+                                          isActive: _model.activeSTValue,
+                                        ));
                                       },
                                       text: FFLocalizations.of(context).getText(
                                         'zdwcvv5d' /* Save your edite */,

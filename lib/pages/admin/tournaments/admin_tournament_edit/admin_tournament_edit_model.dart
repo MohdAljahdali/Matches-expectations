@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -34,9 +35,9 @@ class AdminTournamentEditModel extends FlutterFlowModel {
   TextEditingController? nameArTFController;
   String? Function(BuildContext, String?)? nameArTFControllerValidator;
   // State field(s) for ActiveST widget.
-  bool? activeSTValue1;
-  // State field(s) for ActiveST widget.
-  bool? activeSTValue2;
+  bool? activeSTValue;
+  // State field(s) for doubleST widget.
+  bool? doubleSTValue;
   // State field(s) for homeWinST widget.
   bool? homeWinSTValue;
   // State field(s) for homeWinPointsCC widget.
