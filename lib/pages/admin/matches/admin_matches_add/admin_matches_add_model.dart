@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -44,8 +45,6 @@ class AdminMatchesAddModel extends FlutterFlowModel {
   FormFieldController<String>? matchStatusDDValueController;
   // Stores action output result for [Backend Call - API (fixtures)] action in Button widget.
   ApiCallResponse? apiResultc5b;
-  // Stores action output result for [Custom Action - addNewMatchCopy] action in Button widget.
-  String? addNewmatchesRsp;
   // Stores action output result for [Custom Action - addNewMatch] action in saveAddNewMatchsB widget.
   String? outputAddNewMatches;
 

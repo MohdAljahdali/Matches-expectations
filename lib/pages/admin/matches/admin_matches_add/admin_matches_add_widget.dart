@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -879,19 +880,11 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                           );
                           _shouldSetState = true;
                           if ((_model.apiResultc5b?.succeeded ?? true)) {
-                            _model.addNewmatchesRsp =
-                                await actions.addNewMatchCopy(
-                              (_model.apiResultc5b?.jsonBody ?? ''),
-                              random_data.randomString(
-                                25,
-                                25,
-                                true,
-                                true,
-                                true,
-                              ),
-                              _model.activeTournamentDDValue!,
-                            );
-                            _shouldSetState = true;
+                            setState(() {
+                              FFAppState().updatePTournamentsStruct(
+                                (e) => e..lastAddedTournaments = '',
+                              );
+                            });
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
@@ -914,7 +907,7 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                           if (_shouldSetState) setState(() {});
                         },
                         text: FFLocalizations.of(context).getText(
-                          'u0nojqst' /* Button */,
+                          '167amq7v' /* Button */,
                         ),
                         options: FFButtonOptions(
                           height: 40.0,

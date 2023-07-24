@@ -4,12 +4,8 @@ import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/custom_code/actions/index.dart' as actions;
-import '/flutter_flow/random_data_util.dart' as random_data;
-import 'package:styled_divider/styled_divider.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -24,10 +20,14 @@ class AdminTournamentsAddModel extends FlutterFlowModel {
   String? countryCodeDDValue;
   FormFieldController<String>? countryCodeDDValueController;
   // State field(s) for seasonDD widget.
-  String? seasonDDValue;
-  FormFieldController<String>? seasonDDValueController;
-  // Stores action output result for [Custom Action - addTournaments] action in IconButton widget.
-  String? outputAddTournaments;
+  String? seasonDDValue1;
+  FormFieldController<String>? seasonDDValueController1;
+  // State field(s) for TextField widget.
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
+  // State field(s) for seasonDD widget.
+  String? seasonDDValue2;
+  FormFieldController<String>? seasonDDValueController2;
 
   /// Initialization and disposal methods.
 
@@ -35,6 +35,7 @@ class AdminTournamentsAddModel extends FlutterFlowModel {
 
   void dispose() {
     unfocusNode.dispose();
+    textController?.dispose();
   }
 
   /// Action blocks are added here.

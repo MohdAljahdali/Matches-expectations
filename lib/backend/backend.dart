@@ -10,6 +10,7 @@ import 'schema/countries_record.dart';
 import 'schema/matches_record.dart';
 import 'schema/tournamentss_record.dart';
 import 'schema/teams_record.dart';
+import 'schema/tournaments_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -22,6 +23,7 @@ export 'schema/countries_record.dart';
 export 'schema/matches_record.dart';
 export 'schema/tournamentss_record.dart';
 export 'schema/teams_record.dart';
+export 'schema/tournaments_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -203,6 +205,43 @@ Future<List<TeamsRecord>> queryTeamsRecordOnce({
     queryCollectionOnce(
       TeamsRecord.collection,
       TeamsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query TournamentsRecords (as a Stream and as a Future).
+Future<int> queryTournamentsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      TournamentsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<TournamentsRecord>> queryTournamentsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      TournamentsRecord.collection,
+      TournamentsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<TournamentsRecord>> queryTournamentsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      TournamentsRecord.collection,
+      TournamentsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

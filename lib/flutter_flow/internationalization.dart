@@ -586,6 +586,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // adminTournamentsAdd
   {
+    'bszrb3on': {
+      'en': 'Add tournaments by Country',
+      'ar': 'اضافة البطولات بكود الدولة',
+    },
+    'ob6r0xb7': {
+      'en': 'Country',
+      'ar': 'الدولة',
+    },
     'n8gnz9gs': {
       'en': 'Option 1',
       'ar': '',
@@ -597,6 +605,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '3wa7lagy': {
       'en': 'Search for an Country...',
       'ar': 'البحث عن الدولة ...',
+    },
+    'abaa4ktb': {
+      'en': 'Season',
+      'ar': 'الموسم',
     },
     '46dmj54o': {
       'en': '2022',
@@ -630,33 +642,57 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'ar': '',
     },
-    'g6te5vxw': {
-      'en': 'List Item Title',
-      'ar': '',
+    'ih6jxsam': {
+      'en': 'Add',
+      'ar': 'أضف',
     },
-    'qhynmdg8': {
+    'eqcxp81l': {
+      'en': 'Add tournament manually',
+      'ar': 'أضافة البطولة يدوي',
+    },
+    '7ofp8xgw': {
+      'en': 'Tournament code',
+      'ar': 'كود البطولة',
+    },
+    'kf16ohp6': {
       'en': 'Season',
       'ar': 'الموسم',
     },
-    '36ykpnrz': {
-      'en': ' : ',
-      'ar': ' : ',
+    'yq4t38v3': {
+      'en': '2022',
+      'ar': '2022',
     },
-    'yh1tvk57': {
-      'en': 'Hello World ',
+    '8qof8sh2': {
+      'en': '2023',
+      'ar': '2023',
+    },
+    'xlzcv3l0': {
+      'en': '2024',
+      'ar': '2024',
+    },
+    'tiwt3n4e': {
+      'en': '2025',
+      'ar': '2025',
+    },
+    'nezr3a05': {
+      'en': '2026',
+      'ar': '2026',
+    },
+    'add9y9kp': {
+      'en': '2027',
+      'ar': '2027',
+    },
+    '3034jjzm': {
+      'en': 'Please select...',
       'ar': '',
     },
-    'oaskeep9': {
-      'en': 'Type',
-      'ar': 'نوع',
-    },
-    '5urxba25': {
-      'en': ' : ',
-      'ar': ' : ',
-    },
-    'dsu5w7rw': {
-      'en': 'Hello World ',
+    'buic52h2': {
+      'en': 'Search for an item...',
       'ar': '',
+    },
+    'ic8c9grk': {
+      'en': 'Add',
+      'ar': 'أضف',
     },
     'rcrsp1mh': {
       'en': 'Add tournaments',
@@ -904,7 +940,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'ar': '',
     },
-    'u0nojqst': {
+    '167amq7v': {
       'en': 'Button',
       'ar': '',
     },
