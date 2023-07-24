@@ -2080,6 +2080,27 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                               _model.doubleSTValue,
                                           isActive: _model.activeSTValue,
                                         ));
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'تم عديل بيانات البطولة',
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondary,
+                                          ),
+                                        );
+
+                                        context
+                                            .pushNamed('adminTournamentsList');
                                       },
                                       text: FFLocalizations.of(context).getText(
                                         'zdwcvv5d' /* Save your edite */,
