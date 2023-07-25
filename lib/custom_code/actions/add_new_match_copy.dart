@@ -33,7 +33,7 @@ Future<String> addNewMatchCopy(
   var getteamAwayCode;
   var getteamHAwayLogo;
 
-  await TournamentssRecord.getDocumentOnce(
+  await TournamentsRecord.getDocumentOnce(
           firestore.doc('Tournamentss/$tournamentRef'))
       .then((tournamentDoc) async {
     final Matchesjson = convert.jsonDecode(response.toString());

@@ -48,7 +48,7 @@ Future<String> addTournamentsManual(
             .then((DocumentSnapshot doc) {
           if (!doc.exists) {
             TournamentsDoc.doc(tournamentRefID)
-                .set(createTournamentssRecordData(
+                .set(createTournamentsRecordData(
               tournamentsRef: tournamentRefID,
               tournamentsID: int.parse(tournament['league']['id'].toString()),
               seasonYear: int.parse(seasons['year'].toString()),
@@ -64,7 +64,7 @@ Future<String> addTournamentsManual(
               addRandomCode: randomCode,
             ))
                 .then((value) async {
-              await TournamentssRecord.getDocumentOnce(
+              await TournamentsRecord.getDocumentOnce(
                       firestore.doc('Tournaments/$tournamentRefID'))
                   .then((tournamentDoc) async {
                 var teamsrequest = http.Request(

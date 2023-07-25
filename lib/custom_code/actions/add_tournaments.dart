@@ -52,7 +52,7 @@ Future<String> addTournaments(
             .then((DocumentSnapshot doc) {
           if (!doc.exists) {
             TournamentsDoc.doc(tournamentRefID)
-                .set(createTournamentssRecordData(
+                .set(createTournamentsRecordData(
               tournamentsID: int.parse(tournament['league']['id'].toString()),
               tournamentsRef: tournamentRefID,
               seasonYear: int.parse(seasons['year'].toString()),
