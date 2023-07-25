@@ -155,44 +155,30 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(5.0, 0.0,
-                                                                5.0, 0.0),
-                                                    child: Text(
-                                                      listViewMatchesRecord
-                                                          .teamHomeName,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
-                                                    ),
-                                                  ),
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: CachedNetworkImage(
-                                                      fadeInDuration: Duration(
-                                                          milliseconds: 3000),
-                                                      fadeOutDuration: Duration(
-                                                          milliseconds: 3000),
-                                                      imageUrl:
-                                                          listViewMatchesRecord
-                                                              .teamHomeLogo,
-                                                      width: 40.0,
-                                                      height: 40.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ],
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 5.0, 0.0),
+                                              child: Text(
+                                                listViewMatchesRecord
+                                                    .teamHomeName,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                            ),
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: CachedNetworkImage(
+                                                fadeInDuration: Duration(
+                                                    milliseconds: 3000),
+                                                fadeOutDuration: Duration(
+                                                    milliseconds: 3000),
+                                                imageUrl: listViewMatchesRecord
+                                                    .teamHomeLogo,
+                                                width: 40.0,
+                                                height: 40.0,
+                                                fit: BoxFit.cover,
                                               ),
                                             ),
                                             Padding(
@@ -208,39 +194,26 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                         .bodyMedium,
                                               ),
                                             ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: Image.network(
-                                                      listViewMatchesRecord
-                                                          .teamHAwayLogo,
-                                                      width: 40.0,
-                                                      height: 40.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(5.0, 0.0,
-                                                                5.0, 0.0),
-                                                    child: Text(
-                                                      listViewMatchesRecord
-                                                          .teamAwayName,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
-                                                    ),
-                                                  ),
-                                                ],
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: Image.network(
+                                                listViewMatchesRecord
+                                                    .teamHAwayLogo,
+                                                width: 40.0,
+                                                height: 40.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 5.0, 0.0),
+                                              child: Text(
+                                                listViewMatchesRecord
+                                                    .teamAwayName,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
                                               ),
                                             ),
                                           ],
@@ -270,7 +243,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                     'm6ug5u60' /* X2 */,
                                                   ),
                                                   options: FFButtonOptions(
-                                                    width: 70.0,
+                                                    width: 65.0,
                                                     height: 40.0,
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -324,7 +297,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                     'ot6fplxv' /* X1 */,
                                                   ),
                                                   options: FFButtonOptions(
-                                                    width: 80.0,
+                                                    width: 65.0,
                                                     height: 40.0,
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -511,7 +484,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                     size: 24.0,
                                                   ),
                                                   options: FFButtonOptions(
-                                                    width: 70.0,
+                                                    width: 65.0,
                                                     height: 40.0,
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -572,7 +545,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                     size: 24.0,
                                                   ),
                                                   options: FFButtonOptions(
-                                                    width: 80.0,
+                                                    width: 65.0,
                                                     height: 40.0,
                                                     padding:
                                                         EdgeInsetsDirectional
