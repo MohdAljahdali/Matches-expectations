@@ -29,3 +29,5 @@ export '/pages/admin/matches/admin_matches_list_copy/admin_matches_list_copy_wid
     show AdminMatchesListCopyWidget;
 export '/pages/admin/tournaments/admin_tournaments_add_list/admin_tournaments_add_list_widget.dart'
     show AdminTournamentsAddListWidget;
+export '/pages/admin/tournaments/admin_tournaments_team_list/admin_tournaments_team_list_widget.dart'
+    show AdminTournamentsTeamListWidget;

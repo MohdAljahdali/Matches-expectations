@@ -401,8 +401,24 @@ class _AdminTournamentsListWidgetState
                                                           MainAxisSize.max,
                                                       children: [
                                                         Text(
-                                                          listViewTournamentsRecord
-                                                              .name,
+                                                          () {
+                                                            if (FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode ==
+                                                                'en') {
+                                                              return listViewTournamentsRecord
+                                                                  .name;
+                                                            } else if (FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode ==
+                                                                'ar') {
+                                                              return listViewTournamentsRecord
+                                                                  .nameAr;
+                                                            } else {
+                                                              return listViewTournamentsRecord
+                                                                  .name;
+                                                            }
+                                                          }(),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium,
@@ -517,37 +533,109 @@ class _AdminTournamentsListWidgetState
                                                             ],
                                                           ),
                                                         ),
-                                                        FlutterFlowIconButton(
-                                                          borderColor:
-                                                              Color(0x9AA2A8AF),
-                                                          borderRadius: 8.0,
-                                                          borderWidth: 2.0,
-                                                          buttonSize: 50.0,
-                                                          fillColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .accent3,
-                                                          icon: Icon(
-                                                            Icons.edit_square,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            size: 20.0,
-                                                          ),
-                                                          onPressed: () async {
-                                                            context.pushNamed(
-                                                              'adminTournamentEdit',
-                                                              queryParameters: {
-                                                                'aTournamentRef':
-                                                                    serializeParam(
-                                                                  listViewTournamentsRecord
-                                                                      .reference,
-                                                                  ParamType
-                                                                      .DocumentReference,
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
+                                                              child:
+                                                                  FlutterFlowIconButton(
+                                                                borderColor: Color(
+                                                                    0x9AA2A8AF),
+                                                                borderRadius:
+                                                                    8.0,
+                                                                borderWidth:
+                                                                    2.0,
+                                                                buttonSize:
+                                                                    40.0,
+                                                                fillColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .accent3,
+                                                                icon: Icon(
+                                                                  Icons
+                                                                      .groups_2_outlined,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  size: 20.0,
                                                                 ),
-                                                              }.withoutNulls,
-                                                            );
-                                                          },
+                                                                onPressed:
+                                                                    () async {
+                                                                  context
+                                                                      .pushNamed(
+                                                                    'adminTournamentsTeamList',
+                                                                    queryParameters:
+                                                                        {
+                                                                      'tournamentRef':
+                                                                          serializeParam(
+                                                                        listViewTournamentsRecord
+                                                                            .reference,
+                                                                        ParamType
+                                                                            .DocumentReference,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                  );
+                                                                },
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
+                                                              child:
+                                                                  FlutterFlowIconButton(
+                                                                borderColor: Color(
+                                                                    0x9AA2A8AF),
+                                                                borderRadius:
+                                                                    8.0,
+                                                                borderWidth:
+                                                                    2.0,
+                                                                buttonSize:
+                                                                    40.0,
+                                                                fillColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .accent3,
+                                                                icon: Icon(
+                                                                  Icons
+                                                                      .edit_square,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  size: 20.0,
+                                                                ),
+                                                                onPressed:
+                                                                    () async {
+                                                                  context
+                                                                      .pushNamed(
+                                                                    'adminTournamentEdit',
+                                                                    queryParameters:
+                                                                        {
+                                                                      'aTournamentRef':
+                                                                          serializeParam(
+                                                                        listViewTournamentsRecord
+                                                                            .reference,
+                                                                        ParamType
+                                                                            .DocumentReference,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                  );
+                                                                },
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
                                                       ],
                                                     ),
