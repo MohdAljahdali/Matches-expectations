@@ -31,3 +31,5 @@ export '/pages/admin/tournaments/admin_tournaments_add_list/admin_tournaments_ad
     show AdminTournamentsAddListWidget;
 export '/pages/admin/tournaments/admin_tournaments_team_list/admin_tournaments_team_list_widget.dart'
     show AdminTournamentsTeamListWidget;
+export '/pages/admin/tournaments/admin_tournament_team_edit/admin_tournament_team_edit_widget.dart'
+    show AdminTournamentTeamEditWidget;

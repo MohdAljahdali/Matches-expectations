@@ -525,9 +525,21 @@ class _AdminTournamentsTeamListWidgetState
                                                                     size: 20.0,
                                                                   ),
                                                                   onPressed:
-                                                                      () {
-                                                                    print(
-                                                                        'IconButton pressed ...');
+                                                                      () async {
+                                                                    context
+                                                                        .pushNamed(
+                                                                      'adminTournamentTeamEdit',
+                                                                      queryParameters:
+                                                                          {
+                                                                        'teamsRef':
+                                                                            serializeParam(
+                                                                          card11TeamsRecord
+                                                                              .reference,
+                                                                          ParamType
+                                                                              .DocumentReference,
+                                                                        ),
+                                                                      }.withoutNulls,
+                                                                    );
                                                                   },
                                                                 ),
                                                               ],

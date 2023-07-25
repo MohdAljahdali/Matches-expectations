@@ -196,6 +196,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             tournamentRef: params.getParam('tournamentRef',
                 ParamType.DocumentReference, false, ['Tournaments']),
           ),
+        ),
+        FFRoute(
+          name: 'adminTournamentTeamEdit',
+          path: '/adminTournamentTeamEdit',
+          builder: (context, params) => AdminTournamentTeamEditWidget(
+            teamsRef: params.getParam(
+                'teamsRef', ParamType.DocumentReference, false, ['Teams']),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

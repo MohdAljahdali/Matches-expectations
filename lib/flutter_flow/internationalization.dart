@@ -1061,6 +1061,106 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
+  // adminTournamentTeamEdit
+  {
+    't4v1biy8': {
+      'en': 'Logo URL',
+      'ar': 'رابط الشعار',
+    },
+    'xqxrs7f1': {
+      'en': 'English name',
+      'ar': 'الاسم بالانجليزية',
+    },
+    'u5zu4hh1': {
+      'en': 'Arabic name',
+      'ar': 'الاسم بالعربية',
+    },
+    'pvg3ncvx': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    't1dy8lak': {
+      'en': '',
+      'ar': '',
+    },
+    'n6ztrp2f': {
+      'en': 'Mxnimum 25 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    'iqud55p2': {
+      'en': 'Invalid Email Format',
+      'ar': 'تنسيق بريد إلكتروني غير صالح',
+    },
+    'to0ga9zq': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'rxociyvn': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    'wmtc4wr8': {
+      'en': 'Minimum eight characters',
+      'ar': 'ثمانية أحرف على الأقل',
+    },
+    'eqo39n1v': {
+      'en': 'Mxnimum 16 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    'f8yomldh': {
+      'en':
+          'at least one uppercase letter, one lowercase letter and one number',
+      'ar': 'حرف كبير واحد على الأقل وحرف صغير واحد ورقم واحد',
+    },
+    'vvhlhhrc': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '1r9v95o4': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    '8b5i7tep': {
+      'en': 'Minimum eight characters',
+      'ar': 'ثمانية أحرف على الأقل',
+    },
+    'qo79t2dg': {
+      'en': 'Mxnimum 16 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    'lmdk0qqr': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'khm303u7': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    'yxn4aoad': {
+      'en': 'Minimum 8 characters',
+      'ar': '8 أحرف على الأقل',
+    },
+    'rjwpnvif': {
+      'en': 'Mxnimum 20 characters',
+      'ar': '20 حرفًا بحد أقصى',
+    },
+    '4hu02ru2': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '13bt70nb': {
+      'en': 'Save your edite',
+      'ar': 'حفظ التعديل',
+    },
+    'bvnaypq1': {
+      'en': 'Edit Teams',
+      'ar': 'تعديل بيانات الفريق',
+    },
+    'zhv19kdu': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
   // signInComponent
   {
     '73htmsl1': {
