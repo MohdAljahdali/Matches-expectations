@@ -371,15 +371,13 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                           Builder(
                                             builder: (context) {
                                               if (listViewMatchesRecord
-                                                  .isDouble) {
+                                                  .fixtureIsDouble) {
                                                 return FFButtonWidget(
                                                   onPressed: () async {
                                                     await listViewMatchesRecord
                                                         .reference
                                                         .update(
-                                                            createMatchesRecordData(
-                                                      isDouble: false,
-                                                    ));
+                                                            createMatchesRecordData());
                                                   },
                                                   text: FFLocalizations.of(
                                                           context)
@@ -432,7 +430,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                         .reference
                                                         .update(
                                                             createMatchesRecordData(
-                                                      isDouble: true,
+                                                      fixtureIsDouble: false,
                                                     ));
                                                   },
                                                   text: FFLocalizations.of(

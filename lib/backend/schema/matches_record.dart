@@ -31,21 +31,6 @@ class MatchesRecord extends FirestoreRecord {
   DateTime? get fixtureDate => _fixtureDate;
   bool hasFixtureDate() => _fixtureDate != null;
 
-  // "fixtureTimestamp" field.
-  int? _fixtureTimestamp;
-  int get fixtureTimestamp => _fixtureTimestamp ?? 0;
-  bool hasFixtureTimestamp() => _fixtureTimestamp != null;
-
-  // "fixturePeriodFirst" field.
-  int? _fixturePeriodFirst;
-  int get fixturePeriodFirst => _fixturePeriodFirst ?? 0;
-  bool hasFixturePeriodFirst() => _fixturePeriodFirst != null;
-
-  // "fixturePeriodSecond" field.
-  int? _fixturePeriodSecond;
-  int get fixturePeriodSecond => _fixturePeriodSecond ?? 0;
-  bool hasFixturePeriodSecond() => _fixturePeriodSecond != null;
-
   // "fixtureIsDouble" field.
   bool? _fixtureIsDouble;
   bool get fixtureIsDouble => _fixtureIsDouble ?? false;
@@ -278,23 +263,30 @@ class MatchesRecord extends FirestoreRecord {
   DocumentReference? get tournamentRef => _tournamentRef;
   bool hasTournamentRef() => _tournamentRef != null;
 
-  // "isDouble" field.
-  bool? _isDouble;
-  bool get isDouble => _isDouble ?? false;
-  bool hasIsDouble() => _isDouble != null;
-
   // "isActive" field.
   bool? _isActive;
   bool get isActive => _isActive ?? false;
   bool hasIsActive() => _isActive != null;
 
+  // "fixtureTimestamp" field.
+  int? _fixtureTimestamp;
+  int get fixtureTimestamp => _fixtureTimestamp ?? 0;
+  bool hasFixtureTimestamp() => _fixtureTimestamp != null;
+
+  // "fixturePeriodFirst" field.
+  DateTime? _fixturePeriodFirst;
+  DateTime? get fixturePeriodFirst => _fixturePeriodFirst;
+  bool hasFixturePeriodFirst() => _fixturePeriodFirst != null;
+
+  // "fixturePeriodSecond" field.
+  DateTime? _fixturePeriodSecond;
+  DateTime? get fixturePeriodSecond => _fixturePeriodSecond;
+  bool hasFixturePeriodSecond() => _fixturePeriodSecond != null;
+
   void _initializeFields() {
     _matcheID = snapshotData['MatcheID'] as String?;
     _fixtureID = castToType<int>(snapshotData['fixtureID']);
     _fixtureDate = snapshotData['fixtureDate'] as DateTime?;
-    _fixtureTimestamp = castToType<int>(snapshotData['fixtureTimestamp']);
-    _fixturePeriodFirst = castToType<int>(snapshotData['fixturePeriodFirst']);
-    _fixturePeriodSecond = castToType<int>(snapshotData['fixturePeriodSecond']);
     _fixtureIsDouble = snapshotData['fixtureIsDouble'] as bool?;
     _tournamentID = snapshotData['tournamentID'] as String?;
     _tournamentseasonYear = snapshotData['tournamentseasonYear'] as String?;
@@ -346,8 +338,10 @@ class MatchesRecord extends FirestoreRecord {
     _scorePenaltyAway = castToType<int>(snapshotData['scorePenaltyAway']);
     _addRandomCode = snapshotData['addRandomCode'] as String?;
     _tournamentRef = snapshotData['tournamentRef'] as DocumentReference?;
-    _isDouble = snapshotData['isDouble'] as bool?;
     _isActive = snapshotData['isActive'] as bool?;
+    _fixtureTimestamp = castToType<int>(snapshotData['fixtureTimestamp']);
+    _fixturePeriodFirst = snapshotData['fixturePeriodFirst'] as DateTime?;
+    _fixturePeriodSecond = snapshotData['fixturePeriodSecond'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -388,9 +382,6 @@ Map<String, dynamic> createMatchesRecordData({
   String? matcheID,
   int? fixtureID,
   DateTime? fixtureDate,
-  int? fixtureTimestamp,
-  int? fixturePeriodFirst,
-  int? fixturePeriodSecond,
   bool? fixtureIsDouble,
   String? tournamentID,
   String? tournamentseasonYear,
@@ -437,17 +428,16 @@ Map<String, dynamic> createMatchesRecordData({
   int? scorePenaltyAway,
   String? addRandomCode,
   DocumentReference? tournamentRef,
-  bool? isDouble,
   bool? isActive,
+  int? fixtureTimestamp,
+  DateTime? fixturePeriodFirst,
+  DateTime? fixturePeriodSecond,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'MatcheID': matcheID,
       'fixtureID': fixtureID,
       'fixtureDate': fixtureDate,
-      'fixtureTimestamp': fixtureTimestamp,
-      'fixturePeriodFirst': fixturePeriodFirst,
-      'fixturePeriodSecond': fixturePeriodSecond,
       'fixtureIsDouble': fixtureIsDouble,
       'tournamentID': tournamentID,
       'tournamentseasonYear': tournamentseasonYear,
@@ -494,8 +484,10 @@ Map<String, dynamic> createMatchesRecordData({
       'scorePenaltyAway': scorePenaltyAway,
       'addRandomCode': addRandomCode,
       'tournamentRef': tournamentRef,
-      'isDouble': isDouble,
       'isActive': isActive,
+      'fixtureTimestamp': fixtureTimestamp,
+      'fixturePeriodFirst': fixturePeriodFirst,
+      'fixturePeriodSecond': fixturePeriodSecond,
     }.withoutNulls,
   );
 
@@ -510,9 +502,6 @@ class MatchesRecordDocumentEquality implements Equality<MatchesRecord> {
     return e1?.matcheID == e2?.matcheID &&
         e1?.fixtureID == e2?.fixtureID &&
         e1?.fixtureDate == e2?.fixtureDate &&
-        e1?.fixtureTimestamp == e2?.fixtureTimestamp &&
-        e1?.fixturePeriodFirst == e2?.fixturePeriodFirst &&
-        e1?.fixturePeriodSecond == e2?.fixturePeriodSecond &&
         e1?.fixtureIsDouble == e2?.fixtureIsDouble &&
         e1?.tournamentID == e2?.tournamentID &&
         e1?.tournamentseasonYear == e2?.tournamentseasonYear &&
@@ -561,8 +550,10 @@ class MatchesRecordDocumentEquality implements Equality<MatchesRecord> {
         e1?.scorePenaltyAway == e2?.scorePenaltyAway &&
         e1?.addRandomCode == e2?.addRandomCode &&
         e1?.tournamentRef == e2?.tournamentRef &&
-        e1?.isDouble == e2?.isDouble &&
-        e1?.isActive == e2?.isActive;
+        e1?.isActive == e2?.isActive &&
+        e1?.fixtureTimestamp == e2?.fixtureTimestamp &&
+        e1?.fixturePeriodFirst == e2?.fixturePeriodFirst &&
+        e1?.fixturePeriodSecond == e2?.fixturePeriodSecond;
   }
 
   @override
@@ -570,9 +561,6 @@ class MatchesRecordDocumentEquality implements Equality<MatchesRecord> {
         e?.matcheID,
         e?.fixtureID,
         e?.fixtureDate,
-        e?.fixtureTimestamp,
-        e?.fixturePeriodFirst,
-        e?.fixturePeriodSecond,
         e?.fixtureIsDouble,
         e?.tournamentID,
         e?.tournamentseasonYear,
@@ -619,8 +607,10 @@ class MatchesRecordDocumentEquality implements Equality<MatchesRecord> {
         e?.scorePenaltyAway,
         e?.addRandomCode,
         e?.tournamentRef,
-        e?.isDouble,
-        e?.isActive
+        e?.isActive,
+        e?.fixtureTimestamp,
+        e?.fixturePeriodFirst,
+        e?.fixturePeriodSecond
       ]);
 
   @override

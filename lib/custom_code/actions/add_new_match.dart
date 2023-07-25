@@ -92,14 +92,18 @@ Future<String> addNewMatch(
           if (!matcheDoc.exists) {
             matcheDoc.reference.set(createMatchesRecordData(
               matcheID: matche['fixture']['id'].toString(),
-              fixtureID: int.parse(matche['fixture']['id'].toString()),
-              fixtureDate: DateTime.parse(matche['fixture']['date'].toString()),
+              fixtureID: int.parse(matche['fixture']['id'].toString().trim()),
+              fixtureDate:
+                  DateTime.parse(matche['fixture']['date'].toString().trim()),
               fixtureTimestamp:
-                  int.parse(matche['fixture']['timestamp'].toString()),
-              fixturePeriodFirst:
-                  int.parse(matche['fixture']['periods']['first'].toString()),
-              fixturePeriodSecond:
-                  int.parse(matche['fixture']['periods']['second'].toString()),
+                  int.parse(matche['fixture']['timestamp'].toString().trim()),
+              fixturePeriodFirst: DateTime.fromMillisecondsSinceEpoch(int.parse(
+                  matche['fixture']['periods']['first'].toString().trim())),
+              fixturePeriodSecond: DateTime.fromMillisecondsSinceEpoch(
+                  int.parse(matche['fixture']['periods']['second']
+                      .toString()
+                      .trim())),
+              fixtureIsDouble: false,
               tournamentRef: tournamentDoc.reference,
               tournamentID: tournamentDoc.reference.id,
               tournamentseasonYear: tournamentDoc.seasonYear.toString(),
@@ -128,15 +132,15 @@ Future<String> addNewMatch(
               teamAwayCode: getteamAwayCode,
               teamHAwayLogo: getteamHAwayLogo,
               fixtureStatusGeneral: getStatusGeneral(
-                  matche['fixture']['status']['short'].toString()),
+                  matche['fixture']['status']['short'].toString().trim()),
               fixtureStatusLongEn:
-                  matche['fixture']['status']['long'].toString(),
+                  matche['fixture']['status']['long'].toString().trim(),
               fixtureStatusLongAr:
-                  matche['fixture']['status']['long'].toString(),
+                  matche['fixture']['status']['long'].toString().trim(),
               fixtureStatusShort:
-                  matche['fixture']['status']['short'].toString(),
+                  matche['fixture']['status']['short'].toString().trim(),
               fixtureStatusElapsed:
-                  matche['fixture']['status']['elapsed'].toString(),
+                  matche['fixture']['status']['elapsed'].toString().trim(),
               goalsHome: 0,
               goalsAway: 0,
               scoreHalftimeHome: 0,
@@ -147,7 +151,6 @@ Future<String> addNewMatch(
               scoreExtratimeAway: 0,
               scorePenaltyHome: 0,
               scorePenaltyAway: 0,
-              isDouble: false,
               isActive: false,
               addRandomCode: randomCode,
             ));
