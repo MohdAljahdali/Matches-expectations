@@ -27,7 +27,7 @@ class AdminMatchesAddModel extends FlutterFlowModel {
   String? activeTournamentDDValue;
   FormFieldController<String>? activeTournamentDDValueController;
   // Stores action output result for [Firestore Query - Query a collection] action in activeTournamentDD widget.
-  TournamentssRecord? tournamentResCopy;
+  TournamentsRecord? tournamentResCopy;
   // State field(s) for leagueTF widget.
   TextEditingController? leagueTFController;
   String? Function(BuildContext, String?)? leagueTFControllerValidator;

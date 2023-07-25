@@ -184,8 +184,14 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 1.0, 0.0, 0.0),
                                             child: StreamBuilder<
-                                                List<TournamentssRecord>>(
-                                              stream: queryTournamentssRecord(),
+                                                List<TournamentsRecord>>(
+                                              stream: queryTournamentsRecord(
+                                                queryBuilder:
+                                                    (tournamentsRecord) =>
+                                                        tournamentsRecord.where(
+                                                            'isActive',
+                                                            isEqualTo: true),
+                                              ),
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.
                                                 if (!snapshot.hasData) {
@@ -204,8 +210,8 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                                     ),
                                                   );
                                                 }
-                                                List<TournamentssRecord>
-                                                    activeTournamentDDTournamentssRecordList =
+                                                List<TournamentsRecord>
+                                                    activeTournamentDDTournamentsRecordList =
                                                     snapshot.data!;
                                                 return FlutterFlowDropDown<
                                                     String>(
@@ -217,12 +223,12 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                                         '',
                                                   ),
                                                   options:
-                                                      activeTournamentDDTournamentssRecordList
+                                                      activeTournamentDDTournamentsRecordList
                                                           .map((e) =>
                                                               e.tournamentsRef)
                                                           .toList(),
                                                   optionLabels:
-                                                      activeTournamentDDTournamentssRecordList
+                                                      activeTournamentDDTournamentsRecordList
                                                           .map((e) => e.name)
                                                           .toList(),
                                                   onChanged: (val) async {
@@ -230,9 +236,9 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                                             .activeTournamentDDValue =
                                                         val);
                                                     _model.tournamentResCopy =
-                                                        await queryTournamentssRecordOnce(
-                                                      queryBuilder: (tournamentssRecord) =>
-                                                          tournamentssRecord.where(
+                                                        await queryTournamentsRecordOnce(
+                                                      queryBuilder: (tournamentsRecord) =>
+                                                          tournamentsRecord.where(
                                                               'tournamentsRef',
                                                               isEqualTo: _model
                                                                   .activeTournamentDDValue),

@@ -8,7 +8,6 @@ import 'schema/util/firestore_util.dart';
 import 'schema/users_record.dart';
 import 'schema/countries_record.dart';
 import 'schema/matches_record.dart';
-import 'schema/tournamentss_record.dart';
 import 'schema/teams_record.dart';
 import 'schema/tournaments_record.dart';
 
@@ -21,7 +20,6 @@ export 'schema/util/schema_util.dart';
 export 'schema/users_record.dart';
 export 'schema/countries_record.dart';
 export 'schema/matches_record.dart';
-export 'schema/tournamentss_record.dart';
 export 'schema/teams_record.dart';
 export 'schema/tournaments_record.dart';
 
@@ -131,43 +129,6 @@ Future<List<MatchesRecord>> queryMatchesRecordOnce({
     queryCollectionOnce(
       MatchesRecord.collection,
       MatchesRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-/// Functions to query TournamentssRecords (as a Stream and as a Future).
-Future<int> queryTournamentssRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      TournamentssRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<TournamentssRecord>> queryTournamentssRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      TournamentssRecord.collection,
-      TournamentssRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<TournamentssRecord>> queryTournamentssRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      TournamentssRecord.collection,
-      TournamentssRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
