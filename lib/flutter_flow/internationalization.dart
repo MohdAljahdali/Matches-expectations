@@ -979,10 +979,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'ar': '',
     },
-    'on6eo3x6': {
-      'en': 'Edit',
-      'ar': 'تعديل',
-    },
     'ozjcfion': {
       'en': 'List of matches added',
       'ar': 'قائمة المباريات المظافة',

@@ -92,17 +92,10 @@ Future<String> addNewMatch(
           if (!matcheDoc.exists) {
             matcheDoc.reference.set(createMatchesRecordData(
               matcheID: matche['fixture']['id'].toString(),
-              fixtureID: int.parse(matche['fixture']['id'].toString().trim()),
               fixtureDate:
                   DateTime.parse(matche['fixture']['date'].toString().trim()),
               fixtureTimestamp:
                   int.parse(matche['fixture']['timestamp'].toString().trim()),
-              fixturePeriodFirst: DateTime.fromMillisecondsSinceEpoch(int.parse(
-                  matche['fixture']['periods']['first'].toString().trim())),
-              fixturePeriodSecond: DateTime.fromMillisecondsSinceEpoch(
-                  int.parse(matche['fixture']['periods']['second']
-                      .toString()
-                      .trim())),
               fixtureIsDouble: false,
               tournamentRef: tournamentDoc.reference,
               tournamentID: tournamentDoc.reference.id,

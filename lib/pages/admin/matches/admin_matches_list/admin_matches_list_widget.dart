@@ -187,8 +187,8 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                       imageUrl:
                                                           listViewMatchesRecord
                                                               .teamHomeLogo,
-                                                      width: 50.0,
-                                                      height: 50.0,
+                                                      width: 40.0,
+                                                      height: 40.0,
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
@@ -221,8 +221,8 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                     child: Image.network(
                                                       listViewMatchesRecord
                                                           .teamHAwayLogo,
-                                                      width: 50.0,
-                                                      height: 50.0,
+                                                      width: 40.0,
+                                                      height: 40.0,
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
@@ -246,123 +246,6 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                           ],
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 5.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 10.0, 0.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(5.0, 0.0,
-                                                                5.0, 0.0),
-                                                    child: Icon(
-                                                      Icons.date_range,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .accent3,
-                                                      size: 24.0,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    dateTimeFormat(
-                                                      'yyyy-MM-dd',
-                                                      listViewMatchesRecord
-                                                          .fixtureDate!,
-                                                      locale:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .languageCode,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMediumFamily,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .accent3,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily),
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 10.0, 0.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(5.0, 0.0,
-                                                                5.0, 0.0),
-                                                    child: Icon(
-                                                      Icons.timer_sharp,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .accent3,
-                                                      size: 24.0,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    dateTimeFormat(
-                                                      'jm',
-                                                      listViewMatchesRecord
-                                                          .fixtureDate!,
-                                                      locale:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .languageCode,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMediumFamily,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .accent3,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily),
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -377,7 +260,9 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                     await listViewMatchesRecord
                                                         .reference
                                                         .update(
-                                                            createMatchesRecordData());
+                                                            createMatchesRecordData(
+                                                      fixtureIsDouble: false,
+                                                    ));
                                                   },
                                                   text: FFLocalizations.of(
                                                           context)
@@ -385,7 +270,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                     'm6ug5u60' /* X2 */,
                                                   ),
                                                   options: FFButtonOptions(
-                                                    width: 80.0,
+                                                    width: 70.0,
                                                     height: 40.0,
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -430,7 +315,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                         .reference
                                                         .update(
                                                             createMatchesRecordData(
-                                                      fixtureIsDouble: false,
+                                                      fixtureIsDouble: true,
                                                     ));
                                                   },
                                                   text: FFLocalizations.of(
@@ -480,6 +365,128 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                               }
                                             },
                                           ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 5.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 10.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    5.0,
+                                                                    0.0,
+                                                                    5.0,
+                                                                    0.0),
+                                                        child: Icon(
+                                                          Icons.date_range,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent3,
+                                                          size: 24.0,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        dateTimeFormat(
+                                                          'yyyy-MM-dd',
+                                                          listViewMatchesRecord
+                                                              .fixtureDate!,
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .accent3,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily),
+                                                                ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 10.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    5.0,
+                                                                    0.0,
+                                                                    5.0,
+                                                                    0.0),
+                                                        child: Icon(
+                                                          Icons.timer_sharp,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent3,
+                                                          size: 24.0,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        dateTimeFormat(
+                                                          'jm',
+                                                          listViewMatchesRecord
+                                                              .fixtureDate!,
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .accent3,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily),
+                                                                ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                           Builder(
                                             builder: (context) {
                                               if (listViewMatchesRecord
@@ -504,7 +511,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                     size: 24.0,
                                                   ),
                                                   options: FFButtonOptions(
-                                                    width: 80.0,
+                                                    width: 70.0,
                                                     height: 40.0,
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -605,54 +612,6 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                 );
                                               }
                                             },
-                                          ),
-                                          Expanded(
-                                            child: FFButtonWidget(
-                                              onPressed: () {
-                                                print('Button pressed ...');
-                                              },
-                                              text: FFLocalizations.of(context)
-                                                  .getText(
-                                                'on6eo3x6' /* Edit */,
-                                              ),
-                                              options: FFButtonOptions(
-                                                height: 40.0,
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        24.0, 0.0, 24.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmallFamily,
-                                                          color: Colors.white,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmallFamily),
-                                                        ),
-                                                elevation: 3.0,
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                              ),
-                                              showLoadingIndicator: false,
-                                            ),
                                           ),
                                         ],
                                       ),
