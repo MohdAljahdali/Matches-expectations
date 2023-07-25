@@ -54,7 +54,7 @@ Future<String> addNewMatch(
     'x-rapidapi-host': 'v3.football.api-sports.io'
   };
   await TournamentsRecord.getDocumentOnce(
-          firestore.doc('Tournamentss/$tournamentRef'))
+          firestore.doc('Tournaments/$tournamentRef'))
       .then((tournamentDoc) async {
     var request = http.Request(
         'GET',
@@ -93,7 +93,6 @@ Future<String> addNewMatch(
             matcheDoc.reference.set(createMatchesRecordData(
               matcheID: matche['fixture']['id'].toString(),
               fixtureID: int.parse(matche['fixture']['id'].toString()),
-              //YYYY-MM-DDThh:mm:ssTZD
               fixtureDate: DateTime.parse(matche['fixture']['date'].toString()),
               fixtureTimestamp:
                   int.parse(matche['fixture']['timestamp'].toString()),
