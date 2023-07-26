@@ -10,6 +10,8 @@ import 'schema/countries_record.dart';
 import 'schema/matches_record.dart';
 import 'schema/teams_record.dart';
 import 'schema/tournaments_record.dart';
+import 'schema/standings_record.dart';
+import 'schema/m_standings_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -22,6 +24,8 @@ export 'schema/countries_record.dart';
 export 'schema/matches_record.dart';
 export 'schema/teams_record.dart';
 export 'schema/tournaments_record.dart';
+export 'schema/standings_record.dart';
+export 'schema/m_standings_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -203,6 +207,86 @@ Future<List<TournamentsRecord>> queryTournamentsRecordOnce({
     queryCollectionOnce(
       TournamentsRecord.collection,
       TournamentsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query StandingsRecords (as a Stream and as a Future).
+Future<int> queryStandingsRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      StandingsRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<StandingsRecord>> queryStandingsRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      StandingsRecord.collection(parent),
+      StandingsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<StandingsRecord>> queryStandingsRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      StandingsRecord.collection(parent),
+      StandingsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query MStandingsRecords (as a Stream and as a Future).
+Future<int> queryMStandingsRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      MStandingsRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<MStandingsRecord>> queryMStandingsRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      MStandingsRecord.collection(parent),
+      MStandingsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<MStandingsRecord>> queryMStandingsRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      MStandingsRecord.collection(parent),
+      MStandingsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
