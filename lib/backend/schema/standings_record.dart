@@ -66,6 +66,11 @@ class StandingsRecord extends FirestoreRecord {
   int get totalPoints => _totalPoints ?? 0;
   bool hasTotalPoints() => _totalPoints != null;
 
+  // "updateTime" field.
+  int? _updateTime;
+  int get updateTime => _updateTime ?? 0;
+  bool hasUpdateTime() => _updateTime != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -79,6 +84,7 @@ class StandingsRecord extends FirestoreRecord {
     _winPoints = castToType<int>(snapshotData['winPoints']);
     _drawPoints = castToType<int>(snapshotData['drawPoints']);
     _totalPoints = castToType<int>(snapshotData['totalPoints']);
+    _updateTime = castToType<int>(snapshotData['updateTime']);
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -131,6 +137,7 @@ Map<String, dynamic> createStandingsRecordData({
   int? winPoints,
   int? drawPoints,
   int? totalPoints,
+  int? updateTime,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -144,6 +151,7 @@ Map<String, dynamic> createStandingsRecordData({
       'winPoints': winPoints,
       'drawPoints': drawPoints,
       'totalPoints': totalPoints,
+      'updateTime': updateTime,
     }.withoutNulls,
   );
 
@@ -164,7 +172,8 @@ class StandingsRecordDocumentEquality implements Equality<StandingsRecord> {
         e1?.awayGoalsPoints == e2?.awayGoalsPoints &&
         e1?.winPoints == e2?.winPoints &&
         e1?.drawPoints == e2?.drawPoints &&
-        e1?.totalPoints == e2?.totalPoints;
+        e1?.totalPoints == e2?.totalPoints &&
+        e1?.updateTime == e2?.updateTime;
   }
 
   @override
@@ -178,7 +187,8 @@ class StandingsRecordDocumentEquality implements Equality<StandingsRecord> {
         e?.awayGoalsPoints,
         e?.winPoints,
         e?.drawPoints,
-        e?.totalPoints
+        e?.totalPoints,
+        e?.updateTime
       ]);
 
   @override
