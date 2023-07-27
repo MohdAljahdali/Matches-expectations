@@ -460,10 +460,8 @@ class _AdminMatchesFilterCWidgetState extends State<AdminMatchesFilterCWidget>
                           setState(() {
                             FFAppState().updatePMatchesStruct(
                               (e) => e
-                                ..filterIsActive =
-                                    _model.isActiveSValue == true ? true : null
-                                ..filterIsDouble =
-                                    _model.isDoubleSValue == true ? true : null
+                                ..filterIsActive = _model.isActiveSValue
+                                ..filterIsDouble = _model.isDoubleSValue
                                 ..filterDateStart = _model.datePicked1
                                 ..filterDateEnd = _model.datePicked2,
                             );

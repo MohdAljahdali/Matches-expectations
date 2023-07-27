@@ -162,7 +162,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                         .requestFocus(
                                                             _model.unfocusNode),
                                                 child: Container(
-                                                  height: 500.0,
+                                                  height: 300.0,
                                                   child:
                                                       AdminMatchesFilterCWidget(),
                                                 ),
