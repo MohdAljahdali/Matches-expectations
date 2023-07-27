@@ -1,14 +1,9 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
-import '/pages/admin/matches/admin_matches_filter_c/admin_matches_filter_c_widget.dart';
-import 'package:styled_divider/styled_divider.dart';
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -17,11 +12,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:provider/provider.dart';
-import 'admin_matches_list_model.dart';
-export 'admin_matches_list_model.dart';
+import 'admin_matches_add_list_model.dart';
+export 'admin_matches_add_list_model.dart';
 
-class AdminMatchesListWidget extends StatefulWidget {
-  const AdminMatchesListWidget({
+class AdminMatchesAddListWidget extends StatefulWidget {
+  const AdminMatchesAddListWidget({
     Key? key,
     required this.addMatchesRC,
   }) : super(key: key);
@@ -29,18 +24,19 @@ class AdminMatchesListWidget extends StatefulWidget {
   final String? addMatchesRC;
 
   @override
-  _AdminMatchesListWidgetState createState() => _AdminMatchesListWidgetState();
+  _AdminMatchesAddListWidgetState createState() =>
+      _AdminMatchesAddListWidgetState();
 }
 
-class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
-  late AdminMatchesListModel _model;
+class _AdminMatchesAddListWidgetState extends State<AdminMatchesAddListWidget> {
+  late AdminMatchesAddListModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AdminMatchesListModel());
+    _model = createModel(context, () => AdminMatchesAddListModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -89,7 +85,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
               ),
               title: Text(
                 FFLocalizations.of(context).getText(
-                  'ozjcfion' /* List of matches not started */,
+                  'zt2c2utm' /* List of matches added */,
                 ),
                 style: FlutterFlowTheme.of(context).titleLarge,
               ),
@@ -108,192 +104,6 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Container(
-                        width: double.infinity,
-                        height: 55.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 0.0, 15.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Builder(
-                                    builder: (context) => FlutterFlowIconButton(
-                                      borderColor:
-                                          FlutterFlowTheme.of(context).accent3,
-                                      borderRadius: 20.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 40.0,
-                                      fillColor:
-                                          FlutterFlowTheme.of(context).accent3,
-                                      icon: Icon(
-                                        Icons.filter_alt,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                        size: 24.0,
-                                      ),
-                                      onPressed: () async {
-                                        await showAlignedDialog(
-                                          barrierColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .noColor,
-                                          barrierDismissible: false,
-                                          context: context,
-                                          isGlobal: true,
-                                          avoidOverflow: false,
-                                          targetAnchor: AlignmentDirectional(
-                                                  0.0, 0.0)
-                                              .resolve(
-                                                  Directionality.of(context)),
-                                          followerAnchor: AlignmentDirectional(
-                                                  0.0, 0.0)
-                                              .resolve(
-                                                  Directionality.of(context)),
-                                          builder: (dialogContext) {
-                                            return Material(
-                                              color: Colors.transparent,
-                                              child: GestureDetector(
-                                                onTap: () =>
-                                                    FocusScope.of(context)
-                                                        .requestFocus(
-                                                            _model.unfocusNode),
-                                                child: Container(
-                                                  height: 500.0,
-                                                  child:
-                                                      AdminMatchesFilterCWidget(),
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ).then((value) => setState(() {}));
-                                      },
-                                    ),
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      StreamBuilder<List<TournamentsRecord>>(
-                                        stream: queryTournamentsRecord(
-                                          queryBuilder: (tournamentsRecord) =>
-                                              tournamentsRecord.where(
-                                                  'isActive',
-                                                  isEqualTo: true),
-                                        ),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child: SpinKitFadingCircle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  size: 50.0,
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                          List<TournamentsRecord>
-                                              activeTournamentListDDTournamentsRecordList =
-                                              snapshot.data!;
-                                          return FlutterFlowDropDown<String>(
-                                            controller: _model
-                                                    .activeTournamentListDDValueController ??=
-                                                FormFieldController<String>(
-                                              _model.activeTournamentListDDValue ??=
-                                                  '',
-                                            ),
-                                            options:
-                                                activeTournamentListDDTournamentsRecordList
-                                                    .map(
-                                                        (e) => e.tournamentsRef)
-                                                    .toList(),
-                                            optionLabels:
-                                                activeTournamentListDDTournamentsRecordList
-                                                    .map((e) => e.name)
-                                                    .toList(),
-                                            onChanged: (val) => setState(() =>
-                                                _model.activeTournamentListDDValue =
-                                                    val),
-                                            width: 250.0,
-                                            height: 40.0,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium,
-                                            hintText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              '6ntnbgwr' /* Please select */,
-                                            ),
-                                            icon: Icon(
-                                              Icons.keyboard_arrow_down_rounded,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
-                                            ),
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            elevation: 2.0,
-                                            borderColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .alternate,
-                                            borderWidth: 2.0,
-                                            borderRadius: 8.0,
-                                            margin:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 4.0, 16.0, 4.0),
-                                            hidesUnderline: true,
-                                            isSearchable: false,
-                                          );
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                  FlutterFlowIconButton(
-                                    borderColor:
-                                        FlutterFlowTheme.of(context).accent4,
-                                    borderRadius: 20.0,
-                                    borderWidth: 1.0,
-                                    buttonSize: 40.0,
-                                    fillColor:
-                                        FlutterFlowTheme.of(context).accent4,
-                                    icon: Icon(
-                                      Icons.add,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      size: 24.0,
-                                    ),
-                                    onPressed: () async {
-                                      context.pushNamed('adminTournamentsAdd');
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      StyledDivider(
-                        height: 1.0,
-                        thickness: 1.0,
-                        indent: 0.0,
-                        endIndent: 0.0,
-                        color: FlutterFlowTheme.of(context).accent4,
-                        lineStyle: DividerLineStyle.dashed,
-                      ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             10.0, 10.0, 10.0, 0.0),
@@ -386,7 +196,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'n255kbji' /* VS */,
+                                                  'er7if1v5' /* VS */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -446,7 +256,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                   text: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'm6ug5u60' /* X2 */,
+                                                    'uholnyyb' /* X2 */,
                                                   ),
                                                   options: FFButtonOptions(
                                                     width: 65.0,
@@ -500,7 +310,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                   text: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'ot6fplxv' /* X1 */,
+                                                    'a162x0oc' /* X1 */,
                                                   ),
                                                   options: FFButtonOptions(
                                                     width: 65.0,
@@ -682,7 +492,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                   text: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'huegtbor' /*  */,
+                                                    '8pptt67c' /*  */,
                                                   ),
                                                   icon: Icon(
                                                     Icons
@@ -741,7 +551,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                   text: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    '2pn1rfdc' /*  */,
+                                                    'sxkd4w6h' /*  */,
                                                   ),
                                                   icon: Icon(
                                                     Icons.visibility_off_sharp,

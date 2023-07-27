@@ -176,13 +176,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'adminMatchesListCopy',
-          path: '/adminMatchesListCopy',
-          builder: (context, params) => AdminMatchesListCopyWidget(
-            addMatchesRC: params.getParam('addMatchesRC', ParamType.String),
-          ),
-        ),
-        FFRoute(
           name: 'adminTournamentsAddList',
           path: '/adminTournamentsAddList',
           builder: (context, params) => AdminTournamentsAddListWidget(
@@ -203,6 +196,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => AdminTournamentTeamEditWidget(
             teamsRef: params.getParam(
                 'teamsRef', ParamType.DocumentReference, false, ['Teams']),
+          ),
+        ),
+        FFRoute(
+          name: 'adminMatchesAddList',
+          path: '/adminMatchesAddList',
+          builder: (context, params) => AdminMatchesAddListWidget(
+            addMatchesRC: params.getParam('addMatchesRC', ParamType.String),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),

@@ -1,9 +1,14 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
+import '/pages/admin/matches/admin_matches_filter_c/admin_matches_filter_c_widget.dart';
+import 'package:styled_divider/styled_divider.dart';
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +22,9 @@ class AdminMatchesListModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // State field(s) for activeTournamentListDD widget.
+  String? activeTournamentListDDValue;
+  FormFieldController<String>? activeTournamentListDDValueController;
 
   /// Initialization and disposal methods.
 

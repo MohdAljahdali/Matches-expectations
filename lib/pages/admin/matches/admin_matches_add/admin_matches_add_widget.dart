@@ -1,7 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -876,72 +874,6 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          var _shouldSetState = false;
-                          _model.apiResultc5b =
-                              await ApisportsGroup.fixturesCall.call(
-                            league:
-                                int.tryParse(_model.leagueTFController.text),
-                            season:
-                                int.tryParse(_model.seasonTFController.text),
-                          );
-                          _shouldSetState = true;
-                          if ((_model.apiResultc5b?.succeeded ?? true)) {
-                            setState(() {
-                              FFAppState().updatePTournamentsStruct(
-                                (e) => e..lastAddedTournaments = '',
-                              );
-                            });
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'fsdfsdf',
-                                  style: TextStyle(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                  ),
-                                ),
-                                duration: Duration(milliseconds: 4000),
-                                backgroundColor:
-                                    FlutterFlowTheme.of(context).secondary,
-                              ),
-                            );
-                            if (_shouldSetState) setState(() {});
-                            return;
-                          }
-
-                          if (_shouldSetState) setState(() {});
-                        },
-                        text: FFLocalizations.of(context).getText(
-                          'bzj17vpj' /* Button */,
-                        ),
-                        options: FFButtonOptions(
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle: FlutterFlowTheme.of(context)
-                              .titleSmall
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .titleSmallFamily,
-                                color: Colors.white,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .titleSmallFamily),
-                              ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
-                      FFButtonWidget(
-                        onPressed: () async {
                           _model.outputAddNewMatches =
                               await actions.addNewMatch(
                             _model.activeTournamentDDValue!,
@@ -960,7 +892,7 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                           );
 
                           context.pushNamed(
-                            'adminMatchesList',
+                            'adminMatchesAddList',
                             queryParameters: {
                               'addMatchesRC': serializeParam(
                                 _model.outputAddNewMatches,

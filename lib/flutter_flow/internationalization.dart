@@ -944,10 +944,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'ar': '',
     },
-    'bzj17vpj': {
-      'en': 'Button',
-      'ar': '',
-    },
     'c521ruo7': {
       'en': 'Add new matches',
       'ar': 'إضافة مباريات جديدة',
@@ -959,6 +955,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // adminMatchesList
   {
+    '6ntnbgwr': {
+      'en': 'Please select',
+      'ar': 'قم باختيار البطولة',
+    },
+    'jfft6eb0': {
+      'en': 'Search for an item...',
+      'ar': '',
+    },
     'n255kbji': {
       'en': 'VS',
       'ar': '',
@@ -980,25 +984,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'ozjcfion': {
-      'en': 'List of matches added',
-      'ar': 'قائمة المباريات المظافة',
+      'en': 'List of matches not started',
+      'ar': 'قائمة المباريات التي لم تبداء',
     },
     '30d15deu': {
-      'en': 'Home',
-      'ar': '',
-    },
-  },
-  // adminMatchesListCopy
-  {
-    '5vmr7ykr': {
-      'en': 'List of matches added',
-      'ar': 'قائمة المباريات المظافة',
-    },
-    '10sq2x4d': {
-      'en': 'Hello World',
-      'ar': '',
-    },
-    'lrcliryi': {
       'en': 'Home',
       'ar': '',
     },
@@ -1157,6 +1146,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
+  // adminMatchesAddList
+  {
+    'er7if1v5': {
+      'en': 'VS',
+      'ar': '',
+    },
+    'uholnyyb': {
+      'en': 'X2',
+      'ar': 'X2',
+    },
+    'a162x0oc': {
+      'en': 'X1',
+      'ar': 'X1',
+    },
+    '8pptt67c': {
+      'en': '',
+      'ar': '',
+    },
+    'sxkd4w6h': {
+      'en': '',
+      'ar': '',
+    },
+    'zt2c2utm': {
+      'en': 'List of matches added',
+      'ar': 'قائمة المباريات المظافة',
+    },
+    'uif33elr': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
   // signInComponent
   {
     '73htmsl1': {
@@ -1201,6 +1221,33 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'zq3juaox': {
       'en': 'Edit',
       'ar': 'تعديل',
+    },
+  },
+  // adminMatchesFilterC
+  {
+    'q2bo1n4b': {
+      'en': 'Right Click Options',
+      'ar': '',
+    },
+    'a1odcxkl': {
+      'en': 'Matches is active',
+      'ar': 'هل المباريات نشطة',
+    },
+    'tu0t4jj3': {
+      'en': 'Matches is Double',
+      'ar': 'هل المباريات دبل النقاط',
+    },
+    'xj4qp2fb': {
+      'en': 'Date start from',
+      'ar': 'التاريخ يبداء من',
+    },
+    'kylq9iza': {
+      'en': 'Date end to',
+      'ar': 'التاريخ النهاية',
+    },
+    '4z49z2ay': {
+      'en': 'Button',
+      'ar': '',
     },
   },
   // Miscellaneous
