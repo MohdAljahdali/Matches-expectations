@@ -21,6 +21,20 @@
           "order": "ASCENDING"
         }
       ]
+    },
+    {
+      "collectionGroup": "Matches",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "tournamentID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "fixtureDate",
+          "order": "ASCENDING"
+        }
+      ]
     }
   ]
 }

@@ -294,10 +294,11 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                             10.0, 10.0, 10.0, 0.0),
                         child: StreamBuilder<List<MatchesRecord>>(
                           stream: queryMatchesRecord(
-                            queryBuilder: (matchesRecord) =>
-                                matchesRecord.where('tournamentID',
+                            queryBuilder: (matchesRecord) => matchesRecord
+                                .where('tournamentID',
                                     isEqualTo:
-                                        _model.activeTournamentListDDValue),
+                                        _model.activeTournamentListDDValue)
+                                .orderBy('fixtureDate'),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
