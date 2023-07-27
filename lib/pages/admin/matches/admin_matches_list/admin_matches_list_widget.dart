@@ -21,12 +21,7 @@ import 'admin_matches_list_model.dart';
 export 'admin_matches_list_model.dart';
 
 class AdminMatchesListWidget extends StatefulWidget {
-  const AdminMatchesListWidget({
-    Key? key,
-    required this.addMatchesRC,
-  }) : super(key: key);
-
-  final String? addMatchesRC;
+  const AdminMatchesListWidget({Key? key}) : super(key: key);
 
   @override
   _AdminMatchesListWidgetState createState() => _AdminMatchesListWidgetState();
@@ -277,7 +272,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
-                                      context.pushNamed('adminTournamentsAdd');
+                                      context.pushNamed('adminMatchesAdd');
                                     },
                                   ),
                                 ],
@@ -300,8 +295,9 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                         child: StreamBuilder<List<MatchesRecord>>(
                           stream: queryMatchesRecord(
                             queryBuilder: (matchesRecord) =>
-                                matchesRecord.where('addRandomCode',
-                                    isEqualTo: widget.addMatchesRC),
+                                matchesRecord.where('tournamentID',
+                                    isEqualTo:
+                                        _model.activeTournamentListDDValue),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.

@@ -171,9 +171,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'adminMatchesList',
           path: '/adminMatchesList',
-          builder: (context, params) => AdminMatchesListWidget(
-            addMatchesRC: params.getParam('addMatchesRC', ParamType.String),
-          ),
+          builder: (context, params) => AdminMatchesListWidget(),
         ),
         FFRoute(
           name: 'adminTournamentsAddList',

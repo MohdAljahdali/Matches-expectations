@@ -401,7 +401,7 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed('adminMatchesAdd');
+                          context.pushNamed('adminMatchesList');
                         },
                         child: ListTile(
                           title: Text(
