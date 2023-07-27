@@ -129,8 +129,9 @@ void addPAdminTournamentsLiatStructData(
     firestoreData[fieldName] = FieldValue.delete();
     return;
   }
-  if (!forFieldValue &&
-      pAdminTournamentsLiat.firestoreUtilData.clearUnsetFields) {
+  final clearFields = !forFieldValue &&
+      pAdminTournamentsLiat.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
     firestoreData[fieldName] = <String, dynamic>{};
   }
   final pAdminTournamentsLiatData = getPAdminTournamentsLiatFirestoreData(
@@ -138,8 +139,10 @@ void addPAdminTournamentsLiatStructData(
   final nestedData =
       pAdminTournamentsLiatData.map((k, v) => MapEntry('$fieldName.$k', v));
 
-  final create = pAdminTournamentsLiat.firestoreUtilData.create;
-  firestoreData.addAll(create ? mergeNestedFields(nestedData) : nestedData);
+  final mergeFields =
+      pAdminTournamentsLiat.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
 }
 
 Map<String, dynamic> getPAdminTournamentsLiatFirestoreData(

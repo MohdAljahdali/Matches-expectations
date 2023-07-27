@@ -106,7 +106,9 @@ void addACountriesListDTStructData(
     firestoreData[fieldName] = FieldValue.delete();
     return;
   }
-  if (!forFieldValue && aCountriesListDT.firestoreUtilData.clearUnsetFields) {
+  final clearFields =
+      !forFieldValue && aCountriesListDT.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
     firestoreData[fieldName] = <String, dynamic>{};
   }
   final aCountriesListDTData =
@@ -114,8 +116,9 @@ void addACountriesListDTStructData(
   final nestedData =
       aCountriesListDTData.map((k, v) => MapEntry('$fieldName.$k', v));
 
-  final create = aCountriesListDT.firestoreUtilData.create;
-  firestoreData.addAll(create ? mergeNestedFields(nestedData) : nestedData);
+  final mergeFields = aCountriesListDT.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
 }
 
 Map<String, dynamic> getACountriesListDTFirestoreData(

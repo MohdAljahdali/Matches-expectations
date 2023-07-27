@@ -129,7 +129,9 @@ void addApiFixturesCallStructData(
     firestoreData[fieldName] = FieldValue.delete();
     return;
   }
-  if (!forFieldValue && apiFixturesCall.firestoreUtilData.clearUnsetFields) {
+  final clearFields =
+      !forFieldValue && apiFixturesCall.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
     firestoreData[fieldName] = <String, dynamic>{};
   }
   final apiFixturesCallData =
@@ -137,8 +139,9 @@ void addApiFixturesCallStructData(
   final nestedData =
       apiFixturesCallData.map((k, v) => MapEntry('$fieldName.$k', v));
 
-  final create = apiFixturesCall.firestoreUtilData.create;
-  firestoreData.addAll(create ? mergeNestedFields(nestedData) : nestedData);
+  final mergeFields = apiFixturesCall.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
 }
 
 Map<String, dynamic> getApiFixturesCallFirestoreData(

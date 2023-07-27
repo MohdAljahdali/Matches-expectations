@@ -149,7 +149,9 @@ void addPTournamentsStructData(
     firestoreData[fieldName] = FieldValue.delete();
     return;
   }
-  if (!forFieldValue && pTournaments.firestoreUtilData.clearUnsetFields) {
+  final clearFields =
+      !forFieldValue && pTournaments.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
     firestoreData[fieldName] = <String, dynamic>{};
   }
   final pTournamentsData =
@@ -157,8 +159,9 @@ void addPTournamentsStructData(
   final nestedData =
       pTournamentsData.map((k, v) => MapEntry('$fieldName.$k', v));
 
-  final create = pTournaments.firestoreUtilData.create;
-  firestoreData.addAll(create ? mergeNestedFields(nestedData) : nestedData);
+  final mergeFields = pTournaments.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
 }
 
 Map<String, dynamic> getPTournamentsFirestoreData(

@@ -170,14 +170,17 @@ void addPMatchesStructData(
     firestoreData[fieldName] = FieldValue.delete();
     return;
   }
-  if (!forFieldValue && pMatches.firestoreUtilData.clearUnsetFields) {
+  final clearFields =
+      !forFieldValue && pMatches.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
     firestoreData[fieldName] = <String, dynamic>{};
   }
   final pMatchesData = getPMatchesFirestoreData(pMatches, forFieldValue);
   final nestedData = pMatchesData.map((k, v) => MapEntry('$fieldName.$k', v));
 
-  final create = pMatches.firestoreUtilData.create;
-  firestoreData.addAll(create ? mergeNestedFields(nestedData) : nestedData);
+  final mergeFields = pMatches.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
 }
 
 Map<String, dynamic> getPMatchesFirestoreData(
