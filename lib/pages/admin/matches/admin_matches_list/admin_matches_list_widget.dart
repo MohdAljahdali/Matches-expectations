@@ -327,17 +327,12 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                               itemBuilder: (context, listViewIndex) {
                                 final listViewMatchesRecord =
                                     listViewMatchesRecordList[listViewIndex];
-                                return Card(
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  elevation: 1.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
+                                return Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 5.0, 0.0, 5.0),
                                   child: Container(
                                     width: 100.0,
-                                    height: 100.0,
+                                    height: 95.0,
                                     decoration: BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
@@ -348,6 +343,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                         begin: AlignmentDirectional(0.0, -1.0),
                                         end: AlignmentDirectional(0, 1.0),
                                       ),
+                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
