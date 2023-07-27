@@ -351,9 +351,13 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                           context)
                                                       .secondaryBackground,
                                                 ),
+                                                alignment: AlignmentDirectional(
+                                                    1.0, 0.0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
                                                   children: [
                                                     Padding(
                                                       padding:
