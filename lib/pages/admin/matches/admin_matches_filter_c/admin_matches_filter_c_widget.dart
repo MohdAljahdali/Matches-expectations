@@ -1,8 +1,10 @@
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_checkbox_group.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -78,8 +80,8 @@ class _AdminMatchesFilterCWidgetState extends State<AdminMatchesFilterCWidget>
         child: Container(
           width: 270.0,
           constraints: BoxConstraints(
-            minHeight: 270.0,
-            maxHeight: 270.0,
+            minHeight: 360.0,
+            maxHeight: 360.0,
           ),
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -142,6 +144,95 @@ class _AdminMatchesFilterCWidgetState extends State<AdminMatchesFilterCWidget>
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              1.0, 0.0, 1.0, 0.0),
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  1.0, 0.0, 1.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Expanded(
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'f0077muo' /* Matches is active */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Plus Jakarta Sans',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent3,
+                                              fontSize: 14.0,
+                                              fontWeight: FontWeight.w500,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: FlutterFlowCheckboxGroup(
+                                      options: [
+                                        FFLocalizations.of(context).getText(
+                                          'nx30oyrw' /* Option 1 */,
+                                        ),
+                                        FFLocalizations.of(context).getText(
+                                          '24v9r7nj' /* HFGHDSA */,
+                                        ),
+                                        FFLocalizations.of(context).getText(
+                                          'o7htdl2c' /* HFGH */,
+                                        )
+                                      ],
+                                      onChanged: (val) => setState(() =>
+                                          _model.checkboxGroupValues = val),
+                                      controller: _model
+                                              .checkboxGroupValueController ??=
+                                          FormFieldController<List<String>>(
+                                        [
+                                          FFLocalizations.of(context).getText(
+                                            'mircd9uq' /* HFGHDSA */,
+                                          ),
+                                          FFLocalizations.of(context).getText(
+                                            'hegz7ok7' /* Option 1 */,
+                                          )
+                                        ],
+                                      ),
+                                      activeColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      checkColor:
+                                          FlutterFlowTheme.of(context).info,
+                                      checkboxBorderColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                      checkboxBorderRadius:
+                                          BorderRadius.circular(4.0),
+                                      initialized:
+                                          _model.checkboxGroupValues != null,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               1.0, 0.0, 1.0, 0.0),

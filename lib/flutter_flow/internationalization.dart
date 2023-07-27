@@ -1229,6 +1229,30 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Right Click Options',
       'ar': '',
     },
+    'f0077muo': {
+      'en': 'Matches is active',
+      'ar': 'هل المباريات نشطة',
+    },
+    'nx30oyrw': {
+      'en': 'Option 1',
+      'ar': '',
+    },
+    '24v9r7nj': {
+      'en': 'HFGHDSA',
+      'ar': '',
+    },
+    'o7htdl2c': {
+      'en': 'HFGH',
+      'ar': '',
+    },
+    'mircd9uq': {
+      'en': 'HFGHDSA',
+      'ar': '',
+    },
+    'hegz7ok7': {
+      'en': 'Option 1',
+      'ar': '',
+    },
     'a1odcxkl': {
       'en': 'Matches is active',
       'ar': 'هل المباريات نشطة',
