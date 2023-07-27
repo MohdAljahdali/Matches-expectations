@@ -171,9 +171,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'adminMatchesList',
           path: '/adminMatchesList',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'adminMatchesList')
-              : AdminMatchesListWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AdminMatchesListWidget(),
+          ),
         ),
         FFRoute(
           name: 'adminTournamentsAddList',

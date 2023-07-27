@@ -14,6 +14,7 @@ import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
 
@@ -133,7 +134,6 @@ class _NavBarPageState extends State<NavBarPage> {
       'Home': HomeWidget(),
       'Profile': ProfileWidget(),
       'adminPage': AdminPageWidget(),
-      'adminMatchesList': AdminMatchesListWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -145,58 +145,44 @@ class _NavBarPageState extends State<NavBarPage> {
           tabletLandscape: false,
           desktop: false,
         ),
-        child: BottomNavigationBar(
-          currentIndex: currentIndex,
-          onTap: (i) => setState(() {
+        child: GNav(
+          selectedIndex: currentIndex,
+          onTabChange: (i) => setState(() {
             _currentPage = null;
             _currentPageName = tabs.keys.toList()[i];
           }),
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-          selectedItemColor: FlutterFlowTheme.of(context).primaryText,
-          unselectedItemColor: FlutterFlowTheme.of(context).primaryText,
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          type: BottomNavigationBarType.fixed,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home_outlined,
-                size: 24.0,
-              ),
-              label: FFLocalizations.of(context).getText(
+          color: FlutterFlowTheme.of(context).primaryText,
+          activeColor: FlutterFlowTheme.of(context).primaryText,
+          tabBackgroundColor: Color(0x00000000),
+          tabBorderRadius: 15.0,
+          tabMargin: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+          gap: 3.0,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          duration: Duration(milliseconds: 30),
+          haptic: false,
+          tabs: [
+            GButton(
+              icon: Icons.home_outlined,
+              text: FFLocalizations.of(context).getText(
                 'vvtkszi3' /* Home */,
               ),
-              tooltip: '',
+              iconSize: 24.0,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person_2_sharp,
-                size: 28.0,
-              ),
-              label: FFLocalizations.of(context).getText(
+            GButton(
+              icon: Icons.person_2_sharp,
+              text: FFLocalizations.of(context).getText(
                 '5byhc1ud' /* Profile */,
               ),
-              tooltip: '',
+              iconSize: 28.0,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person_2_sharp,
-                size: 28.0,
-              ),
-              label: FFLocalizations.of(context).getText(
+            GButton(
+              icon: Icons.person_2_sharp,
+              text: FFLocalizations.of(context).getText(
                 'p4z0veqy' /* Admin */,
               ),
-              tooltip: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home_outlined,
-                size: 24.0,
-              ),
-              label: FFLocalizations.of(context).getText(
-                '30d15deu' /* Home */,
-              ),
-              tooltip: '',
+              iconSize: 28.0,
             )
           ],
         ),
