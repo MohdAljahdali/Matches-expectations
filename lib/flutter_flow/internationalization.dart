@@ -1233,23 +1233,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Matches is active',
       'ar': 'هل المباريات نشطة',
     },
-    'nx30oyrw': {
+    'w5e58miu': {
       'en': 'Option 1',
       'ar': '',
     },
-    '24v9r7nj': {
+    '6m19x8bo': {
       'en': 'HFGHDSA',
       'ar': '',
     },
-    'o7htdl2c': {
+    'xs8wowc3': {
       'en': 'HFGH',
       'ar': '',
     },
-    'mircd9uq': {
+    'hcgndenk': {
       'en': 'HFGHDSA',
       'ar': '',
     },
-    'hegz7ok7': {
+    'rpd84g8o': {
       'en': 'Option 1',
       'ar': '',
     },
