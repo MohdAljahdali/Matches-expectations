@@ -133,6 +133,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'Home': HomeWidget(),
       'Profile': ProfileWidget(),
       'adminPage': AdminPageWidget(),
+      'adminMatchesList': AdminMatchesListWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -153,8 +154,8 @@ class _NavBarPageState extends State<NavBarPage> {
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           selectedItemColor: FlutterFlowTheme.of(context).primaryText,
           unselectedItemColor: FlutterFlowTheme.of(context).primaryText,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
           type: BottomNavigationBarType.fixed,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -184,6 +185,16 @@ class _NavBarPageState extends State<NavBarPage> {
               ),
               label: FFLocalizations.of(context).getText(
                 'p4z0veqy' /* Admin */,
+              ),
+              tooltip: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home_outlined,
+                size: 24.0,
+              ),
+              label: FFLocalizations.of(context).getText(
+                '30d15deu' /* Home */,
               ),
               tooltip: '',
             )
