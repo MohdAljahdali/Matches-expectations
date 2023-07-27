@@ -1237,17 +1237,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Matches is Double',
       'ar': 'هل المباريات دبل النقاط',
     },
-    'xj4qp2fb': {
-      'en': 'Date start from',
-      'ar': 'التاريخ يبداء من',
-    },
-    'kylq9iza': {
-      'en': 'Date end to',
-      'ar': 'التاريخ النهاية',
-    },
     '4z49z2ay': {
-      'en': 'Button',
-      'ar': '',
+      'en': 'Show results',
+      'ar': 'عرض النتائج',
+    },
+    'o4srtq1x': {
+      'en': 'Clean',
+      'ar': 'مسح',
     },
   },
   // Miscellaneous

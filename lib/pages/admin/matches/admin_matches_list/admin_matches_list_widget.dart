@@ -461,6 +461,13 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                 ),
                                               ),
                                             ),
+                                            Icon(
+                                              Icons.settings_outlined,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 24.0,
+                                            ),
                                           ],
                                         ),
                                       ),

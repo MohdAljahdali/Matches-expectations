@@ -9,41 +9,98 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class PMatchesStruct extends FFFirebaseStruct {
   PMatchesStruct({
-    String? addNewMatcheRC,
+    bool? filterIsActive,
+    bool? filterIsDouble,
+    DateTime? filterDateStart,
+    DateTime? filterDateEnd,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
-  })  : _addNewMatcheRC = addNewMatcheRC,
+  })  : _filterIsActive = filterIsActive,
+        _filterIsDouble = filterIsDouble,
+        _filterDateStart = filterDateStart,
+        _filterDateEnd = filterDateEnd,
         super(firestoreUtilData);
 
-  // "addNewMatcheRC" field.
-  String? _addNewMatcheRC;
-  String get addNewMatcheRC => _addNewMatcheRC ?? '';
-  set addNewMatcheRC(String? val) => _addNewMatcheRC = val;
-  bool hasAddNewMatcheRC() => _addNewMatcheRC != null;
+  // "filterIsActive" field.
+  bool? _filterIsActive;
+  bool get filterIsActive => _filterIsActive ?? false;
+  set filterIsActive(bool? val) => _filterIsActive = val;
+  bool hasFilterIsActive() => _filterIsActive != null;
+
+  // "filterIsDouble" field.
+  bool? _filterIsDouble;
+  bool get filterIsDouble => _filterIsDouble ?? false;
+  set filterIsDouble(bool? val) => _filterIsDouble = val;
+  bool hasFilterIsDouble() => _filterIsDouble != null;
+
+  // "filterDateStart" field.
+  DateTime? _filterDateStart;
+  DateTime? get filterDateStart => _filterDateStart;
+  set filterDateStart(DateTime? val) => _filterDateStart = val;
+  bool hasFilterDateStart() => _filterDateStart != null;
+
+  // "filterDateEnd" field.
+  DateTime? _filterDateEnd;
+  DateTime? get filterDateEnd => _filterDateEnd;
+  set filterDateEnd(DateTime? val) => _filterDateEnd = val;
+  bool hasFilterDateEnd() => _filterDateEnd != null;
 
   static PMatchesStruct fromMap(Map<String, dynamic> data) => PMatchesStruct(
-        addNewMatcheRC: data['addNewMatcheRC'] as String?,
+        filterIsActive: data['filterIsActive'] as bool?,
+        filterIsDouble: data['filterIsDouble'] as bool?,
+        filterDateStart: data['filterDateStart'] as DateTime?,
+        filterDateEnd: data['filterDateEnd'] as DateTime?,
       );
 
   static PMatchesStruct? maybeFromMap(dynamic data) =>
       data is Map<String, dynamic> ? PMatchesStruct.fromMap(data) : null;
 
   Map<String, dynamic> toMap() => {
-        'addNewMatcheRC': _addNewMatcheRC,
+        'filterIsActive': _filterIsActive,
+        'filterIsDouble': _filterIsDouble,
+        'filterDateStart': _filterDateStart,
+        'filterDateEnd': _filterDateEnd,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
-        'addNewMatcheRC': serializeParam(
-          _addNewMatcheRC,
-          ParamType.String,
+        'filterIsActive': serializeParam(
+          _filterIsActive,
+          ParamType.bool,
+        ),
+        'filterIsDouble': serializeParam(
+          _filterIsDouble,
+          ParamType.bool,
+        ),
+        'filterDateStart': serializeParam(
+          _filterDateStart,
+          ParamType.DateTime,
+        ),
+        'filterDateEnd': serializeParam(
+          _filterDateEnd,
+          ParamType.DateTime,
         ),
       }.withoutNulls;
 
   static PMatchesStruct fromSerializableMap(Map<String, dynamic> data) =>
       PMatchesStruct(
-        addNewMatcheRC: deserializeParam(
-          data['addNewMatcheRC'],
-          ParamType.String,
+        filterIsActive: deserializeParam(
+          data['filterIsActive'],
+          ParamType.bool,
+          false,
+        ),
+        filterIsDouble: deserializeParam(
+          data['filterIsDouble'],
+          ParamType.bool,
+          false,
+        ),
+        filterDateStart: deserializeParam(
+          data['filterDateStart'],
+          ParamType.DateTime,
+          false,
+        ),
+        filterDateEnd: deserializeParam(
+          data['filterDateEnd'],
+          ParamType.DateTime,
           false,
         ),
       );
@@ -53,22 +110,33 @@ class PMatchesStruct extends FFFirebaseStruct {
 
   @override
   bool operator ==(Object other) {
-    return other is PMatchesStruct && addNewMatcheRC == other.addNewMatcheRC;
+    return other is PMatchesStruct &&
+        filterIsActive == other.filterIsActive &&
+        filterIsDouble == other.filterIsDouble &&
+        filterDateStart == other.filterDateStart &&
+        filterDateEnd == other.filterDateEnd;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([addNewMatcheRC]);
+  int get hashCode => const ListEquality()
+      .hash([filterIsActive, filterIsDouble, filterDateStart, filterDateEnd]);
 }
 
 PMatchesStruct createPMatchesStruct({
-  String? addNewMatcheRC,
+  bool? filterIsActive,
+  bool? filterIsDouble,
+  DateTime? filterDateStart,
+  DateTime? filterDateEnd,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
   bool delete = false,
 }) =>
     PMatchesStruct(
-      addNewMatcheRC: addNewMatcheRC,
+      filterIsActive: filterIsActive,
+      filterIsDouble: filterIsDouble,
+      filterDateStart: filterDateStart,
+      filterDateEnd: filterDateEnd,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

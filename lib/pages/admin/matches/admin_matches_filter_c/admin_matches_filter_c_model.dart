@@ -1,7 +1,9 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -13,9 +15,11 @@ class AdminMatchesFilterCModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for isActiveS widget.
-  bool? isActiveSValue1;
-  // State field(s) for isActiveS widget.
-  bool? isActiveSValue2;
+  bool? isActiveSValue;
+  // State field(s) for IsDoubleS widget.
+  bool? isDoubleSValue;
+  DateTime? datePicked1;
+  DateTime? datePicked2;
 
   /// Initialization and disposal methods.
 

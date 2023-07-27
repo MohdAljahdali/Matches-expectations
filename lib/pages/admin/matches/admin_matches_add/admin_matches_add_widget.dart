@@ -123,7 +123,7 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                   Expanded(
                                     child: Container(
                                       width: double.infinity,
-                                      height: 130.0,
+                                      height: 135.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,

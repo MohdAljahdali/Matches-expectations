@@ -52,15 +52,14 @@ class FFAppState extends ChangeNotifier {
     updateFn(_PAdminTournamentsList);
   }
 
-  PMatchesStruct _PAdminMatches =
-      PMatchesStruct.fromSerializableMap(jsonDecode('{}'));
-  PMatchesStruct get PAdminMatches => _PAdminMatches;
-  set PAdminMatches(PMatchesStruct _value) {
-    _PAdminMatches = _value;
+  PMatchesStruct _PMatches = PMatchesStruct();
+  PMatchesStruct get PMatches => _PMatches;
+  set PMatches(PMatchesStruct _value) {
+    _PMatches = _value;
   }
 
-  void updatePAdminMatchesStruct(Function(PMatchesStruct) updateFn) {
-    updateFn(_PAdminMatches);
+  void updatePMatchesStruct(Function(PMatchesStruct) updateFn) {
+    updateFn(_PMatches);
   }
 
   final _adminCountriesListManager =
