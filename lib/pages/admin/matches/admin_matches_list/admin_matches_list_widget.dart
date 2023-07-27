@@ -372,8 +372,14 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                                   5.0,
                                                                   0.0),
                                                       child: AutoSizeText(
-                                                        listViewMatchesRecord
-                                                            .teamHomeName,
+                                                        FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode ==
+                                                                'en'
+                                                            ? listViewMatchesRecord
+                                                                .teamHomeName
+                                                            : listViewMatchesRecord
+                                                                .teamHomeNameAr,
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -452,8 +458,14 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                                   5.0,
                                                                   0.0),
                                                       child: AutoSizeText(
-                                                        listViewMatchesRecord
-                                                            .teamAwayName,
+                                                        FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode ==
+                                                                'en'
+                                                            ? listViewMatchesRecord
+                                                                .teamAwayName
+                                                            : listViewMatchesRecord
+                                                                .teamAwayNameAr,
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
