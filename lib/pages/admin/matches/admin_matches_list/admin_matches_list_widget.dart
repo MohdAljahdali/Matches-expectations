@@ -301,18 +301,6 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                         _model.activeTournamentListDDValue != ''
                                             ? _model.activeTournamentListDDValue
                                             : null)
-                                .where('fixtureIsDouble',
-                                    isEqualTo:
-                                        FFAppState().PMatches.filterIsDouble)
-                                .where('isActive',
-                                    isEqualTo:
-                                        FFAppState().PMatches.filterIsActive)
-                                .where('fixtureDate',
-                                    isLessThanOrEqualTo:
-                                        FFAppState().PMatches.filterDateStart)
-                                .where('fixtureDate',
-                                    isGreaterThanOrEqualTo:
-                                        FFAppState().PMatches.filterDateEnd)
                                 .orderBy('fixtureDate'),
                           ),
                           builder: (context, snapshot) {

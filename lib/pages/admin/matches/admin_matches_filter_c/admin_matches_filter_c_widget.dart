@@ -160,43 +160,16 @@ class _AdminMatchesFilterCWidgetState extends State<AdminMatchesFilterCWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Expanded(
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'f0077muo' /* Matches is active */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Plus Jakarta Sans',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .accent3,
-                                              fontSize: 14.0,
-                                              fontWeight: FontWeight.w500,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
-                                            ),
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
                                     child: FlutterFlowCheckboxGroup(
                                       options: [
                                         FFLocalizations.of(context).getText(
-                                          'w5e58miu' /* Option 1 */,
+                                          '5txgxdp2' /* Option 1 */,
                                         ),
                                         FFLocalizations.of(context).getText(
-                                          '6m19x8bo' /* HFGHDSA */,
+                                          '3deek368' /* HFGHDSA */,
                                         ),
                                         FFLocalizations.of(context).getText(
-                                          'xs8wowc3' /* HFGH */,
+                                          '1hb2i02p' /* HFGH */,
                                         )
                                       ],
                                       onChanged: (val) => setState(() =>
@@ -206,10 +179,10 @@ class _AdminMatchesFilterCWidgetState extends State<AdminMatchesFilterCWidget>
                                           FormFieldController<List<String>>(
                                         [
                                           FFLocalizations.of(context).getText(
-                                            'hcgndenk' /* HFGHDSA */,
+                                            'ww0lecs6' /* HFGHDSA */,
                                           ),
                                           FFLocalizations.of(context).getText(
-                                            'rpd84g8o' /* Option 1 */,
+                                            'f837omnz' /* Option 1 */,
                                           )
                                         ],
                                       ),
