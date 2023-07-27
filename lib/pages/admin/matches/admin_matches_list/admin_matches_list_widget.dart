@@ -297,7 +297,21 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                             queryBuilder: (matchesRecord) => matchesRecord
                                 .where('tournamentID',
                                     isEqualTo:
-                                        _model.activeTournamentListDDValue)
+                                        _model.activeTournamentListDDValue != ''
+                                            ? _model.activeTournamentListDDValue
+                                            : null)
+                                .where('fixtureIsDouble',
+                                    isEqualTo:
+                                        FFAppState().PMatches.filterIsDouble)
+                                .where('isActive',
+                                    isEqualTo:
+                                        FFAppState().PMatches.filterIsActive)
+                                .where('fixtureDate',
+                                    isGreaterThanOrEqualTo:
+                                        FFAppState().PMatches.filterDateStart)
+                                .where('fixtureDate',
+                                    isLessThanOrEqualTo:
+                                        FFAppState().PMatches.filterDateEnd)
                                 .orderBy('fixtureDate'),
                           ),
                           builder: (context, snapshot) {
