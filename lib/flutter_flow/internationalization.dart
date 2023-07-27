@@ -965,7 +965,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'n255kbji': {
       'en': 'VS',
-      'ar': '',
+      'ar': 'VS',
     },
     'm6ug5u60': {
       'en': 'X2',
