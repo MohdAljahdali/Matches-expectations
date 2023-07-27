@@ -332,7 +332,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                       0.0, 5.0, 0.0, 5.0),
                                   child: Container(
                                     width: 100.0,
-                                    height: 95.0,
+                                    height: 96.0,
                                     decoration: BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
