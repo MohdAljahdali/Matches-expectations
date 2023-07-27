@@ -9,6 +9,7 @@ import '/flutter_flow/form_field_controller.dart';
 import '/pages/admin/matches/admin_matches_filter_c/admin_matches_filter_c_widget.dart';
 import 'package:styled_divider/styled_divider.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -382,7 +383,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                                   0.0,
                                                                   5.0,
                                                                   0.0),
-                                                      child: Text(
+                                                      child: AutoSizeText(
                                                         listViewMatchesRecord
                                                             .teamHomeName,
                                                         style:
@@ -462,7 +463,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                                   0.0,
                                                                   5.0,
                                                                   0.0),
-                                                      child: Text(
+                                                      child: AutoSizeText(
                                                         listViewMatchesRecord
                                                             .teamAwayName,
                                                         style:
@@ -474,13 +475,6 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                   ],
                                                 ),
                                               ),
-                                            ),
-                                            Icon(
-                                              Icons.settings_outlined,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
                                             ),
                                           ],
                                         ),
