@@ -308,10 +308,10 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                     isEqualTo:
                                         FFAppState().PMatches.filterIsActive)
                                 .where('fixtureDate',
-                                    isGreaterThanOrEqualTo:
+                                    isLessThanOrEqualTo:
                                         FFAppState().PMatches.filterDateStart)
                                 .where('fixtureDate',
-                                    isLessThanOrEqualTo:
+                                    isGreaterThanOrEqualTo:
                                         FFAppState().PMatches.filterDateEnd)
                                 .orderBy('fixtureDate'),
                           ),
