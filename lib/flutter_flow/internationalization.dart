@@ -1229,23 +1229,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Right Click Options',
       'ar': '',
     },
-    'j761hb2c': {
+    'o331rwnw': {
       'en': 'Option 1',
       'ar': '',
     },
-    'aubpwg91': {
+    'dgns9qu2': {
       'en': 'HFGHDSA',
       'ar': '',
     },
-    '64u4noz9': {
+    'jd6y698x': {
       'en': 'HFGH',
       'ar': '',
     },
-    'cy51wlzq': {
+    '03nsaad2': {
       'en': 'HFGHDSA',
       'ar': '',
     },
-    'bjv0a2d4': {
+    '0m35q9h0': {
       'en': 'Option 1',
       'ar': '',
     },
