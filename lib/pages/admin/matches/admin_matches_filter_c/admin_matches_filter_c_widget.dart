@@ -163,13 +163,13 @@ class _AdminMatchesFilterCWidgetState extends State<AdminMatchesFilterCWidget>
                                     child: FlutterFlowCheckboxGroup(
                                       options: [
                                         FFLocalizations.of(context).getText(
-                                          '84tg8mv8' /* Option 1 */,
+                                          '6kmyuvx3' /* Option 1 */,
                                         ),
                                         FFLocalizations.of(context).getText(
-                                          'wxfvixzj' /* HFGHDSA */,
+                                          'g57q8pvc' /* HFGHDSA */,
                                         ),
                                         FFLocalizations.of(context).getText(
-                                          '2anyk6t4' /* HFGH */,
+                                          'z6ukbbdp' /* HFGH */,
                                         )
                                       ],
                                       onChanged: (val) => setState(() =>
@@ -179,10 +179,10 @@ class _AdminMatchesFilterCWidgetState extends State<AdminMatchesFilterCWidget>
                                           FormFieldController<List<String>>(
                                         [
                                           FFLocalizations.of(context).getText(
-                                            'vwkjf9im' /* HFGHDSA */,
+                                            'j671u7eg' /* HFGHDSA */,
                                           ),
                                           FFLocalizations.of(context).getText(
-                                            'kkb4l12s' /* Option 1 */,
+                                            'vflsgffh' /* Option 1 */,
                                           )
                                         ],
                                       ),

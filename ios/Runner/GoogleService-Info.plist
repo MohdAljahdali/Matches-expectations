@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>951422048235-l9bnkjcjaecttobltnnb7fdqrehh9bi9.apps.googleusercontent.com</string>
+	<string>951422048235-fc4mamh5osv27bl6fedaekpjavtgd032.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.951422048235-l9bnkjcjaecttobltnnb7fdqrehh9bi9</string>
+	<string>com.googleusercontent.apps.951422048235-fc4mamh5osv27bl6fedaekpjavtgd032</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>951422048235-cj50d1h19189ghqd7ps7gqbsiql9de4q.apps.googleusercontent.com</string>
+	<string>951422048235-ci1eaajgbs25ttafrc2hpat8alu3q11k.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBPpAWMaSYKp-zgYxJuCX38T5RlAKgAYQc</string>
 	<key>GCM_SENDER_ID</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.mohammedj.matchesexpectations</string>
+	<string>com.mohammedj.f365app</string>
 	<key>PROJECT_ID</key>
 	<string>m-expectations-e291e</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:951422048235:ios:6268233ec5bc55c31eebae</string>
+	<string>1:951422048235:ios:d1d2e035d03c2b3f1eebae</string>
 </dict>
 </plist>

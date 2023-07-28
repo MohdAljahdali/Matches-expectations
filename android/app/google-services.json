@@ -7,17 +7,25 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:951422048235:android:156478e78918f38a1eebae",
+        "mobilesdk_app_id": "1:951422048235:android:1c1243377979ae441eebae",
         "android_client_info": {
-          "package_name": "com.mohammedj.matchesexpectations"
+          "package_name": "com.mohammedj.f365app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "951422048235-cj50d1h19189ghqd7ps7gqbsiql9de4q.apps.googleusercontent.com",
+          "client_id": "951422048235-ci1eaajgbs25ttafrc2hpat8alu3q11k.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.mohammedj.matchesexpectations",
+            "package_name": "com.mohammedj.f365app",
+            "certificate_hash": "5effaf90da8b24657b2b707ce2c0086d97104f6e"
+          }
+        },
+        {
+          "client_id": "951422048235-d02va4opd36oo61oq1a7o9ckhpcrglp8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mohammedj.f365app",
             "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
           }
         },
@@ -39,10 +47,10 @@
               "client_type": 3
             },
             {
-              "client_id": "951422048235-l9bnkjcjaecttobltnnb7fdqrehh9bi9.apps.googleusercontent.com",
+              "client_id": "951422048235-fc4mamh5osv27bl6fedaekpjavtgd032.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.mohammedj.matchesexpectations"
+                "bundle_id": "com.mohammedj.f365app"
               }
             }
           ]

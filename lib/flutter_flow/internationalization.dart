@@ -107,6 +107,10 @@ Locale createLocale(String language) => language.contains('_')
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Home
   {
+    '2m6c08fn': {
+      'en': 'Hello World',
+      'ar': '',
+    },
     'vvtkszi3': {
       'en': 'Home',
       'ar': '',
@@ -1229,23 +1233,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Right Click Options',
       'ar': '',
     },
-    '84tg8mv8': {
+    '6kmyuvx3': {
       'en': 'Option 1',
       'ar': '',
     },
-    'wxfvixzj': {
+    'g57q8pvc': {
       'en': 'HFGHDSA',
       'ar': '',
     },
-    '2anyk6t4': {
+    'z6ukbbdp': {
       'en': 'HFGH',
       'ar': '',
     },
-    'vwkjf9im': {
+    'j671u7eg': {
       'en': 'HFGHDSA',
       'ar': '',
     },
-    'kkb4l12s': {
+    'vflsgffh': {
       'en': 'Option 1',
       'ar': '',
     },
@@ -1301,6 +1305,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'uhkaovxw': {
+      'en': '',
+      'ar': '',
+    },
+    'ot7ifas2': {
+      'en': '',
+      'ar': '',
+    },
+    'dxi3vyr9': {
       'en': '',
       'ar': '',
     },

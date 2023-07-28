@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
-    userStream = tawaqueFirebaseUserStream()
+    userStream = f365FirebaseUserStream()
       ..listen((user) => _appStateNotifier.update(user));
     jwtTokenStream.listen((_) {});
     Future.delayed(
@@ -87,7 +87,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Tawaque',
+      title: 'F365',
       localizationsDelegates: [
         FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
@@ -131,9 +131,9 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'Home': HomeWidget(),
       'Profile': ProfileWidget(),
       'adminPage': AdminPageWidget(),
+      'Home': HomeWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -164,13 +164,6 @@ class _NavBarPageState extends State<NavBarPage> {
           haptic: false,
           tabs: [
             GButton(
-              icon: Icons.home_outlined,
-              text: FFLocalizations.of(context).getText(
-                'vvtkszi3' /* Home */,
-              ),
-              iconSize: 24.0,
-            ),
-            GButton(
               icon: Icons.person_2_sharp,
               text: FFLocalizations.of(context).getText(
                 '5byhc1ud' /* Profile */,
@@ -183,6 +176,13 @@ class _NavBarPageState extends State<NavBarPage> {
                 'p4z0veqy' /* Admin */,
               ),
               iconSize: 28.0,
+            ),
+            GButton(
+              icon: Icons.home_outlined,
+              text: FFLocalizations.of(context).getText(
+                'vvtkszi3' /* Home */,
+              ),
+              iconSize: 24.0,
             )
           ],
         ),

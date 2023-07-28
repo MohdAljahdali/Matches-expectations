@@ -85,7 +85,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 0.0),
                             child: Container(
-                              height: 180.0,
+                              height: 130.0,
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
@@ -98,88 +98,130 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
-                              child: Column(
+                              child: Row(
                                 mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        FFLocalizations.of(context)
-                                                    .languageCode ==
-                                                'en'
-                                            ? listViewMatchesRecord
-                                                .tournamentName
-                                            : listViewMatchesRecord
-                                                .tournamentNameAr,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                      ),
-                                    ],
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 10.0, 0.0),
-                                    child: Row(
+                                  Expanded(
+                                    child: Column(
                                       mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Column(
+                                        Row(
                                           mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: Image.network(
-                                                listViewMatchesRecord
-                                                    .teamHomeLogo,
-                                                width: 90.0,
-                                                height: 90.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
                                             Text(
                                               FFLocalizations.of(context)
                                                           .languageCode ==
                                                       'en'
                                                   ? listViewMatchesRecord
-                                                      .teamHomeName
+                                                      .tournamentName
                                                   : listViewMatchesRecord
-                                                      .teamHomeNameAr,
+                                                      .tournamentNameAr,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
                                             ),
                                           ],
                                         ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [],
-                                        ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: Image.network(
-                                                listViewMatchesRecord
-                                                    .teamHAwayLogo,
-                                                width: 90.0,
-                                                height: 90.0,
-                                                fit: BoxFit.cover,
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 10.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Container(
+                                                width: 110.0,
+                                                height: 75.0,
+                                                decoration: BoxDecoration(),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                      child: Image.network(
+                                                        listViewMatchesRecord
+                                                            .teamHomeLogo,
+                                                        width: 50.0,
+                                                        height: 50.0,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode ==
+                                                              'en'
+                                                          ? listViewMatchesRecord
+                                                              .teamHomeName
+                                                          : listViewMatchesRecord
+                                                              .teamHomeNameAr,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
-                                            ),
+                                              Container(
+                                                width: 110.0,
+                                                height: 75.0,
+                                                decoration: BoxDecoration(),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                      child: Image.network(
+                                                        listViewMatchesRecord
+                                                            .teamHAwayLogo,
+                                                        width: 50.0,
+                                                        height: 50.0,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode ==
+                                                              'en'
+                                                          ? listViewMatchesRecord
+                                                              .teamAwayName
+                                                          : listViewMatchesRecord
+                                                              .teamAwayName,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
                                             Text(
                                               FFLocalizations.of(context)
-                                                          .languageCode ==
-                                                      'en'
-                                                  ? listViewMatchesRecord
-                                                      .teamAwayName
-                                                  : listViewMatchesRecord
-                                                      .teamAwayName,
+                                                  .getText(
+                                                '2m6c08fn' /* Hello World */,
+                                              ),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
@@ -187,6 +229,14 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           ],
                                         ),
                                       ],
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 70.0,
+                                    height: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
                                     ),
                                   ),
                                 ],
