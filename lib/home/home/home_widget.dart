@@ -344,6 +344,138 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                     MainAxisAlignment.center,
                                                 children: [
                                                   Builder(
+                                                    builder: (context) =>
+                                                        InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        await showAlignedDialog(
+                                                          context: context,
+                                                          isGlobal: true,
+                                                          avoidOverflow: false,
+                                                          targetAnchor:
+                                                              AlignmentDirectional(
+                                                                      0.0, 0.0)
+                                                                  .resolve(
+                                                                      Directionality.of(
+                                                                          context)),
+                                                          followerAnchor:
+                                                              AlignmentDirectional(
+                                                                      0.0, 0.0)
+                                                                  .resolve(
+                                                                      Directionality.of(
+                                                                          context)),
+                                                          builder:
+                                                              (dialogContext) {
+                                                            return Material(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              child:
+                                                                  GestureDetector(
+                                                                onTap: () => FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode),
+                                                                child:
+                                                                    Container(
+                                                                  height: 300.0,
+                                                                  width: 270.0,
+                                                                  child:
+                                                                      AddPredictionWidget(
+                                                                    tournamentRef:
+                                                                        listViewMatchesRecord
+                                                                            .tournamentRef!,
+                                                                    matcheRef:
+                                                                        listViewMatchesRecord
+                                                                            .reference,
+                                                                    userRef:
+                                                                        currentUserReference!,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            setState(() {}));
+                                                      },
+                                                      child: Container(
+                                                        width: 100.0,
+                                                        height: 125.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                        ),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Icon(
+                                                              Icons
+                                                                  .playlist_add_check_circle_outlined,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryText,
+                                                              size: 38.0,
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'n1wusydo' /* 2 */,
+                                                                ),
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      fontSize:
+                                                                          30.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w800,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      lineHeight:
+                                                                          1.0,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Builder(
                                                     builder: (context) {
                                                       if ((columnMatchStandingsRecord !=
                                                               null) ==
@@ -575,7 +707,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                       FFLocalizations.of(
                                                                               context)
                                                                           .getText(
-                                                                        'ozepq0f8' /* 2 */,
+                                                                        'cjh4g7hl' /* 2 */,
                                                                       ),
                                                                       textAlign:
                                                                           TextAlign
