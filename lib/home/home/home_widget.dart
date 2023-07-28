@@ -220,60 +220,67 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ],
                                           ),
                                         ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(5.0, 0.0, 5.0, 0.0),
-                                              child: Icon(
-                                                Icons.date_range_sharp,
-                                                color:
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 2.0, 0.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        5.0, 0.0, 5.0, 0.0),
+                                                child: Icon(
+                                                  Icons.date_range_sharp,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .accent3,
+                                                  size: 24.0,
+                                                ),
+                                              ),
+                                              Text(
+                                                dateTimeFormat(
+                                                  'yyyy-MM-dd',
+                                                  listViewMatchesRecord
+                                                      .fixtureDate!,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ),
+                                                style:
                                                     FlutterFlowTheme.of(context)
-                                                        .accent3,
-                                                size: 24.0,
+                                                        .bodyMedium,
                                               ),
-                                            ),
-                                            Text(
-                                              dateTimeFormat(
-                                                'yyyy-MM-dd',
-                                                listViewMatchesRecord
-                                                    .fixtureDate!,
-                                                locale:
-                                                    FFLocalizations.of(context)
-                                                        .languageCode,
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        5.0, 0.0, 5.0, 0.0),
+                                                child: Icon(
+                                                  Icons.access_time,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .accent3,
+                                                  size: 24.0,
+                                                ),
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(5.0, 0.0, 5.0, 0.0),
-                                              child: Icon(
-                                                Icons.access_time,
-                                                color:
+                                              Text(
+                                                dateTimeFormat(
+                                                  'jm',
+                                                  listViewMatchesRecord
+                                                      .fixtureDate!,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ),
+                                                style:
                                                     FlutterFlowTheme.of(context)
-                                                        .accent3,
-                                                size: 24.0,
+                                                        .bodyMedium,
                                               ),
-                                            ),
-                                            Text(
-                                              dateTimeFormat(
-                                                'jm',
-                                                listViewMatchesRecord
-                                                    .fixtureDate!,
-                                                locale:
-                                                    FFLocalizations.of(context)
-                                                        .languageCode,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -441,7 +448,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  'ta278mp9' /* 2 */,
+                                                                  'uicwzk1i' /* 2 */,
                                                                 ),
                                                                 textAlign:
                                                                     TextAlign
@@ -707,7 +714,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                       FFLocalizations.of(
                                                                               context)
                                                                           .getText(
-                                                                        '6xmj7iao' /* 2 */,
+                                                                        'laj63f5m' /* 2 */,
                                                                       ),
                                                                       textAlign:
                                                                           TextAlign
