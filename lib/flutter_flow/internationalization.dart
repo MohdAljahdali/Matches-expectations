@@ -107,11 +107,7 @@ Locale createLocale(String language) => language.contains('_')
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Home
   {
-    'uicwzk1i': {
-      'en': '2',
-      'ar': '',
-    },
-    'laj63f5m': {
+    'ztopdrg3': {
       'en': '2',
       'ar': '',
     },
