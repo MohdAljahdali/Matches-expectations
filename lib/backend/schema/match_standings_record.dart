@@ -16,92 +16,91 @@ class MatchStandingsRecord extends FirestoreRecord {
     _initializeFields();
   }
 
-  // "standingID" field.
-  String? _standingID;
-  String get standingID => _standingID ?? '';
-  bool hasStandingID() => _standingID != null;
+  // "tournamentRef" field.
+  DocumentReference? _tournamentRef;
+  DocumentReference? get tournamentRef => _tournamentRef;
+  bool hasTournamentRef() => _tournamentRef != null;
 
-  // "tournamentID" field.
-  String? _tournamentID;
-  String get tournamentID => _tournamentID ?? '';
-  bool hasTournamentID() => _tournamentID != null;
+  // "matcheRef" field.
+  DocumentReference? _matcheRef;
+  DocumentReference? get matcheRef => _matcheRef;
+  bool hasMatcheRef() => _matcheRef != null;
 
-  // "teamName" field.
-  String? _teamName;
-  String get teamName => _teamName ?? '';
-  bool hasTeamName() => _teamName != null;
+  // "userRef" field.
+  DocumentReference? _userRef;
+  DocumentReference? get userRef => _userRef;
+  bool hasUserRef() => _userRef != null;
 
-  // "played" field.
-  int? _played;
-  int get played => _played ?? 0;
-  bool hasPlayed() => _played != null;
+  // "userName" field.
+  String? _userName;
+  String get userName => _userName ?? '';
+  bool hasUserName() => _userName != null;
 
-  // "won" field.
-  int? _won;
-  int get won => _won ?? 0;
-  bool hasWon() => _won != null;
+  // "homeGoals" field.
+  int? _homeGoals;
+  int get homeGoals => _homeGoals ?? 0;
+  bool hasHomeGoals() => _homeGoals != null;
 
-  // "draw" field.
-  int? _draw;
-  int get draw => _draw ?? 0;
-  bool hasDraw() => _draw != null;
+  // "awayGoals" field.
+  int? _awayGoals;
+  int get awayGoals => _awayGoals ?? 0;
+  bool hasAwayGoals() => _awayGoals != null;
 
-  // "lost" field.
-  int? _lost;
-  int get lost => _lost ?? 0;
-  bool hasLost() => _lost != null;
+  // "newPosition" field.
+  int? _newPosition;
+  int get newPosition => _newPosition ?? 0;
+  bool hasNewPosition() => _newPosition != null;
 
-  // "goalsFor" field.
-  int? _goalsFor;
-  int get goalsFor => _goalsFor ?? 0;
-  bool hasGoalsFor() => _goalsFor != null;
+  // "oldPosition" field.
+  int? _oldPosition;
+  int get oldPosition => _oldPosition ?? 0;
+  bool hasOldPosition() => _oldPosition != null;
 
-  // "goalsAgainst" field.
-  int? _goalsAgainst;
-  int get goalsAgainst => _goalsAgainst ?? 0;
-  bool hasGoalsAgainst() => _goalsAgainst != null;
+  // "homeGoalsPoints" field.
+  int? _homeGoalsPoints;
+  int get homeGoalsPoints => _homeGoalsPoints ?? 0;
+  bool hasHomeGoalsPoints() => _homeGoalsPoints != null;
 
-  // "points" field.
-  int? _points;
-  int get points => _points ?? 0;
-  bool hasPoints() => _points != null;
+  // "awayGoalsPoints" field.
+  int? _awayGoalsPoints;
+  int get awayGoalsPoints => _awayGoalsPoints ?? 0;
+  bool hasAwayGoalsPoints() => _awayGoalsPoints != null;
 
-  // "position" field.
-  int? _position;
-  int get position => _position ?? 0;
-  bool hasPosition() => _position != null;
+  // "drawPoints" field.
+  int? _drawPoints;
+  int get drawPoints => _drawPoints ?? 0;
+  bool hasDrawPoints() => _drawPoints != null;
 
-  // "addRandomCode" field.
-  String? _addRandomCode;
-  String get addRandomCode => _addRandomCode ?? '';
-  bool hasAddRandomCode() => _addRandomCode != null;
+  // "wonPoints" field.
+  int? _wonPoints;
+  int get wonPoints => _wonPoints ?? 0;
+  bool hasWonPoints() => _wonPoints != null;
 
-  // "tournamentReference" field.
-  DocumentReference? _tournamentReference;
-  DocumentReference? get tournamentReference => _tournamentReference;
-  bool hasTournamentReference() => _tournamentReference != null;
+  // "totalPoints" field.
+  int? _totalPoints;
+  int get totalPoints => _totalPoints ?? 0;
+  bool hasTotalPoints() => _totalPoints != null;
 
-  // "isActive" field.
-  bool? _isActive;
-  bool get isActive => _isActive ?? false;
-  bool hasIsActive() => _isActive != null;
+  // "userUpdate" field.
+  int? _userUpdate;
+  int get userUpdate => _userUpdate ?? 0;
+  bool hasUserUpdate() => _userUpdate != null;
 
   void _initializeFields() {
-    _standingID = snapshotData['standingID'] as String?;
-    _tournamentID = snapshotData['tournamentID'] as String?;
-    _teamName = snapshotData['teamName'] as String?;
-    _played = castToType<int>(snapshotData['played']);
-    _won = castToType<int>(snapshotData['won']);
-    _draw = castToType<int>(snapshotData['draw']);
-    _lost = castToType<int>(snapshotData['lost']);
-    _goalsFor = castToType<int>(snapshotData['goalsFor']);
-    _goalsAgainst = castToType<int>(snapshotData['goalsAgainst']);
-    _points = castToType<int>(snapshotData['points']);
-    _position = castToType<int>(snapshotData['position']);
-    _addRandomCode = snapshotData['addRandomCode'] as String?;
-    _tournamentReference =
-        snapshotData['tournamentReference'] as DocumentReference?;
-    _isActive = snapshotData['isActive'] as bool?;
+    _tournamentRef = snapshotData['tournamentRef'] as DocumentReference?;
+    _matcheRef = snapshotData['matcheRef'] as DocumentReference?;
+    _userRef = snapshotData['userRef'] as DocumentReference?;
+    _userName = snapshotData['userName'] as String?;
+    _homeGoals = castToType<int>(snapshotData['homeGoals']);
+    _awayGoals = castToType<int>(snapshotData['awayGoals']);
+    _newPosition = castToType<int>(snapshotData['newPosition']);
+    _oldPosition = castToType<int>(snapshotData['oldPosition']);
+    _homeGoalsPoints = castToType<int>(snapshotData['homeGoalsPoints']);
+    _awayGoalsPoints = castToType<int>(snapshotData['awayGoalsPoints']);
+    _drawPoints = castToType<int>(snapshotData['drawPoints']);
+    _wonPoints = castToType<int>(snapshotData['wonPoints']);
+    _totalPoints = castToType<int>(snapshotData['totalPoints']);
+    _userUpdate = castToType<int>(snapshotData['userUpdate']);
   }
 
   static CollectionReference get collection =>
@@ -139,37 +138,37 @@ class MatchStandingsRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createMatchStandingsRecordData({
-  String? standingID,
-  String? tournamentID,
-  String? teamName,
-  int? played,
-  int? won,
-  int? draw,
-  int? lost,
-  int? goalsFor,
-  int? goalsAgainst,
-  int? points,
-  int? position,
-  String? addRandomCode,
-  DocumentReference? tournamentReference,
-  bool? isActive,
+  DocumentReference? tournamentRef,
+  DocumentReference? matcheRef,
+  DocumentReference? userRef,
+  String? userName,
+  int? homeGoals,
+  int? awayGoals,
+  int? newPosition,
+  int? oldPosition,
+  int? homeGoalsPoints,
+  int? awayGoalsPoints,
+  int? drawPoints,
+  int? wonPoints,
+  int? totalPoints,
+  int? userUpdate,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'standingID': standingID,
-      'tournamentID': tournamentID,
-      'teamName': teamName,
-      'played': played,
-      'won': won,
-      'draw': draw,
-      'lost': lost,
-      'goalsFor': goalsFor,
-      'goalsAgainst': goalsAgainst,
-      'points': points,
-      'position': position,
-      'addRandomCode': addRandomCode,
-      'tournamentReference': tournamentReference,
-      'isActive': isActive,
+      'tournamentRef': tournamentRef,
+      'matcheRef': matcheRef,
+      'userRef': userRef,
+      'userName': userName,
+      'homeGoals': homeGoals,
+      'awayGoals': awayGoals,
+      'newPosition': newPosition,
+      'oldPosition': oldPosition,
+      'homeGoalsPoints': homeGoalsPoints,
+      'awayGoalsPoints': awayGoalsPoints,
+      'drawPoints': drawPoints,
+      'wonPoints': wonPoints,
+      'totalPoints': totalPoints,
+      'userUpdate': userUpdate,
     }.withoutNulls,
   );
 
@@ -182,38 +181,38 @@ class MatchStandingsRecordDocumentEquality
 
   @override
   bool equals(MatchStandingsRecord? e1, MatchStandingsRecord? e2) {
-    return e1?.standingID == e2?.standingID &&
-        e1?.tournamentID == e2?.tournamentID &&
-        e1?.teamName == e2?.teamName &&
-        e1?.played == e2?.played &&
-        e1?.won == e2?.won &&
-        e1?.draw == e2?.draw &&
-        e1?.lost == e2?.lost &&
-        e1?.goalsFor == e2?.goalsFor &&
-        e1?.goalsAgainst == e2?.goalsAgainst &&
-        e1?.points == e2?.points &&
-        e1?.position == e2?.position &&
-        e1?.addRandomCode == e2?.addRandomCode &&
-        e1?.tournamentReference == e2?.tournamentReference &&
-        e1?.isActive == e2?.isActive;
+    return e1?.tournamentRef == e2?.tournamentRef &&
+        e1?.matcheRef == e2?.matcheRef &&
+        e1?.userRef == e2?.userRef &&
+        e1?.userName == e2?.userName &&
+        e1?.homeGoals == e2?.homeGoals &&
+        e1?.awayGoals == e2?.awayGoals &&
+        e1?.newPosition == e2?.newPosition &&
+        e1?.oldPosition == e2?.oldPosition &&
+        e1?.homeGoalsPoints == e2?.homeGoalsPoints &&
+        e1?.awayGoalsPoints == e2?.awayGoalsPoints &&
+        e1?.drawPoints == e2?.drawPoints &&
+        e1?.wonPoints == e2?.wonPoints &&
+        e1?.totalPoints == e2?.totalPoints &&
+        e1?.userUpdate == e2?.userUpdate;
   }
 
   @override
   int hash(MatchStandingsRecord? e) => const ListEquality().hash([
-        e?.standingID,
-        e?.tournamentID,
-        e?.teamName,
-        e?.played,
-        e?.won,
-        e?.draw,
-        e?.lost,
-        e?.goalsFor,
-        e?.goalsAgainst,
-        e?.points,
-        e?.position,
-        e?.addRandomCode,
-        e?.tournamentReference,
-        e?.isActive
+        e?.tournamentRef,
+        e?.matcheRef,
+        e?.userRef,
+        e?.userName,
+        e?.homeGoals,
+        e?.awayGoals,
+        e?.newPosition,
+        e?.oldPosition,
+        e?.homeGoalsPoints,
+        e?.awayGoalsPoints,
+        e?.drawPoints,
+        e?.wonPoints,
+        e?.totalPoints,
+        e?.userUpdate
       ]);
 
   @override

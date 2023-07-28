@@ -1,5 +1,5 @@
 // Export pages
-export '/pages/home/home_widget.dart' show HomeWidget;
+export '/home/home/home_widget.dart' show HomeWidget;
 export '/pages/user_profile/profile/profile_widget.dart' show ProfileWidget;
 export '/pages/auth/entry_page/entry_page_widget.dart' show EntryPageWidget;
 export '/pages/auth/sign_up_page/sign_up_page_widget.dart'
