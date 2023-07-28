@@ -235,9 +235,37 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               ),
                                             ),
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'ov3oooxu' /* Hello World */,
+                                              dateTimeFormat(
+                                                'yyyy-MM-dd',
+                                                listViewMatchesRecord
+                                                    .fixtureDate!,
+                                                locale:
+                                                    FFLocalizations.of(context)
+                                                        .languageCode,
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 5.0, 0.0),
+                                              child: Icon(
+                                                Icons.access_time,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent3,
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                            Text(
+                                              dateTimeFormat(
+                                                'jm',
+                                                listViewMatchesRecord
+                                                    .fixtureDate!,
+                                                locale:
+                                                    FFLocalizations.of(context)
+                                                        .languageCode,
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
