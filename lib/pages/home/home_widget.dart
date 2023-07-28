@@ -1,6 +1,7 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -81,11 +82,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                         itemBuilder: (context, listViewIndex) {
                           final listViewMatchesRecord =
                               listViewMatchesRecordList[listViewIndex];
-                          return Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 0.0),
+                          return Card(
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            elevation: 4.0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
                             child: Container(
-                              height: 130.0,
+                              height: 135.0,
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
@@ -96,7 +102,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   begin: AlignmentDirectional(0.5, -1.0),
                                   end: AlignmentDirectional(-0.5, 1.0),
                                 ),
-                                borderRadius: BorderRadius.circular(25.0),
+                                borderRadius: BorderRadius.circular(0.0),
                               ),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -217,10 +223,21 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 5.0, 0.0),
+                                              child: Icon(
+                                                Icons.date_range_sharp,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent3,
+                                                size: 24.0,
+                                              ),
+                                            ),
                                             Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '2m6c08fn' /* Hello World */,
+                                                'ov3oooxu' /* Hello World */,
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -231,13 +248,64 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       ],
                                     ),
                                   ),
-                                  Container(
-                                    width: 70.0,
-                                    height: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      FFButtonWidget(
+                                        onPressed: () {
+                                          print('Button pressed ...');
+                                        },
+                                        text: '',
+                                        icon: Icon(
+                                          Icons.refresh,
+                                          size: 24.0,
+                                        ),
+                                        options: FFButtonOptions(
+                                          width: 70.0,
+                                          height: 40.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmallFamily,
+                                                color: Colors.white,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmallFamily),
+                                              ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Container(
+                                          width: 70.0,
+                                          height: double.infinity,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
