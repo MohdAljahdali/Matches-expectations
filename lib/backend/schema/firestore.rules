@@ -36,16 +36,11 @@ service cloud.firestore {
       allow delete: if true;
     }
 
-    match /Matches/{parent}/Standings/{document} {
+    match /MatchStandings/{document} {
       allow create: if true;
       allow read: if true;
       allow write: if true;
       allow delete: if true;
     }
-
-    match /{path=**}/Standings/{document} {
-      allow read: if true;
-    }
-
   }
 }

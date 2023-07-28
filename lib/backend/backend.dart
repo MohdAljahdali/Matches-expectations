@@ -10,7 +10,7 @@ import 'schema/countries_record.dart';
 import 'schema/matches_record.dart';
 import 'schema/teams_record.dart';
 import 'schema/tournaments_record.dart';
-import 'schema/standings_record.dart';
+import 'schema/match_standings_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -23,7 +23,7 @@ export 'schema/countries_record.dart';
 export 'schema/matches_record.dart';
 export 'schema/teams_record.dart';
 export 'schema/tournaments_record.dart';
-export 'schema/standings_record.dart';
+export 'schema/match_standings_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -210,41 +210,38 @@ Future<List<TournamentsRecord>> queryTournamentsRecordOnce({
       singleRecord: singleRecord,
     );
 
-/// Functions to query StandingsRecords (as a Stream and as a Future).
-Future<int> queryStandingsRecordCount({
-  DocumentReference? parent,
+/// Functions to query MatchStandingsRecords (as a Stream and as a Future).
+Future<int> queryMatchStandingsRecordCount({
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      StandingsRecord.collection(parent),
+      MatchStandingsRecord.collection,
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<StandingsRecord>> queryStandingsRecord({
-  DocumentReference? parent,
+Stream<List<MatchStandingsRecord>> queryMatchStandingsRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      StandingsRecord.collection(parent),
-      StandingsRecord.fromSnapshot,
+      MatchStandingsRecord.collection,
+      MatchStandingsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<StandingsRecord>> queryStandingsRecordOnce({
-  DocumentReference? parent,
+Future<List<MatchStandingsRecord>> queryMatchStandingsRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      StandingsRecord.collection(parent),
-      StandingsRecord.fromSnapshot,
+      MatchStandingsRecord.collection,
+      MatchStandingsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
