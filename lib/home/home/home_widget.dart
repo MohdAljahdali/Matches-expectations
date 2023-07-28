@@ -441,7 +441,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  'n1wusydo' /* 2 */,
+                                                                  'ta278mp9' /* 2 */,
                                                                 ),
                                                                 textAlign:
                                                                     TextAlign
@@ -707,7 +707,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                       FFLocalizations.of(
                                                                               context)
                                                                           .getText(
-                                                                        'cjh4g7hl' /* 2 */,
+                                                                        '6xmj7iao' /* 2 */,
                                                                       ),
                                                                       textAlign:
                                                                           TextAlign
