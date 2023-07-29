@@ -255,11 +255,11 @@ class _AdminTournamentTeamEditWidgetState
                                                   }
                                                 }
 
-                                                await currentUserReference!
+                                                await adminTournamentTeamEditTeamsRecord
+                                                    .reference
                                                     .update(
-                                                        createUsersRecordData(
-                                                  photoUrl:
-                                                      _model.uploadedFileUrl,
+                                                        createTeamsRecordData(
+                                                  logo: _model.uploadedFileUrl,
                                                 ));
                                               },
                                               child: Container(
