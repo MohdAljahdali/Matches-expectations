@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Tawaque</string>
+	<string>F365</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -33,7 +33,7 @@
             <string>Editor</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>com.googleusercontent.apps.951422048235-fc4mamh5osv27bl6fedaekpjavtgd032</string>
+                <string>com.googleusercontent.apps.13547991319-7rfh9addlsh1kpdfm29ckc7avgo844fa</string>
                 
             </array>
         </dict>
