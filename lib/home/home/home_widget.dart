@@ -145,7 +145,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 children: [
                                                   Container(
                                                     width: 110.0,
-                                                    height: 75.0,
+                                                    height: 80.0,
                                                     decoration: BoxDecoration(),
                                                     child: Column(
                                                       mainAxisSize:
@@ -182,7 +182,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   ),
                                                   Container(
                                                     width: 110.0,
-                                                    height: 75.0,
+                                                    height: 80.0,
                                                     decoration: BoxDecoration(),
                                                     child: Column(
                                                       mainAxisSize:
@@ -505,7 +505,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                     FFLocalizations.of(
                                                                             context)
                                                                         .getText(
-                                                                      '7p2gxr1r' /* 0 */,
+                                                                      'xb2sa992' /* 0 */,
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -615,7 +615,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  'mqsv6bkr' /* 2 */,
+                                                                  'wh4mzuwl' /* 2 */,
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)

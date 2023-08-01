@@ -1172,11 +1172,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Home
   {
-    '7p2gxr1r': {
+    'xb2sa992': {
       'en': '0',
       'ar': '',
     },
-    'mqsv6bkr': {
+    'wh4mzuwl': {
       'en': '2',
       'ar': '',
     },
