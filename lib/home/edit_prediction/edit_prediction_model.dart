@@ -19,8 +19,6 @@ class EditPredictionModel extends FlutterFlowModel {
   int? homeGoalsCCValue;
   // State field(s) for awayGoalsCC widget.
   int? awayGoalsCCValue;
-  // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  MatchStandingsRecord? addPredictionRse;
 
   /// Initialization and disposal methods.
 

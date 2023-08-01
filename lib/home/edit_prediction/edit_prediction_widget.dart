@@ -78,7 +78,7 @@ class _EditPredictionWidgetState extends State<EditPredictionWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
               child: Text(
                 FFLocalizations.of(context).getText(
-                  'jqnqd5t2' /* Add your prediction */,
+                  'jqnqd5t2' /* Edit your prediction */,
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
@@ -118,10 +118,6 @@ class _EditPredictionWidgetState extends State<EditPredictionWidget> {
                   return Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [],
-                      ),
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
@@ -361,74 +357,29 @@ class _EditPredictionWidgetState extends State<EditPredictionWidget> {
                           children: [
                             FFButtonWidget(
                               onPressed: () async {
-                                var _shouldSetState = false;
-
-                                var matchStandingsRecordReference =
-                                    MatchStandingsRecord.collection.doc();
-                                await matchStandingsRecordReference
-                                    .set(createMatchStandingsRecordData(
-                                  tournamentRef: widget.tournamentRef,
-                                  matcheRef: widget.matcheRef,
-                                  userRef: widget.userRef,
-                                  userName: currentUserDisplayName,
+                                await widget.matchStandingsRef!
+                                    .update(createMatchStandingsRecordData(
                                   homeGoals: _model.homeGoalsCCValue,
                                   awayGoals: _model.awayGoalsCCValue,
-                                  userUpdate: 1,
+                                  userUpdate: 0,
                                 ));
-                                _model.addPredictionRse =
-                                    MatchStandingsRecord.getDocumentFromData(
-                                        createMatchStandingsRecordData(
-                                          tournamentRef: widget.tournamentRef,
-                                          matcheRef: widget.matcheRef,
-                                          userRef: widget.userRef,
-                                          userName: currentUserDisplayName,
-                                          homeGoals: _model.homeGoalsCCValue,
-                                          awayGoals: _model.awayGoalsCCValue,
-                                          userUpdate: 1,
-                                        ),
-                                        matchStandingsRecordReference);
-                                _shouldSetState = true;
-                                if (_model.addPredictionRse != null) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'تم أضافة توقعك للمبارة',
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                        ),
+                                Navigator.pop(context);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'تم تعديل توقعك للمبارة',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                       ),
-                                      duration: Duration(milliseconds: 4000),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondary,
                                     ),
-                                  );
-                                  Navigator.pop(context);
-                                  if (_shouldSetState) setState(() {});
-                                  return;
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'فشل أضافة توقعك للمبارة',
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                        ),
-                                      ),
-                                      duration: Duration(milliseconds: 4000),
-                                      backgroundColor: Color(0xFF330052),
-                                    ),
-                                  );
-                                  if (_shouldSetState) setState(() {});
-                                  return;
-                                }
-
-                                if (_shouldSetState) setState(() {});
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor: Color(0xFF330052),
+                                  ),
+                                );
                               },
                               text: FFLocalizations.of(context).getText(
-                                'lqufqdff' /* Add */,
+                                'lqufqdff' /* Edit */,
                               ),
                               options: FFButtonOptions(
                                 width: 200.0,

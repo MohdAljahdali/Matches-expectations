@@ -505,7 +505,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                     FFLocalizations.of(
                                                                             context)
                                                                         .getText(
-                                                                      'xb2sa992' /* 0 */,
+                                                                      '2fpbhihb' /* 0 */,
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -615,7 +615,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  'wh4mzuwl' /* 2 */,
+                                                                  '6gwfkvc7' /* 2 */,
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
