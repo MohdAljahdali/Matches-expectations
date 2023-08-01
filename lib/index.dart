@@ -33,3 +33,4 @@ export '/pages/admin/tournaments/admin_tournament_team_edit/admin_tournament_tea
 export '/pages/admin/matches/admin_matches_add_list/admin_matches_add_list_widget.dart'
     show AdminMatchesAddListWidget;
 export '/home/home/home_widget.dart' show HomeWidget;
+export '/home/home_copy/home_copy_widget.dart' show HomeCopyWidget;

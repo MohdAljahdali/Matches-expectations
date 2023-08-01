@@ -1177,6 +1177,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الرئسية',
     },
   },
+  // HomeCopy
+  {
+    '35gohpla': {
+      'en': 'Home',
+      'ar': 'الرئسية',
+    },
+  },
   // signInComponent
   {
     '73htmsl1': {
