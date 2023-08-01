@@ -105,13 +105,6 @@ Locale createLocale(String language) => language.contains('_')
     : Locale(language);
 
 final kTranslationsMap = <Map<String, Map<String, String>>>[
-  // Home
-  {
-    'vvtkszi3': {
-      'en': 'Home',
-      'ar': 'الرئسية',
-    },
-  },
   // Profile
   {
     'ewzyprlm': {
@@ -1175,6 +1168,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'uif33elr': {
       'en': 'Home',
       'ar': '',
+    },
+  },
+  // Home
+  {
+    'qncd93ik': {
+      'en': 'Home',
+      'ar': 'الرئسية',
     },
   },
   // signInComponent

@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
-    userStream = f365FirebaseUserStream()
+    userStream = tawaqueatFirebaseUserStream()
       ..listen((user) => _appStateNotifier.update(user));
     jwtTokenStream.listen((_) {});
     Future.delayed(
@@ -87,7 +87,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'F365',
+      title: 'Tawaqueat',
       localizationsDelegates: [
         FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
@@ -180,7 +180,7 @@ class _NavBarPageState extends State<NavBarPage> {
             GButton(
               icon: Icons.home_outlined,
               text: FFLocalizations.of(context).getText(
-                'vvtkszi3' /* Home */,
+                'qncd93ik' /* Home */,
               ),
               iconSize: 24.0,
             )

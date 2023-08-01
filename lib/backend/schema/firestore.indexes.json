@@ -1,20 +1,6 @@
 {
   "indexes": [
     {
-      "collectionGroup": "Matches",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "fixtureDate",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "fixtureIsDouble",
-          "order": "ASCENDING"
-        }
-      ]
-    },
-    {
       "collectionGroup": "users",
       "queryScope": "COLLECTION",
       "fields": [
@@ -46,6 +32,20 @@
         },
         {
           "fieldPath": "fixtureDate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Matches",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "fixtureDate",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "fixtureIsDouble",
           "order": "ASCENDING"
         }
       ]

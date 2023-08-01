@@ -89,205 +89,232 @@ class _HomeWidgetState extends State<HomeWidget> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0),
                             ),
-                            child: Container(
-                              height: 135.0,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Color(0xFF063644),
-                                    Color(0xFF02131D)
-                                  ],
-                                  stops: [0.0, 1.0],
-                                  begin: AlignmentDirectional(0.5, -1.0),
-                                  end: AlignmentDirectional(-0.5, 1.0),
-                                ),
-                                borderRadius: BorderRadius.circular(0.0),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: Column(
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  flex: 6,
+                                  child: Container(
+                                    width: 100.0,
+                                    height: 138.0,
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Color(0xFF063644),
+                                          Color(0xFF02131D)
+                                        ],
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
+                                      ),
+                                    ),
+                                    child: Row(
                                       mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              FFLocalizations.of(context)
-                                                          .languageCode ==
-                                                      'en'
-                                                  ? listViewMatchesRecord
-                                                      .tournamentName
-                                                  : listViewMatchesRecord
-                                                      .tournamentNameAr,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 10.0, 0.0),
-                                          child: Row(
+                                        Expanded(
+                                          child: Column(
                                             mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Container(
-                                                width: 110.0,
-                                                height: 75.0,
-                                                decoration: BoxDecoration(),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                      child: Image.network(
-                                                        listViewMatchesRecord
-                                                            .teamHomeLogo,
-                                                        width: 50.0,
-                                                        height: 50.0,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      FFLocalizations.of(
-                                                                      context)
-                                                                  .languageCode ==
-                                                              'en'
-                                                          ? listViewMatchesRecord
-                                                              .teamHomeName
-                                                          : listViewMatchesRecord
-                                                              .teamHomeNameAr,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Container(
-                                                width: 110.0,
-                                                height: 75.0,
-                                                decoration: BoxDecoration(),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                      child: Image.network(
-                                                        listViewMatchesRecord
-                                                            .teamHAwayLogo,
-                                                        width: 50.0,
-                                                        height: 50.0,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      FFLocalizations.of(
-                                                                      context)
-                                                                  .languageCode ==
-                                                              'en'
-                                                          ? listViewMatchesRecord
-                                                              .teamAwayName
-                                                          : listViewMatchesRecord
-                                                              .teamAwayName,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 2.0, 0.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        5.0, 0.0, 5.0, 0.0),
-                                                child: Icon(
-                                                  Icons.date_range_sharp,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .accent3,
-                                                  size: 24.0,
-                                                ),
-                                              ),
-                                              Text(
-                                                dateTimeFormat(
-                                                  'yyyy-MM-dd',
-                                                  listViewMatchesRecord
-                                                      .fixtureDate!,
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMediumFamily,
-                                                          fontSize: 15.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily),
-                                                        ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        5.0, 0.0, 5.0, 0.0),
-                                                child: Icon(
-                                                  Icons.access_time,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .accent3,
-                                                  size: 24.0,
-                                                ),
-                                              ),
-                                              Text(
-                                                dateTimeFormat(
-                                                  'jm',
-                                                  listViewMatchesRecord
-                                                      .fixtureDate!,
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    FFLocalizations.of(context)
+                                                                .languageCode ==
+                                                            'en'
+                                                        ? listViewMatchesRecord
+                                                            .tournamentName
+                                                        : listViewMatchesRecord
+                                                            .tournamentNameAr,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .bodyMedium,
+                                                  ),
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 10.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Container(
+                                                      width: 110.0,
+                                                      height: 75.0,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                            child:
+                                                                Image.network(
+                                                              listViewMatchesRecord
+                                                                  .teamHomeLogo,
+                                                              width: 50.0,
+                                                              height: 50.0,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            FFLocalizations.of(
+                                                                            context)
+                                                                        .languageCode ==
+                                                                    'en'
+                                                                ? listViewMatchesRecord
+                                                                    .teamHomeName
+                                                                : listViewMatchesRecord
+                                                                    .teamHomeNameAr,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      width: 110.0,
+                                                      height: 75.0,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                            child:
+                                                                Image.network(
+                                                              listViewMatchesRecord
+                                                                  .teamHAwayLogo,
+                                                              width: 50.0,
+                                                              height: 50.0,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            FFLocalizations.of(
+                                                                            context)
+                                                                        .languageCode ==
+                                                                    'en'
+                                                                ? listViewMatchesRecord
+                                                                    .teamAwayName
+                                                                : listViewMatchesRecord
+                                                                    .teamAwayNameAr,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 2.0, 0.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5.0,
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0),
+                                                      child: Icon(
+                                                        Icons.date_range_sharp,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent3,
+                                                        size: 24.0,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      dateTimeFormat(
+                                                        'yyyy-MM-dd',
+                                                        listViewMatchesRecord
+                                                            .fixtureDate!,
+                                                        locale:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                fontSize: 15.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5.0,
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0),
+                                                      child: Icon(
+                                                        Icons.access_time,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent3,
+                                                        size: 24.0,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      dateTimeFormat(
+                                                        'jm',
+                                                        listViewMatchesRecord
+                                                            .fixtureDate!,
+                                                        locale:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ],
                                           ),
@@ -295,13 +322,19 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       ],
                                     ),
                                   ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [],
+                                ),
+                                Flexible(
+                                  flex: 1,
+                                  child: Container(
+                                    width: 100.0,
+                                    height: 135.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           );
                         },

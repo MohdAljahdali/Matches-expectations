@@ -5,8 +5,8 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class F365FirebaseUser extends BaseAuthUser {
-  F365FirebaseUser(this.user);
+class TawaqueatFirebaseUser extends BaseAuthUser {
+  TawaqueatFirebaseUser(this.user);
   User? user;
   bool get loggedIn => user != null;
 
@@ -47,17 +47,18 @@ class F365FirebaseUser extends BaseAuthUser {
 
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
-  static BaseAuthUser fromFirebaseUser(User? user) => F365FirebaseUser(user);
+  static BaseAuthUser fromFirebaseUser(User? user) =>
+      TawaqueatFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> f365FirebaseUserStream() => FirebaseAuth.instance
+Stream<BaseAuthUser> tawaqueatFirebaseUserStream() => FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = F365FirebaseUser(user);
+        currentUser = TawaqueatFirebaseUser(user);
         return currentUser!;
       },
     );

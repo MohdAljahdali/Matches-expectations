@@ -89,16 +89,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? NavBarPage() : EntryPageWidget(),
         ),
         FFRoute(
-          name: 'Home',
-          path: '/home',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'Home')
-              : NavBarPage(
-                  initialPage: 'Home',
-                  page: HomeWidget(),
-                ),
-        ),
-        FFRoute(
           name: 'Profile',
           path: '/profile',
           builder: (context, params) => params.isEmpty
@@ -210,6 +200,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => AdminMatchesAddListWidget(
             addMatchesRC: params.getParam('addMatchesRC', ParamType.String),
           ),
+        ),
+        FFRoute(
+          name: 'Home',
+          path: '/home',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'Home')
+              : NavBarPage(
+                  initialPage: 'Home',
+                  page: HomeWidget(),
+                ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
