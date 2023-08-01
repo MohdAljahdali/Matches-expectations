@@ -54,6 +54,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                   child: StreamBuilder<List<MatchesRecord>>(
                     stream: queryMatchesRecord(
                       queryBuilder: (matchesRecord) => matchesRecord
+                          .where('isActive', isEqualTo: true)
                           .orderBy('fixtureDate')
                           .orderBy('fixtureIsDouble'),
                     ),
