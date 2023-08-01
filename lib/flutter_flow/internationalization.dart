@@ -1172,11 +1172,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Home
   {
-    'ozzzge5r': {
+    '7p2gxr1r': {
       'en': '0',
       'ar': '',
     },
-    'qneyi8b3': {
+    'mqsv6bkr': {
       'en': '2',
       'ar': '',
     },
@@ -1288,6 +1288,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'أضف توقعك',
     },
     'pshu7dgm': {
+      'en': 'Add',
+      'ar': 'أضف',
+    },
+  },
+  // editPrediction
+  {
+    'jqnqd5t2': {
+      'en': 'Add your prediction',
+      'ar': 'أضف توقعك',
+    },
+    'lqufqdff': {
       'en': 'Add',
       'ar': 'أضف',
     },

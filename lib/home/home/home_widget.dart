@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/home/add_prediction/add_prediction_widget.dart';
+import '/home/edit_prediction/edit_prediction_widget.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -92,7 +93,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 flex: 5,
                                 child: Container(
                                   width: 100.0,
-                                  height: 138.0,
+                                  height: 144.0,
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: [
@@ -357,7 +358,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 : null;
                                         return Container(
                                           width: 100.0,
-                                          height: 135.0,
+                                          height: 144.0,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
@@ -385,47 +386,103 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                             if (containerMatchStandingsRecord!
                                                                     .userUpdate >
                                                                 0) {
-                                                              return Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Icon(
-                                                                    Icons
-                                                                        .playlist_add_check_circle_outlined,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .accent3,
-                                                                    size: 36.0,
-                                                                  ),
-                                                                  Text(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      containerMatchStandingsRecord
-                                                                          ?.userUpdate
-                                                                          ?.toString(),
-                                                                      '0',
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                              return Builder(
+                                                                builder:
+                                                                    (context) =>
+                                                                        InkWell(
+                                                                  splashColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  focusColor: Colors
+                                                                      .transparent,
+                                                                  hoverColor: Colors
+                                                                      .transparent,
+                                                                  highlightColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  onTap:
+                                                                      () async {
+                                                                    await showAlignedDialog(
+                                                                      context:
+                                                                          context,
+                                                                      isGlobal:
+                                                                          true,
+                                                                      avoidOverflow:
+                                                                          false,
+                                                                      targetAnchor: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      followerAnchor: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      builder:
+                                                                          (dialogContext) {
+                                                                        return Material(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).accent3,
-                                                                          fontSize:
-                                                                              30.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w800,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              GestureDetector(
+                                                                            onTap: () =>
+                                                                                FocusScope.of(context).requestFocus(_model.unfocusNode),
+                                                                            child:
+                                                                                Container(
+                                                                              height: 320.0,
+                                                                              width: 300.0,
+                                                                              child: EditPredictionWidget(
+                                                                                tournamentRef: listViewMatchesRecord.tournamentRef!,
+                                                                                matcheRef: listViewMatchesRecord.reference,
+                                                                                userRef: currentUserReference!,
+                                                                                matchStandingsRef: containerMatchStandingsRecord!.reference,
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    ).then((value) =>
+                                                                        setState(
+                                                                            () {}));
+                                                                  },
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    children: [
+                                                                      Icon(
+                                                                        Icons
+                                                                            .playlist_add_check_circle_outlined,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .accent3,
+                                                                        size:
+                                                                            36.0,
+                                                                      ),
+                                                                      Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          containerMatchStandingsRecord
+                                                                              ?.userUpdate
+                                                                              ?.toString(),
+                                                                          '0',
                                                                         ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                              color: FlutterFlowTheme.of(context).accent3,
+                                                                              fontSize: 30.0,
+                                                                              fontWeight: FontWeight.w800,
+                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                            ),
+                                                                      ),
+                                                                    ],
                                                                   ),
-                                                                ],
+                                                                ),
                                                               );
                                                             } else {
                                                               return Column(
@@ -448,7 +505,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                     FFLocalizations.of(
                                                                             context)
                                                                         .getText(
-                                                                      'ozzzge5r' /* 0 */,
+                                                                      '7p2gxr1r' /* 0 */,
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -558,7 +615,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  'qneyi8b3' /* 2 */,
+                                                                  'mqsv6bkr' /* 2 */,
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
