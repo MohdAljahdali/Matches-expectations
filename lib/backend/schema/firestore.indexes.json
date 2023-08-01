@@ -35,24 +35,6 @@
           "order": "ASCENDING"
         }
       ]
-    },
-    {
-      "collectionGroup": "Matches",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "isActive",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "fixtureDate",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "fixtureIsDouble",
-          "order": "ASCENDING"
-        }
-      ]
     }
   ]
 }

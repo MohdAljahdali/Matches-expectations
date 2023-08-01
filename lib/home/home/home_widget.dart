@@ -52,12 +52,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                   padding:
                       EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
                   child: StreamBuilder<List<MatchesRecord>>(
-                    stream: queryMatchesRecord(
-                      queryBuilder: (matchesRecord) => matchesRecord
-                          .where('isActive', isEqualTo: true)
-                          .orderBy('fixtureDate')
-                          .orderBy('fixtureIsDouble'),
-                    ),
+                    stream: queryMatchesRecord(),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
