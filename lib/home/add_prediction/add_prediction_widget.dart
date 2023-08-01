@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -58,8 +59,8 @@ class _AddPredictionWidgetState extends State<AddPredictionWidget> {
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
       child: Container(
-        width: 270.0,
-        height: 300.0,
+        width: 300.0,
+        height: 320.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(10.0),
@@ -261,9 +262,9 @@ class _AddPredictionWidgetState extends State<AddPredictionWidget> {
                                                   .titleLargeFamily),
                                     ),
                               ),
-                              count: _model.countControllerValue1 ??= 0,
+                              count: _model.homeGoalsCCValue ??= 0,
                               updateCount: (count) => setState(
-                                  () => _model.countControllerValue1 = count),
+                                  () => _model.homeGoalsCCValue = count),
                               stepSize: 1,
                             ),
                           ),
@@ -309,9 +310,9 @@ class _AddPredictionWidgetState extends State<AddPredictionWidget> {
                                                   .titleLargeFamily),
                                     ),
                               ),
-                              count: _model.countControllerValue2 ??= 0,
+                              count: _model.awayGoalsCCValue ??= 0,
                               updateCount: (count) => setState(
-                                  () => _model.countControllerValue2 = count),
+                                  () => _model.awayGoalsCCValue = count),
                               stepSize: 1,
                             ),
                           ),
@@ -325,8 +326,72 @@ class _AddPredictionWidgetState extends State<AddPredictionWidget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                var _shouldSetState = false;
+
+                                var matchStandingsRecordReference =
+                                    MatchStandingsRecord.collection.doc();
+                                await matchStandingsRecordReference
+                                    .set(createMatchStandingsRecordData(
+                                  tournamentRef: widget.tournamentRef,
+                                  matcheRef: widget.matcheRef,
+                                  userRef: widget.userRef,
+                                  userName: currentUserDisplayName,
+                                  homeGoals: _model.homeGoalsCCValue,
+                                  awayGoals: _model.awayGoalsCCValue,
+                                  userUpdate: 1,
+                                ));
+                                _model.addPredictionRse =
+                                    MatchStandingsRecord.getDocumentFromData(
+                                        createMatchStandingsRecordData(
+                                          tournamentRef: widget.tournamentRef,
+                                          matcheRef: widget.matcheRef,
+                                          userRef: widget.userRef,
+                                          userName: currentUserDisplayName,
+                                          homeGoals: _model.homeGoalsCCValue,
+                                          awayGoals: _model.awayGoalsCCValue,
+                                          userUpdate: 1,
+                                        ),
+                                        matchStandingsRecordReference);
+                                _shouldSetState = true;
+                                if (_model.addPredictionRse != null) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'تم أضافة توقعك للمبارة',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                    ),
+                                  );
+                                  Navigator.pop(context);
+                                  if (_shouldSetState) setState(() {});
+                                  return;
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'فشل أضافة توقعك للمبارة',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor: Color(0xFF330052),
+                                    ),
+                                  );
+                                  if (_shouldSetState) setState(() {});
+                                  return;
+                                }
+
+                                if (_shouldSetState) setState(() {});
                               },
                               text: FFLocalizations.of(context).getText(
                                 'pshu7dgm' /* Add */,

@@ -1172,6 +1172,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Home
   {
+    'ozzzge5r': {
+      'en': '0',
+      'ar': '',
+    },
+    'qneyi8b3': {
+      'en': '2',
+      'ar': '',
+    },
     'qncd93ik': {
       'en': 'Home',
       'ar': 'الرئسية',

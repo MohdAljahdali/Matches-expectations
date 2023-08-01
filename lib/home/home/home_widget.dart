@@ -1,6 +1,9 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/home/add_prediction/add_prediction_widget.dart';
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -86,7 +89,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Expanded(
-                                flex: 6,
+                                flex: 5,
                                 child: Container(
                                   width: 100.0,
                                   height: 138.0,
@@ -303,17 +306,296 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   ),
                                 ),
                               ),
-                              Flexible(
-                                flex: 1,
-                                child: Container(
-                                  width: 100.0,
-                                  height: 135.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+                              if (listViewMatchesRecord.fixtureDate! >
+                                  getCurrentTimestamp)
+                                Flexible(
+                                  flex: 1,
+                                  child: Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: StreamBuilder<
+                                        List<MatchStandingsRecord>>(
+                                      stream: queryMatchStandingsRecord(
+                                        queryBuilder: (matchStandingsRecord) =>
+                                            matchStandingsRecord
+                                                .where('tournamentRef',
+                                                    isEqualTo:
+                                                        listViewMatchesRecord
+                                                            .tournamentRef)
+                                                .where('matcheRef',
+                                                    isEqualTo:
+                                                        listViewMatchesRecord
+                                                            .reference)
+                                                .where('userRef',
+                                                    isEqualTo:
+                                                        currentUserReference),
+                                        singleRecord: true,
+                                      ),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: SpinKitFadingCircle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                size: 50.0,
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        List<MatchStandingsRecord>
+                                            containerMatchStandingsRecordList =
+                                            snapshot.data!;
+                                        final containerMatchStandingsRecord =
+                                            containerMatchStandingsRecordList
+                                                    .isNotEmpty
+                                                ? containerMatchStandingsRecordList
+                                                    .first
+                                                : null;
+                                        return Container(
+                                          width: 100.0,
+                                          height: 135.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Builder(
+                                                  builder: (context) {
+                                                    if (containerMatchStandingsRecord !=
+                                                        null) {
+                                                      return Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: Builder(
+                                                          builder: (context) {
+                                                            if (containerMatchStandingsRecord!
+                                                                    .userUpdate >
+                                                                0) {
+                                                              return Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Icon(
+                                                                    Icons
+                                                                        .playlist_add_check_circle_outlined,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .accent3,
+                                                                    size: 36.0,
+                                                                  ),
+                                                                  Text(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      containerMatchStandingsRecord
+                                                                          ?.userUpdate
+                                                                          ?.toString(),
+                                                                      '0',
+                                                                    ),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).accent3,
+                                                                          fontSize:
+                                                                              30.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w800,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            } else {
+                                                              return Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Icon(
+                                                                    Icons
+                                                                        .not_interested_rounded,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                    size: 36.0,
+                                                                  ),
+                                                                  Text(
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getText(
+                                                                      'ozzzge5r' /* 0 */,
+                                                                    ),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryText,
+                                                                          fontSize:
+                                                                              30.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w800,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            }
+                                                          },
+                                                        ),
+                                                      );
+                                                    } else {
+                                                      return Builder(
+                                                        builder: (context) =>
+                                                            InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            await showAlignedDialog(
+                                                              context: context,
+                                                              isGlobal: true,
+                                                              avoidOverflow:
+                                                                  false,
+                                                              targetAnchor:
+                                                                  AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                              followerAnchor:
+                                                                  AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Material(
+                                                                  color: Colors
+                                                                      .transparent,
+                                                                  child:
+                                                                      GestureDetector(
+                                                                    onTap: () => FocusScope.of(
+                                                                            context)
+                                                                        .requestFocus(
+                                                                            _model.unfocusNode),
+                                                                    child:
+                                                                        Container(
+                                                                      height:
+                                                                          320.0,
+                                                                      width:
+                                                                          300.0,
+                                                                      child:
+                                                                          AddPredictionWidget(
+                                                                        tournamentRef:
+                                                                            listViewMatchesRecord.tournamentRef!,
+                                                                        matcheRef:
+                                                                            listViewMatchesRecord.reference,
+                                                                        userRef:
+                                                                            currentUserReference!,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
+                                                          },
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Icon(
+                                                                Icons
+                                                                    .playlist_add_check_circle_outlined,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .accent3,
+                                                                size: 36.0,
+                                                              ),
+                                                              Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'qneyi8b3' /* 2 */,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .accent3,
+                                                                      fontSize:
+                                                                          24.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w800,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                  },
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    ),
                                   ),
                                 ),
-                              ),
                             ],
                           ),
                         );

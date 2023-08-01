@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -14,10 +15,12 @@ import 'package:provider/provider.dart';
 class AddPredictionModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this component.
 
-  // State field(s) for CountController widget.
-  int? countControllerValue1;
-  // State field(s) for CountController widget.
-  int? countControllerValue2;
+  // State field(s) for homeGoalsCC widget.
+  int? homeGoalsCCValue;
+  // State field(s) for awayGoalsCC widget.
+  int? awayGoalsCCValue;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  MatchStandingsRecord? addPredictionRse;
 
   /// Initialization and disposal methods.
 
