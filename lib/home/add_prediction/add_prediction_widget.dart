@@ -116,10 +116,6 @@ class _AddPredictionWidgetState extends State<AddPredictionWidget> {
                   return Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [],
-                      ),
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),

@@ -78,285 +78,300 @@ class _HomeWidgetState extends State<HomeWidget> {
                       itemBuilder: (context, listViewIndex) {
                         final listViewMatchesRecord =
                             listViewMatchesRecordList[listViewIndex];
-                        return Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          elevation: 4.0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
+                        return StreamBuilder<List<MatchStandingsRecord>>(
+                          stream: queryMatchStandingsRecord(
+                            queryBuilder: (matchStandingsRecord) =>
+                                matchStandingsRecord
+                                    .where(
+                                        'tournamentRef',
+                                        isEqualTo:
+                                            listViewMatchesRecord.tournamentRef)
+                                    .where('matcheRef',
+                                        isEqualTo:
+                                            listViewMatchesRecord.reference)
+                                    .where('userRef',
+                                        isEqualTo: currentUserReference),
+                            singleRecord: true,
                           ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                flex: 5,
-                                child: Container(
-                                  width: 100.0,
-                                  height: 144.0,
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Color(0xFF063644),
-                                        Color(0xFF02131D)
-                                      ],
-                                      stops: [0.0, 1.0],
-                                      begin: AlignmentDirectional(0.0, -1.0),
-                                      end: AlignmentDirectional(0, 1.0),
-                                    ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: SpinKitFadingCircle(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 50.0,
                                   ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Row(
+                                ),
+                              );
+                            }
+                            List<MatchStandingsRecord>
+                                cardMatchStandingsRecordList = snapshot.data!;
+                            final cardMatchStandingsRecord =
+                                cardMatchStandingsRecordList.isNotEmpty
+                                    ? cardMatchStandingsRecordList.first
+                                    : null;
+                            return Card(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              elevation: 4.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Expanded(
+                                    flex: 5,
+                                    child: Container(
+                                      width: 100.0,
+                                      height: 144.0,
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Color(0xFF063644),
+                                            Color(0xFF02131D)
+                                          ],
+                                          stops: [0.0, 1.0],
+                                          begin:
+                                              AlignmentDirectional(0.0, -1.0),
+                                          end: AlignmentDirectional(0, 1.0),
+                                        ),
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            child: Column(
                                               mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
                                               children: [
-                                                Text(
-                                                  FFLocalizations.of(context)
-                                                              .languageCode ==
-                                                          'en'
-                                                      ? listViewMatchesRecord
-                                                          .tournamentName
-                                                      : listViewMatchesRecord
-                                                          .tournamentNameAr,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode ==
+                                                              'en'
+                                                          ? listViewMatchesRecord
+                                                              .tournamentName
+                                                          : listViewMatchesRecord
+                                                              .tournamentNameAr,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    ),
+                                                  ],
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 10.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Container(
+                                                        width: 110.0,
+                                                        height: 80.0,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              child:
+                                                                  Image.network(
+                                                                listViewMatchesRecord
+                                                                    .teamHomeLogo,
+                                                                width: 50.0,
+                                                                height: 50.0,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
+                                                            Text(
+                                                              FFLocalizations.of(
+                                                                              context)
+                                                                          .languageCode ==
+                                                                      'en'
+                                                                  ? listViewMatchesRecord
+                                                                      .teamHomeName
+                                                                  : listViewMatchesRecord
+                                                                      .teamHomeNameAr,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        width: 110.0,
+                                                        height: 80.0,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              child:
+                                                                  Image.network(
+                                                                listViewMatchesRecord
+                                                                    .teamHAwayLogo,
+                                                                width: 50.0,
+                                                                height: 50.0,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
+                                                            Text(
+                                                              FFLocalizations.of(
+                                                                              context)
+                                                                          .languageCode ==
+                                                                      'en'
+                                                                  ? listViewMatchesRecord
+                                                                      .teamAwayName
+                                                                  : listViewMatchesRecord
+                                                                      .teamAwayNameAr,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 2.0, 0.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    5.0,
+                                                                    0.0,
+                                                                    5.0,
+                                                                    0.0),
+                                                        child: Icon(
+                                                          Icons
+                                                              .date_range_sharp,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent3,
+                                                          size: 24.0,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        dateTimeFormat(
+                                                          'yyyy-MM-dd',
+                                                          listViewMatchesRecord
+                                                              .fixtureDate!,
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  fontSize:
+                                                                      15.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily),
+                                                                ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    5.0,
+                                                                    0.0,
+                                                                    5.0,
+                                                                    0.0),
+                                                        child: Icon(
+                                                          Icons.access_time,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent3,
+                                                          size: 24.0,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        dateTimeFormat(
+                                                          'jm',
+                                                          listViewMatchesRecord
+                                                              .fixtureDate!,
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium,
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                               ],
                                             ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 10.0, 0.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Container(
-                                                    width: 110.0,
-                                                    height: 80.0,
-                                                    decoration: BoxDecoration(),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          child: Image.network(
-                                                            listViewMatchesRecord
-                                                                .teamHomeLogo,
-                                                            width: 50.0,
-                                                            height: 50.0,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                        Text(
-                                                          FFLocalizations.of(
-                                                                          context)
-                                                                      .languageCode ==
-                                                                  'en'
-                                                              ? listViewMatchesRecord
-                                                                  .teamHomeName
-                                                              : listViewMatchesRecord
-                                                                  .teamHomeNameAr,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    width: 110.0,
-                                                    height: 80.0,
-                                                    decoration: BoxDecoration(),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          child: Image.network(
-                                                            listViewMatchesRecord
-                                                                .teamHAwayLogo,
-                                                            width: 50.0,
-                                                            height: 50.0,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                        Text(
-                                                          FFLocalizations.of(
-                                                                          context)
-                                                                      .languageCode ==
-                                                                  'en'
-                                                              ? listViewMatchesRecord
-                                                                  .teamAwayName
-                                                              : listViewMatchesRecord
-                                                                  .teamAwayNameAr,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 2.0, 0.0, 0.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(5.0, 0.0,
-                                                                5.0, 0.0),
-                                                    child: Icon(
-                                                      Icons.date_range_sharp,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .accent3,
-                                                      size: 24.0,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    dateTimeFormat(
-                                                      'yyyy-MM-dd',
-                                                      listViewMatchesRecord
-                                                          .fixtureDate!,
-                                                      locale:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .languageCode,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMediumFamily,
-                                                          fontSize: 15.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily),
-                                                        ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(5.0, 0.0,
-                                                                5.0, 0.0),
-                                                    child: Icon(
-                                                      Icons.access_time,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .accent3,
-                                                      size: 24.0,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    dateTimeFormat(
-                                                      'jm',
-                                                      listViewMatchesRecord
-                                                          .fixtureDate!,
-                                                      locale:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .languageCode,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
-                                    ],
+                                    ),
                                   ),
-                                ),
-                              ),
-                              if (listViewMatchesRecord.fixtureDate! >
-                                  getCurrentTimestamp)
-                                Flexible(
-                                  flex: 1,
-                                  child: Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: StreamBuilder<
-                                        List<MatchStandingsRecord>>(
-                                      stream: queryMatchStandingsRecord(
-                                        queryBuilder: (matchStandingsRecord) =>
-                                            matchStandingsRecord
-                                                .where('tournamentRef',
-                                                    isEqualTo:
-                                                        listViewMatchesRecord
-                                                            .tournamentRef)
-                                                .where('matcheRef',
-                                                    isEqualTo:
-                                                        listViewMatchesRecord
-                                                            .reference)
-                                                .where('userRef',
-                                                    isEqualTo:
-                                                        currentUserReference),
-                                        singleRecord: true,
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: SpinKitFadingCircle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                size: 50.0,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<MatchStandingsRecord>
-                                            containerMatchStandingsRecordList =
-                                            snapshot.data!;
-                                        final containerMatchStandingsRecord =
-                                            containerMatchStandingsRecordList
-                                                    .isNotEmpty
-                                                ? containerMatchStandingsRecordList
-                                                    .first
-                                                : null;
-                                        return Container(
+                                  if ((listViewMatchesRecord.fixtureDate! <
+                                          getCurrentTimestamp) ||
+                                      (cardMatchStandingsRecord?.userUpdate !=
+                                          0))
+                                    Flexible(
+                                      flex: 1,
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Container(
                                           width: 100.0,
                                           height: 144.0,
                                           decoration: BoxDecoration(
@@ -375,7 +390,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                     0.0, 0.0),
                                                 child: Builder(
                                                   builder: (context) {
-                                                    if (containerMatchStandingsRecord !=
+                                                    if (cardMatchStandingsRecord !=
                                                         null) {
                                                       return Align(
                                                         alignment:
@@ -383,7 +398,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                 0.0, 0.0),
                                                         child: Builder(
                                                           builder: (context) {
-                                                            if (containerMatchStandingsRecord!
+                                                            if (cardMatchStandingsRecord!
                                                                     .userUpdate >
                                                                 0) {
                                                               return Builder(
@@ -436,7 +451,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                 tournamentRef: listViewMatchesRecord.tournamentRef!,
                                                                                 matcheRef: listViewMatchesRecord.reference,
                                                                                 userRef: currentUserReference!,
-                                                                                matchStandingsRef: containerMatchStandingsRecord!.reference,
+                                                                                matchStandingsRef: cardMatchStandingsRecord!.reference,
                                                                               ),
                                                                             ),
                                                                           ),
@@ -465,7 +480,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                       Text(
                                                                         valueOrDefault<
                                                                             String>(
-                                                                          containerMatchStandingsRecord
+                                                                          cardMatchStandingsRecord
                                                                               ?.userUpdate
                                                                               ?.toString(),
                                                                           '0',
@@ -505,7 +520,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                     FFLocalizations.of(
                                                                             context)
                                                                         .getText(
-                                                                      '2fpbhihb' /* 0 */,
+                                                                      'fjk1p3jb' /* 0 */,
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -615,7 +630,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  '6gwfkvc7' /* 2 */,
+                                                                  'nm5ooy78' /* 2 */,
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -648,13 +663,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               ),
                                             ],
                                           ),
-                                        );
-                                      },
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                            ],
-                          ),
+                                ],
+                              ),
+                            );
+                          },
                         );
                       },
                     );
