@@ -151,7 +151,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           flex: 5,
                                           child: Container(
                                             width: 100.0,
-                                            height: 162.0,
+                                            height: 164.0,
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -573,7 +573,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   0.0, 0.0),
                                               child: Container(
                                                 width: 100.0,
-                                                height: 162.0,
+                                                height: 164.0,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
