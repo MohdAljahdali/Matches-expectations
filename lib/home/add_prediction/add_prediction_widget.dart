@@ -225,7 +225,7 @@ class _AddPredictionWidgetState extends State<AddPredictionWidget> {
                               borderRadius: BorderRadius.circular(8.0),
                               shape: BoxShape.rectangle,
                               border: Border.all(
-                                color: FlutterFlowTheme.of(context).alternate,
+                                color: FlutterFlowTheme.of(context).noColor,
                                 width: 0.0,
                               ),
                             ),
@@ -273,7 +273,7 @@ class _AddPredictionWidgetState extends State<AddPredictionWidget> {
                               borderRadius: BorderRadius.circular(8.0),
                               shape: BoxShape.rectangle,
                               border: Border.all(
-                                color: FlutterFlowTheme.of(context).alternate,
+                                color: FlutterFlowTheme.of(context).noColor,
                                 width: 0.0,
                               ),
                             ),
@@ -282,14 +282,14 @@ class _AddPredictionWidgetState extends State<AddPredictionWidget> {
                                 FontAwesomeIcons.minus,
                                 color: enabled
                                     ? FlutterFlowTheme.of(context).secondaryText
-                                    : FlutterFlowTheme.of(context).alternate,
+                                    : FlutterFlowTheme.of(context).noColor,
                                 size: 24.0,
                               ),
                               incrementIconBuilder: (enabled) => FaIcon(
                                 FontAwesomeIcons.plus,
                                 color: enabled
                                     ? FlutterFlowTheme.of(context).primary
-                                    : FlutterFlowTheme.of(context).alternate,
+                                    : FlutterFlowTheme.of(context).noColor,
                                 size: 24.0,
                               ),
                               countBuilder: (count) => Text(

@@ -1172,6 +1172,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Home
   {
+    'jytml6rk': {
+      'en': 'Hello World',
+      'ar': '',
+    },
     'fjk1p3jb': {
       'en': '0',
       'ar': '',

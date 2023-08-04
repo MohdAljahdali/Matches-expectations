@@ -63,7 +63,7 @@ class _MyAppState extends State<MyApp> {
       ..listen((user) => _appStateNotifier.update(user));
     jwtTokenStream.listen((_) {});
     Future.delayed(
-      Duration(milliseconds: 1000),
+      Duration(milliseconds: 1300),
       () => _appStateNotifier.stopShowingSplashImage(),
     );
   }
@@ -151,13 +151,13 @@ class _NavBarPageState extends State<NavBarPage> {
             _currentPage = null;
             _currentPageName = tabs.keys.toList()[i];
           }),
-          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          backgroundColor: FlutterFlowTheme.of(context).navBar,
           color: FlutterFlowTheme.of(context).primaryText,
           activeColor: FlutterFlowTheme.of(context).primaryText,
-          tabBackgroundColor: Color(0x00000000),
+          tabBackgroundColor: FlutterFlowTheme.of(context).navBar,
           tabBorderRadius: 15.0,
           tabMargin: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
           gap: 3.0,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           duration: Duration(milliseconds: 30),

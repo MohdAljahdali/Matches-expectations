@@ -395,7 +395,7 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  color: Color(0xFF161627),
                   child: Image.asset(
                     'assets/images/Swet.gif',
                     fit: BoxFit.fitWidth,
