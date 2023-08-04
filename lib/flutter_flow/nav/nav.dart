@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-
+import '/backend/supabase/supabase.dart';
 import '../../auth/base_auth_user_provider.dart';
 
 import '/index.dart';
@@ -108,37 +108,55 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'editProfile',
           path: '/editProfile',
-          builder: (context, params) => EditProfileWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: EditProfileWidget(),
+          ),
         ),
         FFRoute(
           name: 'updatePassword',
           path: '/updatePassword',
-          builder: (context, params) => UpdatePasswordWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: UpdatePasswordWidget(),
+          ),
         ),
         FFRoute(
           name: 'adminPage',
           path: '/adminPage',
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'adminPage')
-              : AdminPageWidget(),
+              : NavBarPage(
+                  initialPage: 'adminPage',
+                  page: AdminPageWidget(),
+                ),
         ),
         FFRoute(
           name: 'adminMembers',
           path: '/adminMembers',
-          builder: (context, params) => AdminMembersWidget(
-            jghgfjh: params.getParam(
-                'jghgfjh', ParamType.DocumentReference, false, ['Countries']),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AdminMembersWidget(
+              jghgfjh: params.getParam(
+                  'jghgfjh', ParamType.DocumentReference, false, ['Countries']),
+            ),
           ),
         ),
         FFRoute(
           name: 'adminEditMember',
           path: '/adminEditMember',
-          builder: (context, params) => AdminEditMemberWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AdminEditMemberWidget(),
+          ),
         ),
         FFRoute(
           name: 'adminCountriesList',
           path: '/adminCountriesList',
-          builder: (context, params) => AdminCountriesListWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AdminCountriesListWidget(),
+          ),
         ),
         FFRoute(
           name: 'adminTournamentsAdd',
@@ -161,7 +179,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'adminMatchesAdd',
           path: '/adminMatchesAdd',
-          builder: (context, params) => AdminMatchesAddWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AdminMatchesAddWidget(),
+          ),
         ),
         FFRoute(
           name: 'adminMatchesList',
@@ -197,8 +218,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'adminMatchesAddList',
           path: '/adminMatchesAddList',
-          builder: (context, params) => AdminMatchesAddListWidget(
-            addMatchesRC: params.getParam('addMatchesRC', ParamType.String),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AdminMatchesAddListWidget(
+              addMatchesRC: params.getParam('addMatchesRC', ParamType.String),
+            ),
           ),
         ),
         FFRoute(

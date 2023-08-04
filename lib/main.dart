@@ -8,6 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'auth/firebase_auth/firebase_user_provider.dart';
 import 'auth/firebase_auth/auth_util.dart';
 
+import '/backend/supabase/supabase.dart';
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
@@ -22,6 +23,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
   await initFirebase();
+
+  await SupaFlow.initialize();
 
   await FFLocalizations.initialize();
 
@@ -63,7 +66,7 @@ class _MyAppState extends State<MyApp> {
       ..listen((user) => _appStateNotifier.update(user));
     jwtTokenStream.listen((_) {});
     Future.delayed(
-      Duration(milliseconds: 1300),
+      Duration(milliseconds: 1600),
       () => _appStateNotifier.stopShowingSplashImage(),
     );
   }
@@ -132,8 +135,8 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'Profile': ProfileWidget(),
-      'adminPage': AdminPageWidget(),
       'Home': HomeWidget(),
+      'adminPage': AdminPageWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -171,18 +174,18 @@ class _NavBarPageState extends State<NavBarPage> {
               iconSize: 28.0,
             ),
             GButton(
-              icon: Icons.person_2_sharp,
-              text: FFLocalizations.of(context).getText(
-                'p4z0veqy' /* Admin */,
-              ),
-              iconSize: 28.0,
-            ),
-            GButton(
               icon: Icons.home_outlined,
               text: FFLocalizations.of(context).getText(
                 'qncd93ik' /* Home */,
               ),
               iconSize: 24.0,
+            ),
+            GButton(
+              icon: Icons.admin_panel_settings,
+              text: FFLocalizations.of(context).getText(
+                'p4z0veqy' /* Admin */,
+              ),
+              iconSize: 28.0,
             )
           ],
         ),
