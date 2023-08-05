@@ -141,10 +141,15 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                         child: FutureBuilder<List<CountriesRow>>(
                           future: FFAppState().adminCountriesList(
                             requestFn: () => CountriesTable().queryRows(
-                              queryFn: (q) => q.eq(
-                                'code',
-                                'sa',
-                              ),
+                              queryFn: (q) => q
+                                  .eq(
+                                    'code',
+                                    'sa',
+                                  )
+                                  .neq(
+                                    'code',
+                                    '555',
+                                  ),
                             ),
                           ),
                           builder: (context, snapshot) {
