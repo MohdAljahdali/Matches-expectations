@@ -1,5 +1,5 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/firebase_storage/storage.dart';
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -120,6 +120,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                       final selectedMedia =
                                           await selectMediaWithSourceBottomSheet(
                                         context: context,
+                                        storageFolderPath: 'users',
                                         maxWidth: 100.00,
                                         maxHeight: 100.00,
                                         allowPhoto: true,
@@ -135,6 +136,13 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
 
                                         var downloadUrls = <String>[];
                                         try {
+                                          showUploadMessage(
+                                            context,
+                                            FFLocalizations.of(context).getText(
+                                              'y4vkdd6m' /* Uploading File */,
+                                            ),
+                                            showLoading: true,
+                                          );
                                           selectedUploadedFiles = selectedMedia
                                               .map((m) => FFUploadedFile(
                                                     name: m.storagePath
@@ -148,16 +156,14 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                   ))
                                               .toList();
 
-                                          downloadUrls = (await Future.wait(
-                                            selectedMedia.map(
-                                              (m) async => await uploadData(
-                                                  m.storagePath, m.bytes),
-                                            ),
-                                          ))
-                                              .where((u) => u != null)
-                                              .map((u) => u!)
-                                              .toList();
+                                          downloadUrls =
+                                              await uploadSupabaseStorageFiles(
+                                            bucketName: 'avatar',
+                                            selectedFiles: selectedMedia,
+                                          );
                                         } finally {
+                                          ScaffoldMessenger.of(context)
+                                              .hideCurrentSnackBar();
                                           _model.isDataUploading = false;
                                         }
                                         if (selectedUploadedFiles.length ==
@@ -170,8 +176,20 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                             _model.uploadedFileUrl =
                                                 downloadUrls.first;
                                           });
+                                          showUploadMessage(
+                                              context,
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'nd0vx833' /*  Success */,
+                                              ));
                                         } else {
                                           setState(() {});
+                                          showUploadMessage(
+                                              context,
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '6sqqp824' /* Failed to upload data  */,
+                                              ));
                                           return;
                                         }
                                       }
@@ -653,6 +671,13 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                       if (user == null) {
                                         return;
                                       }
+
+                                      await UsersTable().insert({
+                                        'id': currentUserUid,
+                                        'created_at': supaSerialize<DateTime>(
+                                            getCurrentTimestamp),
+                                        'email': _model.emailTFController.text,
+                                      });
 
                                       context.pushNamedAuth(
                                           'Home', context.mounted);

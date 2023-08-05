@@ -1176,6 +1176,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Hello World',
       'ar': '',
     },
+    'kv444ek0': {
+      'en': 'A',
+      'ar': '',
+    },
+    'tmzg7unc': {
+      'en': 'A',
+      'ar': '',
+    },
+    'lhopuwtx': {
+      'en': '2',
+      'ar': '',
+    },
     'fjk1p3jb': {
       'en': '0',
       'ar': '',
