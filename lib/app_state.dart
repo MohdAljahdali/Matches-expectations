@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'flutter_flow/request_manager.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import 'backend/api_requests/api_manager.dart';
@@ -62,21 +61,6 @@ class FFAppState extends ChangeNotifier {
   void updatePMatchesStruct(Function(PMatchesStruct) updateFn) {
     updateFn(_PMatches);
   }
-
-  final _adminCountriesListManager = FutureRequestManager<List<CountriesRow>>();
-  Future<List<CountriesRow>> adminCountriesList({
-    String? uniqueQueryKey,
-    bool? overrideCache,
-    required Future<List<CountriesRow>> Function() requestFn,
-  }) =>
-      _adminCountriesListManager.performRequest(
-        uniqueQueryKey: uniqueQueryKey,
-        overrideCache: overrideCache,
-        requestFn: requestFn,
-      );
-  void clearAdminCountriesListCache() => _adminCountriesListManager.clear();
-  void clearAdminCountriesListCacheKey(String? uniqueKey) =>
-      _adminCountriesListManager.clearRequest(uniqueKey);
 }
 
 LatLng? _latLngFromString(String? val) {

@@ -90,4 +90,7 @@ class TournamentRow extends SupabaseDataRow {
 
   String? get addRandomCode => getField<String>('addRandomCode');
   set addRandomCode(String? value) => setField<String>('addRandomCode', value);
+
+  String? get countryCode => getField<String>('countryCode');
+  set countryCode(String? value) => setField<String>('countryCode', value);
 }

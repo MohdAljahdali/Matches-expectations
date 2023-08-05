@@ -139,18 +139,8 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: FutureBuilder<List<CountriesRow>>(
-                          future: FFAppState().adminCountriesList(
-                            requestFn: () => CountriesTable().queryRows(
-                              queryFn: (q) => q
-                                  .eq(
-                                    'code',
-                                    'sa',
-                                  )
-                                  .neq(
-                                    'code',
-                                    '555',
-                                  ),
-                            ),
+                          future: CountriesTable().queryRows(
+                            queryFn: (q) => q,
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
@@ -317,8 +307,7 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                           Builder(
                                             builder: (context) {
                                               if (listViewCountriesRow
-                                                      .isActive ??
-                                                  false) {
+                                                  .isActive) {
                                                 return FlutterFlowIconButton(
                                                   borderColor:
                                                       FlutterFlowTheme.of(

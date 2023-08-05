@@ -430,6 +430,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Admin control',
       'ar': 'تحكم الاداري',
     },
+    'vs9slu05': {
+      'en': 'Hello World',
+      'ar': '',
+    },
     '8n30lm2h': {
       'en': 'Log out',
       'ar': 'تسجيل خروج',

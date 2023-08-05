@@ -256,7 +256,7 @@ class _AdminCountriesEidtWidgetState extends State<AdminCountriesEidtWidget> {
                       Expanded(
                         child: SwitchListTile.adaptive(
                           value: _model.activeCountryTLValue ??=
-                              containerCountriesRow!.isActive!,
+                              containerCountriesRow!.isActive,
                           onChanged: (newValue) async {
                             setState(
                                 () => _model.activeCountryTLValue = newValue!);

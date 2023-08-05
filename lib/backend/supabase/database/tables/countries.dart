@@ -29,8 +29,8 @@ class CountriesRow extends SupabaseDataRow {
   String? get code => getField<String>('code');
   set code(String? value) => setField<String>('code', value);
 
-  bool? get isActive => getField<bool>('isActive');
-  set isActive(bool? value) => setField<bool>('isActive', value);
+  bool get isActive => getField<bool>('isActive')!;
+  set isActive(bool value) => setField<bool>('isActive', value);
 
   String? get flagSvg => getField<String>('flagSvg');
   set flagSvg(String? value) => setField<String>('flagSvg', value);
