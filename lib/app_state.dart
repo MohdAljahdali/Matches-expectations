@@ -63,12 +63,11 @@ class FFAppState extends ChangeNotifier {
     updateFn(_PMatches);
   }
 
-  final _adminCountriesListManager =
-      StreamRequestManager<List<CountriesRecord>>();
-  Stream<List<CountriesRecord>> adminCountriesList({
+  final _adminCountriesListManager = FutureRequestManager<List<CountriesRow>>();
+  Future<List<CountriesRow>> adminCountriesList({
     String? uniqueQueryKey,
     bool? overrideCache,
-    required Stream<List<CountriesRecord>> Function() requestFn,
+    required Future<List<CountriesRow>> Function() requestFn,
   }) =>
       _adminCountriesListManager.performRequest(
         uniqueQueryKey: uniqueQueryKey,
