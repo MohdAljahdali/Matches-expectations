@@ -20,8 +20,8 @@ class TournamentRow extends SupabaseDataRow {
   DateTime? get createdAt => getField<DateTime>('created_at');
   set createdAt(DateTime? value) => setField<DateTime>('created_at', value);
 
-  int? get tournamentCode => getField<int>('tournament_code');
-  set tournamentCode(int? value) => setField<int>('tournament_code', value);
+  int? get tournamentCode => getField<int>('tournamentCode');
+  set tournamentCode(int? value) => setField<int>('tournamentCode', value);
 
   int? get seasonYear => getField<int>('seasonYear');
   set seasonYear(int? value) => setField<int>('seasonYear', value);

@@ -259,6 +259,8 @@ dynamic deserializeParam<T>(
             return TeamsRow(data);
           case UsersRow:
             return UsersRow(data);
+          case TournamentTeamsRow:
+            return TournamentTeamsRow(data);
           default:
             return null;
         }

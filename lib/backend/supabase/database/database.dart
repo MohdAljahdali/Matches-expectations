@@ -9,3 +9,4 @@ export 'tables/tournament.dart';
 export 'tables/countries.dart';
 export 'tables/teams.dart';
 export 'tables/users.dart';
+export 'tables/tournament_teams.dart';
