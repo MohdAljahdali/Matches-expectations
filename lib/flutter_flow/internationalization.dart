@@ -1026,6 +1026,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': ' : ',
       'ar': ' : ',
     },
+    'dxj5ntpu': {
+      'en': 'Country',
+      'ar': '',
+    },
     'rorq2dwr': {
       'en': 'Code',
       'ar': 'الكود',

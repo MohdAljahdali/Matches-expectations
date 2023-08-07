@@ -1,10 +1,9 @@
-import '/backend/backend.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,10 +14,10 @@ export 'admin_tournament_team_edit_model.dart';
 class AdminTournamentTeamEditWidget extends StatefulWidget {
   const AdminTournamentTeamEditWidget({
     Key? key,
-    required this.teamsRef,
+    required this.teamsRow,
   }) : super(key: key);
 
-  final DocumentReference? teamsRef;
+  final TeamsRow? teamsRow;
 
   @override
   _AdminTournamentTeamEditWidgetState createState() =>
@@ -50,8 +49,13 @@ class _AdminTournamentTeamEditWidgetState
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return StreamBuilder<TeamsRecord>(
-      stream: TeamsRecord.getDocument(widget.teamsRef!),
+    return FutureBuilder<List<TeamsRow>>(
+      future: TeamsTable().querySingleRow(
+        queryFn: (q) => q.eq(
+          'id',
+          widget.teamsRow?.id,
+        ),
+      ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -69,7 +73,11 @@ class _AdminTournamentTeamEditWidgetState
             ),
           );
         }
-        final adminTournamentTeamEditTeamsRecord = snapshot.data!;
+        List<TeamsRow> adminTournamentTeamEditTeamsRowList = snapshot.data!;
+        final adminTournamentTeamEditTeamsRow =
+            adminTournamentTeamEditTeamsRowList.isNotEmpty
+                ? adminTournamentTeamEditTeamsRowList.first
+                : null;
         return GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
@@ -181,8 +189,8 @@ class _AdminTournamentTeamEditWidgetState
                                                     fadeOutDuration: Duration(
                                                         milliseconds: 500),
                                                     imageUrl:
-                                                        adminTournamentTeamEditTeamsRecord
-                                                            .logo,
+                                                        adminTournamentTeamEditTeamsRow!
+                                                            .logo!,
                                                     width: 100.0,
                                                     height: 100.0,
                                                     fit: BoxFit.cover,
@@ -369,8 +377,8 @@ class _AdminTournamentTeamEditWidgetState
                                                           .nameEnTFController ??=
                                                       TextEditingController(
                                                     text:
-                                                        adminTournamentTeamEditTeamsRecord
-                                                            .name,
+                                                        adminTournamentTeamEditTeamsRow
+                                                            ?.name,
                                                   ),
                                                   autofocus: true,
                                                   obscureText: false,
@@ -511,8 +519,8 @@ class _AdminTournamentTeamEditWidgetState
                                                           .nameArTFController ??=
                                                       TextEditingController(
                                                     text:
-                                                        adminTournamentTeamEditTeamsRecord
-                                                            .nameAr,
+                                                        adminTournamentTeamEditTeamsRow
+                                                            ?.nameAr,
                                                   ),
                                                   autofocus: true,
                                                   obscureText: false,
@@ -632,13 +640,20 @@ class _AdminTournamentTeamEditWidgetState
                                         0.0, 5.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        await adminTournamentTeamEditTeamsRecord
-                                            .reference
-                                            .update(createTeamsRecordData(
-                                          name: _model.nameEnTFController.text,
-                                          nameAr:
-                                              _model.nameArTFController.text,
-                                        ));
+                                        await TeamsTable().update(
+                                          data: {
+                                            'name':
+                                                _model.nameEnTFController.text,
+                                            'nameAr':
+                                                adminTournamentTeamEditTeamsRow
+                                                    ?.nameAr,
+                                            'code': '',
+                                          },
+                                          matchingRows: (rows) => rows.eq(
+                                            'id',
+                                            widget.teamsRow?.id,
+                                          ),
+                                        );
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(

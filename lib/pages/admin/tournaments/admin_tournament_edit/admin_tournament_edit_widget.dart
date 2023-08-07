@@ -1,11 +1,10 @@
-import '/backend/backend.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,10 +16,10 @@ export 'admin_tournament_edit_model.dart';
 class AdminTournamentEditWidget extends StatefulWidget {
   const AdminTournamentEditWidget({
     Key? key,
-    required this.aTournamentRef,
+    required this.tournamentRow,
   }) : super(key: key);
 
-  final DocumentReference? aTournamentRef;
+  final TournamentRow? tournamentRow;
 
   @override
   _AdminTournamentEditWidgetState createState() =>
@@ -51,8 +50,13 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return StreamBuilder<TournamentsRecord>(
-      stream: TournamentsRecord.getDocument(widget.aTournamentRef!),
+    return FutureBuilder<List<TournamentRow>>(
+      future: TournamentTable().querySingleRow(
+        queryFn: (q) => q.eq(
+          'id',
+          widget.tournamentRow?.id,
+        ),
+      ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -70,7 +74,12 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
             ),
           );
         }
-        final adminTournamentEditTournamentsRecord = snapshot.data!;
+        List<TournamentRow> adminTournamentEditTournamentRowList =
+            snapshot.data!;
+        final adminTournamentEditTournamentRow =
+            adminTournamentEditTournamentRowList.isNotEmpty
+                ? adminTournamentEditTournamentRowList.first
+                : null;
         return GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
@@ -173,8 +182,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                   fadeOutDuration: Duration(
                                                       milliseconds: 500),
                                                   imageUrl:
-                                                      adminTournamentEditTournamentsRecord
-                                                          .logo,
+                                                      adminTournamentEditTournamentRow!
+                                                          .logo!,
                                                   width: 100.0,
                                                   height: 100.0,
                                                   fit: BoxFit.cover,
@@ -360,8 +369,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                           .nameEnTFController ??=
                                                       TextEditingController(
                                                     text:
-                                                        adminTournamentEditTournamentsRecord
-                                                            .name,
+                                                        adminTournamentEditTournamentRow
+                                                            ?.name,
                                                   ),
                                                   autofocus: true,
                                                   obscureText: false,
@@ -502,8 +511,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                           .nameArTFController ??=
                                                       TextEditingController(
                                                     text:
-                                                        adminTournamentEditTournamentsRecord
-                                                            .nameAr,
+                                                        adminTournamentEditTournamentRow
+                                                            ?.nameAr,
                                                   ),
                                                   autofocus: true,
                                                   obscureText: false,
@@ -638,8 +647,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                 child: SwitchListTile.adaptive(
                                                   value: _model
                                                           .activeSTValue ??=
-                                                      adminTournamentEditTournamentsRecord
-                                                          .isActive,
+                                                      adminTournamentEditTournamentRow!
+                                                          .isActive!,
                                                   onChanged: (newValue) async {
                                                     setState(() =>
                                                         _model.activeSTValue =
@@ -726,8 +735,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                 child: SwitchListTile.adaptive(
                                                   value: _model
                                                           .doubleSTValue ??=
-                                                      adminTournamentEditTournamentsRecord
-                                                          .isActive,
+                                                      adminTournamentEditTournamentRow!
+                                                          .roleHasDoubleMatches!,
                                                   onChanged: (newValue) async {
                                                     setState(() =>
                                                         _model.doubleSTValue =
@@ -824,8 +833,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                         SwitchListTile.adaptive(
                                                           value: _model
                                                                   .homeWinSTValue ??=
-                                                              adminTournamentEditTournamentsRecord
-                                                                  .isActive,
+                                                              adminTournamentEditTournamentRow!
+                                                                  .roleHomeWin!,
                                                           onChanged:
                                                               (newValue) async {
                                                             setState(() => _model
@@ -994,8 +1003,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   ),
                                                                   count: _model
                                                                           .homeWinPointsCCValue ??=
-                                                                      adminTournamentEditTournamentsRecord
-                                                                          .roleHomeWinPoints,
+                                                                      adminTournamentEditTournamentRow!
+                                                                          .roleHomeWinPoints!,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
                                                                           _model.homeWinPointsCCValue =
@@ -1049,8 +1058,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                         SwitchListTile.adaptive(
                                                           value: _model
                                                                   .awayWinSTValue ??=
-                                                              adminTournamentEditTournamentsRecord
-                                                                  .isActive,
+                                                              adminTournamentEditTournamentRow!
+                                                                  .roleAwayWin!,
                                                           onChanged:
                                                               (newValue) async {
                                                             setState(() => _model
@@ -1219,8 +1228,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   ),
                                                                   count: _model
                                                                           .awayWinPointsCCValue ??=
-                                                                      adminTournamentEditTournamentsRecord
-                                                                          .roleAwayWinPoints,
+                                                                      adminTournamentEditTournamentRow!
+                                                                          .roleAwayWinPoints!,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
                                                                           _model.awayWinPointsCCValue =
@@ -1274,8 +1283,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                         SwitchListTile.adaptive(
                                                           value: _model
                                                                   .drawSTValue ??=
-                                                              adminTournamentEditTournamentsRecord
-                                                                  .isActive,
+                                                              adminTournamentEditTournamentRow!
+                                                                  .roleDraw!,
                                                           onChanged:
                                                               (newValue) async {
                                                             setState(() => _model
@@ -1444,8 +1453,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   ),
                                                                   count: _model
                                                                           .drawPointsCCValue ??=
-                                                                      adminTournamentEditTournamentsRecord
-                                                                          .roleDrawPoints,
+                                                                      adminTournamentEditTournamentRow!
+                                                                          .roleDrawPoints!,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
                                                                           _model.drawPointsCCValue =
@@ -1499,8 +1508,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                         SwitchListTile.adaptive(
                                                           value: _model
                                                                   .homeGoalsSTValue ??=
-                                                              adminTournamentEditTournamentsRecord
-                                                                  .isActive,
+                                                              adminTournamentEditTournamentRow!
+                                                                  .roleHomeGoals!,
                                                           onChanged:
                                                               (newValue) async {
                                                             setState(() => _model
@@ -1669,8 +1678,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   ),
                                                                   count: _model
                                                                           .homeGoalsPointsCCValue ??=
-                                                                      adminTournamentEditTournamentsRecord
-                                                                          .roleHomeGoalsPoints,
+                                                                      adminTournamentEditTournamentRow!
+                                                                          .roleHomeGoalsPoints!,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
                                                                           _model.homeGoalsPointsCCValue =
@@ -1724,8 +1733,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                         SwitchListTile.adaptive(
                                                           value: _model
                                                                   .awayGoalsSTValue ??=
-                                                              adminTournamentEditTournamentsRecord
-                                                                  .roleAwayGoals,
+                                                              adminTournamentEditTournamentRow!
+                                                                  .roleAwayGoals!,
                                                           onChanged:
                                                               (newValue) async {
                                                             setState(() => _model
@@ -1894,8 +1903,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   ),
                                                                   count: _model
                                                                           .awayGoalsPointsCCValue ??=
-                                                                      adminTournamentEditTournamentsRecord
-                                                                          .roleAwayGoalsPoints,
+                                                                      adminTournamentEditTournamentRow!
+                                                                          .roleAwayGoalsPoints!,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
                                                                           _model.awayGoalsPointsCCValue =
@@ -1929,33 +1938,40 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                         0.0, 5.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        await adminTournamentEditTournamentsRecord
-                                            .reference
-                                            .update(createTournamentsRecordData(
-                                          name: _model.nameEnTFController.text,
-                                          nameAr:
-                                              _model.nameArTFController.text,
-                                          roleHomeWin: _model.homeWinSTValue,
-                                          roleHomeWinPoints:
-                                              _model.homeWinPointsCCValue,
-                                          roleAwayWin: _model.awayWinSTValue,
-                                          roleAwayWinPoints:
-                                              _model.awayWinPointsCCValue,
-                                          roleDraw: _model.drawSTValue,
-                                          roleDrawPoints:
-                                              _model.drawPointsCCValue,
-                                          roleHomeGoals:
-                                              _model.homeGoalsSTValue,
-                                          roleHomeGoalsPoints:
-                                              _model.homeGoalsPointsCCValue,
-                                          roleAwayGoals:
-                                              _model.awayGoalsSTValue,
-                                          roleAwayGoalsPoints:
-                                              _model.awayGoalsPointsCCValue,
-                                          roleHasDoubleMatches:
-                                              _model.doubleSTValue,
-                                          isActive: _model.activeSTValue,
-                                        ));
+                                        await TournamentTable().update(
+                                          data: {
+                                            'name':
+                                                _model.nameEnTFController.text,
+                                            'nameAr':
+                                                _model.nameArTFController.text,
+                                            'roleHomeWin':
+                                                _model.homeWinSTValue,
+                                            'roleHomeWinPoints':
+                                                _model.homeWinPointsCCValue,
+                                            'roleAwayWin':
+                                                _model.awayWinSTValue,
+                                            'roleAwayWinPoints':
+                                                _model.awayWinPointsCCValue,
+                                            'roleDraw': _model.drawSTValue,
+                                            'roleDrawPoints':
+                                                _model.drawPointsCCValue,
+                                            'roleHomeGoals':
+                                                _model.homeGoalsSTValue,
+                                            'roleHomeGoalsPoints':
+                                                _model.homeGoalsPointsCCValue,
+                                            'roleAwayGoals':
+                                                _model.awayGoalsSTValue,
+                                            'roleAwayGoalsPoints':
+                                                _model.awayGoalsPointsCCValue,
+                                            'roleHasDoubleMatches':
+                                                _model.doubleSTValue,
+                                            'isActive': _model.activeSTValue,
+                                          },
+                                          matchingRows: (rows) => rows.eq(
+                                            'id',
+                                            widget.tournamentRow?.id,
+                                          ),
+                                        );
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(
