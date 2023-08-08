@@ -47,12 +47,12 @@ Future<String> addTournaments(
         final TournamentData = await TournamentTable().querySingleRow(
             queryFn: (q) => q
                 .eq(
-                  'countryID',
-                  countriesData.single.id,
+                  'tournamentCode',
+                  int.parse(tournament['league']['id'].toString()),
                 )
                 .eq(
                   'seasonYear',
-                  int.parse(season.toString().trim()),
+                  int.parse(seasons['year'].toString()),
                 ));
 
         if (TournamentData.isEmpty) {
@@ -79,7 +79,9 @@ Future<String> addTournaments(
             'roleHasDoubleMatches': true,
             'addRandomCode': randomCode,
             'isActive': false,
-          }).then((tournamentvalue) async {
+          });
+          /*
+          .then((tournamentvalue) async {
             var teamsrequest = http.Request(
                 'GET',
                 Uri.parse(
@@ -142,6 +144,7 @@ Future<String> addTournaments(
               });
             }
           });
+          */
         }
       });
     });
