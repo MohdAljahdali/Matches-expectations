@@ -401,15 +401,23 @@ class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
                                                 true,
                                               ),
                                             );
-
-                                            context.pushNamed(
-                                              'adminTournamentsAddList',
-                                              queryParameters: {
-                                                'randomCode': serializeParam(
-                                                  _model.addTournamentResp,
-                                                  ParamType.String,
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  _model.addTournamentResp!,
+                                                  style: TextStyle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                  ),
                                                 ),
-                                              }.withoutNulls,
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
+                                              ),
                                             );
 
                                             setState(() {});

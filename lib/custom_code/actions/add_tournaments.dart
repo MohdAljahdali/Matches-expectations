@@ -18,6 +18,7 @@ Future<String> addTournaments(
   String season,
   String randomCode,
 ) async {
+  var fsdfsfsf;
   var headers = {
     'x-rapidapi-key': 'ba825d70e7634e7015d2f116c1a07e03',
     'x-rapidapi-host': 'v3.football.api-sports.io'
@@ -79,9 +80,9 @@ Future<String> addTournaments(
             'roleHasDoubleMatches': true,
             'addRandomCode': randomCode,
             'isActive': false,
-          });
-          /*
-          .then((tournamentvalue) async {
+          }).then((tournamentvalue) async {
+            fsdfsfsf = tournamentvalue.name;
+            /*
             var teamsrequest = http.Request(
                 'GET',
                 Uri.parse(
@@ -143,12 +144,12 @@ Future<String> addTournaments(
                 }
               });
             }
+            */
           });
-          */
         }
       });
     });
   } else {}
 
-  return randomCode;
+  return fsdfsfsf;
 }
