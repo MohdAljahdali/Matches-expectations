@@ -32,6 +32,8 @@ class AdminTournamentsAddModel extends FlutterFlowModel {
   // State field(s) for seasonDD widget.
   String? seasonDDValue2;
   FormFieldController<String>? seasonDDValueController2;
+  // Stores action output result for [Backend Call - Insert Row] action in addTournamentMB widget.
+  CountriesRow? fdsf;
 
   /// Initialization and disposal methods.
 

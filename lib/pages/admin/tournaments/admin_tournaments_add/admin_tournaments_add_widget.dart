@@ -739,9 +739,13 @@ class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
                                         child: FFButtonWidget(
-                                          onPressed: () {
-                                            print(
-                                                'addTournamentMB pressed ...');
+                                          onPressed: () async {
+                                            _model.fdsf =
+                                                await CountriesTable().insert({
+                                              'id': 342,
+                                            });
+
+                                            setState(() {});
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
