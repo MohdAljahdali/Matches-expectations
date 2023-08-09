@@ -1,4 +1,4 @@
-import '/backend/supabase/supabase.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -138,9 +138,9 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                        child: FutureBuilder<List<CountriesRow>>(
-                          future: CountriesTable().queryRows(
-                            queryFn: (q) => q,
+                        child: StreamBuilder<List<CountriesRecord>>(
+                          stream: FFAppState().adminCountriesList(
+                            requestFn: () => queryCountriesRecord(),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
@@ -156,17 +156,17 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                 ),
                               );
                             }
-                            List<CountriesRow> listViewCountriesRowList =
+                            List<CountriesRecord> listViewCountriesRecordList =
                                 snapshot.data!;
                             return ListView.builder(
                               padding: EdgeInsets.zero,
                               primary: false,
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
-                              itemCount: listViewCountriesRowList.length,
+                              itemCount: listViewCountriesRecordList.length,
                               itemBuilder: (context, listViewIndex) {
-                                final listViewCountriesRow =
-                                    listViewCountriesRowList[listViewIndex];
+                                final listViewCountriesRecord =
+                                    listViewCountriesRecordList[listViewIndex];
                                 return Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 16.0, 16.0),
@@ -198,8 +198,8 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                                   Duration(milliseconds: 500),
                                               fadeOutDuration:
                                                   Duration(milliseconds: 500),
-                                              imageUrl:
-                                                  listViewCountriesRow.flagW80!,
+                                              imageUrl: listViewCountriesRecord
+                                                  .flagW80,
                                               width: 60.0,
                                               height: 50.0,
                                               fit: BoxFit.cover,
@@ -218,7 +218,8 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    listViewCountriesRow.name!,
+                                                    listViewCountriesRecord
+                                                        .name,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyLarge
@@ -240,8 +241,8 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                                         ),
                                                   ),
                                                   Text(
-                                                    listViewCountriesRow
-                                                        .nameAr!,
+                                                    listViewCountriesRecord
+                                                        .nameAr,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium,
@@ -292,8 +293,9 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                                           height: 350.0,
                                                           child:
                                                               AdminCountriesEidtWidget(
-                                                            countrieID:
-                                                                listViewCountriesRow,
+                                                            countrieRef:
+                                                                listViewCountriesRecord
+                                                                    .reference,
                                                           ),
                                                         ),
                                                       ),
@@ -306,7 +308,7 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                           ),
                                           Builder(
                                             builder: (context) {
-                                              if (listViewCountriesRow
+                                              if (listViewCountriesRecord
                                                   .isActive) {
                                                 return FlutterFlowIconButton(
                                                   borderColor:

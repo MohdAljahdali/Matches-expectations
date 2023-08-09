@@ -430,10 +430,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Admin control',
       'ar': 'تحكم الاداري',
     },
-    'vs9slu05': {
-      'en': 'Hello World',
-      'ar': '',
-    },
     '8n30lm2h': {
       'en': 'Log out',
       'ar': 'تسجيل خروج',
@@ -1026,10 +1022,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': ' : ',
       'ar': ' : ',
     },
-    'dxj5ntpu': {
-      'en': 'Country',
-      'ar': '',
-    },
     'rorq2dwr': {
       'en': 'Code',
       'ar': 'الكود',
@@ -1182,18 +1174,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'jytml6rk': {
       'en': 'Hello World',
-      'ar': '',
-    },
-    'kv444ek0': {
-      'en': 'A',
-      'ar': '',
-    },
-    'tmzg7unc': {
-      'en': 'A',
-      'ar': '',
-    },
-    'lhopuwtx': {
-      'en': '2',
       'ar': '',
     },
     'fjk1p3jb': {

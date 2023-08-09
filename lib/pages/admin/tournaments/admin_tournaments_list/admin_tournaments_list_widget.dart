@@ -1,5 +1,5 @@
+import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -296,17 +296,22 @@ class _AdminTournamentsListWidgetState
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             10.0, 5.0, 10.0, 0.0),
-                        child: FutureBuilder<List<TournamentRow>>(
-                          future: TournamentTable().queryRows(
-                            queryFn: (q) => q
-                                .eq(
-                                  'isActive',
-                                  FFAppState().PTournaments.active,
-                                )
-                                .eq(
-                                  'nameAr',
-                                  FFAppState().PTournaments.translation,
-                                ),
+                        child: StreamBuilder<List<TournamentsRecord>>(
+                          stream: queryTournamentsRecord(
+                            queryBuilder: (tournamentsRecord) =>
+                                tournamentsRecord
+                                    .where('isActive',
+                                        isEqualTo:
+                                            FFAppState().PTournaments.active)
+                                    .where('nameAr',
+                                        isEqualTo: FFAppState()
+                                                    .PTournaments
+                                                    .translation !=
+                                                ''
+                                            ? FFAppState()
+                                                .PTournaments
+                                                .translation
+                                            : null),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
@@ -322,17 +327,18 @@ class _AdminTournamentsListWidgetState
                                 ),
                               );
                             }
-                            List<TournamentRow> listViewTournamentRowList =
-                                snapshot.data!;
+                            List<TournamentsRecord>
+                                listViewTournamentsRecordList = snapshot.data!;
                             return ListView.builder(
                               padding: EdgeInsets.zero,
                               primary: false,
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
-                              itemCount: listViewTournamentRowList.length,
+                              itemCount: listViewTournamentsRecordList.length,
                               itemBuilder: (context, listViewIndex) {
-                                final listViewTournamentRow =
-                                    listViewTournamentRowList[listViewIndex];
+                                final listViewTournamentsRecord =
+                                    listViewTournamentsRecordList[
+                                        listViewIndex];
                                 return Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 6.0),
@@ -369,7 +375,8 @@ class _AdminTournamentsListWidgetState
                                                 fadeOutDuration:
                                                     Duration(milliseconds: 500),
                                                 imageUrl:
-                                                    listViewTournamentRow.logo!,
+                                                    listViewTournamentsRecord
+                                                        .logo,
                                                 width: 90.0,
                                                 height: 90.0,
                                                 fit: BoxFit.cover,
@@ -394,33 +401,24 @@ class _AdminTournamentsListWidgetState
                                                           MainAxisSize.max,
                                                       children: [
                                                         Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            () {
-                                                              if (FFLocalizations.of(
-                                                                          context)
-                                                                      .languageCode ==
-                                                                  'en') {
-                                                                return listViewTournamentRow
-                                                                    .name;
-                                                              } else if (FFLocalizations.of(
-                                                                          context)
-                                                                      .languageCode ==
-                                                                  'ar') {
-                                                                return (listViewTournamentRow
-                                                                            .nameAr ==
-                                                                        '-'
-                                                                    ? listViewTournamentRow
-                                                                        .name
-                                                                    : listViewTournamentRow
-                                                                        .nameAr);
-                                                              } else {
-                                                                return listViewTournamentRow
-                                                                    .name;
-                                                              }
-                                                            }(),
-                                                            'Name',
-                                                          ),
+                                                          () {
+                                                            if (FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode ==
+                                                                'en') {
+                                                              return listViewTournamentsRecord
+                                                                  .name;
+                                                            } else if (FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode ==
+                                                                'ar') {
+                                                              return listViewTournamentsRecord
+                                                                  .nameAr;
+                                                            } else {
+                                                              return listViewTournamentsRecord
+                                                                  .name;
+                                                            }
+                                                          }(),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium,
@@ -480,8 +478,9 @@ class _AdminTournamentsListWidgetState
                                                                               FlutterFlowTheme.of(context).bodyMedium,
                                                                         ),
                                                                         TextSpan(
-                                                                          text:
-                                                                              listViewTournamentRow.seasonStart!,
+                                                                          text: listViewTournamentsRecord
+                                                                              .seasonYear
+                                                                              .toString(),
                                                                           style:
                                                                               FlutterFlowTheme.of(context).bodyMedium,
                                                                         )
@@ -519,7 +518,7 @@ class _AdminTournamentsListWidgetState
                                                                         ),
                                                                         TextSpan(
                                                                           text:
-                                                                              listViewTournamentRow.type!,
+                                                                              listViewTournamentsRecord.type,
                                                                           style:
                                                                               FlutterFlowTheme.of(context).bodyMedium,
                                                                         )
@@ -575,11 +574,12 @@ class _AdminTournamentsListWidgetState
                                                                     'adminTournamentsTeamList',
                                                                     queryParameters:
                                                                         {
-                                                                      'tournamentRow':
+                                                                      'tournamentRef':
                                                                           serializeParam(
-                                                                        listViewTournamentRow,
+                                                                        listViewTournamentsRecord
+                                                                            .reference,
                                                                         ParamType
-                                                                            .SupabaseRow,
+                                                                            .DocumentReference,
                                                                       ),
                                                                     }.withoutNulls,
                                                                   );
@@ -623,11 +623,12 @@ class _AdminTournamentsListWidgetState
                                                                     'adminTournamentEdit',
                                                                     queryParameters:
                                                                         {
-                                                                      'tournamentRow':
+                                                                      'aTournamentRef':
                                                                           serializeParam(
-                                                                        listViewTournamentRow,
+                                                                        listViewTournamentsRecord
+                                                                            .reference,
                                                                         ParamType
-                                                                            .SupabaseRow,
+                                                                            .DocumentReference,
                                                                       ),
                                                                     }.withoutNulls,
                                                                   );

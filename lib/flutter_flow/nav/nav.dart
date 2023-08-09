@@ -172,8 +172,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'adminTournamentEdit',
           path: '/adminTournamentEdit',
           builder: (context, params) => AdminTournamentEditWidget(
-            tournamentRow: params.getParam<TournamentRow>(
-                'tournamentRow', ParamType.SupabaseRow),
+            aTournamentRef: params.getParam('aTournamentRef',
+                ParamType.DocumentReference, false, ['Tournaments']),
           ),
         ),
         FFRoute(
@@ -203,16 +203,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'adminTournamentsTeamList',
           path: '/adminTournamentsTeamList',
           builder: (context, params) => AdminTournamentsTeamListWidget(
-            tournamentRow: params.getParam<TournamentRow>(
-                'tournamentRow', ParamType.SupabaseRow),
+            tournamentRef: params.getParam('tournamentRef',
+                ParamType.DocumentReference, false, ['Tournaments']),
           ),
         ),
         FFRoute(
           name: 'adminTournamentTeamEdit',
           path: '/adminTournamentTeamEdit',
           builder: (context, params) => AdminTournamentTeamEditWidget(
-            teamsRow:
-                params.getParam<TeamsRow>('teamsRow', ParamType.SupabaseRow),
+            teamsRef: params.getParam(
+                'teamsRef', ParamType.DocumentReference, false, ['Teams']),
           ),
         ),
         FFRoute(
