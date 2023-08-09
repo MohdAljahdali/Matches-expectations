@@ -49,26 +49,26 @@ class _HomeWidgetState extends State<HomeWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-          child: SingleChildScrollView(
-            primary: false,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [],
-                  ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [],
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 5.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [],
-                  ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 20.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [],
                 ),
-                Column(
+              ),
+              SingleChildScrollView(
+                primary: false,
+                child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     StreamBuilder<List<MatchesRecord>>(
@@ -91,6 +91,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             snapshot.data!;
                         return ListView.builder(
                           padding: EdgeInsets.zero,
+                          primary: false,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           itemCount: listViewMatchesRecordList.length,
@@ -845,8 +846,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                     ),
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
