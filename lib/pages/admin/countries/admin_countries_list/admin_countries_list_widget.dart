@@ -140,7 +140,15 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: FutureBuilder<List<CountriesRow>>(
                           future: CountriesTable().queryRows(
-                            queryFn: (q) => q,
+                            queryFn: (q) => q
+                                .eq(
+                                  'name',
+                                  '55',
+                                )
+                                .neq(
+                                  'name',
+                                  '55',
+                                ),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
