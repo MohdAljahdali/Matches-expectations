@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:math' as math;
 
-import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future<String> userUpdatePassword(
@@ -22,6 +22,7 @@ Future<String> userUpdatePassword(
   String currentLanguage,
 ) async {
   String massagere = '';
+  /*
   var currentUser = FirebaseAuth.instance.currentUser;
 
   if (currentUser != null) {
@@ -54,6 +55,8 @@ Future<String> userUpdatePassword(
   } else {
     massagere = errorMassage(currentLanguage, 10005);
   }
+
+*/
   return massagere;
 }
 

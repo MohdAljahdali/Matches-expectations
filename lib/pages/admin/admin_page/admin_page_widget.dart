@@ -1,4 +1,4 @@
-import '/auth/firebase_auth/auth_util.dart';
+import '/auth/supabase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -46,7 +46,7 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -70,7 +70,7 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
           ),
           actions: [],
           centerTitle: true,
-          elevation: 2.0,
+          elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
@@ -133,24 +133,23 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 5.0, 0.0, 0.0),
-                                          child: AuthUserStreamWidget(
-                                            builder: (context) => Text(
-                                              currentUserDisplayName,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans Arabic',
-                                                        fontSize: 18.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily),
-                                                      ),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              'vs9slu05' /* Hello World */,
                                             ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      'Noto Sans Arabic',
+                                                  fontSize: 18.0,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
+                                                ),
                                           ),
                                         ),
                                       ],
@@ -279,32 +278,36 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Material(
-                      color: Colors.transparent,
-                      elevation: 0.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(0.0),
-                          bottomRight: Radius.circular(0.0),
-                          topLeft: Radius.circular(25.0),
-                          topRight: Radius.circular(25.0),
-                        ),
-                      ),
-                      child: Container(
-                        width: double.infinity,
-                        height: 20.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                      child: Material(
+                        color: Colors.transparent,
+                        elevation: 0.0,
+                        shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(0.0),
                             bottomRight: Radius.circular(0.0),
                             topLeft: Radius.circular(25.0),
                             topRight: Radius.circular(25.0),
                           ),
-                          border: Border.all(
-                            color: FlutterFlowTheme.of(context).noColor,
-                            width: 0.0,
+                        ),
+                        child: Container(
+                          width: double.infinity,
+                          height: 20.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(0.0),
+                              bottomRight: Radius.circular(0.0),
+                              topLeft: Radius.circular(25.0),
+                              topRight: Radius.circular(25.0),
+                            ),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).noColor,
+                              width: 0.0,
+                            ),
                           ),
                         ),
                       ),
@@ -362,6 +365,7 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                             Divider(
                               height: 1.0,
                               thickness: 1.0,
+                              indent: 65.0,
                               color: FlutterFlowTheme.of(context).accent4,
                             ),
                           ],
@@ -414,6 +418,7 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                             Divider(
                               height: 1.0,
                               thickness: 1.0,
+                              indent: 65.0,
                               color: FlutterFlowTheme.of(context).accent4,
                             ),
                           ],
@@ -466,6 +471,7 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                             Divider(
                               height: 1.0,
                               thickness: 1.0,
+                              indent: 65.0,
                               color: FlutterFlowTheme.of(context).accent4,
                             ),
                           ],
@@ -482,32 +488,76 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                                 context.pushNamed('adminMatchesList');
                               },
                               child: ListTile(
+                                leading: Icon(
+                                  Icons.stadium_outlined,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 25.0,
+                                ),
                                 title: Text(
                                   FFLocalizations.of(context).getText(
                                     'slqr9i0n' /* Matches */,
                                   ),
-                                  style:
-                                      FlutterFlowTheme.of(context).titleLarge,
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleLarge
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleLargeFamily,
+                                        fontSize: 18.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLargeFamily),
+                                      ),
                                 ),
                                 trailing: Icon(
                                   Icons.arrow_forward_ios,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 30.0,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 22.0,
                                 ),
                                 tileColor: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
                                 dense: false,
                               ),
                             ),
-                            Divider(
-                              height: 1.0,
-                              thickness: 1.0,
-                              color: FlutterFlowTheme.of(context).accent4,
-                            ),
                           ],
                         ),
                       ],
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
+                      child: Material(
+                        color: Colors.transparent,
+                        elevation: 0.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(25.0),
+                            bottomRight: Radius.circular(25.0),
+                            topLeft: Radius.circular(0.0),
+                            topRight: Radius.circular(0.0),
+                          ),
+                        ),
+                        child: Container(
+                          width: double.infinity,
+                          height: 20.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(25.0),
+                              bottomRight: Radius.circular(25.0),
+                              topLeft: Radius.circular(0.0),
+                              topRight: Radius.circular(0.0),
+                            ),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).noColor,
+                              width: 0.0,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),

@@ -1,4 +1,4 @@
-import '/backend/backend.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -99,11 +99,12 @@ class _AdminTournamentsAddListWidgetState
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                        child: StreamBuilder<List<TournamentsRecord>>(
-                          stream: queryTournamentsRecord(
-                            queryBuilder: (tournamentsRecord) =>
-                                tournamentsRecord.where('addRandomCode',
-                                    isEqualTo: widget.randomCode),
+                        child: FutureBuilder<List<TournamentRow>>(
+                          future: TournamentTable().queryRows(
+                            queryFn: (q) => q.eq(
+                              'addRandomCode',
+                              widget.randomCode,
+                            ),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
@@ -119,18 +120,17 @@ class _AdminTournamentsAddListWidgetState
                                 ),
                               );
                             }
-                            List<TournamentsRecord>
-                                listViewTournamentsRecordList = snapshot.data!;
+                            List<TournamentRow> listViewTournamentRowList =
+                                snapshot.data!;
                             return ListView.builder(
                               padding: EdgeInsets.zero,
                               primary: false,
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
-                              itemCount: listViewTournamentsRecordList.length,
+                              itemCount: listViewTournamentRowList.length,
                               itemBuilder: (context, listViewIndex) {
-                                final listViewTournamentsRecord =
-                                    listViewTournamentsRecordList[
-                                        listViewIndex];
+                                final listViewTournamentRow =
+                                    listViewTournamentRowList[listViewIndex];
                                 return Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 6.0),
@@ -171,8 +171,8 @@ class _AdminTournamentsAddListWidgetState
                                                   fadeOutDuration: Duration(
                                                       milliseconds: 500),
                                                   imageUrl:
-                                                      listViewTournamentsRecord
-                                                          .logo,
+                                                      listViewTournamentRow
+                                                          .logo!,
                                                   width: 90.0,
                                                   height: 90.0,
                                                   fit: BoxFit.cover,
@@ -198,8 +198,8 @@ class _AdminTournamentsAddListWidgetState
                                                             MainAxisSize.max,
                                                         children: [
                                                           Text(
-                                                            listViewTournamentsRecord
-                                                                .name,
+                                                            listViewTournamentRow
+                                                                .name!,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium,
@@ -251,9 +251,13 @@ class _AdminTournamentsAddListWidgetState
                                                                             .bodyMedium,
                                                                       ),
                                                                       TextSpan(
-                                                                        text: listViewTournamentsRecord
-                                                                            .seasonYear
-                                                                            .toString(),
+                                                                        text: valueOrDefault<
+                                                                            String>(
+                                                                          listViewTournamentRow
+                                                                              .seasonYear
+                                                                              ?.toString(),
+                                                                          '0',
+                                                                        ),
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium,
                                                                       )
@@ -290,8 +294,8 @@ class _AdminTournamentsAddListWidgetState
                                                                             .bodyMedium,
                                                                       ),
                                                                       TextSpan(
-                                                                        text: listViewTournamentsRecord
-                                                                            .type,
+                                                                        text: listViewTournamentRow
+                                                                            .type!,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium,
                                                                       )
@@ -340,12 +344,11 @@ class _AdminTournamentsAddListWidgetState
                                                           context.pushNamed(
                                                             'adminTournamentEdit',
                                                             queryParameters: {
-                                                              'aTournamentRef':
+                                                              'tournamentRow':
                                                                   serializeParam(
-                                                                listViewTournamentsRecord
-                                                                    .reference,
+                                                                listViewTournamentRow,
                                                                 ParamType
-                                                                    .DocumentReference,
+                                                                    .SupabaseRow,
                                                               ),
                                                             }.withoutNulls,
                                                           );

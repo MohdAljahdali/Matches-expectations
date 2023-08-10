@@ -1,9 +1,7 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,10 +12,10 @@ export 'admin_countries_eidt_model.dart';
 class AdminCountriesEidtWidget extends StatefulWidget {
   const AdminCountriesEidtWidget({
     Key? key,
-    required this.countrieRef,
+    required this.countrieID,
   }) : super(key: key);
 
-  final DocumentReference? countrieRef;
+  final CountriesRow? countrieID;
 
   @override
   _AdminCountriesEidtWidgetState createState() =>
@@ -50,8 +48,13 @@ class _AdminCountriesEidtWidgetState extends State<AdminCountriesEidtWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return StreamBuilder<CountriesRecord>(
-      stream: CountriesRecord.getDocument(widget.countrieRef!),
+    return FutureBuilder<List<CountriesRow>>(
+      future: CountriesTable().querySingleRow(
+        queryFn: (q) => q.eq(
+          'id',
+          widget.countrieID?.id,
+        ),
+      ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -66,7 +69,10 @@ class _AdminCountriesEidtWidgetState extends State<AdminCountriesEidtWidget> {
             ),
           );
         }
-        final containerCountriesRecord = snapshot.data!;
+        List<CountriesRow> containerCountriesRowList = snapshot.data!;
+        final containerCountriesRow = containerCountriesRowList.isNotEmpty
+            ? containerCountriesRowList.first
+            : null;
         return Container(
           width: double.infinity,
           height: double.infinity,
@@ -85,7 +91,7 @@ class _AdminCountriesEidtWidgetState extends State<AdminCountriesEidtWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Text(
-                  containerCountriesRecord.name,
+                  containerCountriesRow!.name!,
                   style: FlutterFlowTheme.of(context).titleMedium,
                 ),
                 Padding(
@@ -97,7 +103,7 @@ class _AdminCountriesEidtWidgetState extends State<AdminCountriesEidtWidget> {
                         child: TextFormField(
                           controller: _model.englishNameTFController ??=
                               TextEditingController(
-                            text: containerCountriesRecord.name,
+                            text: containerCountriesRow?.name,
                           ),
                           autofocus: true,
                           obscureText: false,
@@ -174,7 +180,7 @@ class _AdminCountriesEidtWidgetState extends State<AdminCountriesEidtWidget> {
                         child: TextFormField(
                           controller: _model.arabicNameTFController ??=
                               TextEditingController(
-                            text: containerCountriesRecord.nameAr,
+                            text: containerCountriesRow?.nameAr,
                           ),
                           autofocus: true,
                           obscureText: false,
@@ -250,7 +256,7 @@ class _AdminCountriesEidtWidgetState extends State<AdminCountriesEidtWidget> {
                       Expanded(
                         child: SwitchListTile.adaptive(
                           value: _model.activeCountryTLValue ??=
-                              containerCountriesRecord.isActive,
+                              containerCountriesRow!.isActive,
                           onChanged: (newValue) async {
                             setState(
                                 () => _model.activeCountryTLValue = newValue!);
@@ -281,12 +287,17 @@ class _AdminCountriesEidtWidgetState extends State<AdminCountriesEidtWidget> {
                       Expanded(
                         child: FFButtonWidget(
                           onPressed: () async {
-                            await widget.countrieRef!
-                                .update(createCountriesRecordData(
-                              name: _model.englishNameTFController.text,
-                              nameAr: _model.arabicNameTFController.text,
-                              isActive: _model.activeCountryTLValue,
-                            ));
+                            await CountriesTable().update(
+                              data: {
+                                'name': _model.englishNameTFController.text,
+                                'nameAr': _model.arabicNameTFController.text,
+                                'isActive': _model.activeCountryTLValue,
+                              },
+                              matchingRows: (rows) => rows.eq(
+                                'id',
+                                widget.countrieID?.id,
+                              ),
+                            );
                             Navigator.pop(context);
                           },
                           text: FFLocalizations.of(context).getText(

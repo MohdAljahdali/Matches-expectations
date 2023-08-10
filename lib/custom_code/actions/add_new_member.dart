@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future<String> addNewMember(
@@ -18,6 +18,8 @@ Future<String> addNewMember(
   String randomDocGen,
 ) async {
   var returnText = '';
+  /*
+ 
   final usersCollection = FirebaseFirestore.instance.collection('users');
   try {
     final credential =
@@ -45,7 +47,7 @@ Future<String> addNewMember(
   } catch (e) {
     print(e);
   }
-  /*
+
   String returnmsg = 'Success';
   //created time variable
   DateTime createdTime = DateTime.now();

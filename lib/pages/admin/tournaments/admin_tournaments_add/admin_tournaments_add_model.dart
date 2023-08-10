@@ -1,5 +1,5 @@
-import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -32,6 +32,8 @@ class AdminTournamentsAddModel extends FlutterFlowModel {
   // State field(s) for seasonDD widget.
   String? seasonDDValue2;
   FormFieldController<String>? seasonDDValueController2;
+  // Stores action output result for [Backend Call - Insert Row] action in addTournamentMB widget.
+  CountriesRow? fdsf;
 
   /// Initialization and disposal methods.
 
