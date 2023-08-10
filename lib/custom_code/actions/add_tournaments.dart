@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:js_interop';
 
 import 'index.dart'; // Imports other custom actions
@@ -54,35 +56,30 @@ Future<String> addTournaments(
             .single();
 
         if (tournamentData.isNull) {
-          TournamentRow tournamentInsertRow = await supabase
-              .from('Tournament')
-              .insert({
-                'tournamentCode':
-                    int.parse(tournament['league']['id'].toString()),
-                'seasonYear': int.parse(seasons['year'].toString()),
-                'seasonStart': seasons['start'].toString(),
-                'seasonEnd': seasons['end'].toString(),
-                'name': tournament['league']['name'].toString(),
-                'nameAr': '-',
-                'type': tournament['league']['type'].toString(),
-                'logo': tournament['league']['logo'].toString(),
-                'countryID': countryData.id,
-                'roleHomeWin': true,
-                'roleHomeWinPoints': 3,
-                'roleAwayWin': true,
-                'roleAwayWinPoints': 3,
-                'roleDraw': true,
-                'roleDrawPoints': 1,
-                'roleHomeGoals': true,
-                'roleHomeGoalsPoints': 1,
-                'roleAwayGoals': true,
-                'roleAwayGoalsPoints': 1,
-                'roleHasDoubleMatches': true,
-                'addRandomCode': randomCode,
-                'isActive': false,
-              })
-              .select()
-              .single();
+          TournamentRow tournamentInsertRow = await TournamentTable().insert({
+            'tournamentCode': int.parse(tournament['league']['id'].toString()),
+            'seasonYear': int.parse(seasons['year'].toString()),
+            'seasonStart': seasons['start'].toString(),
+            'seasonEnd': seasons['end'].toString(),
+            'name': tournament['league']['name'].toString(),
+            'nameAr': '-',
+            'type': tournament['league']['type'].toString(),
+            'logo': tournament['league']['logo'].toString(),
+            'countryID': countryData.id,
+            'roleHomeWin': true,
+            'roleHomeWinPoints': 3,
+            'roleAwayWin': true,
+            'roleAwayWinPoints': 3,
+            'roleDraw': true,
+            'roleDrawPoints': 1,
+            'roleHomeGoals': true,
+            'roleHomeGoalsPoints': 1,
+            'roleAwayGoals': true,
+            'roleAwayGoalsPoints': 1,
+            'roleHasDoubleMatches': true,
+            'addRandomCode': randomCode,
+            'isActive': false,
+          });
 
           if (tournamentInsertRow.data.isNotEmpty) {
             var teamsrequest = http.Request(
@@ -102,17 +99,13 @@ Future<String> addTournaments(
                     .eq('id', int.parse(team['team']['id'].toString()))
                     .single();
                 if (teamsData.data.isEmpty) {
-                  TeamsRow teamInsertRow = await supabase
-                      .from('Teams')
-                      .insert({
-                        'id': int.parse(team['team']['id'].toString()),
-                        'name': team['team']['name'].toString(),
-                        'nameAr': '-',
-                        'code': team['team']['code'].toString(),
-                        'logo': team['team']['logo'].toString(),
-                      })
-                      .select()
-                      .single();
+                  TeamsRow teamInsertRow = await TeamsTable().insert({
+                    'id': int.parse(team['team']['id'].toString()),
+                    'name': team['team']['name'].toString(),
+                    'nameAr': '-',
+                    'code': team['team']['code'].toString(),
+                    'logo': team['team']['logo'].toString(),
+                  });
 
                   if (teamInsertRow.data.isNotEmpty) {
                     TournamentTeamsRow tournamentTeamsData = await supabase
@@ -123,7 +116,7 @@ Future<String> addTournaments(
                         .single();
                     if (tournamentTeamsData.data.isEmpty) {
                       TournamentTeamsRow tournamentTeamsInsertRow =
-                          await supabase.from('TournamentTeams').insert({
+                          await TournamentTeamsTable().insert({
                         'tournamentID': tournamentInsertRow.id,
                         'teamID': teamInsertRow.id,
                       });
@@ -143,7 +136,7 @@ Future<String> addTournaments(
                       .single();
                   if (tournamentTeamsData.data.isEmpty) {
                     TournamentTeamsRow tournamentTeamsInsertRow =
-                        await supabase.from('TournamentTeams').insert({
+                        await TournamentTeamsTable().insert({
                       'tournamentID': tournamentInsertRow.id,
                       'teamID': teamsData.id,
                     });
