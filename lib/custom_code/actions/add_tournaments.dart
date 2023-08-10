@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'index.dart'; // Imports other custom actions
+
+import 'index.dart'; // Imports other custom actions
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
@@ -56,7 +58,7 @@ Future<String> addTournaments(
                 ));
 
         if (TournamentData.isEmpty) {
-          TournamentTable().insert({
+          final tournamentInsert = TournamentTable().insert({
             'tournamentCode': int.parse(tournament['league']['id'].toString()),
             'seasonYear': int.parse(seasons['year'].toString()),
             'seasonStart': seasons['start'].toString(),
@@ -80,6 +82,7 @@ Future<String> addTournaments(
             'addRandomCode': randomCode,
             'isActive': false,
           });
+
           /*
           .then((tournamentvalue) async {
             var teamsrequest = http.Request(

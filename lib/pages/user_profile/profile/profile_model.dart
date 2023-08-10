@@ -14,6 +14,8 @@ class ProfileModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - Insert Row] action in CircleImage widget.
+  TeamsRow? dddddddd;
 
   /// Initialization and disposal methods.
 
