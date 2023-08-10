@@ -58,7 +58,7 @@ Future<String> addTournaments(
                 ));
 
         if (TournamentData.isEmpty) {
-          final tournamentInsert = TournamentTable().insert({
+          TournamentRow? tournamentInsert = await TournamentTable().insert({
             'tournamentCode': int.parse(tournament['league']['id'].toString()),
             'seasonYear': int.parse(seasons['year'].toString()),
             'seasonStart': seasons['start'].toString(),
@@ -82,7 +82,37 @@ Future<String> addTournaments(
             'addRandomCode': randomCode,
             'isActive': false,
           });
+          if (tournamentInsert.id > 0) {
+            var teamsrequest = http.Request(
+                'GET',
+                Uri.parse(
+                    'https://v3.football.api-sports.io/teams?league=${tournamentInsert.tournamentCode.toString()}&season=${tournamentInsert.seasonYear.toString()}'));
+            teamsrequest.headers.addAll(headers);
 
+            http.StreamedResponse response = await teamsrequest.send();
+            if (response.statusCode == 200) {
+              final teamsjson =
+                  convert.jsonDecode(await response.stream.bytesToString());
+              final teamsresponse = teamsjson['response'];
+              teamsresponse.forEach((team) async {
+                final teamsData = await TeamsTable().querySingleRow(
+                    queryFn: (q) => q.eq(
+                          'id',
+                          int.parse(team['team']['id'].toString()),
+                        ));
+                if (teamsData.isEmpty) {
+                  TeamsTable().insert({
+                    'id': int.parse(team['team']['id'].toString()),
+                    'name': team['team']['name'].toString(),
+                    'nameAr': '-',
+                    'code': team['team']['code'].toString(),
+                    'countryID': team['team']['country'].toString(),
+                    'logo': team['team']['logo'].toString(),
+                  });
+                }
+              });
+            }
+          }
           /*
           .then((tournamentvalue) async {
             var teamsrequest = http.Request(
