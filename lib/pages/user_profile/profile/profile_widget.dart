@@ -159,10 +159,46 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 5.0, 0.0, 0.0),
-                                            child: Text(
-                                              columnUsersRow!.name!,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                            child: FutureBuilder<
+                                                List<CountriesRow>>(
+                                              future: CountriesTable()
+                                                  .querySingleRow(
+                                                queryFn: (q) => q.eq(
+                                                  'id',
+                                                  1,
+                                                ),
+                                              ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child:
+                                                          SpinKitFadingCircle(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        size: 50.0,
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                List<CountriesRow>
+                                                    textCountriesRowList =
+                                                    snapshot.data!;
+                                                final textCountriesRow =
+                                                    textCountriesRowList
+                                                            .isNotEmpty
+                                                        ? textCountriesRowList
+                                                            .first
+                                                        : null;
+                                                return Text(
+                                                  columnUsersRow!.name!,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily:
@@ -175,6 +211,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                         context)
                                                                     .bodyMediumFamily),
                                                       ),
+                                                );
+                                              },
                                             ),
                                           ),
                                         ],
