@@ -10,10 +10,6 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'index.dart'; // Imports other custom actions
-
-import 'dart:js_interop';
-
-import 'index.dart'; // Imports other custom actions
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
@@ -22,17 +18,18 @@ Future<String> addTournaments(
   String season,
   String randomCode,
 ) async {
-  final supabase = SupaFlow.client;
   var headers = {
     'x-rapidapi-key': 'ba825d70e7634e7015d2f116c1a07e03',
     'x-rapidapi-host': 'v3.football.api-sports.io'
   };
+
   var tournamentRequest = http.Request(
       'GET',
       Uri.parse(
           'https://v3.football.api-sports.io/leagues?code=${countryCode.toString()}&season=${season.toString()}'));
 //https://v3.football.api-sports.io/teams?code=${code.toString()}&type=${type.toString()}
   tournamentRequest.headers.addAll(headers);
+
   http.StreamedResponse response = await tournamentRequest.send();
 
   if (response.statusCode == 200) {
@@ -42,21 +39,24 @@ Future<String> addTournaments(
 
     tournamentsresponse.forEach((tournament) async {
       tournament['seasons'].forEach((seasons) async {
-        CountriesRow countryData = await supabase
-            .from('Countries')
-            .select('*')
-            .eq('code', countryCode.toString().trim())
-            .single();
-        TournamentRow tournamentData = await supabase
-            .from('Tournament')
-            .select('*')
-            .eq('tournamentCode',
-                int.parse(tournament['league']['id'].toString()))
-            .eq('seasonYear', int.parse(seasons['year'].toString()))
-            .single();
+        final countriesData = await CountriesTable().querySingleRow(
+            queryFn: (q) => q.eq(
+                  'code',
+                  countryCode.toString().trim(),
+                ));
+        final TournamentData = await TournamentTable().querySingleRow(
+            queryFn: (q) => q
+                .eq(
+                  'countryID',
+                  countriesData.single.id,
+                )
+                .eq(
+                  'seasonYear',
+                  int.parse(season.toString().trim()),
+                ));
 
-        if (tournamentData.isNull) {
-          TournamentRow tournamentInsertRow = await TournamentTable().insert({
+        if (TournamentData.isEmpty) {
+          TournamentTable().insert({
             'tournamentCode': int.parse(tournament['league']['id'].toString()),
             'seasonYear': int.parse(seasons['year'].toString()),
             'seasonStart': seasons['start'].toString(),
@@ -65,13 +65,13 @@ Future<String> addTournaments(
             'nameAr': '-',
             'type': tournament['league']['type'].toString(),
             'logo': tournament['league']['logo'].toString(),
-            'countryID': countryData.id,
+            'countryID': countriesData.single.id,
             'roleHomeWin': true,
             'roleHomeWinPoints': 3,
             'roleAwayWin': true,
             'roleAwayWinPoints': 3,
             'roleDraw': true,
-            'roleDrawPoints': 1,
+            'roleDrawPoints': 0,
             'roleHomeGoals': true,
             'roleHomeGoalsPoints': 1,
             'roleAwayGoals': true,
@@ -80,71 +80,71 @@ Future<String> addTournaments(
             'addRandomCode': randomCode,
             'isActive': false,
           });
-
-          if (tournamentInsertRow.data.isNotEmpty) {
+          /*
+          .then((tournamentvalue) async {
             var teamsrequest = http.Request(
                 'GET',
                 Uri.parse(
-                    'https://v3.football.api-sports.io/teams?league=${tournamentInsertRow.tournamentCode.toString()}&season=${tournamentInsertRow.seasonYear.toString()}'));
+                    'https://v3.football.api-sports.io/teams?league=${tournamentvalue.tournamentCode.toString()}&season=${tournamentvalue.seasonYear.toString()}'));
             teamsrequest.headers.addAll(headers);
+
             http.StreamedResponse response = await teamsrequest.send();
             if (response.statusCode == 200) {
               final teamsjson =
                   convert.jsonDecode(await response.stream.bytesToString());
               final teamsresponse = teamsjson['response'];
               teamsresponse.forEach((team) async {
-                TeamsRow teamsData = await supabase
-                    .from('Teams')
-                    .select('*')
-                    .eq('id', int.parse(team['team']['id'].toString()))
-                    .single();
-                if (teamsData.data.isEmpty) {
-                  TeamsRow teamInsertRow = await TeamsTable().insert({
+                final teamsData = await TeamsTable().querySingleRow(
+                    queryFn: (q) => q.eq(
+                          'id',
+                          int.parse(team['team']['id'].toString()),
+                        ));
+                if (teamsData.isEmpty) {
+                  TeamsTable().insert({
                     'id': int.parse(team['team']['id'].toString()),
                     'name': team['team']['name'].toString(),
                     'nameAr': '-',
                     'code': team['team']['code'].toString(),
+                    'countryID': team['team']['country'].toString(),
                     'logo': team['team']['logo'].toString(),
-                  });
-
-                  if (teamInsertRow.data.isNotEmpty) {
-                    TournamentTeamsRow tournamentTeamsData = await supabase
-                        .from('TournamentTeams')
-                        .select('*')
-                        .eq('tournamentID', tournamentInsertRow.id)
-                        .eq('teamID', teamInsertRow.id)
-                        .single();
-                    if (tournamentTeamsData.data.isEmpty) {
-                      TournamentTeamsRow tournamentTeamsInsertRow =
-                          await TournamentTeamsTable().insert({
-                        'tournamentID': tournamentInsertRow.id,
-                        'teamID': teamInsertRow.id,
+                  }).then((teamValue) async {
+                    final tournamentTeamsData =
+                        await TournamentTeamsTable().querySingleRow(
+                      queryFn: (q) => q
+                          .eq(
+                            'tournamentID',
+                            tournamentvalue.id,
+                          )
+                          .eq('teamID', teamValue.id),
+                    );
+                    if (tournamentTeamsData.isEmpty) {
+                      TeamsTable().insert({
+                        'tournamentID': tournamentvalue.id,
+                        'teamID': teamValue.id,
                       });
                     }
-                  }
+                  });
                 } else {
-                  TeamsRow teamsData = await supabase
-                      .from('Teams')
-                      .select('*')
-                      .eq('id', int.parse(team['team']['id'].toString()))
-                      .single();
-                  TournamentTeamsRow tournamentTeamsData = await supabase
-                      .from('TournamentTeams')
-                      .select('*')
-                      .eq('tournamentID', tournamentInsertRow.id)
-                      .eq('teamID', teamsData.id)
-                      .single();
-                  if (tournamentTeamsData.data.isEmpty) {
-                    TournamentTeamsRow tournamentTeamsInsertRow =
-                        await TournamentTeamsTable().insert({
-                      'tournamentID': tournamentInsertRow.id,
-                      'teamID': teamsData.id,
+                  final tournamentTeamsData =
+                      await TournamentTeamsTable().querySingleRow(
+                    queryFn: (q) => q
+                        .eq(
+                          'tournamentID',
+                          tournamentvalue.id,
+                        )
+                        .eq('teamID', teamsData.single.id),
+                  );
+                  if (tournamentTeamsData.isEmpty) {
+                    TeamsTable().insert({
+                      'tournamentID': tournamentvalue.id,
+                      'teamID': teamsData.single.id,
                     });
                   }
                 }
               });
             }
-          }
+          });
+          */
         }
       });
     });
