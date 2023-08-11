@@ -1,9 +1,13 @@
-import '/backend/supabase/supabase.dart';
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/upload_data.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,10 +18,10 @@ export 'admin_tournament_team_edit_model.dart';
 class AdminTournamentTeamEditWidget extends StatefulWidget {
   const AdminTournamentTeamEditWidget({
     Key? key,
-    required this.teamsRow,
+    required this.teamsRef,
   }) : super(key: key);
 
-  final TeamsRow? teamsRow;
+  final DocumentReference? teamsRef;
 
   @override
   _AdminTournamentTeamEditWidgetState createState() =>
@@ -49,13 +53,8 @@ class _AdminTournamentTeamEditWidgetState
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return FutureBuilder<List<TeamsRow>>(
-      future: TeamsTable().querySingleRow(
-        queryFn: (q) => q.eq(
-          'id',
-          widget.teamsRow?.id,
-        ),
-      ),
+    return StreamBuilder<TeamsRecord>(
+      stream: TeamsRecord.getDocument(widget.teamsRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -73,11 +72,7 @@ class _AdminTournamentTeamEditWidgetState
             ),
           );
         }
-        List<TeamsRow> adminTournamentTeamEditTeamsRowList = snapshot.data!;
-        final adminTournamentTeamEditTeamsRow =
-            adminTournamentTeamEditTeamsRowList.isNotEmpty
-                ? adminTournamentTeamEditTeamsRowList.first
-                : null;
+        final adminTournamentTeamEditTeamsRecord = snapshot.data!;
         return GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
@@ -155,7 +150,118 @@ class _AdminTournamentTeamEditWidgetState
                                               hoverColor: Colors.transparent,
                                               highlightColor:
                                                   Colors.transparent,
-                                              onTap: () async {},
+                                              onTap: () async {
+                                                final selectedMedia =
+                                                    await selectMediaWithSourceBottomSheet(
+                                                  context: context,
+                                                  maxWidth: 100.00,
+                                                  maxHeight: 100.00,
+                                                  allowPhoto: true,
+                                                  includeBlurHash: true,
+                                                );
+                                                if (selectedMedia != null &&
+                                                    selectedMedia.every((m) =>
+                                                        validateFileFormat(
+                                                            m.storagePath,
+                                                            context))) {
+                                                  setState(() => _model
+                                                      .isDataUploading = true);
+                                                  var selectedUploadedFiles =
+                                                      <FFUploadedFile>[];
+
+                                                  var downloadUrls = <String>[];
+                                                  try {
+                                                    showUploadMessage(
+                                                      context,
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'y4vkdd6m' /* Uploading File */,
+                                                      ),
+                                                      showLoading: true,
+                                                    );
+                                                    selectedUploadedFiles =
+                                                        selectedMedia
+                                                            .map((m) =>
+                                                                FFUploadedFile(
+                                                                  name: m
+                                                                      .storagePath
+                                                                      .split(
+                                                                          '/')
+                                                                      .last,
+                                                                  bytes:
+                                                                      m.bytes,
+                                                                  height: m
+                                                                      .dimensions
+                                                                      ?.height,
+                                                                  width: m
+                                                                      .dimensions
+                                                                      ?.width,
+                                                                  blurHash: m
+                                                                      .blurHash,
+                                                                ))
+                                                            .toList();
+
+                                                    downloadUrls = (await Future
+                                                            .wait(
+                                                      selectedMedia.map(
+                                                        (m) async =>
+                                                            await uploadData(
+                                                                m.storagePath,
+                                                                m.bytes),
+                                                      ),
+                                                    ))
+                                                        .where((u) => u != null)
+                                                        .map((u) => u!)
+                                                        .toList();
+                                                  } finally {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .hideCurrentSnackBar();
+                                                    _model.isDataUploading =
+                                                        false;
+                                                  }
+                                                  if (selectedUploadedFiles
+                                                              .length ==
+                                                          selectedMedia
+                                                              .length &&
+                                                      downloadUrls.length ==
+                                                          selectedMedia
+                                                              .length) {
+                                                    setState(() {
+                                                      _model.uploadedLocalFile =
+                                                          selectedUploadedFiles
+                                                              .first;
+                                                      _model.uploadedFileUrl =
+                                                          downloadUrls.first;
+                                                    });
+                                                    showUploadMessage(
+                                                        context,
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          'nd0vx833' /*  Success */,
+                                                        ));
+                                                  } else {
+                                                    setState(() {});
+                                                    showUploadMessage(
+                                                        context,
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          '6sqqp824' /* Failed to upload data  */,
+                                                        ));
+                                                    return;
+                                                  }
+                                                }
+
+                                                await adminTournamentTeamEditTeamsRecord
+                                                    .reference
+                                                    .update(
+                                                        createTeamsRecordData(
+                                                  logo: _model.uploadedFileUrl,
+                                                ));
+                                              },
                                               child: Container(
                                                 width: 100.0,
                                                 height: 100.0,
@@ -189,8 +295,8 @@ class _AdminTournamentTeamEditWidgetState
                                                     fadeOutDuration: Duration(
                                                         milliseconds: 500),
                                                     imageUrl:
-                                                        adminTournamentTeamEditTeamsRow!
-                                                            .logo!,
+                                                        adminTournamentTeamEditTeamsRecord
+                                                            .logo,
                                                     width: 100.0,
                                                     height: 100.0,
                                                     fit: BoxFit.cover,
@@ -377,8 +483,8 @@ class _AdminTournamentTeamEditWidgetState
                                                           .nameEnTFController ??=
                                                       TextEditingController(
                                                     text:
-                                                        adminTournamentTeamEditTeamsRow
-                                                            ?.name,
+                                                        adminTournamentTeamEditTeamsRecord
+                                                            .name,
                                                   ),
                                                   autofocus: true,
                                                   obscureText: false,
@@ -519,8 +625,8 @@ class _AdminTournamentTeamEditWidgetState
                                                           .nameArTFController ??=
                                                       TextEditingController(
                                                     text:
-                                                        adminTournamentTeamEditTeamsRow
-                                                            ?.nameAr,
+                                                        adminTournamentTeamEditTeamsRecord
+                                                            .nameAr,
                                                   ),
                                                   autofocus: true,
                                                   obscureText: false,
@@ -640,20 +746,13 @@ class _AdminTournamentTeamEditWidgetState
                                         0.0, 5.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        await TeamsTable().update(
-                                          data: {
-                                            'name':
-                                                _model.nameEnTFController.text,
-                                            'nameAr':
-                                                adminTournamentTeamEditTeamsRow
-                                                    ?.nameAr,
-                                            'code': '',
-                                          },
-                                          matchingRows: (rows) => rows.eq(
-                                            'id',
-                                            widget.teamsRow?.id,
-                                          ),
-                                        );
+                                        await adminTournamentTeamEditTeamsRecord
+                                            .reference
+                                            .update(createTeamsRecordData(
+                                          name: _model.nameEnTFController.text,
+                                          nameAr:
+                                              _model.nameArTFController.text,
+                                        ));
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(

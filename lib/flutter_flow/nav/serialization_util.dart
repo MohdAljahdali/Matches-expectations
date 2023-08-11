@@ -5,7 +5,6 @@ import 'package:from_css_color/from_css_color.dart';
 
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/backend/supabase/supabase.dart';
 
 import '../../flutter_flow/lat_lng.dart';
 import '../../flutter_flow/place.dart';
@@ -93,9 +92,6 @@ String? serializeParam(
 
       case ParamType.DataStruct:
         return param is BaseStruct ? param.serialize() : null;
-
-      case ParamType.SupabaseRow:
-        return json.encode((param as SupabaseDataRow).data);
 
       default:
         return null;
@@ -186,7 +182,6 @@ enum ParamType {
   Document,
   DocumentReference,
   DataStruct,
-  SupabaseRow,
 }
 
 dynamic deserializeParam<T>(
@@ -247,23 +242,6 @@ dynamic deserializeParam<T>(
         return json.decode(param);
       case ParamType.DocumentReference:
         return _deserializeDocumentReference(param, collectionNamePath ?? []);
-
-      case ParamType.SupabaseRow:
-        final data = json.decode(param) as Map<String, dynamic>;
-        switch (T) {
-          case TournamentRow:
-            return TournamentRow(data);
-          case CountriesRow:
-            return CountriesRow(data);
-          case TeamsRow:
-            return TeamsRow(data);
-          case UsersRow:
-            return UsersRow(data);
-          case TournamentTeamsRow:
-            return TournamentTeamsRow(data);
-          default:
-            return null;
-        }
 
       case ParamType.DataStruct:
         final data = json.decode(param) as Map<String, dynamic>? ?? {};

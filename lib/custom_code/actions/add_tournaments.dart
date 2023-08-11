@@ -1,7 +1,6 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
@@ -12,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'index.dart'; // Imports other custom actions
 
 import 'index.dart'; // Imports other custom actions
+
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
@@ -20,6 +20,10 @@ Future<String> addTournaments(
   String season,
   String randomCode,
 ) async {
+  final firestore = FirebaseFirestore.instance;
+  final TournamentsDoc = TournamentsRecord.collection;
+  final TeamsDoc = TeamsRecord.collection;
+
   var headers = {
     'x-rapidapi-key': 'ba825d70e7634e7015d2f116c1a07e03',
     'x-rapidapi-host': 'v3.football.api-sports.io'
@@ -41,144 +45,96 @@ Future<String> addTournaments(
 
     tournamentsresponse.forEach((tournament) async {
       tournament['seasons'].forEach((seasons) async {
-        final countriesData = await CountriesTable().querySingleRow(
-            queryFn: (q) => q.eq(
-                  'code',
-                  countryCode.toString().trim(),
-                ));
-        final TournamentData = await TournamentTable().querySingleRow(
-            queryFn: (q) => q
-                .eq(
-                  'countryID',
-                  countriesData.single.id,
-                )
-                .eq(
-                  'seasonYear',
-                  int.parse(season.toString().trim()),
-                ));
+        String tournamentRefID =
+            tournament['league']['id'].toString() + seasons['year'].toString();
+        await TournamentsDoc.doc(tournamentRefID)
+            .get()
+            .then((DocumentSnapshot doc) {
+          if (!doc.exists) {
+            TournamentsDoc.doc(tournamentRefID)
+                .set(createTournamentsRecordData(
+              tournamentsID: int.parse(tournament['league']['id'].toString()),
+              tournamentsRef: tournamentRefID,
+              seasonYear: int.parse(seasons['year'].toString()),
+              seasonStart: seasons['start'].toString(),
+              seasonEnd: seasons['end'].toString(),
+              name: tournament['league']['name'].toString(),
+              nameAr: '-',
+              type: tournament['league']['type'].toString(),
+              logo: tournament['league']['logo'].toString(),
+              countryName: tournament['country']['name'].toString(),
+              countryCode: tournament['country']['code'].toString(),
+              countryFlog: tournament['country']['flag'].toString(),
+              roleHomeWin: true,
+              roleHomeWinPoints: 3,
+              roleAwayWin: true,
+              roleAwayWinPoints: 3,
+              roleDraw: true,
+              roleDrawPoints: 0,
+              roleHomeGoals: true,
+              roleHomeGoalsPoints: 1,
+              roleAwayGoals: true,
+              roleAwayGoalsPoints: 1,
+              roleHasDoubleMatches: true,
+              addRandomCode: randomCode,
+              isActive: false,
+            ))
+                .then((value) async {
+              await TournamentsRecord.getDocumentOnce(
+                      firestore.doc('Tournaments/$tournamentRefID'))
+                  .then((tournamentDoc) async {
+                var teamsrequest = http.Request(
+                    'GET',
+                    Uri.parse(
+                        'https://v3.football.api-sports.io/teams?league=${tournamentDoc.tournamentsID.toString()}&season=${tournamentDoc.seasonYear.toString()}'));
+                teamsrequest.headers.addAll(headers);
 
-        if (TournamentData.isEmpty) {
-          TournamentRow? tournamentInsert = await TournamentTable().insert({
-            'tournamentCode': int.parse(tournament['league']['id'].toString()),
-            'seasonYear': int.parse(seasons['year'].toString()),
-            'seasonStart': seasons['start'].toString(),
-            'seasonEnd': seasons['end'].toString(),
-            'name': tournament['league']['name'].toString(),
-            'nameAr': '-',
-            'type': tournament['league']['type'].toString(),
-            'logo': tournament['league']['logo'].toString(),
-            'countryID': countriesData.single.id,
-            'roleHomeWin': true,
-            'roleHomeWinPoints': 3,
-            'roleAwayWin': true,
-            'roleAwayWinPoints': 3,
-            'roleDraw': true,
-            'roleDrawPoints': 0,
-            'roleHomeGoals': true,
-            'roleHomeGoalsPoints': 1,
-            'roleAwayGoals': true,
-            'roleAwayGoalsPoints': 1,
-            'roleHasDoubleMatches': true,
-            'addRandomCode': randomCode,
-            'isActive': false,
-          });
-          if (tournamentInsert.id > 0) {
-            var teamsrequest = http.Request(
-                'GET',
-                Uri.parse(
-                    'https://v3.football.api-sports.io/teams?league=${tournamentInsert.tournamentCode.toString()}&season=${tournamentInsert.seasonYear.toString()}'));
-            teamsrequest.headers.addAll(headers);
-
-            http.StreamedResponse response = await teamsrequest.send();
-            if (response.statusCode == 200) {
-              final teamsjson =
-                  convert.jsonDecode(await response.stream.bytesToString());
-              final teamsresponse = teamsjson['response'];
-              teamsresponse.forEach((team) async {
-                final teamsData = await TeamsTable().querySingleRow(
-                    queryFn: (q) => q.eq(
-                          'id',
-                          int.parse(team['team']['id'].toString()),
-                        ));
-                if (teamsData.isEmpty) {
-                  TeamsTable().insert({
-                    'id': int.parse(team['team']['id'].toString()),
-                    'name': team['team']['name'].toString(),
-                    'nameAr': '-',
-                    'code': team['team']['code'].toString(),
-                    'countryID': team['team']['country'].toString(),
-                    'logo': team['team']['logo'].toString(),
-                  });
-                }
-              });
-            }
-          }
-          /*
-          .then((tournamentvalue) async {
-            var teamsrequest = http.Request(
-                'GET',
-                Uri.parse(
-                    'https://v3.football.api-sports.io/teams?league=${tournamentvalue.tournamentCode.toString()}&season=${tournamentvalue.seasonYear.toString()}'));
-            teamsrequest.headers.addAll(headers);
-
-            http.StreamedResponse response = await teamsrequest.send();
-            if (response.statusCode == 200) {
-              final teamsjson =
-                  convert.jsonDecode(await response.stream.bytesToString());
-              final teamsresponse = teamsjson['response'];
-              teamsresponse.forEach((team) async {
-                final teamsData = await TeamsTable().querySingleRow(
-                    queryFn: (q) => q.eq(
-                          'id',
-                          int.parse(team['team']['id'].toString()),
-                        ));
-                if (teamsData.isEmpty) {
-                  TeamsTable().insert({
-                    'id': int.parse(team['team']['id'].toString()),
-                    'name': team['team']['name'].toString(),
-                    'nameAr': '-',
-                    'code': team['team']['code'].toString(),
-                    'countryID': team['team']['country'].toString(),
-                    'logo': team['team']['logo'].toString(),
-                  }).then((teamValue) async {
-                    final tournamentTeamsData =
-                        await TournamentTeamsTable().querySingleRow(
-                      queryFn: (q) => q
-                          .eq(
-                            'tournamentID',
-                            tournamentvalue.id,
-                          )
-                          .eq('teamID', teamValue.id),
-                    );
-                    if (tournamentTeamsData.isEmpty) {
-                      TeamsTable().insert({
-                        'tournamentID': tournamentvalue.id,
-                        'teamID': teamValue.id,
-                      });
-                    }
-                  });
-                } else {
-                  final tournamentTeamsData =
-                      await TournamentTeamsTable().querySingleRow(
-                    queryFn: (q) => q
-                        .eq(
-                          'tournamentID',
-                          tournamentvalue.id,
-                        )
-                        .eq('teamID', teamsData.single.id),
-                  );
-                  if (tournamentTeamsData.isEmpty) {
-                    TeamsTable().insert({
-                      'tournamentID': tournamentvalue.id,
-                      'teamID': teamsData.single.id,
+                http.StreamedResponse response = await teamsrequest.send();
+                if (response.statusCode == 200) {
+                  final teamsjson =
+                      convert.jsonDecode(await response.stream.bytesToString());
+                  final teamsresponse = teamsjson['response'];
+                  teamsresponse.forEach((team) async {
+                    String teamRefID = team['team']['id'].toString();
+                    await TeamsDoc.doc(teamRefID).get().then((doc) {
+                      if (!doc.exists) {
+                        TeamsDoc.doc(teamRefID)
+                            .set(createTeamsRecordData(
+                          teamRef: teamRefID,
+                          teamID: int.parse(teamRefID),
+                          name: team['team']['name'].toString(),
+                          nameAr: '-',
+                          code: team['team']['code'].toString(),
+                          country: team['team']['country'].toString(),
+                          logo: team['team']['logo'].toString(),
+                        ))
+                            .then((value) async {
+                          await TeamsRecord.getDocumentOnce(
+                                  firestore.doc('Teams/$teamRefID'))
+                              .then((teamDoc) async {
+                            await TournamentsDoc.doc(tournamentRefID).update({
+                              'teamsList':
+                                  FieldValue.arrayUnion([teamDoc.reference])
+                            });
+                          });
+                        });
+                      } else {
+                        TeamsRecord.getDocumentOnce(
+                                firestore.doc('Teams/$teamRefID'))
+                            .then((teamDoc) async {
+                          await TournamentsDoc.doc(tournamentRefID).update({
+                            'teamsList':
+                                FieldValue.arrayUnion([teamDoc.reference])
+                          });
+                        });
+                      }
                     });
-                  }
+                  });
                 }
               });
-            }
-          });
-          */
-        }
+            });
+          }
+        });
       });
     });
   } else {}

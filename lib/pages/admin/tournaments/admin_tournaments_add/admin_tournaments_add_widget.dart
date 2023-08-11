@@ -1,5 +1,5 @@
+import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -177,13 +177,14 @@ class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
                                             ),
-                                            FutureBuilder<List<CountriesRow>>(
-                                              future:
-                                                  CountriesTable().queryRows(
-                                                queryFn: (q) => q.eq(
-                                                  'isActive',
-                                                  true,
-                                                ),
+                                            StreamBuilder<
+                                                List<CountriesRecord>>(
+                                              stream: queryCountriesRecord(
+                                                queryBuilder:
+                                                    (countriesRecord) =>
+                                                        countriesRecord.where(
+                                                            'isActive',
+                                                            isEqualTo: true),
                                               ),
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.
@@ -203,8 +204,8 @@ class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
                                                     ),
                                                   );
                                                 }
-                                                List<CountriesRow>
-                                                    countryCodeDDCountriesRowList =
+                                                List<CountriesRecord>
+                                                    countryCodeDDCountriesRecordList =
                                                     snapshot.data!;
                                                 return FlutterFlowDropDown<
                                                     String>(
@@ -213,21 +214,18 @@ class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
                                                       FormFieldController<
                                                           String>(null),
                                                   options:
-                                                      countryCodeDDCountriesRowList
+                                                      countryCodeDDCountriesRecordList
                                                           .map((e) => e.code)
-                                                          .withoutNulls
                                                           .toList(),
                                                   optionLabels: FFLocalizations
                                                                   .of(context)
                                                               .languageCode ==
                                                           'en'
-                                                      ? countryCodeDDCountriesRowList
+                                                      ? countryCodeDDCountriesRecordList
                                                           .map((e) => e.name)
-                                                          .withoutNulls
                                                           .toList()
-                                                      : countryCodeDDCountriesRowList
+                                                      : countryCodeDDCountriesRecordList
                                                           .map((e) => e.nameAr)
-                                                          .withoutNulls
                                                           .toList(),
                                                   onChanged: (val) => setState(
                                                       () => _model
@@ -401,23 +399,15 @@ class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
                                                 true,
                                               ),
                                             );
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  _model.addTournamentResp!,
-                                                  style: TextStyle(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                  ),
+
+                                            context.pushNamed(
+                                              'adminTournamentsAddList',
+                                              queryParameters: {
+                                                'randomCode': serializeParam(
+                                                  _model.addTournamentResp,
+                                                  ParamType.String,
                                                 ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondary,
-                                              ),
+                                              }.withoutNulls,
                                             );
 
                                             setState(() {});
@@ -739,13 +729,9 @@ class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
                                         child: FFButtonWidget(
-                                          onPressed: () async {
-                                            _model.fdsf =
-                                                await CountriesTable().insert({
-                                              'id': 342,
-                                            });
-
-                                            setState(() {});
+                                          onPressed: () {
+                                            print(
+                                                'addTournamentMB pressed ...');
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(

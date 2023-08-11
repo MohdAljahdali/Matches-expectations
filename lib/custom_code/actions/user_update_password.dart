@@ -1,7 +1,6 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
@@ -12,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:math' as math;
 
-//import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future<String> userUpdatePassword(
@@ -22,7 +21,6 @@ Future<String> userUpdatePassword(
   String currentLanguage,
 ) async {
   String massagere = '';
-  /*
   var currentUser = FirebaseAuth.instance.currentUser;
 
   if (currentUser != null) {
@@ -55,8 +53,6 @@ Future<String> userUpdatePassword(
   } else {
     massagere = errorMassage(currentLanguage, 10005);
   }
-
-*/
   return massagere;
 }
 

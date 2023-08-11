@@ -430,10 +430,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Admin control',
       'ar': 'تحكم الاداري',
     },
-    'vs9slu05': {
-      'en': 'Hello World',
-      'ar': '',
-    },
     '8n30lm2h': {
       'en': 'Log out',
       'ar': 'تسجيل خروج',
@@ -1026,10 +1022,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': ' : ',
       'ar': ' : ',
     },
-    'dxj5ntpu': {
-      'en': 'Country',
-      'ar': '',
-    },
     'rorq2dwr': {
       'en': 'Code',
       'ar': 'الكود',
@@ -1180,21 +1172,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Home
   {
-    'jytml6rk': {
-      'en': 'Hello World',
-      'ar': '',
+    'sn71fbwo': {
+      'en': 'Current requests ',
+      'ar': 'الطلبات الحالية',
     },
-    'kv444ek0': {
-      'en': 'A',
-      'ar': '',
+    'oae9gsnp': {
+      'en': ' of ',
+      'ar': 'من',
     },
-    'tmzg7unc': {
-      'en': 'A',
-      'ar': '',
+    'jle2nucz': {
+      'en': ' request',
+      'ar': 'طلب',
     },
-    'lhopuwtx': {
-      'en': '2',
-      'ar': '',
+    'n2hwqhr1': {
+      'en': 'Update',
+      'ar': 'تحديث',
     },
     'fjk1p3jb': {
       'en': '0',

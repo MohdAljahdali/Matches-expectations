@@ -61,7 +61,7 @@ class ApiSportsStatusCall {
   static Future<ApiCallResponse> call() {
     return ApiManager.instance.makeApiCall(
       callName: 'ApiSportsStatus',
-      apiUrl: 'https://v3.football.api-sports.io/countries',
+      apiUrl: 'https://v3.football.api-sports.io/status',
       callType: ApiCallType.GET,
       headers: {
         'x-rapidapi-key': 'ba825d70e7634e7015d2f116c1a07e03',
@@ -78,6 +78,10 @@ class ApiSportsStatusCall {
   static dynamic current(dynamic response) => getJsonField(
         response,
         r'''$.response.requests.current''',
+      );
+  static dynamic limitDay(dynamic response) => getJsonField(
+        response,
+        r'''$.response.requests.limit_day''',
       );
 }
 

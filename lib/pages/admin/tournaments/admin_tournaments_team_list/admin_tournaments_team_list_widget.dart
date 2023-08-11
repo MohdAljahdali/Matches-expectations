@@ -1,10 +1,11 @@
+import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:styled_divider/styled_divider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -17,10 +18,10 @@ export 'admin_tournaments_team_list_model.dart';
 class AdminTournamentsTeamListWidget extends StatefulWidget {
   const AdminTournamentsTeamListWidget({
     Key? key,
-    required this.tournamentRow,
+    required this.tournamentRef,
   }) : super(key: key);
 
-  final TournamentRow? tournamentRow;
+  final DocumentReference? tournamentRef;
 
   @override
   _AdminTournamentsTeamListWidgetState createState() =>
@@ -104,13 +105,8 @@ class _AdminTournamentsTeamListWidgetState
             builder: (context) {
               return SafeArea(
                 top: false,
-                child: FutureBuilder<List<TournamentRow>>(
-                  future: TournamentTable().querySingleRow(
-                    queryFn: (q) => q.eq(
-                      'id',
-                      widget.tournamentRow?.id,
-                    ),
-                  ),
+                child: StreamBuilder<TournamentsRecord>(
+                  stream: TournamentsRecord.getDocument(widget.tournamentRef!),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -125,12 +121,7 @@ class _AdminTournamentsTeamListWidgetState
                         ),
                       );
                     }
-                    List<TournamentRow> columnTournamentRowList =
-                        snapshot.data!;
-                    final columnTournamentRow =
-                        columnTournamentRowList.isNotEmpty
-                            ? columnTournamentRowList.first
-                            : null;
+                    final columnTournamentsRecord = snapshot.data!;
                     return SingleChildScrollView(
                       primary: false,
                       child: Column(
@@ -251,52 +242,27 @@ class _AdminTournamentsTeamListWidgetState
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 5.0, 10.0, 0.0),
-                            child: FutureBuilder<List<TournamentTeamsRow>>(
-                              future: TournamentTeamsTable().queryRows(
-                                queryFn: (q) => q.eq(
-                                  'tournamentID',
-                                  widget.tournamentRow?.id,
-                                ),
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: SpinKitFadingCircle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        size: 50.0,
-                                      ),
-                                    ),
-                                  );
-                                }
-                                List<TournamentTeamsRow>
-                                    listViewTournamentTeamsRowList =
-                                    snapshot.data!;
+                            child: Builder(
+                              builder: (context) {
+                                final teamsList = columnTournamentsRecord
+                                    .teamsList
+                                    .map((e) => e)
+                                    .toList();
                                 return ListView.builder(
                                   padding: EdgeInsets.zero,
                                   primary: false,
                                   shrinkWrap: true,
                                   scrollDirection: Axis.vertical,
-                                  itemCount:
-                                      listViewTournamentTeamsRowList.length,
-                                  itemBuilder: (context, listViewIndex) {
-                                    final listViewTournamentTeamsRow =
-                                        listViewTournamentTeamsRowList[
-                                            listViewIndex];
+                                  itemCount: teamsList.length,
+                                  itemBuilder: (context, teamsListIndex) {
+                                    final teamsListItem =
+                                        teamsList[teamsListIndex];
                                     return Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 6.0),
-                                      child: FutureBuilder<List<TeamsRow>>(
-                                        future: TeamsTable().querySingleRow(
-                                          queryFn: (q) => q.eq(
-                                            'id',
-                                            listViewTournamentTeamsRow.id,
-                                          ),
-                                        ),
+                                      child: StreamBuilder<TeamsRecord>(
+                                        stream: TeamsRecord.getDocument(
+                                            teamsListItem),
                                         builder: (context, snapshot) {
                                           // Customize what your widget looks like when it's loading.
                                           if (!snapshot.hasData) {
@@ -313,12 +279,8 @@ class _AdminTournamentsTeamListWidgetState
                                               ),
                                             );
                                           }
-                                          List<TeamsRow> card11TeamsRowList =
+                                          final card11TeamsRecord =
                                               snapshot.data!;
-                                          final card11TeamsRow =
-                                              card11TeamsRowList.isNotEmpty
-                                                  ? card11TeamsRowList.first
-                                                  : null;
                                           return Container(
                                             width: double.infinity,
                                             decoration: BoxDecoration(
@@ -398,8 +360,8 @@ class _AdminTournamentsTeamListWidgetState
                                                                   milliseconds:
                                                                       500),
                                                           imageUrl:
-                                                              card11TeamsRow!
-                                                                  .logo!,
+                                                              card11TeamsRecord
+                                                                  .logo,
                                                           width: 90.0,
                                                           height: 90.0,
                                                           fit: BoxFit.cover,
@@ -431,26 +393,22 @@ class _AdminTournamentsTeamListWidgetState
                                                                       .max,
                                                               children: [
                                                                 Text(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    () {
-                                                                      if (FFLocalizations.of(context)
-                                                                              .languageCode ==
-                                                                          'en') {
-                                                                        return card11TeamsRow
-                                                                            ?.name;
-                                                                      } else if (FFLocalizations.of(context)
-                                                                              .languageCode ==
-                                                                          'ar') {
-                                                                        return card11TeamsRow
-                                                                            ?.nameAr;
-                                                                      } else {
-                                                                        return card11TeamsRow
-                                                                            ?.name;
-                                                                      }
-                                                                    }(),
-                                                                    'Nmae',
-                                                                  ),
+                                                                  () {
+                                                                    if (FFLocalizations.of(context)
+                                                                            .languageCode ==
+                                                                        'en') {
+                                                                      return card11TeamsRecord
+                                                                          .name;
+                                                                    } else if (FFLocalizations.of(context)
+                                                                            .languageCode ==
+                                                                        'ar') {
+                                                                      return card11TeamsRecord
+                                                                          .nameAr;
+                                                                    } else {
+                                                                      return card11TeamsRecord
+                                                                          .name;
+                                                                    }
+                                                                  }(),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium,
@@ -504,9 +462,7 @@ class _AdminTournamentsTeamListWidgetState
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                 ),
                                                                                 TextSpan(
-                                                                                  text: FFLocalizations.of(context).getText(
-                                                                                    'dxj5ntpu' /* Country */,
-                                                                                  ),
+                                                                                  text: card11TeamsRecord.country,
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                 )
                                                                               ],
@@ -535,7 +491,7 @@ class _AdminTournamentsTeamListWidgetState
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                 ),
                                                                                 TextSpan(
-                                                                                  text: card11TeamsRow!.code!,
+                                                                                  text: card11TeamsRecord.code,
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                 )
                                                                               ],
@@ -575,11 +531,12 @@ class _AdminTournamentsTeamListWidgetState
                                                                       'adminTournamentTeamEdit',
                                                                       queryParameters:
                                                                           {
-                                                                        'teamsRow':
+                                                                        'teamsRef':
                                                                             serializeParam(
-                                                                          card11TeamsRow,
+                                                                          card11TeamsRecord
+                                                                              .reference,
                                                                           ParamType
-                                                                              .SupabaseRow,
+                                                                              .DocumentReference,
                                                                         ),
                                                                       }.withoutNulls,
                                                                     );

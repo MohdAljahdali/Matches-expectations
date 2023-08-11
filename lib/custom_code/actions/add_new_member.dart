@@ -1,7 +1,6 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
@@ -9,7 +8,7 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-//import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future<String> addNewMember(
@@ -18,8 +17,6 @@ Future<String> addNewMember(
   String randomDocGen,
 ) async {
   var returnText = '';
-  /*
- 
   final usersCollection = FirebaseFirestore.instance.collection('users');
   try {
     final credential =
@@ -47,7 +44,7 @@ Future<String> addNewMember(
   } catch (e) {
     print(e);
   }
-
+  /*
   String returnmsg = 'Success';
   //created time variable
   DateTime createdTime = DateTime.now();
