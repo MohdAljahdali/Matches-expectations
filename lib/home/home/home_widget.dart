@@ -53,7 +53,7 @@ class _HomeWidgetState extends State<HomeWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(10.0, 60.0, 10.0, 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [

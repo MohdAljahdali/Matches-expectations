@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'index.dart'; // Imports other custom actions
+
+import 'index.dart'; // Imports other custom actions
 import 'dart:math' as math;
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
@@ -61,9 +63,9 @@ Future<String> updateMatches(String tournamentCode) async {
               scorePenaltyHome: matche['score']['penalty']['home'],
               scorePenaltyAway: matche['score']['penalty']['away'],
             ));
-            await MatchStandingsRecord.getDocumentOnce(
-                    firestore.doc('MatchStandings/${matcheDoc.id}'))
-                .then((matchStandingsDoc) async {
+            await MatchesRecord.getDocumentOnce(
+                    firestore.doc('Matches/${matcheDoc.id}'))
+                .then((matchesDoc) async {
               Stream<List<MatchStandingsRecord>> matchStandingsSDoc =
                   queryMatchStandingsRecord(
                       queryBuilder: (matchStandingsRecord) =>
@@ -81,25 +83,25 @@ Future<String> updateMatches(String tournamentCode) async {
                 var bDrawPoints = 0;
                 var bTotalPoints = 0;
                 if (userHomeGoals == fixtureGoalsHome) {
-                  bHomeGoalsPoints = matchStandingsDoc.homeGoalsPoints;
+                  bHomeGoalsPoints = matchesDoc.tournamentroleHomeGoalsPoints;
                 } else {
                   bHomeGoalsPoints = 0;
                 }
                 if (userAwayGoals == fixtureGoalsAway) {
-                  bAwayGoalsPoints = matchStandingsDoc.awayGoalsPoints;
+                  bAwayGoalsPoints = matchesDoc.tournamentroleAwayGoalsPoints;
                 } else {
                   bAwayGoalsPoints = 0;
                 }
                 bTotalGoalsPoints = bHomeGoalsPoints + bAwayGoalsPoints;
                 if (userHomeGoals > userAwayGoals &&
                     fixtureGoalsHome > fixtureGoalsAway) {
-                  bWonPoints = matchStandingsDoc.wonPoints;
+                  bWonPoints = matchesDoc.tournamentroleHomeWinPoints;
                 } else if (userHomeGoals < userAwayGoals &&
                     fixtureGoalsHome < fixtureGoalsAway) {
-                  bWonPoints = matchStandingsDoc.wonPoints;
+                  bWonPoints = matchesDoc.tournamentroleAwayWinPoints;
                 } else if (userHomeGoals == userAwayGoals &&
                     fixtureGoalsHome == fixtureGoalsAway) {
-                  bDrawPoints = matchStandingsDoc.drawPoints;
+                  bDrawPoints = matchesDoc.tournamentroleDrawPoints;
                 } else {
                   bWonPoints = 0;
                   bDrawPoints = 0;
