@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:math' as math;
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
@@ -33,77 +35,81 @@ Future<String> updateMatches(String tournamentRef) async {
           convert.jsonDecode(await response.stream.bytesToString());
       final Matchesresponse = Matchesjson['response'];
       Matchesresponse.forEach((matche) async {
-        await TeamsRecord.getDocumentOnce(firestore
-                .doc('Teams/' + matche['teams']['home']['id'].toString()))
-            .then((teamHomeDoc) async {
-          await TeamsRecord.getDocumentOnce(firestore
-                  .doc('Teams/' + matche['teams']['away']['id'].toString()))
-              .then((teamAwayDoc) async {
-            await MatchesCol.doc(matche['fixture']['id'].toString())
-                .get()
-                .then((matcheDoc) {
-              if (!matcheDoc.exists) {
-                matcheDoc.reference.set(createMatchesRecordData(
-                  matcheID: matche['fixture']['id'].toString(),
-                  fixtureDate: DateTime.parse(
-                      matche['fixture']['date'].toString().trim()),
-                  fixtureTimestamp: int.parse(
-                      matche['fixture']['timestamp'].toString().trim()),
-                  fixtureIsDouble: false,
-                  tournamentRef: tournamentDoc.reference,
-                  tournamentID: tournamentDoc.reference.id,
-                  tournamentseasonYear: tournamentDoc.seasonYear.toString(),
-                  tournamentName: tournamentDoc.name,
-                  tournamentNameAr: tournamentDoc.nameAr,
-                  tournamentType: tournamentDoc.type,
-                  tournamentLogo: tournamentDoc.logo,
-                  tournamentroleHomeWin: tournamentDoc.roleHomeWin,
-                  tournamentroleHomeWinPoints: tournamentDoc.roleHomeWinPoints,
-                  tournamentroleAwayWin: tournamentDoc.roleAwayWin,
-                  tournamentroleAwayWinPoints: tournamentDoc.roleAwayWinPoints,
-                  tournamentroleDraw: tournamentDoc.roleDraw,
-                  tournamentroleDrawPoints: tournamentDoc.roleDrawPoints,
-                  tournamentroleHomeGoals: tournamentDoc.roleHomeGoals,
-                  tournamentroleHomeGoalsPoints:
-                      tournamentDoc.roleHomeGoalsPoints,
-                  tournamentroleAwayGoals: tournamentDoc.roleAwayGoals,
-                  tournamentroleAwayGoalsPoints:
-                      tournamentDoc.roleAwayGoalsPoints,
-                  teamHomeRef: teamHomeDoc.reference,
-                  teamHomeName: teamHomeDoc.name,
-                  teamHomeNameAr: teamHomeDoc.nameAr,
-                  teamHomeCode: teamHomeDoc.code,
-                  teamHomeLogo: teamHomeDoc.logo,
-                  teamAwayRef: teamAwayDoc.reference,
-                  teamAwayName: teamAwayDoc.name,
-                  teamAwayNameAr: teamAwayDoc.nameAr,
-                  teamAwayCode: teamAwayDoc.code,
-                  teamHAwayLogo: teamAwayDoc.logo,
-                  fixtureStatusGeneral: getStatusGeneral(
-                      matche['fixture']['status']['short'].toString().trim()),
-                  fixtureStatusLongEn:
-                      matche['fixture']['status']['long'].toString().trim(),
-                  fixtureStatusLongAr:
-                      matche['fixture']['status']['long'].toString().trim(),
-                  fixtureStatusShort:
-                      matche['fixture']['status']['short'].toString().trim(),
-                  fixtureStatusElapsed:
-                      matche['fixture']['status']['elapsed'].toString().trim(),
-                  goalsHome: 0,
-                  goalsAway: 0,
-                  scoreHalftimeHome: 0,
-                  scoreHalftimeAway: 0,
-                  scoreFulltimeHome: 0,
-                  scoreFulltimeAway: 0,
-                  scoreExtratimeHome: 0,
-                  scoreExtratimeAway: 0,
-                  scorePenaltyHome: 0,
-                  scorePenaltyAway: 0,
-                  isActive: false,
-                ));
-              }
+        await MatchesCol.doc(matche['fixture']['id'].toString())
+            .get()
+            .then((matcheDoc) async {
+          if (matcheDoc.exists) {
+            matcheDoc.reference.update(createMatchesRecordData(
+              fixtureStatusGeneral: getStatusGeneral(
+                  matche['fixture']['status']['short'].toString().trim()),
+              fixtureStatusLongEn:
+                  matche['fixture']['status']['long'].toString().trim(),
+              fixtureStatusLongAr:
+                  matche['fixture']['status']['long'].toString().trim(),
+              fixtureStatusShort:
+                  matche['fixture']['status']['short'].toString().trim(),
+              fixtureStatusElapsed:
+                  matche['fixture']['status']['elapsed'].toString().trim(),
+              goalsHome: matche['goals']['home'],
+              goalsAway: matche['goals']['away'],
+              scoreHalftimeHome: matche['score']['halftime']['home'],
+              scoreHalftimeAway: matche['score']['halftime']['away'],
+              scoreFulltimeHome: matche['score']['fulltime']['home'],
+              scoreFulltimeAway: matche['score']['fulltime']['away'],
+              scoreExtratimeHome: matche['score']['extratime']['home'],
+              scoreExtratimeAway: matche['score']['extratime']['away'],
+              scorePenaltyHome: matche['score']['penalty']['home'],
+              scorePenaltyAway: matche['score']['penalty']['away'],
+            ));
+            await MatchStandingsRecord.getDocumentOnce(
+                    firestore.doc('MatchStandings/${matcheDoc.id}'))
+                .then((matchStandingsDoc) async {
+              Stream<List<MatchStandingsRecord>> fdsfs =
+                  queryMatchStandingsRecord(
+                      queryBuilder: (matchStandingsRecord) =>
+                          matchStandingsRecord.where('matcheRef',
+                              isEqualTo: matcheDoc.reference));
+              fdsfs.forEach((element) {
+                var fixtureGoalsHome = matche['goals']['home'];
+                var userHomeGoals = element.single.homeGoals;
+                var fixtureGoalsAway = matche['goals']['home'];
+                var userAwayGoals = element.single.awayGoals;
+                var homeGoalsPoints = 0;
+                var awayGoalsPoints = 0;
+                var wonPoints = 0;
+                var drawPoints = 0;
+                var totalPoints = 0;
+                if (userHomeGoals == fixtureGoalsHome) {
+                  homeGoalsPoints = matchStandingsDoc.homeGoalsPoints;
+                } else {
+                  homeGoalsPoints = 0;
+                }
+                if (userAwayGoals == fixtureGoalsAway) {
+                  awayGoalsPoints = matchStandingsDoc.awayGoalsPoints;
+                } else {
+                  awayGoalsPoints = 0;
+                }
+
+                if (userHomeGoals > userAwayGoals &&
+                    fixtureGoalsHome > fixtureGoalsAway) {
+                  wonPoints = matchStandingsDoc.wonPoints;
+                } else if (userHomeGoals < userAwayGoals &&
+                    fixtureGoalsHome < fixtureGoalsAway) {
+                  wonPoints = matchStandingsDoc.wonPoints;
+                } else if (userHomeGoals == userAwayGoals &&
+                    fixtureGoalsHome == fixtureGoalsAway) {
+                  drawPoints = matchStandingsDoc.drawPoints;
+                } else {
+                  wonPoints = 0;
+                  drawPoints = 0;
+                }
+                totalPoints =
+                    homeGoalsPoints + awayGoalsPoints + wonPoints + drawPoints;
+                element.single.reference
+                    .update(createMatchStandingsRecordData());
+              });
             });
-          });
+          }
         });
       });
     }

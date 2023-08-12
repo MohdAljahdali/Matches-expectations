@@ -66,15 +66,20 @@ class MatchStandingsRecord extends FirestoreRecord {
   int get awayGoalsPoints => _awayGoalsPoints ?? 0;
   bool hasAwayGoalsPoints() => _awayGoalsPoints != null;
 
-  // "drawPoints" field.
-  int? _drawPoints;
-  int get drawPoints => _drawPoints ?? 0;
-  bool hasDrawPoints() => _drawPoints != null;
+  // "totalGoalsPoints" field.
+  int? _totalGoalsPoints;
+  int get totalGoalsPoints => _totalGoalsPoints ?? 0;
+  bool hasTotalGoalsPoints() => _totalGoalsPoints != null;
 
   // "wonPoints" field.
   int? _wonPoints;
   int get wonPoints => _wonPoints ?? 0;
   bool hasWonPoints() => _wonPoints != null;
+
+  // "drawPoints" field.
+  int? _drawPoints;
+  int get drawPoints => _drawPoints ?? 0;
+  bool hasDrawPoints() => _drawPoints != null;
 
   // "totalPoints" field.
   int? _totalPoints;
@@ -97,8 +102,9 @@ class MatchStandingsRecord extends FirestoreRecord {
     _oldPosition = castToType<int>(snapshotData['oldPosition']);
     _homeGoalsPoints = castToType<int>(snapshotData['homeGoalsPoints']);
     _awayGoalsPoints = castToType<int>(snapshotData['awayGoalsPoints']);
-    _drawPoints = castToType<int>(snapshotData['drawPoints']);
+    _totalGoalsPoints = castToType<int>(snapshotData['totalGoalsPoints']);
     _wonPoints = castToType<int>(snapshotData['wonPoints']);
+    _drawPoints = castToType<int>(snapshotData['drawPoints']);
     _totalPoints = castToType<int>(snapshotData['totalPoints']);
     _userUpdate = castToType<int>(snapshotData['userUpdate']);
   }
@@ -148,8 +154,9 @@ Map<String, dynamic> createMatchStandingsRecordData({
   int? oldPosition,
   int? homeGoalsPoints,
   int? awayGoalsPoints,
-  int? drawPoints,
+  int? totalGoalsPoints,
   int? wonPoints,
+  int? drawPoints,
   int? totalPoints,
   int? userUpdate,
 }) {
@@ -165,8 +172,9 @@ Map<String, dynamic> createMatchStandingsRecordData({
       'oldPosition': oldPosition,
       'homeGoalsPoints': homeGoalsPoints,
       'awayGoalsPoints': awayGoalsPoints,
-      'drawPoints': drawPoints,
+      'totalGoalsPoints': totalGoalsPoints,
       'wonPoints': wonPoints,
+      'drawPoints': drawPoints,
       'totalPoints': totalPoints,
       'userUpdate': userUpdate,
     }.withoutNulls,
@@ -191,8 +199,9 @@ class MatchStandingsRecordDocumentEquality
         e1?.oldPosition == e2?.oldPosition &&
         e1?.homeGoalsPoints == e2?.homeGoalsPoints &&
         e1?.awayGoalsPoints == e2?.awayGoalsPoints &&
-        e1?.drawPoints == e2?.drawPoints &&
+        e1?.totalGoalsPoints == e2?.totalGoalsPoints &&
         e1?.wonPoints == e2?.wonPoints &&
+        e1?.drawPoints == e2?.drawPoints &&
         e1?.totalPoints == e2?.totalPoints &&
         e1?.userUpdate == e2?.userUpdate;
   }
@@ -209,8 +218,9 @@ class MatchStandingsRecordDocumentEquality
         e?.oldPosition,
         e?.homeGoalsPoints,
         e?.awayGoalsPoints,
-        e?.drawPoints,
+        e?.totalGoalsPoints,
         e?.wonPoints,
+        e?.drawPoints,
         e?.totalPoints,
         e?.userUpdate
       ]);
