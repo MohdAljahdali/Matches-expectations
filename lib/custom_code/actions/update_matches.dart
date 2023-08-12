@@ -9,32 +9,32 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'index.dart'; // Imports other custom actions
-
 import 'dart:math' as math;
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
-Future<String> updateMatches(String tournamentRef) async {
+Future<String> updateMatches(String tournamentCode) async {
   final firestore = FirebaseFirestore.instance;
   final MatchesCol = firestore.collection('Matches');
   var headers = {
     'x-rapidapi-key': 'ba825d70e7634e7015d2f116c1a07e03',
     'x-rapidapi-host': 'v3.football.api-sports.io'
   };
-  await TournamentsRecord.getDocumentOnce(
-          firestore.doc('Tournaments/$tournamentRef'))
-      .then((tournamentDoc) async {
-    var request = http.Request(
-        'GET',
-        Uri.parse(
-            'https://v3.football.api-sports.io/fixtures?live=0-${tournamentDoc.tournamentsID.toString()}&timezone=Asia/Riyadh'));
-    request.headers.addAll(headers);
-    http.StreamedResponse response = await request.send();
-    if (response.statusCode == 200) {
-      final Matchesjson =
-          convert.jsonDecode(await response.stream.bytesToString());
-      final Matchesresponse = Matchesjson['response'];
-      Matchesresponse.forEach((matche) async {
+
+  var request = http.Request(
+      'GET',
+      Uri.parse(
+          'https://v3.football.api-sports.io/fixtures?league=307&season=2023&date=2023-08-12&timezone=Asia/Riyadh'));
+  request.headers.addAll(headers);
+  http.StreamedResponse response = await request.send();
+  if (response.statusCode == 200) {
+    final Matchesjson =
+        convert.jsonDecode(await response.stream.bytesToString());
+    final Matchesresponse = Matchesjson['response'];
+    Matchesresponse.forEach((matche) async {
+      await TournamentsRecord.getDocumentOnce(firestore.doc(
+              'Tournaments/${matche['league']['id'].toString() + matche['league']['season'].toString()}'))
+          .then((tournamentDoc) async {
         await MatchesCol.doc(matche['fixture']['id'].toString())
             .get()
             .then((matcheDoc) async {
@@ -64,57 +64,81 @@ Future<String> updateMatches(String tournamentRef) async {
             await MatchStandingsRecord.getDocumentOnce(
                     firestore.doc('MatchStandings/${matcheDoc.id}'))
                 .then((matchStandingsDoc) async {
-              Stream<List<MatchStandingsRecord>> fdsfs =
+              Stream<List<MatchStandingsRecord>> matchStandingsSDoc =
                   queryMatchStandingsRecord(
                       queryBuilder: (matchStandingsRecord) =>
                           matchStandingsRecord.where('matcheRef',
                               isEqualTo: matcheDoc.reference));
-              fdsfs.forEach((element) {
+              matchStandingsSDoc.forEach((element) {
                 var fixtureGoalsHome = matche['goals']['home'];
                 var userHomeGoals = element.single.homeGoals;
                 var fixtureGoalsAway = matche['goals']['home'];
                 var userAwayGoals = element.single.awayGoals;
-                var homeGoalsPoints = 0;
-                var awayGoalsPoints = 0;
-                var wonPoints = 0;
-                var drawPoints = 0;
-                var totalPoints = 0;
+                var bHomeGoalsPoints = 0;
+                var bAwayGoalsPoints = 0;
+                var bTotalGoalsPoints = 0;
+                var bWonPoints = 0;
+                var bDrawPoints = 0;
+                var bTotalPoints = 0;
                 if (userHomeGoals == fixtureGoalsHome) {
-                  homeGoalsPoints = matchStandingsDoc.homeGoalsPoints;
+                  bHomeGoalsPoints = matchStandingsDoc.homeGoalsPoints;
                 } else {
-                  homeGoalsPoints = 0;
+                  bHomeGoalsPoints = 0;
                 }
                 if (userAwayGoals == fixtureGoalsAway) {
-                  awayGoalsPoints = matchStandingsDoc.awayGoalsPoints;
+                  bAwayGoalsPoints = matchStandingsDoc.awayGoalsPoints;
                 } else {
-                  awayGoalsPoints = 0;
+                  bAwayGoalsPoints = 0;
                 }
-
+                bTotalGoalsPoints = bHomeGoalsPoints + bAwayGoalsPoints;
                 if (userHomeGoals > userAwayGoals &&
                     fixtureGoalsHome > fixtureGoalsAway) {
-                  wonPoints = matchStandingsDoc.wonPoints;
+                  bWonPoints = matchStandingsDoc.wonPoints;
                 } else if (userHomeGoals < userAwayGoals &&
                     fixtureGoalsHome < fixtureGoalsAway) {
-                  wonPoints = matchStandingsDoc.wonPoints;
+                  bWonPoints = matchStandingsDoc.wonPoints;
                 } else if (userHomeGoals == userAwayGoals &&
                     fixtureGoalsHome == fixtureGoalsAway) {
-                  drawPoints = matchStandingsDoc.drawPoints;
+                  bDrawPoints = matchStandingsDoc.drawPoints;
                 } else {
-                  wonPoints = 0;
-                  drawPoints = 0;
+                  bWonPoints = 0;
+                  bDrawPoints = 0;
                 }
-                totalPoints =
-                    homeGoalsPoints + awayGoalsPoints + wonPoints + drawPoints;
-                element.single.reference
-                    .update(createMatchStandingsRecordData());
+                bTotalPoints = bTotalGoalsPoints + bWonPoints + bDrawPoints;
+                element.single.reference.update(createMatchStandingsRecordData(
+                  homeGoalsPoints: bHomeGoalsPoints,
+                  awayGoalsPoints: bAwayGoalsPoints,
+                  totalGoalsPoints: bTotalGoalsPoints,
+                  wonPoints: bWonPoints,
+                  drawPoints: bDrawPoints,
+                  totalPoints: bTotalPoints,
+                ));
+              });
+              var setNewPosition = 0;
+              Stream<List<MatchStandingsRecord>> matchStandingsPosition =
+                  queryMatchStandingsRecord(
+                      queryBuilder: (matchStandingsRecord) =>
+                          matchStandingsRecord
+                              .where('matcheRef',
+                                  isEqualTo: matcheDoc.reference)
+                              .orderBy('totalPoints', descending: true)
+                              .orderBy('totalGoalsPoints', descending: true)
+                              .orderBy('userUpdate', descending: false));
+              matchStandingsPosition.forEach((element) {
+                setNewPosition = setNewPosition + 1;
+                element.single.reference.update(createMatchStandingsRecordData(
+                  newPosition: setNewPosition,
+                  oldPosition: element.single.newPosition,
+                ));
               });
             });
           }
         });
       });
-    }
-    //TournamentsRecord.getDocumentOnce End
-  });
+    });
+  }
+  //TournamentsRecord.getDocumentOnce End
+
   return 'randomCode';
 }
 

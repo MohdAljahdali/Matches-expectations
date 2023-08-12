@@ -6,6 +6,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/home/add_prediction/add_prediction_widget.dart';
 import '/home/edit_prediction/edit_prediction_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
+import 'dart:async';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/gestures.dart';
@@ -68,7 +70,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                     child: FutureBuilder<ApiCallResponse>(
-                      future: ApiSportsStatusCall.call(),
+                      future: (_model.apiRequestCompleter ??=
+                              Completer<ApiCallResponse>()
+                                ..complete(ApiSportsStatusCall.call()))
+                          .future,
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -127,8 +132,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                               textAlign: TextAlign.center,
                             ),
                             FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                await actions.updateMatches(
+                                  '307',
+                                );
+                                setState(
+                                    () => _model.apiRequestCompleter = null);
+                                await _model.waitForApiRequestCompleted();
                               },
                               text: FFLocalizations.of(context).getText(
                                 'n2hwqhr1' /* Update */,
@@ -189,16 +199,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                             ),
                           );
                         }
-                        List<MatchesRecord> listViewMatchesRecordList =
+                        List<MatchesRecord> listViewssMatchesRecordList =
                             snapshot.data!;
                         return ListView.builder(
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
-                          itemCount: listViewMatchesRecordList.length,
-                          itemBuilder: (context, listViewIndex) {
-                            final listViewMatchesRecord =
-                                listViewMatchesRecordList[listViewIndex];
+                          itemCount: listViewssMatchesRecordList.length,
+                          itemBuilder: (context, listViewssIndex) {
+                            final listViewssMatchesRecord =
+                                listViewssMatchesRecordList[listViewssIndex];
                             return Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 5.0),
@@ -207,10 +217,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   queryBuilder: (matchStandingsRecord) =>
                                       matchStandingsRecord
                                           .where('tournamentRef',
-                                              isEqualTo: listViewMatchesRecord
+                                              isEqualTo: listViewssMatchesRecord
                                                   .tournamentRef)
                                           .where('matcheRef',
-                                              isEqualTo: listViewMatchesRecord
+                                              isEqualTo: listViewssMatchesRecord
                                                   .reference)
                                           .where('userRef',
                                               isEqualTo: currentUserReference),
@@ -282,9 +292,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                             context)
                                                                         .languageCode ==
                                                                     'en'
-                                                                ? listViewMatchesRecord
+                                                                ? listViewssMatchesRecord
                                                                     .tournamentName
-                                                                : listViewMatchesRecord
+                                                                : listViewssMatchesRecord
                                                                     .tournamentNameAr,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -323,7 +333,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                             8.0),
                                                                     child: Image
                                                                         .network(
-                                                                      listViewMatchesRecord
+                                                                      listViewssMatchesRecord
                                                                           .teamHomeLogo,
                                                                       width:
                                                                           50.0,
@@ -336,9 +346,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                   AutoSizeText(
                                                                     FFLocalizations.of(context).languageCode ==
                                                                             'en'
-                                                                        ? listViewMatchesRecord
+                                                                        ? listViewssMatchesRecord
                                                                             .teamHomeName
-                                                                        : listViewMatchesRecord
+                                                                        : listViewssMatchesRecord
                                                                             .teamHomeNameAr,
                                                                     textAlign:
                                                                         TextAlign
@@ -405,7 +415,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                               0.0),
                                                                           child:
                                                                               Text(
-                                                                            listViewMatchesRecord.fixtureStatusShort,
+                                                                            listViewssMatchesRecord.fixtureStatusShort,
                                                                             style:
                                                                                 FlutterFlowTheme.of(context).bodyMedium,
                                                                           ),
@@ -482,9 +492,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                             MainAxisAlignment.center,
                                                                         children: [
                                                                           Text(
-                                                                            listViewMatchesRecord.fixtureStatusShort == 'NS'
+                                                                            listViewssMatchesRecord.fixtureStatusShort == 'NS'
                                                                                 ? '-'
-                                                                                : listViewMatchesRecord.goalsHome.toString(),
+                                                                                : listViewssMatchesRecord.goalsHome.toString(),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   fontSize: 20.0,
@@ -510,7 +520,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                 AlignmentDirectional(0.0, 0.0),
                                                                             child:
                                                                                 AutoSizeText(
-                                                                              listViewMatchesRecord.fixtureStatusShort == 'NS' ? '-' : listViewMatchesRecord.goalsAway.toString(),
+                                                                              listViewssMatchesRecord.fixtureStatusShort == 'NS' ? '-' : listViewssMatchesRecord.goalsAway.toString(),
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Roboto',
                                                                                     fontSize: 20.0,
@@ -542,7 +552,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                             8.0),
                                                                     child: Image
                                                                         .network(
-                                                                      listViewMatchesRecord
+                                                                      listViewssMatchesRecord
                                                                           .teamHAwayLogo,
                                                                       width:
                                                                           50.0,
@@ -555,9 +565,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                   AutoSizeText(
                                                                     FFLocalizations.of(context).languageCode ==
                                                                             'en'
-                                                                        ? listViewMatchesRecord
+                                                                        ? listViewssMatchesRecord
                                                                             .teamAwayName
-                                                                        : listViewMatchesRecord
+                                                                        : listViewssMatchesRecord
                                                                             .teamAwayNameAr,
                                                                     textAlign:
                                                                         TextAlign
@@ -607,7 +617,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                             Text(
                                                               dateTimeFormat(
                                                                 'yyyy-MM-dd',
-                                                                listViewMatchesRecord
+                                                                listViewssMatchesRecord
                                                                     .fixtureDate!,
                                                                 locale: FFLocalizations.of(
                                                                         context)
@@ -648,7 +658,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                             Text(
                                                               dateTimeFormat(
                                                                 'jm',
-                                                                listViewMatchesRecord
+                                                                listViewssMatchesRecord
                                                                     .fixtureDate!,
                                                                 locale: FFLocalizations.of(
                                                                         context)
@@ -668,7 +678,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                           ),
                                         ),
-                                        if ((listViewMatchesRecord
+                                        if ((listViewssMatchesRecord
                                                     .fixtureDate! <
                                                 getCurrentTimestamp) ||
                                             (cardMatchStandingsRecord
@@ -748,8 +758,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                     height: 320.0,
                                                                                     width: 300.0,
                                                                                     child: EditPredictionWidget(
-                                                                                      tournamentRef: listViewMatchesRecord.tournamentRef!,
-                                                                                      matcheRef: listViewMatchesRecord.reference,
+                                                                                      tournamentRef: listViewssMatchesRecord.tournamentRef!,
+                                                                                      matcheRef: listViewssMatchesRecord.reference,
                                                                                       userRef: currentUserReference!,
                                                                                       matchStandingsRef: cardMatchStandingsRecord!.reference,
                                                                                     ),
@@ -877,8 +887,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                                 300.0,
                                                                             child:
                                                                                 AddPredictionWidget(
-                                                                              tournamentRef: listViewMatchesRecord.tournamentRef!,
-                                                                              matcheRef: listViewMatchesRecord.reference,
+                                                                              tournamentRef: listViewssMatchesRecord.tournamentRef!,
+                                                                              matcheRef: listViewssMatchesRecord.reference,
                                                                               userRef: currentUserReference!,
                                                                             ),
                                                                           ),
