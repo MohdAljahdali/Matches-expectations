@@ -680,12 +680,15 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                           ),
                                         ),
-                                        if ((listViewssMatchesRecord
+                                        if (listViewssMatchesRecord
                                                     .fixtureDate! <
-                                                getCurrentTimestamp) ||
-                                            (cardMatchStandingsRecord
-                                                    ?.userUpdate !=
-                                                0))
+                                                getCurrentTimestamp
+                                            ? false
+                                            : (cardMatchStandingsRecord!
+                                                        .userUpdate <
+                                                    2
+                                                ? true
+                                                : false))
                                           Flexible(
                                             flex: 1,
                                             child: Align(

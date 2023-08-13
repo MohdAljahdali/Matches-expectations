@@ -98,196 +98,200 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
             builder: (context) {
               return SafeArea(
                 top: false,
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      height: 55.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).primaryBackground,
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                15.0, 0.0, 15.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Builder(
-                                  builder: (context) => FlutterFlowIconButton(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: 55.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 0.0, 15.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Builder(
+                                    builder: (context) => FlutterFlowIconButton(
+                                      borderColor:
+                                          FlutterFlowTheme.of(context).accent3,
+                                      borderRadius: 20.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 40.0,
+                                      fillColor:
+                                          FlutterFlowTheme.of(context).accent3,
+                                      icon: Icon(
+                                        Icons.filter_alt,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        size: 24.0,
+                                      ),
+                                      onPressed: () async {
+                                        await showAlignedDialog(
+                                          barrierColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .noColor,
+                                          barrierDismissible: false,
+                                          context: context,
+                                          isGlobal: true,
+                                          avoidOverflow: false,
+                                          targetAnchor: AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
+                                          followerAnchor: AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
+                                          builder: (dialogContext) {
+                                            return Material(
+                                              color: Colors.transparent,
+                                              child: GestureDetector(
+                                                onTap: () =>
+                                                    FocusScope.of(context)
+                                                        .requestFocus(
+                                                            _model.unfocusNode),
+                                                child: Container(
+                                                  height: 300.0,
+                                                  child:
+                                                      AdminMatchesFilterCWidget(),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => setState(() {}));
+                                      },
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      StreamBuilder<List<TournamentsRecord>>(
+                                        stream: queryTournamentsRecord(
+                                          queryBuilder: (tournamentsRecord) =>
+                                              tournamentsRecord.where(
+                                                  'isActive',
+                                                  isEqualTo: true),
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child: SpinKitFadingCircle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  size: 50.0,
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                          List<TournamentsRecord>
+                                              activeTournamentListDDTournamentsRecordList =
+                                              snapshot.data!;
+                                          return FlutterFlowDropDown<String>(
+                                            controller: _model
+                                                    .activeTournamentListDDValueController ??=
+                                                FormFieldController<String>(
+                                              _model.activeTournamentListDDValue ??=
+                                                  '',
+                                            ),
+                                            options:
+                                                activeTournamentListDDTournamentsRecordList
+                                                    .map(
+                                                        (e) => e.tournamentsRef)
+                                                    .toList(),
+                                            optionLabels:
+                                                activeTournamentListDDTournamentsRecordList
+                                                    .map((e) => e.name)
+                                                    .toList(),
+                                            onChanged: (val) => setState(() =>
+                                                _model.activeTournamentListDDValue =
+                                                    val),
+                                            width: 200.0,
+                                            height: 40.0,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium,
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '6ntnbgwr' /* Please select */,
+                                            ),
+                                            icon: Icon(
+                                              Icons.keyboard_arrow_down_rounded,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 24.0,
+                                            ),
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            elevation: 2.0,
+                                            borderColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .alternate,
+                                            borderWidth: 2.0,
+                                            borderRadius: 8.0,
+                                            margin:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 4.0, 16.0, 4.0),
+                                            hidesUnderline: true,
+                                            isSearchable: false,
+                                          );
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                  FlutterFlowIconButton(
                                     borderColor:
-                                        FlutterFlowTheme.of(context).accent3,
+                                        FlutterFlowTheme.of(context).accent4,
                                     borderRadius: 20.0,
                                     borderWidth: 1.0,
                                     buttonSize: 40.0,
                                     fillColor:
-                                        FlutterFlowTheme.of(context).accent3,
+                                        FlutterFlowTheme.of(context).accent4,
                                     icon: Icon(
-                                      Icons.filter_alt,
+                                      Icons.add,
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
-                                      await showAlignedDialog(
-                                        barrierColor:
-                                            FlutterFlowTheme.of(context)
-                                                .noColor,
-                                        barrierDismissible: false,
-                                        context: context,
-                                        isGlobal: true,
-                                        avoidOverflow: false,
-                                        targetAnchor:
-                                            AlignmentDirectional(0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                        followerAnchor:
-                                            AlignmentDirectional(0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                        builder: (dialogContext) {
-                                          return Material(
-                                            color: Colors.transparent,
-                                            child: GestureDetector(
-                                              onTap: () =>
-                                                  FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode),
-                                              child: Container(
-                                                height: 300.0,
-                                                child:
-                                                    AdminMatchesFilterCWidget(),
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      ).then((value) => setState(() {}));
+                                      context.pushNamed('adminMatchesAdd');
                                     },
                                   ),
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    StreamBuilder<List<TournamentsRecord>>(
-                                      stream: queryTournamentsRecord(
-                                        queryBuilder: (tournamentsRecord) =>
-                                            tournamentsRecord.where('isActive',
-                                                isEqualTo: true),
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: SpinKitFadingCircle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                size: 50.0,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<TournamentsRecord>
-                                            activeTournamentListDDTournamentsRecordList =
-                                            snapshot.data!;
-                                        return FlutterFlowDropDown<String>(
-                                          controller: _model
-                                                  .activeTournamentListDDValueController ??=
-                                              FormFieldController<String>(
-                                            _model.activeTournamentListDDValue ??=
-                                                '',
-                                          ),
-                                          options:
-                                              activeTournamentListDDTournamentsRecordList
-                                                  .map((e) => e.tournamentsRef)
-                                                  .toList(),
-                                          optionLabels:
-                                              activeTournamentListDDTournamentsRecordList
-                                                  .map((e) => e.name)
-                                                  .toList(),
-                                          onChanged: (val) => setState(() =>
-                                              _model.activeTournamentListDDValue =
-                                                  val),
-                                          width: 200.0,
-                                          height: 40.0,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium,
-                                          hintText: FFLocalizations.of(context)
-                                              .getText(
-                                            '6ntnbgwr' /* Please select */,
-                                          ),
-                                          icon: Icon(
-                                            Icons.keyboard_arrow_down_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 24.0,
-                                          ),
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          elevation: 2.0,
-                                          borderColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .alternate,
-                                          borderWidth: 2.0,
-                                          borderRadius: 8.0,
-                                          margin:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 4.0, 16.0, 4.0),
-                                          hidesUnderline: true,
-                                          isSearchable: false,
-                                        );
-                                      },
-                                    ),
-                                  ],
-                                ),
-                                FlutterFlowIconButton(
-                                  borderColor:
-                                      FlutterFlowTheme.of(context).accent4,
-                                  borderRadius: 20.0,
-                                  borderWidth: 1.0,
-                                  buttonSize: 40.0,
-                                  fillColor:
-                                      FlutterFlowTheme.of(context).accent4,
-                                  icon: Icon(
-                                    Icons.add,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    size: 24.0,
-                                  ),
-                                  onPressed: () async {
-                                    context.pushNamed('adminMatchesAdd');
-                                  },
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    StyledDivider(
-                      height: 1.0,
-                      thickness: 1.0,
-                      indent: 0.0,
-                      endIndent: 0.0,
-                      color: FlutterFlowTheme.of(context).accent4,
-                      lineStyle: DividerLineStyle.dashed,
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
-                      child: SingleChildScrollView(
-                        primary: false,
+                      StyledDivider(
+                        height: 1.0,
+                        thickness: 1.0,
+                        indent: 0.0,
+                        endIndent: 0.0,
+                        color: FlutterFlowTheme.of(context).accent4,
+                        lineStyle: DividerLineStyle.dashed,
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 10.0, 0.0, 10.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -326,6 +330,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                       snapshot.data!;
                                   return ListView.builder(
                                     padding: EdgeInsets.zero,
+                                    primary: false,
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
                                     itemCount: listViewMatchesRecordList.length,
@@ -945,8 +950,8 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                           ],
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             },
