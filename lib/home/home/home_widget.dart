@@ -54,130 +54,131 @@ class _HomeWidgetState extends State<HomeWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(10.0, 60.0, 10.0, 0.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 5.0),
-                child: Container(
-                  width: double.infinity,
-                  height: 40.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                    child: FutureBuilder<ApiCallResponse>(
-                      future: (_model.apiRequestCompleter ??=
-                              Completer<ApiCallResponse>()
-                                ..complete(ApiSportsStatusCall.call()))
-                          .future,
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 50.0,
-                              height: 50.0,
-                              child: SpinKitFadingCircle(
-                                color: FlutterFlowTheme.of(context).primary,
-                                size: 50.0,
-                              ),
-                            ),
-                          );
-                        }
-                        final rowApiSportsStatusResponse = snapshot.data!;
-                        return Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            RichText(
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'sn71fbwo' /* Current requests  */,
-                                    ),
-                                    style: TextStyle(),
-                                  ),
-                                  TextSpan(
-                                    text: ApiSportsStatusCall.current(
-                                      rowApiSportsStatusResponse.jsonBody,
-                                    ).toString(),
-                                    style: TextStyle(),
-                                  ),
-                                  TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'oae9gsnp' /*  of  */,
-                                    ),
-                                    style: TextStyle(),
-                                  ),
-                                  TextSpan(
-                                    text: ApiSportsStatusCall.limitDay(
-                                      rowApiSportsStatusResponse.jsonBody,
-                                    ).toString(),
-                                    style: TextStyle(),
-                                  ),
-                                  TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'jle2nucz' /*  request */,
-                                    ),
-                                    style: TextStyle(),
-                                  )
-                                ],
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            FFButtonWidget(
-                              onPressed: () async {
-                                await actions.updateMatches(
-                                  '307',
-                                );
-                                setState(
-                                    () => _model.apiRequestCompleter = null);
-                                await _model.waitForApiRequestCompleted();
-                              },
-                              text: FFLocalizations.of(context).getText(
-                                'n2hwqhr1' /* Update */,
-                              ),
-                              options: FFButtonOptions(
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 0.0, 24.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .titleSmallFamily,
-                                      color: Colors.white,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmallFamily),
-                                    ),
-                                elevation: 3.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 5.0),
+                  child: Container(
+                    width: double.infinity,
+                    height: 40.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                      child: FutureBuilder<ApiCallResponse>(
+                        future: (_model.apiRequestCompleter ??=
+                                Completer<ApiCallResponse>()
+                                  ..complete(ApiSportsStatusCall.call()))
+                            .future,
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: SpinKitFadingCircle(
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  size: 50.0,
                                 ),
-                                borderRadius: BorderRadius.circular(8.0),
                               ),
-                            ),
-                          ],
-                        );
-                      },
+                            );
+                          }
+                          final rowApiSportsStatusResponse = snapshot.data!;
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              RichText(
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: FFLocalizations.of(context).getText(
+                                        'sn71fbwo' /* Current requests  */,
+                                      ),
+                                      style: TextStyle(),
+                                    ),
+                                    TextSpan(
+                                      text: ApiSportsStatusCall.current(
+                                        rowApiSportsStatusResponse.jsonBody,
+                                      ).toString(),
+                                      style: TextStyle(),
+                                    ),
+                                    TextSpan(
+                                      text: FFLocalizations.of(context).getText(
+                                        'oae9gsnp' /*  of  */,
+                                      ),
+                                      style: TextStyle(),
+                                    ),
+                                    TextSpan(
+                                      text: ApiSportsStatusCall.limitDay(
+                                        rowApiSportsStatusResponse.jsonBody,
+                                      ).toString(),
+                                      style: TextStyle(),
+                                    ),
+                                    TextSpan(
+                                      text: FFLocalizations.of(context).getText(
+                                        'jle2nucz' /*  request */,
+                                      ),
+                                      style: TextStyle(),
+                                    )
+                                  ],
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  await actions.updateMatches(
+                                    '307',
+                                  );
+                                  setState(
+                                      () => _model.apiRequestCompleter = null);
+                                  await _model.waitForApiRequestCompleted();
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'n2hwqhr1' /* Update */,
+                                ),
+                                options: FFButtonOptions(
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 24.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleSmallFamily,
+                                        color: Colors.white,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily),
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SingleChildScrollView(
-                child: Column(
+                Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     StreamBuilder<List<MatchesRecord>>(
@@ -203,6 +204,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             snapshot.data!;
                         return ListView.builder(
                           padding: EdgeInsets.zero,
+                          primary: false,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           itemCount: listViewssMatchesRecordList.length,
@@ -963,8 +965,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                     ),
                   ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

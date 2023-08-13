@@ -63,6 +63,7 @@ Future<String> updateMatches(String tournamentCode) async {
               scorePenaltyHome: matche['score']['penalty']['home'],
               scorePenaltyAway: matche['score']['penalty']['away'],
             ));
+
             await MatchesRecord.getDocumentOnce(
                     firestore.doc('Matches/${matcheDoc.id}'))
                 .then((matchesDoc) async {
@@ -72,9 +73,9 @@ Future<String> updateMatches(String tournamentCode) async {
                           matchStandingsRecord.where('matcheRef',
                               isEqualTo: matcheDoc.reference));
               matchStandingsSDoc.forEach((element) {
-                var fixtureGoalsHome = matche['goals']['home'];
+                var fixtureGoalsHome = matchesDoc.goalsHome;
                 var userHomeGoals = element.single.homeGoals;
-                var fixtureGoalsAway = matche['goals']['home'];
+                var fixtureGoalsAway = matchesDoc.goalsAway;
                 var userAwayGoals = element.single.awayGoals;
                 var bHomeGoalsPoints = 0;
                 var bAwayGoalsPoints = 0;
@@ -93,14 +94,14 @@ Future<String> updateMatches(String tournamentCode) async {
                   bAwayGoalsPoints = 0;
                 }
                 bTotalGoalsPoints = bHomeGoalsPoints + bAwayGoalsPoints;
-                if (userHomeGoals > userAwayGoals &&
-                    fixtureGoalsHome > fixtureGoalsAway) {
+                if ((userHomeGoals > userAwayGoals) &&
+                    (fixtureGoalsHome > fixtureGoalsAway)) {
                   bWonPoints = matchesDoc.tournamentroleHomeWinPoints;
-                } else if (userHomeGoals < userAwayGoals &&
-                    fixtureGoalsHome < fixtureGoalsAway) {
+                } else if ((userHomeGoals < userAwayGoals) &&
+                    (fixtureGoalsHome < fixtureGoalsAway)) {
                   bWonPoints = matchesDoc.tournamentroleAwayWinPoints;
-                } else if (userHomeGoals == userAwayGoals &&
-                    fixtureGoalsHome == fixtureGoalsAway) {
+                } else if ((userHomeGoals == userAwayGoals) &&
+                    (fixtureGoalsHome == fixtureGoalsAway)) {
                   bDrawPoints = matchesDoc.tournamentroleDrawPoints;
                 } else {
                   bWonPoints = 0;
@@ -116,6 +117,7 @@ Future<String> updateMatches(String tournamentCode) async {
                   totalPoints: bTotalPoints,
                 ));
               });
+              /*
               var setNewPosition = 0;
               Stream<List<MatchStandingsRecord>> matchStandingsPosition =
                   queryMatchStandingsRecord(
@@ -133,6 +135,7 @@ Future<String> updateMatches(String tournamentCode) async {
                   oldPosition: element.single.newPosition,
                 ));
               });
+              */
             });
           }
         });

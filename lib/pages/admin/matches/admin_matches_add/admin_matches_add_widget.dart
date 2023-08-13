@@ -572,7 +572,7 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                                           initialDate:
                                                               getCurrentTimestamp,
                                                           firstDate:
-                                                              getCurrentTimestamp,
+                                                              DateTime(1900),
                                                           lastDate:
                                                               DateTime(2050),
                                                         );
@@ -664,7 +664,7 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                                           initialDate:
                                                               getCurrentTimestamp,
                                                           firstDate:
-                                                              getCurrentTimestamp,
+                                                              DateTime(1900),
                                                           lastDate:
                                                               DateTime(2050),
                                                         );
