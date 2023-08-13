@@ -684,10 +684,12 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                     .fixtureDate! <
                                                 getCurrentTimestamp
                                             ? false
-                                            : (cardMatchStandingsRecord!
-                                                        .userUpdate <
-                                                    2
-                                                ? true
+                                            : (cardMatchStandingsRecord != null
+                                                ? (cardMatchStandingsRecord!
+                                                            .userUpdate <
+                                                        2
+                                                    ? true
+                                                    : false)
                                                 : false))
                                           Flexible(
                                             flex: 1,
