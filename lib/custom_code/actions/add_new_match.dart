@@ -50,7 +50,7 @@ Future<String> addNewMatch(
     var request = http.Request(
         'GET',
         Uri.parse(
-            'https://v3.football.api-sports.io/fixtures?league=${tournamentDoc.tournamentsID.toString()}&season=${tournamentDoc.seasonYear.toString()}${filtterSearch.toString()}&timezone=Asia/Riyadh'));
+            'https://v3.football.api-sports.io/fixtures?league=${tournamentDoc.id.toString()}&season=${tournamentDoc.seasonYear.toString()}${filtterSearch.toString()}&timezone=Asia/Riyadh'));
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
     if (response.statusCode == 200) {

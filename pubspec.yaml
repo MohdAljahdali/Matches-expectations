@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 2.0.1+8
+version: 2.0.1+1
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -53,7 +53,6 @@ dependencies:
   from_css_color: 2.0.0
   go_router: 7.1.1
   google_fonts: 4.0.3
-  google_nav_bar: 5.0.5
   google_sign_in: 6.0.2
   google_sign_in_android: 6.1.8
   google_sign_in_ios: 5.6.1
@@ -66,7 +65,7 @@ dependencies:
   image_picker_ios: 0.8.6+1
   image_picker_platform_interface: 2.6.2
   intl: 0.18.0
-  json_path: 0.4.1
+  json_path: 0.6.2
   mime_type: 1.0.0
   octo_image: 1.0.2
   page_transition: 2.0.4
@@ -140,18 +139,20 @@ flutter:
     - assets/pdfs/
 
   fonts:
-    - family: 'BoutrosNewsH1'
+    - family: 'SF Pro'
       fonts:
-        - asset: assets/fonts/BoutrosNewsH1-Bold.ttf
-          weight: 700
-    - family: 'Marhey '
+        - asset: assets/fonts/SFPRODISPLAYREGULAR.OTF
+    - family: 'SF Arabic'
       fonts:
-        - asset: assets/fonts/Marhey-Regular.ttf
-    - family: ' Shamel'
-      fonts:
-        - asset: assets/fonts/FFShamelFamily-SansOneBold.ttf
-          weight: 700
+        - asset: assets/fonts/SF-Arabic-font.ttf
 
+
+    - family: MyFlutterApp
+      fonts:
+        - asset: assets/fonts/MyFlutterApp.ttf
+    - family: Icomoon
+      fonts:
+        - asset: assets/fonts/icomoon.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

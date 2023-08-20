@@ -4,6 +4,5 @@ export 'update_matches.dart' show updateMatches;
 export 'add_new_match.dart' show addNewMatch;
 export 'add_countries.dart' show addCountries;
 export 'add_teams.dart' show addTeams;
-export 'add_tournaments_manual.dart' show addTournamentsManual;
 export 'add_tournaments.dart' show addTournaments;
 export 'user_update_password.dart' show userUpdatePassword;

@@ -288,6 +288,8 @@ class _EditPredictionWidgetState extends State<EditPredictionWidget> {
                                   updateCount: (count) => setState(
                                       () => _model.homeGoalsCCValue = count),
                                   stepSize: 1,
+                                  minimum: 0,
+                                  maximum: 30,
                                 ),
                               ),
                               Container(
@@ -342,6 +344,8 @@ class _EditPredictionWidgetState extends State<EditPredictionWidget> {
                                   updateCount: (count) => setState(
                                       () => _model.awayGoalsCCValue = count),
                                   stepSize: 1,
+                                  minimum: 0,
+                                  maximum: 30,
                                 ),
                               ),
                             ],
@@ -361,7 +365,7 @@ class _EditPredictionWidgetState extends State<EditPredictionWidget> {
                                     .update(createMatchStandingsRecordData(
                                   homeGoals: _model.homeGoalsCCValue,
                                   awayGoals: _model.awayGoalsCCValue,
-                                  userUpdate: 0,
+                                  userUpdate: 2,
                                 ));
                                 Navigator.pop(context);
                                 ScaffoldMessenger.of(context).showSnackBar(

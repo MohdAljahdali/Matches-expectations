@@ -2,33 +2,35 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/pages/admin/countries/admin_countries_add/admin_countries_add_widget.dart';
 import '/pages/admin/countries/admin_countries_eidt/admin_countries_eidt_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
+import 'package:styled_divider/styled_divider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'admin_countries_list_model.dart';
-export 'admin_countries_list_model.dart';
+import 'admin_countries_listdd_model.dart';
+export 'admin_countries_listdd_model.dart';
 
-class AdminCountriesListWidget extends StatefulWidget {
-  const AdminCountriesListWidget({Key? key}) : super(key: key);
+class AdminCountriesListddWidget extends StatefulWidget {
+  const AdminCountriesListddWidget({Key? key}) : super(key: key);
 
   @override
-  _AdminCountriesListWidgetState createState() =>
-      _AdminCountriesListWidgetState();
+  _AdminCountriesListddWidgetState createState() =>
+      _AdminCountriesListddWidgetState();
 }
 
-class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
-  late AdminCountriesListModel _model;
+class _AdminCountriesListddWidgetState
+    extends State<AdminCountriesListddWidget> {
+  late AdminCountriesListddModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AdminCountriesListModel());
+    _model = createModel(context, () => AdminCountriesListddModel());
   }
 
   @override
@@ -46,7 +48,7 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: NestedScrollView(
           floatHeaderSlivers: true,
           headerSliverBuilder: (context, _) => [
@@ -56,7 +58,7 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
               desktop: false,
             ))
               SliverAppBar(
-                pinned: true,
+                pinned: false,
                 floating: false,
                 backgroundColor:
                     FlutterFlowTheme.of(context).secondaryBackground,
@@ -76,56 +78,13 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                     context.pop();
                   },
                 ),
-                title: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      FFLocalizations.of(context).getText(
-                        'yezr4vxf' /* Countries List */,
-                      ),
-                      style: FlutterFlowTheme.of(context).titleLarge,
-                    ),
-                  ],
-                ),
-                actions: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        await showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          enableDrag: false,
-                          useSafeArea: true,
-                          context: context,
-                          builder: (context) {
-                            return GestureDetector(
-                              onTap: () => FocusScope.of(context)
-                                  .requestFocus(_model.unfocusNode),
-                              child: Padding(
-                                padding: MediaQuery.viewInsetsOf(context),
-                                child: Container(
-                                  height: 150.0,
-                                  child: AdminCountriesAddWidget(),
-                                ),
-                              ),
-                            );
-                          },
-                        ).then((value) => setState(() {}));
-                      },
-                      child: Icon(
-                        Icons.system_update_sharp,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 30.0,
-                      ),
-                    ),
+                title: Text(
+                  FFLocalizations.of(context).getText(
+                    'rjwugg1n' /* Countries List */,
                   ),
-                ],
+                  style: FlutterFlowTheme.of(context).titleLarge,
+                ),
+                actions: [],
                 centerTitle: true,
                 elevation: 2.0,
               )
@@ -142,6 +101,50 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                        Container(
+                          width: double.infinity,
+                          height: 60.0,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 10.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                FlutterFlowIconButton(
+                                  borderColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  borderRadius: 20.0,
+                                  borderWidth: 1.0,
+                                  buttonSize: 40.0,
+                                  fillColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  icon: Icon(
+                                    Icons.person_add,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    size: 24.0,
+                                  ),
+                                  onPressed: () async {
+                                    await actions.addCountries();
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        StyledDivider(
+                          height: 1.0,
+                          thickness: 1.0,
+                          indent: 0.0,
+                          endIndent: 0.0,
+                          color: FlutterFlowTheme.of(context).accent4,
+                          lineStyle: DividerLineStyle.dashed,
+                        ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
@@ -196,7 +199,7 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 5.0, 12.0, 8.0),
+                                            12.0, 8.0, 12.0, 8.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
@@ -211,8 +214,8 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                                 imageUrl:
                                                     listViewCountriesRecord
                                                         .flagW80,
-                                                width: 70.0,
-                                                height: 60.0,
+                                                width: 60.0,
+                                                height: 50.0,
                                                 fit: BoxFit.cover,
                                               ),
                                             ),
@@ -235,7 +238,23 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMedium,
+                                                              .bodyLarge
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Plus Jakarta Sans',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                fontSize: 14.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyLargeFamily),
+                                                              ),
                                                     ),
                                                     Text(
                                                       listViewCountriesRecord
@@ -243,18 +262,7 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                                lineHeight: 2.0,
-                                                              ),
+                                                              .bodyMedium,
                                                     ),
                                                   ],
                                                 ),

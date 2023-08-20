@@ -63,36 +63,42 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
         body: NestedScrollView(
           floatHeaderSlivers: true,
           headerSliverBuilder: (context, _) => [
-            SliverAppBar(
-              pinned: false,
-              floating: false,
-              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-              iconTheme: IconThemeData(color: Color(0xFF801F1F)),
-              automaticallyImplyLeading: false,
-              leading: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 30.0,
-                borderWidth: 1.0,
-                buttonSize: 60.0,
-                icon: Icon(
-                  Icons.arrow_back_rounded,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 30.0,
+            if (responsiveVisibility(
+              context: context,
+              tabletLandscape: false,
+              desktop: false,
+            ))
+              SliverAppBar(
+                pinned: false,
+                floating: false,
+                backgroundColor:
+                    FlutterFlowTheme.of(context).secondaryBackground,
+                iconTheme: IconThemeData(color: Color(0xFF801F1F)),
+                automaticallyImplyLeading: false,
+                leading: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 30.0,
+                  borderWidth: 1.0,
+                  buttonSize: 60.0,
+                  icon: Icon(
+                    Icons.arrow_back_rounded,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 30.0,
+                  ),
+                  onPressed: () async {
+                    context.safePop();
+                  },
                 ),
-                onPressed: () async {
-                  context.safePop();
-                },
-              ),
-              title: Text(
-                FFLocalizations.of(context).getText(
-                  'ozjcfion' /* List of matches not started */,
+                title: Text(
+                  FFLocalizations.of(context).getText(
+                    'ozjcfion' /* List of matches not started */,
+                  ),
+                  style: FlutterFlowTheme.of(context).titleLarge,
                 ),
-                style: FlutterFlowTheme.of(context).titleLarge,
-              ),
-              actions: [],
-              centerTitle: true,
-              elevation: 2.0,
-            )
+                actions: [],
+                centerTitle: true,
+                elevation: 2.0,
+              )
           ],
           body: Builder(
             builder: (context) {
@@ -209,11 +215,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                               _model.activeTournamentListDDValue ??=
                                                   '',
                                             ),
-                                            options:
-                                                activeTournamentListDDTournamentsRecordList
-                                                    .map(
-                                                        (e) => e.tournamentsRef)
-                                                    .toList(),
+                                            options: <String>[],
                                             optionLabels:
                                                 activeTournamentListDDTournamentsRecordList
                                                     .map((e) => e.name)
@@ -252,6 +254,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                     16.0, 4.0, 16.0, 4.0),
                                             hidesUnderline: true,
                                             isSearchable: false,
+                                            isMultiSelect: false,
                                           );
                                         },
                                       ),

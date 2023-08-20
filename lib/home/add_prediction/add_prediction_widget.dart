@@ -263,6 +263,8 @@ class _AddPredictionWidgetState extends State<AddPredictionWidget> {
                               updateCount: (count) => setState(
                                   () => _model.homeGoalsCCValue = count),
                               stepSize: 1,
+                              minimum: 0,
+                              maximum: 30,
                             ),
                           ),
                           Container(
@@ -312,6 +314,8 @@ class _AddPredictionWidgetState extends State<AddPredictionWidget> {
                               updateCount: (count) => setState(
                                   () => _model.awayGoalsCCValue = count),
                               stepSize: 1,
+                              minimum: 0,
+                              maximum: 30,
                             ),
                           ),
                         ],

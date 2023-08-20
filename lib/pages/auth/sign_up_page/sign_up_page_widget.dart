@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -33,6 +34,22 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
     _model.passwordTFController ??= TextEditingController();
     _model.confirmPasswordTFController ??= TextEditingController();
     _model.nameTFController ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
+          _model.emailTFController?.text = FFLocalizations.of(context).getText(
+            's0vdlwdp' /* @test.aaa */,
+          );
+          _model.passwordTFController?.text =
+              FFLocalizations.of(context).getText(
+            'ffokksze' /* Mm2391170 */,
+          );
+          _model.confirmPasswordTFController?.text =
+              FFLocalizations.of(context).getText(
+            '55yopzwm' /* Mm2391170 */,
+          );
+          _model.nameTFController?.text = FFLocalizations.of(context).getText(
+            'rhtrog6s' /* Test  */,
+          );
+        }));
   }
 
   @override
@@ -54,36 +71,42 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
         body: NestedScrollView(
           floatHeaderSlivers: true,
           headerSliverBuilder: (context, _) => [
-            SliverAppBar(
-              pinned: false,
-              floating: false,
-              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-              iconTheme: IconThemeData(color: Color(0xFF801F1F)),
-              automaticallyImplyLeading: false,
-              leading: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 30.0,
-                borderWidth: 1.0,
-                buttonSize: 60.0,
-                icon: Icon(
-                  Icons.arrow_back_rounded,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 30.0,
+            if (responsiveVisibility(
+              context: context,
+              tabletLandscape: false,
+              desktop: false,
+            ))
+              SliverAppBar(
+                pinned: false,
+                floating: false,
+                backgroundColor:
+                    FlutterFlowTheme.of(context).secondaryBackground,
+                iconTheme: IconThemeData(color: Color(0xFF801F1F)),
+                automaticallyImplyLeading: false,
+                leading: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 30.0,
+                  borderWidth: 1.0,
+                  buttonSize: 60.0,
+                  icon: Icon(
+                    Icons.arrow_back_rounded,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 30.0,
+                  ),
+                  onPressed: () async {
+                    context.pop();
+                  },
                 ),
-                onPressed: () async {
-                  context.pop();
-                },
-              ),
-              title: Text(
-                FFLocalizations.of(context).getText(
-                  'qqda0tvh' /* Register a new user */,
+                title: Text(
+                  FFLocalizations.of(context).getText(
+                    'qqda0tvh' /* Register a new user */,
+                  ),
+                  style: FlutterFlowTheme.of(context).titleLarge,
                 ),
-                style: FlutterFlowTheme.of(context).titleLarge,
-              ),
-              actions: [],
-              centerTitle: true,
-              elevation: 2.0,
-            )
+                actions: [],
+                centerTitle: true,
+                elevation: 2.0,
+              )
           ],
           body: Builder(
             builder: (context) {
@@ -653,6 +676,13 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                       if (user == null) {
                                         return;
                                       }
+
+                                      await UsersRecord.collection
+                                          .doc(user.uid)
+                                          .update(createUsersRecordData(
+                                            displayName:
+                                                _model.nameTFController.text,
+                                          ));
 
                                       context.pushNamedAuth(
                                           'Home', context.mounted);

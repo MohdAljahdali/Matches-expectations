@@ -138,10 +138,10 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color tertiary = const Color(0xFF222232);
   late Color alternate = const Color(0xFF222232);
   late Color primaryText = const Color(0xFFFFFFFF);
-  late Color secondaryText = const Color(0xFF65656B);
-  late Color primaryBackground = const Color(0xFF181829);
-  late Color secondaryBackground = const Color(0xFF2B2B3D);
-  late Color accent1 = const Color(0xFF616161);
+  late Color secondaryText = const Color(0xFF39383D);
+  late Color primaryBackground = const Color(0xFF000000);
+  late Color secondaryBackground = const Color(0xFF1C1C1E);
+  late Color accent1 = const Color(0xFF39383D);
   late Color accent2 = const Color(0xFF757575);
   late Color accent3 = const Color(0xFFE0E0E0);
   late Color accent4 = const Color(0xFFEEEEEE);
@@ -195,108 +195,108 @@ class MobileTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get displayLargeFamily => 'Noto Sans Arabic';
-  TextStyle get displayLarge => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get displayLargeFamily => 'SF Arabic';
+  TextStyle get displayLarge => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 57.0,
         fontStyle: FontStyle.normal,
       );
-  String get displayMediumFamily => 'Noto Sans Arabic';
-  TextStyle get displayMedium => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get displayMediumFamily => 'SF Arabic';
+  TextStyle get displayMedium => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 40.0,
       );
-  String get displaySmallFamily => 'Noto Sans Arabic';
-  TextStyle get displaySmall => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get displaySmallFamily => 'SF Arabic';
+  TextStyle get displaySmall => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 36.0,
       );
-  String get headlineLargeFamily => 'Noto Sans Arabic';
-  TextStyle get headlineLarge => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get headlineLargeFamily => 'SF Arabic';
+  TextStyle get headlineLarge => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 32.0,
       );
-  String get headlineMediumFamily => 'Noto Sans Arabic';
-  TextStyle get headlineMedium => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get headlineMediumFamily => 'SF Arabic';
+  TextStyle get headlineMedium => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 28.0,
       );
-  String get headlineSmallFamily => 'Noto Sans Arabic';
-  TextStyle get headlineSmall => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get headlineSmallFamily => 'SF Arabic';
+  TextStyle get headlineSmall => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 24.0,
       );
-  String get titleLargeFamily => 'Noto Sans Arabic';
-  TextStyle get titleLarge => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get titleLargeFamily => 'SF Arabic';
+  TextStyle get titleLarge => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 22.0,
       );
-  String get titleMediumFamily => 'Noto Sans Arabic';
-  TextStyle get titleMedium => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get titleMediumFamily => 'SF Arabic';
+  TextStyle get titleMedium => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 16.0,
       );
-  String get titleSmallFamily => 'Noto Sans Arabic';
-  TextStyle get titleSmall => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get titleSmallFamily => 'SF Arabic';
+  TextStyle get titleSmall => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get labelLargeFamily => 'Noto Sans Arabic';
-  TextStyle get labelLarge => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get labelLargeFamily => 'SF Arabic';
+  TextStyle get labelLarge => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get labelMediumFamily => 'Noto Sans Arabic';
-  TextStyle get labelMedium => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get labelMediumFamily => 'SF Arabic';
+  TextStyle get labelMedium => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 12.0,
       );
-  String get labelSmallFamily => 'Noto Sans Arabic';
-  TextStyle get labelSmall => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get labelSmallFamily => 'SF Arabic';
+  TextStyle get labelSmall => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 11.0,
       );
-  String get bodyLargeFamily => 'Noto Sans Arabic';
-  TextStyle get bodyLarge => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get bodyLargeFamily => 'SF Arabic';
+  TextStyle get bodyLarge => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get bodyMediumFamily => 'Noto Sans Arabic';
-  TextStyle get bodyMedium => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get bodyMediumFamily => 'SF Arabic';
+  TextStyle get bodyMedium => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
-  String get bodySmallFamily => 'Noto Sans Arabic';
-  TextStyle get bodySmall => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get bodySmallFamily => 'SF Arabic';
+  TextStyle get bodySmall => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
@@ -308,108 +308,108 @@ class TabletTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get displayLargeFamily => 'Noto Sans Arabic';
-  TextStyle get displayLarge => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get displayLargeFamily => 'SF Arabic';
+  TextStyle get displayLarge => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 57.0,
         fontStyle: FontStyle.normal,
       );
-  String get displayMediumFamily => 'Noto Sans Arabic';
-  TextStyle get displayMedium => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get displayMediumFamily => 'SF Arabic';
+  TextStyle get displayMedium => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 45.0,
       );
-  String get displaySmallFamily => 'Noto Sans Arabic';
-  TextStyle get displaySmall => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get displaySmallFamily => 'SF Arabic';
+  TextStyle get displaySmall => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 36.0,
       );
-  String get headlineLargeFamily => 'Noto Sans Arabic';
-  TextStyle get headlineLarge => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get headlineLargeFamily => 'SF Arabic';
+  TextStyle get headlineLarge => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 32.0,
       );
-  String get headlineMediumFamily => 'Noto Sans Arabic';
-  TextStyle get headlineMedium => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get headlineMediumFamily => 'SF Arabic';
+  TextStyle get headlineMedium => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 28.0,
       );
-  String get headlineSmallFamily => 'Noto Sans Arabic';
-  TextStyle get headlineSmall => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get headlineSmallFamily => 'SF Arabic';
+  TextStyle get headlineSmall => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 24.0,
       );
-  String get titleLargeFamily => 'Noto Sans Arabic';
-  TextStyle get titleLarge => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get titleLargeFamily => 'SF Arabic';
+  TextStyle get titleLarge => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 22.0,
       );
-  String get titleMediumFamily => 'Noto Sans Arabic';
-  TextStyle get titleMedium => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get titleMediumFamily => 'SF Arabic';
+  TextStyle get titleMedium => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 16.0,
       );
-  String get titleSmallFamily => 'Noto Sans Arabic';
-  TextStyle get titleSmall => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get titleSmallFamily => 'SF Arabic';
+  TextStyle get titleSmall => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get labelLargeFamily => 'Noto Sans Arabic';
-  TextStyle get labelLarge => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get labelLargeFamily => 'SF Arabic';
+  TextStyle get labelLarge => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get labelMediumFamily => 'Noto Sans Arabic';
-  TextStyle get labelMedium => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get labelMediumFamily => 'SF Arabic';
+  TextStyle get labelMedium => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 12.0,
       );
-  String get labelSmallFamily => 'Noto Sans Arabic';
-  TextStyle get labelSmall => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get labelSmallFamily => 'SF Arabic';
+  TextStyle get labelSmall => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 11.0,
       );
-  String get bodyLargeFamily => 'Noto Sans Arabic';
-  TextStyle get bodyLarge => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get bodyLargeFamily => 'SF Arabic';
+  TextStyle get bodyLarge => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get bodyMediumFamily => 'Noto Sans Arabic';
-  TextStyle get bodyMedium => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get bodyMediumFamily => 'SF Arabic';
+  TextStyle get bodyMedium => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
-  String get bodySmallFamily => 'Noto Sans Arabic';
-  TextStyle get bodySmall => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get bodySmallFamily => 'SF Arabic';
+  TextStyle get bodySmall => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
@@ -421,108 +421,108 @@ class DesktopTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get displayLargeFamily => 'Noto Sans Arabic';
-  TextStyle get displayLarge => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get displayLargeFamily => 'SF Arabic';
+  TextStyle get displayLarge => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 57.0,
         fontStyle: FontStyle.normal,
       );
-  String get displayMediumFamily => 'Noto Sans Arabic';
-  TextStyle get displayMedium => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get displayMediumFamily => 'SF Arabic';
+  TextStyle get displayMedium => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 45.0,
       );
-  String get displaySmallFamily => 'Noto Sans Arabic';
-  TextStyle get displaySmall => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get displaySmallFamily => 'SF Arabic';
+  TextStyle get displaySmall => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 36.0,
       );
-  String get headlineLargeFamily => 'Noto Sans Arabic';
-  TextStyle get headlineLarge => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get headlineLargeFamily => 'SF Arabic';
+  TextStyle get headlineLarge => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 32.0,
       );
-  String get headlineMediumFamily => 'Noto Sans Arabic';
-  TextStyle get headlineMedium => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get headlineMediumFamily => 'SF Arabic';
+  TextStyle get headlineMedium => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 28.0,
       );
-  String get headlineSmallFamily => 'Noto Sans Arabic';
-  TextStyle get headlineSmall => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get headlineSmallFamily => 'SF Arabic';
+  TextStyle get headlineSmall => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 24.0,
       );
-  String get titleLargeFamily => 'Noto Sans Arabic';
-  TextStyle get titleLarge => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get titleLargeFamily => 'SF Arabic';
+  TextStyle get titleLarge => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 22.0,
       );
-  String get titleMediumFamily => 'Noto Sans Arabic';
-  TextStyle get titleMedium => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get titleMediumFamily => 'SF Arabic';
+  TextStyle get titleMedium => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 16.0,
       );
-  String get titleSmallFamily => 'Noto Sans Arabic';
-  TextStyle get titleSmall => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get titleSmallFamily => 'SF Arabic';
+  TextStyle get titleSmall => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get labelLargeFamily => 'Noto Sans Arabic';
-  TextStyle get labelLarge => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get labelLargeFamily => 'SF Arabic';
+  TextStyle get labelLarge => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get labelMediumFamily => 'Noto Sans Arabic';
-  TextStyle get labelMedium => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get labelMediumFamily => 'SF Arabic';
+  TextStyle get labelMedium => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 12.0,
       );
-  String get labelSmallFamily => 'Noto Sans Arabic';
-  TextStyle get labelSmall => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get labelSmallFamily => 'SF Arabic';
+  TextStyle get labelSmall => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 11.0,
       );
-  String get bodyLargeFamily => 'Noto Sans Arabic';
-  TextStyle get bodyLarge => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get bodyLargeFamily => 'SF Arabic';
+  TextStyle get bodyLarge => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get bodyMediumFamily => 'Noto Sans Arabic';
-  TextStyle get bodyMedium => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get bodyMediumFamily => 'SF Arabic';
+  TextStyle get bodyMedium => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
-  String get bodySmallFamily => 'Noto Sans Arabic';
-  TextStyle get bodySmall => GoogleFonts.getFont(
-        'Noto Sans Arabic',
+  String get bodySmallFamily => 'SF Arabic';
+  TextStyle get bodySmall => TextStyle(
+        fontFamily: 'SF Arabic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,

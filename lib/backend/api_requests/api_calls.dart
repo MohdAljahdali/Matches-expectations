@@ -17,30 +17,38 @@ class ApisportsGroup {
     'x-rapidapi-key': 'ba825d70e7634e7015d2f116c1a07e03',
     'x-rapidapi-host': 'v3.football.api-sports.io',
   };
-  static FixturesCall fixturesCall = FixturesCall();
+  static FixturesDetailsCall fixturesDetailsCall = FixturesDetailsCall();
+  static CountriesCall countriesCall = CountriesCall();
 }
 
-class FixturesCall {
-  Future<ApiCallResponse> call({
-    int? league = 307,
-    int? season = 2023,
-    String? timezone = 'Asia/Riyadh',
-    String? from = '',
-    String? to = '',
-    String? status = '',
-  }) {
+class FixturesDetailsCall {
+  Future<ApiCallResponse> call() {
     return ApiManager.instance.makeApiCall(
-      callName: 'fixtures',
+      callName: 'Fixtures details',
       apiUrl: '${ApisportsGroup.baseUrl}/fixtures',
       callType: ApiCallType.GET,
       headers: {
         ...ApisportsGroup.headers,
       },
-      params: {
-        'league': 307,
-        'season': 2023,
-        'timezone': "Asia/Riyadh",
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class CountriesCall {
+  Future<ApiCallResponse> call() {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Countries',
+      apiUrl: '${ApisportsGroup.baseUrl}/countries',
+      callType: ApiCallType.GET,
+      headers: {
+        ...ApisportsGroup.headers,
       },
+      params: {},
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -48,9 +56,19 @@ class FixturesCall {
     );
   }
 
-  dynamic response(dynamic response) => getJsonField(
+  dynamic name(dynamic response) => getJsonField(
         response,
-        r'''$.response''',
+        r'''$.response[:].name''',
+        true,
+      );
+  dynamic code(dynamic response) => getJsonField(
+        response,
+        r'''$.response[:].code''',
+        true,
+      );
+  dynamic flag(dynamic response) => getJsonField(
+        response,
+        r'''$.response[:].flag''',
         true,
       );
 }

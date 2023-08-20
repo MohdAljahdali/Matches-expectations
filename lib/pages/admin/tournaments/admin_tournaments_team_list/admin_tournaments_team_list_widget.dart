@@ -70,36 +70,42 @@ class _AdminTournamentsTeamListWidgetState
         body: NestedScrollView(
           floatHeaderSlivers: true,
           headerSliverBuilder: (context, _) => [
-            SliverAppBar(
-              pinned: false,
-              floating: false,
-              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-              iconTheme: IconThemeData(color: Color(0xFF801F1F)),
-              automaticallyImplyLeading: false,
-              leading: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 30.0,
-                borderWidth: 1.0,
-                buttonSize: 60.0,
-                icon: Icon(
-                  Icons.arrow_back_rounded,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 30.0,
+            if (responsiveVisibility(
+              context: context,
+              tabletLandscape: false,
+              desktop: false,
+            ))
+              SliverAppBar(
+                pinned: false,
+                floating: false,
+                backgroundColor:
+                    FlutterFlowTheme.of(context).secondaryBackground,
+                iconTheme: IconThemeData(color: Color(0xFF801F1F)),
+                automaticallyImplyLeading: false,
+                leading: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 30.0,
+                  borderWidth: 1.0,
+                  buttonSize: 60.0,
+                  icon: Icon(
+                    Icons.arrow_back_rounded,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 30.0,
+                  ),
+                  onPressed: () async {
+                    context.safePop();
+                  },
                 ),
-                onPressed: () async {
-                  context.safePop();
-                },
-              ),
-              title: Text(
-                FFLocalizations.of(context).getText(
-                  'yv9ev3dd' /* Tournaments list */,
+                title: Text(
+                  FFLocalizations.of(context).getText(
+                    'yv9ev3dd' /* Tournaments list */,
+                  ),
+                  style: FlutterFlowTheme.of(context).titleLarge,
                 ),
-                style: FlutterFlowTheme.of(context).titleLarge,
-              ),
-              actions: [],
-              centerTitle: true,
-              elevation: 2.0,
-            )
+                actions: [],
+                centerTitle: true,
+                elevation: 2.0,
+              )
           ],
           body: Builder(
             builder: (context) {
@@ -142,90 +148,137 @@ class _AdminTournamentsTeamListWidgetState
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       15.0, 0.0, 15.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 0.0, 5.0, 0.0),
-                                            child: Builder(
-                                              builder: (context) {
-                                                if (FFAppState()
-                                                        .PTournaments
-                                                        .translation !=
-                                                    '-') {
-                                                  return FlutterFlowIconButton(
-                                                    borderColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .accent3,
-                                                    borderRadius: 20.0,
-                                                    borderWidth: 1.0,
-                                                    buttonSize: 40.0,
-                                                    fillColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .accent3,
-                                                    icon: Icon(
-                                                      Icons.translate_outlined,
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .primaryBackground,
-                                                      size: 24.0,
-                                                    ),
-                                                    onPressed: () async {
-                                                      setState(() {
-                                                        FFAppState()
-                                                            .updatePTournamentsStruct(
-                                                          (e) => e
-                                                            ..translation = '',
-                                                        );
-                                                      });
-                                                    },
-                                                  );
-                                                } else {
-                                                  return FlutterFlowIconButton(
-                                                    borderColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .accent3,
-                                                    borderRadius: 20.0,
-                                                    borderWidth: 1.0,
-                                                    buttonSize: 40.0,
-                                                    fillColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .accent3,
-                                                    icon: Icon(
-                                                      Icons.g_translate,
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .primaryBackground,
-                                                      size: 24.0,
-                                                    ),
-                                                    onPressed: () async {
-                                                      setState(() {
-                                                        FFAppState()
-                                                            .updatePTournamentsStruct(
-                                                          (e) => e
-                                                            ..translation = '-',
-                                                        );
-                                                      });
-                                                    },
-                                                  );
-                                                }
-                                              },
+                                  child: FutureBuilder<List<TournamentsRecord>>(
+                                    future: queryTournamentsRecordOnce(
+                                      queryBuilder: (tournamentsRecord) =>
+                                          tournamentsRecord
+                                              .where('seasonYear',
+                                                  isEqualTo: 2555)
+                                              .where('id', isEqualTo: 255),
+                                      singleRecord: true,
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: SpinKitFadingCircle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              size: 50.0,
                                             ),
                                           ),
+                                        );
+                                      }
+                                      List<TournamentsRecord>
+                                          rowTournamentsRecordList =
+                                          snapshot.data!;
+                                      // Return an empty Container when the item does not exist.
+                                      if (snapshot.data!.isEmpty) {
+                                        return Container();
+                                      }
+                                      final rowTournamentsRecord =
+                                          rowTournamentsRecordList.isNotEmpty
+                                              ? rowTournamentsRecordList.first
+                                              : null;
+                                      return Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        5.0, 0.0, 5.0, 0.0),
+                                                child: Builder(
+                                                  builder: (context) {
+                                                    if (FFAppState()
+                                                            .PTournaments
+                                                            .translation !=
+                                                        '-') {
+                                                      return Visibility(
+                                                        visible:
+                                                            rowTournamentsRecord !=
+                                                                null,
+                                                        child:
+                                                            FlutterFlowIconButton(
+                                                          borderColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .accent3,
+                                                          borderRadius: 20.0,
+                                                          borderWidth: 1.0,
+                                                          buttonSize: 40.0,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .accent3,
+                                                          icon: Icon(
+                                                            Icons
+                                                                .translate_outlined,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryBackground,
+                                                            size: 24.0,
+                                                          ),
+                                                          onPressed: () async {
+                                                            setState(() {
+                                                              FFAppState()
+                                                                  .updatePTournamentsStruct(
+                                                                (e) => e
+                                                                  ..translation =
+                                                                      '',
+                                                              );
+                                                            });
+                                                          },
+                                                        ),
+                                                      );
+                                                    } else {
+                                                      return FlutterFlowIconButton(
+                                                        borderColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent3,
+                                                        borderRadius: 20.0,
+                                                        borderWidth: 1.0,
+                                                        buttonSize: 40.0,
+                                                        fillColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent3,
+                                                        icon: Icon(
+                                                          Icons.g_translate,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBackground,
+                                                          size: 24.0,
+                                                        ),
+                                                        onPressed: () async {
+                                                          setState(() {
+                                                            FFAppState()
+                                                                .updatePTournamentsStruct(
+                                                              (e) => e
+                                                                ..translation =
+                                                                    '-',
+                                                            );
+                                                          });
+                                                        },
+                                                      );
+                                                    }
+                                                  },
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ],
-                                      ),
-                                    ],
+                                      );
+                                    },
                                   ),
                                 ),
                               ],
@@ -260,300 +313,250 @@ class _AdminTournamentsTeamListWidgetState
                                     return Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 6.0),
-                                      child: StreamBuilder<TeamsRecord>(
-                                        stream: TeamsRecord.getDocument(
-                                            teamsListItem),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child: SpinKitFadingCircle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  size: 50.0,
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                          final card11TeamsRecord =
-                                              snapshot.data!;
-                                          return Container(
-                                            width: double.infinity,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  blurRadius: 7.0,
-                                                  color: Color(0x2F1D2429),
-                                                  offset: Offset(0.0, 3.0),
-                                                )
-                                              ],
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            child: Column(
+                                      child: Container(
+                                        width: double.infinity,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 7.0,
+                                              color: Color(0x2F1D2429),
+                                              offset: Offset(0.0, 3.0),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Row(
                                               mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
                                               children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.end,
-                                                  children: [
-                                                    Container(
+                                                Container(
+                                                  width: 90.0,
+                                                  height: 90.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(8.0),
+                                                      bottomRight:
+                                                          Radius.circular(0.0),
+                                                      topLeft:
+                                                          Radius.circular(8.0),
+                                                      topRight:
+                                                          Radius.circular(0.0),
+                                                    ),
+                                                  ),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(8.0),
+                                                      bottomRight:
+                                                          Radius.circular(0.0),
+                                                      topLeft:
+                                                          Radius.circular(8.0),
+                                                      topRight:
+                                                          Radius.circular(0.0),
+                                                    ),
+                                                    child: CachedNetworkImage(
+                                                      fadeInDuration: Duration(
+                                                          milliseconds: 500),
+                                                      fadeOutDuration: Duration(
+                                                          milliseconds: 500),
+                                                      imageUrl:
+                                                          'https://picsum.photos/seed/559/600',
                                                       width: 90.0,
                                                       height: 90.0,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        borderRadius:
-                                                            BorderRadius.only(
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  8.0),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  0.0),
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  8.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  0.0),
-                                                        ),
-                                                      ),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius.only(
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  8.0),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  0.0),
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  8.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  0.0),
-                                                        ),
-                                                        child:
-                                                            CachedNetworkImage(
-                                                          fadeInDuration:
-                                                              Duration(
-                                                                  milliseconds:
-                                                                      500),
-                                                          fadeOutDuration:
-                                                              Duration(
-                                                                  milliseconds:
-                                                                      500),
-                                                          imageUrl:
-                                                              card11TeamsRecord
-                                                                  .logo,
-                                                          width: 90.0,
-                                                          height: 90.0,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      ),
+                                                      fit: BoxFit.cover,
                                                     ),
-                                                    Flexible(
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    12.0,
-                                                                    0.0,
-                                                                    8.0,
-                                                                    0.0),
-                                                        child: Column(
+                                                  ),
+                                                ),
+                                                Flexible(
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(12.0, 0.0,
+                                                                8.0, 0.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .stretch,
+                                                      children: [
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Text(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                () {
+                                                                  if (FFLocalizations.of(
+                                                                              context)
+                                                                          .languageCode ==
+                                                                      'en') {
+                                                                    return '1';
+                                                                  } else if (FFLocalizations.of(
+                                                                              context)
+                                                                          .languageCode ==
+                                                                      'ar') {
+                                                                    return '1';
+                                                                  } else {
+                                                                    return '1';
+                                                                  }
+                                                                }(),
+                                                                '1',
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Row(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
-                                                                  .center,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .stretch,
+                                                                  .spaceBetween,
                                                           children: [
-                                                            Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Text(
-                                                                  () {
-                                                                    if (FFLocalizations.of(context)
-                                                                            .languageCode ==
-                                                                        'en') {
-                                                                      return card11TeamsRecord
-                                                                          .name;
-                                                                    } else if (FFLocalizations.of(context)
-                                                                            .languageCode ==
-                                                                        'ar') {
-                                                                      return card11TeamsRecord
-                                                                          .nameAr;
-                                                                    } else {
-                                                                      return card11TeamsRecord
-                                                                          .name;
-                                                                    }
-                                                                  }(),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium,
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceBetween,
-                                                              children: [
-                                                                SingleChildScrollView(
-                                                                  scrollDirection:
-                                                                      Axis.horizontal,
-                                                                  child: Row(
+                                                            SingleChildScrollView(
+                                                              scrollDirection:
+                                                                  Axis.horizontal,
+                                                              child: Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
+                                                                children: [
+                                                                  Column(
                                                                     mainAxisSize:
                                                                         MainAxisSize
                                                                             .max,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .spaceBetween,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
                                                                     children: [
-                                                                      Column(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        crossAxisAlignment:
-                                                                            CrossAxisAlignment.start,
-                                                                        children: [
-                                                                          RichText(
-                                                                            text:
-                                                                                TextSpan(
-                                                                              children: [
-                                                                                TextSpan(
-                                                                                  text: FFLocalizations.of(context).getText(
-                                                                                    'ak5ui8se' /* Country */,
+                                                                      RichText(
+                                                                        text:
+                                                                            TextSpan(
+                                                                          children: [
+                                                                            TextSpan(
+                                                                              text: FFLocalizations.of(context).getText(
+                                                                                'ak5ui8se' /* Country */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
+                                                                                    fontWeight: FontWeight.normal,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                                   ),
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                        color: FlutterFlowTheme.of(context).primaryText,
-                                                                                        fontWeight: FontWeight.normal,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                      ),
-                                                                                ),
-                                                                                TextSpan(
-                                                                                  text: FFLocalizations.of(context).getText(
-                                                                                    'to40qi32' /*  :  */,
-                                                                                  ),
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium,
-                                                                                ),
-                                                                                TextSpan(
-                                                                                  text: card11TeamsRecord.country,
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium,
-                                                                                )
-                                                                              ],
+                                                                            ),
+                                                                            TextSpan(
+                                                                              text: FFLocalizations.of(context).getText(
+                                                                                'to40qi32' /*  :  */,
+                                                                              ),
                                                                               style: FlutterFlowTheme.of(context).bodyMedium,
                                                                             ),
-                                                                          ),
-                                                                          RichText(
-                                                                            text:
-                                                                                TextSpan(
-                                                                              children: [
-                                                                                TextSpan(
-                                                                                  text: FFLocalizations.of(context).getText(
-                                                                                    'rorq2dwr' /* Code */,
+                                                                            TextSpan(
+                                                                              text: FFLocalizations.of(context).getText(
+                                                                                'dxj5ntpu' /* Hello World  */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium,
+                                                                            )
+                                                                          ],
+                                                                          style:
+                                                                              FlutterFlowTheme.of(context).bodyMedium,
+                                                                        ),
+                                                                      ),
+                                                                      RichText(
+                                                                        text:
+                                                                            TextSpan(
+                                                                          children: [
+                                                                            TextSpan(
+                                                                              text: FFLocalizations.of(context).getText(
+                                                                                'rorq2dwr' /* Code */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
+                                                                                    fontWeight: FontWeight.normal,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                                   ),
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                        color: FlutterFlowTheme.of(context).primaryText,
-                                                                                        fontWeight: FontWeight.normal,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                      ),
-                                                                                ),
-                                                                                TextSpan(
-                                                                                  text: FFLocalizations.of(context).getText(
-                                                                                    '2231ob8a' /*  :  */,
-                                                                                  ),
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium,
-                                                                                ),
-                                                                                TextSpan(
-                                                                                  text: card11TeamsRecord.code,
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium,
-                                                                                )
-                                                                              ],
+                                                                            ),
+                                                                            TextSpan(
+                                                                              text: FFLocalizations.of(context).getText(
+                                                                                '2231ob8a' /*  :  */,
+                                                                              ),
                                                                               style: FlutterFlowTheme.of(context).bodyMedium,
                                                                             ),
-                                                                          ),
-                                                                        ],
+                                                                            TextSpan(
+                                                                              text: FFLocalizations.of(context).getText(
+                                                                                '1oebw19y' /* Hello World  */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium,
+                                                                            )
+                                                                          ],
+                                                                          style:
+                                                                              FlutterFlowTheme.of(context).bodyMedium,
+                                                                        ),
                                                                       ),
                                                                     ],
                                                                   ),
-                                                                ),
-                                                                FlutterFlowIconButton(
-                                                                  borderColor:
-                                                                      Color(
-                                                                          0x9AA2A8AF),
-                                                                  borderRadius:
-                                                                      8.0,
-                                                                  borderWidth:
-                                                                      2.0,
-                                                                  buttonSize:
-                                                                      50.0,
-                                                                  fillColor: FlutterFlowTheme.of(
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            FlutterFlowIconButton(
+                                                              borderColor: Color(
+                                                                  0x9AA2A8AF),
+                                                              borderRadius: 8.0,
+                                                              borderWidth: 2.0,
+                                                              buttonSize: 50.0,
+                                                              fillColor:
+                                                                  FlutterFlowTheme.of(
                                                                           context)
                                                                       .accent3,
-                                                                  icon: Icon(
-                                                                    Icons
-                                                                        .edit_square,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground,
-                                                                    size: 20.0,
-                                                                  ),
-                                                                  onPressed:
-                                                                      () async {
-                                                                    context
-                                                                        .pushNamed(
-                                                                      'adminTournamentTeamEdit',
-                                                                      queryParameters:
-                                                                          {
-                                                                        'teamsRef':
-                                                                            serializeParam(
-                                                                          card11TeamsRecord
-                                                                              .reference,
-                                                                          ParamType
-                                                                              .DocumentReference,
-                                                                        ),
-                                                                      }.withoutNulls,
-                                                                    );
-                                                                  },
-                                                                ),
-                                                              ],
+                                                              icon: Icon(
+                                                                Icons
+                                                                    .edit_square,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                size: 20.0,
+                                                              ),
+                                                              onPressed: () {
+                                                                print(
+                                                                    'IconButton pressed ...');
+                                                              },
                                                             ),
                                                           ],
                                                         ),
-                                                      ),
+                                                      ],
                                                     ),
-                                                  ],
+                                                  ),
                                                 ),
                                               ],
                                             ),
-                                          );
-                                        },
+                                          ],
+                                        ),
                                       ),
                                     );
                                   },

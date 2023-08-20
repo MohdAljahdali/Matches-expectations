@@ -117,7 +117,7 @@ class _EntryPageWidgetState extends State<EntryPageWidget> {
                               child: Padding(
                                 padding: MediaQuery.viewInsetsOf(context),
                                 child: Container(
-                                  height: double.infinity,
+                                  height: 400.0,
                                   child: SignInComponentWidget(),
                                 ),
                               ),

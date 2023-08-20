@@ -11,6 +11,8 @@ import 'schema/matches_record.dart';
 import 'schema/teams_record.dart';
 import 'schema/tournaments_record.dart';
 import 'schema/match_standings_record.dart';
+import 'schema/fixtures_record.dart';
+import 'schema/venues_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -24,6 +26,8 @@ export 'schema/matches_record.dart';
 export 'schema/teams_record.dart';
 export 'schema/tournaments_record.dart';
 export 'schema/match_standings_record.dart';
+export 'schema/fixtures_record.dart';
+export 'schema/venues_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -242,6 +246,80 @@ Future<List<MatchStandingsRecord>> queryMatchStandingsRecordOnce({
     queryCollectionOnce(
       MatchStandingsRecord.collection,
       MatchStandingsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query FixturesRecords (as a Stream and as a Future).
+Future<int> queryFixturesRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      FixturesRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<FixturesRecord>> queryFixturesRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      FixturesRecord.collection,
+      FixturesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<FixturesRecord>> queryFixturesRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      FixturesRecord.collection,
+      FixturesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query VenuesRecords (as a Stream and as a Future).
+Future<int> queryVenuesRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      VenuesRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<VenuesRecord>> queryVenuesRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      VenuesRecord.collection,
+      VenuesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<VenuesRecord>> queryVenuesRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      VenuesRecord.collection,
+      VenuesRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

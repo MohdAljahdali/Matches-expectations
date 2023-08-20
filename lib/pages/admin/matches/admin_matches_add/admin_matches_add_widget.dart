@@ -41,8 +41,7 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
       setState(() {});
     });
 
-    _model.leagueTFController ??= TextEditingController(
-        text: _model.tournamentResCopy?.tournamentsID?.toString());
+    _model.leagueTFController ??= TextEditingController();
     _model.seasonTFController ??= TextEditingController(
         text: _model.tournamentResCopy?.seasonYear?.toString());
   }
@@ -66,36 +65,42 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
         body: NestedScrollView(
           floatHeaderSlivers: true,
           headerSliverBuilder: (context, _) => [
-            SliverAppBar(
-              pinned: false,
-              floating: false,
-              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-              iconTheme: IconThemeData(color: Color(0xFF801F1F)),
-              automaticallyImplyLeading: false,
-              leading: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 30.0,
-                borderWidth: 1.0,
-                buttonSize: 60.0,
-                icon: Icon(
-                  Icons.arrow_back_rounded,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 30.0,
+            if (responsiveVisibility(
+              context: context,
+              tabletLandscape: false,
+              desktop: false,
+            ))
+              SliverAppBar(
+                pinned: false,
+                floating: false,
+                backgroundColor:
+                    FlutterFlowTheme.of(context).secondaryBackground,
+                iconTheme: IconThemeData(color: Color(0xFF801F1F)),
+                automaticallyImplyLeading: false,
+                leading: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 30.0,
+                  borderWidth: 1.0,
+                  buttonSize: 60.0,
+                  icon: Icon(
+                    Icons.arrow_back_rounded,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 30.0,
+                  ),
+                  onPressed: () async {
+                    context.safePop();
+                  },
                 ),
-                onPressed: () async {
-                  context.safePop();
-                },
-              ),
-              title: Text(
-                FFLocalizations.of(context).getText(
-                  'vrmd6yg3' /* Add tgdgdgdg */,
+                title: Text(
+                  FFLocalizations.of(context).getText(
+                    'vrmd6yg3' /* Add tgdgdgdg */,
+                  ),
+                  style: FlutterFlowTheme.of(context).titleLarge,
                 ),
-                style: FlutterFlowTheme.of(context).titleLarge,
-              ),
-              actions: [],
-              centerTitle: true,
-              elevation: 2.0,
-            )
+                actions: [],
+                centerTitle: true,
+                elevation: 2.0,
+              )
           ],
           body: Builder(
             builder: (context) {
@@ -220,11 +225,7 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                                     _model.activeTournamentDDValue ??=
                                                         '',
                                                   ),
-                                                  options:
-                                                      activeTournamentDDTournamentsRecordList
-                                                          .map((e) =>
-                                                              e.tournamentsRef)
-                                                          .toList(),
+                                                  options: ['3072022'],
                                                   optionLabels:
                                                       activeTournamentDDTournamentsRecordList
                                                           .map((e) => e.name)
@@ -235,21 +236,25 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                                         val);
                                                     _model.tournamentResCopy =
                                                         await queryTournamentsRecordOnce(
-                                                      queryBuilder: (tournamentsRecord) =>
-                                                          tournamentsRecord.where(
-                                                              'tournamentsRef',
-                                                              isEqualTo: _model
-                                                                  .activeTournamentDDValue),
+                                                      queryBuilder:
+                                                          (tournamentsRecord) =>
+                                                              tournamentsRecord
+                                                                  .where(
+                                                                      'isActive',
+                                                                      isEqualTo:
+                                                                          true),
                                                       singleRecord: true,
                                                     ).then((s) =>
                                                             s.firstOrNull);
                                                     setState(() {
                                                       _model.leagueTFController
-                                                              ?.text =
-                                                          _model
-                                                              .tournamentResCopy!
-                                                              .tournamentsID
-                                                              .toString();
+                                                          ?.text = (_model
+                                                                  .tournamentResCopy!
+                                                                  .id +
+                                                              _model
+                                                                  .tournamentResCopy!
+                                                                  .seasonYear)
+                                                          .toString();
                                                     });
                                                     setState(() {
                                                       _model.seasonTFController
@@ -292,6 +297,7 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                                           16.0, 0.0, 16.0, 0.0),
                                                   hidesUnderline: true,
                                                   isSearchable: false,
+                                                  isMultiSelect: false,
                                                 );
                                               },
                                             ),
@@ -860,6 +866,7 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                                       16.0, 4.0, 16.0, 4.0),
                                               hidesUnderline: true,
                                               isSearchable: false,
+                                              isMultiSelect: false,
                                             ),
                                           ),
                                         ],

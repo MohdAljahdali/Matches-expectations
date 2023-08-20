@@ -16,15 +16,10 @@ class TournamentsRecord extends FirestoreRecord {
     _initializeFields();
   }
 
-  // "tournamentsID" field.
-  int? _tournamentsID;
-  int get tournamentsID => _tournamentsID ?? 0;
-  bool hasTournamentsID() => _tournamentsID != null;
-
-  // "tournamentsRef" field.
-  String? _tournamentsRef;
-  String get tournamentsRef => _tournamentsRef ?? '';
-  bool hasTournamentsRef() => _tournamentsRef != null;
+  // "id" field.
+  int? _id;
+  int get id => _id ?? 0;
+  bool hasId() => _id != null;
 
   // "seasonYear" field.
   int? _seasonYear;
@@ -46,6 +41,11 @@ class TournamentsRecord extends FirestoreRecord {
   String get name => _name ?? '';
   bool hasName() => _name != null;
 
+  // "nameEn" field.
+  String? _nameEn;
+  String get nameEn => _nameEn ?? '';
+  bool hasNameEn() => _nameEn != null;
+
   // "nameAr" field.
   String? _nameAr;
   String get nameAr => _nameAr ?? '';
@@ -61,10 +61,25 @@ class TournamentsRecord extends FirestoreRecord {
   String get logo => _logo ?? '';
   bool hasLogo() => _logo != null;
 
+  // "countryRef" field.
+  DocumentReference? _countryRef;
+  DocumentReference? get countryRef => _countryRef;
+  bool hasCountryRef() => _countryRef != null;
+
   // "countryName" field.
   String? _countryName;
   String get countryName => _countryName ?? '';
   bool hasCountryName() => _countryName != null;
+
+  // "countryNameEn" field.
+  String? _countryNameEn;
+  String get countryNameEn => _countryNameEn ?? '';
+  bool hasCountryNameEn() => _countryNameEn != null;
+
+  // "countryNameAr" field.
+  String? _countryNameAr;
+  String get countryNameAr => _countryNameAr ?? '';
+  bool hasCountryNameAr() => _countryNameAr != null;
 
   // "countryCode" field.
   String? _countryCode;
@@ -75,6 +90,36 @@ class TournamentsRecord extends FirestoreRecord {
   String? _countryFlog;
   String get countryFlog => _countryFlog ?? '';
   bool hasCountryFlog() => _countryFlog != null;
+
+  // "isActive" field.
+  bool? _isActive;
+  bool get isActive => _isActive ?? false;
+  bool hasIsActive() => _isActive != null;
+
+  // "addRandomCode" field.
+  String? _addRandomCode;
+  String get addRandomCode => _addRandomCode ?? '';
+  bool hasAddRandomCode() => _addRandomCode != null;
+
+  // "roleHasDoubleMatches" field.
+  bool? _roleHasDoubleMatches;
+  bool get roleHasDoubleMatches => _roleHasDoubleMatches ?? false;
+  bool hasRoleHasDoubleMatches() => _roleHasDoubleMatches != null;
+
+  // "roundsList" field.
+  List<TournamentRoundsStruct>? _roundsList;
+  List<TournamentRoundsStruct> get roundsList => _roundsList ?? const [];
+  bool hasRoundsList() => _roundsList != null;
+
+  // "teamsList" field.
+  List<TeamStruct>? _teamsList;
+  List<TeamStruct> get teamsList => _teamsList ?? const [];
+  bool hasTeamsList() => _teamsList != null;
+
+  // "usersList" field.
+  List<DocumentReference>? _usersList;
+  List<DocumentReference> get usersList => _usersList ?? const [];
+  bool hasUsersList() => _usersList != null;
 
   // "roleHomeWin" field.
   bool? _roleHomeWin;
@@ -126,39 +171,74 @@ class TournamentsRecord extends FirestoreRecord {
   int get roleAwayGoalsPoints => _roleAwayGoalsPoints ?? 0;
   bool hasRoleAwayGoalsPoints() => _roleAwayGoalsPoints != null;
 
-  // "roleHasDoubleMatches" field.
-  bool? _roleHasDoubleMatches;
-  bool get roleHasDoubleMatches => _roleHasDoubleMatches ?? false;
-  bool hasRoleHasDoubleMatches() => _roleHasDoubleMatches != null;
+  // "roleHomeYellowCard" field.
+  bool? _roleHomeYellowCard;
+  bool get roleHomeYellowCard => _roleHomeYellowCard ?? false;
+  bool hasRoleHomeYellowCard() => _roleHomeYellowCard != null;
 
-  // "addRandomCode" field.
-  String? _addRandomCode;
-  String get addRandomCode => _addRandomCode ?? '';
-  bool hasAddRandomCode() => _addRandomCode != null;
+  // "roleHomeYellowCardPoints" field.
+  int? _roleHomeYellowCardPoints;
+  int get roleHomeYellowCardPoints => _roleHomeYellowCardPoints ?? 0;
+  bool hasRoleHomeYellowCardPoints() => _roleHomeYellowCardPoints != null;
 
-  // "teamsList" field.
-  List<DocumentReference>? _teamsList;
-  List<DocumentReference> get teamsList => _teamsList ?? const [];
-  bool hasTeamsList() => _teamsList != null;
+  // "roleAwayYellowCard" field.
+  bool? _roleAwayYellowCard;
+  bool get roleAwayYellowCard => _roleAwayYellowCard ?? false;
+  bool hasRoleAwayYellowCard() => _roleAwayYellowCard != null;
 
-  // "isActive" field.
-  bool? _isActive;
-  bool get isActive => _isActive ?? false;
-  bool hasIsActive() => _isActive != null;
+  // "roleAwayYellowCardPoints" field.
+  int? _roleAwayYellowCardPoints;
+  int get roleAwayYellowCardPoints => _roleAwayYellowCardPoints ?? 0;
+  bool hasRoleAwayYellowCardPoints() => _roleAwayYellowCardPoints != null;
+
+  // "roleHomeRedCard" field.
+  bool? _roleHomeRedCard;
+  bool get roleHomeRedCard => _roleHomeRedCard ?? false;
+  bool hasRoleHomeRedCard() => _roleHomeRedCard != null;
+
+  // "roleHomeRedCardPoints" field.
+  int? _roleHomeRedCardPoints;
+  int get roleHomeRedCardPoints => _roleHomeRedCardPoints ?? 0;
+  bool hasRoleHomeRedCardPoints() => _roleHomeRedCardPoints != null;
+
+  // "roleAwayRedCard" field.
+  bool? _roleAwayRedCard;
+  bool get roleAwayRedCard => _roleAwayRedCard ?? false;
+  bool hasRoleAwayRedCard() => _roleAwayRedCard != null;
+
+  // "roleAwayRedCardPoints" field.
+  int? _roleAwayRedCardPoints;
+  int get roleAwayRedCardPoints => _roleAwayRedCardPoints ?? 0;
+  bool hasRoleAwayRedCardPoints() => _roleAwayRedCardPoints != null;
 
   void _initializeFields() {
-    _tournamentsID = castToType<int>(snapshotData['tournamentsID']);
-    _tournamentsRef = snapshotData['tournamentsRef'] as String?;
+    _id = castToType<int>(snapshotData['id']);
     _seasonYear = castToType<int>(snapshotData['seasonYear']);
     _seasonStart = snapshotData['seasonStart'] as String?;
     _seasonEnd = snapshotData['seasonEnd'] as String?;
     _name = snapshotData['name'] as String?;
+    _nameEn = snapshotData['nameEn'] as String?;
     _nameAr = snapshotData['nameAr'] as String?;
     _type = snapshotData['type'] as String?;
     _logo = snapshotData['logo'] as String?;
+    _countryRef = snapshotData['countryRef'] as DocumentReference?;
     _countryName = snapshotData['countryName'] as String?;
+    _countryNameEn = snapshotData['countryNameEn'] as String?;
+    _countryNameAr = snapshotData['countryNameAr'] as String?;
     _countryCode = snapshotData['countryCode'] as String?;
     _countryFlog = snapshotData['countryFlog'] as String?;
+    _isActive = snapshotData['isActive'] as bool?;
+    _addRandomCode = snapshotData['addRandomCode'] as String?;
+    _roleHasDoubleMatches = snapshotData['roleHasDoubleMatches'] as bool?;
+    _roundsList = getStructList(
+      snapshotData['roundsList'],
+      TournamentRoundsStruct.fromMap,
+    );
+    _teamsList = getStructList(
+      snapshotData['teamsList'],
+      TeamStruct.fromMap,
+    );
+    _usersList = getDataList(snapshotData['usersList']);
     _roleHomeWin = snapshotData['roleHomeWin'] as bool?;
     _roleHomeWinPoints = castToType<int>(snapshotData['roleHomeWinPoints']);
     _roleAwayWin = snapshotData['roleAwayWin'] as bool?;
@@ -169,10 +249,18 @@ class TournamentsRecord extends FirestoreRecord {
     _roleHomeGoalsPoints = castToType<int>(snapshotData['roleHomeGoalsPoints']);
     _roleAwayGoals = snapshotData['roleAwayGoals'] as bool?;
     _roleAwayGoalsPoints = castToType<int>(snapshotData['roleAwayGoalsPoints']);
-    _roleHasDoubleMatches = snapshotData['roleHasDoubleMatches'] as bool?;
-    _addRandomCode = snapshotData['addRandomCode'] as String?;
-    _teamsList = getDataList(snapshotData['teamsList']);
-    _isActive = snapshotData['isActive'] as bool?;
+    _roleHomeYellowCard = snapshotData['roleHomeYellowCard'] as bool?;
+    _roleHomeYellowCardPoints =
+        castToType<int>(snapshotData['roleHomeYellowCardPoints']);
+    _roleAwayYellowCard = snapshotData['roleAwayYellowCard'] as bool?;
+    _roleAwayYellowCardPoints =
+        castToType<int>(snapshotData['roleAwayYellowCardPoints']);
+    _roleHomeRedCard = snapshotData['roleHomeRedCard'] as bool?;
+    _roleHomeRedCardPoints =
+        castToType<int>(snapshotData['roleHomeRedCardPoints']);
+    _roleAwayRedCard = snapshotData['roleAwayRedCard'] as bool?;
+    _roleAwayRedCardPoints =
+        castToType<int>(snapshotData['roleAwayRedCardPoints']);
   }
 
   static CollectionReference get collection =>
@@ -210,18 +298,24 @@ class TournamentsRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createTournamentsRecordData({
-  int? tournamentsID,
-  String? tournamentsRef,
+  int? id,
   int? seasonYear,
   String? seasonStart,
   String? seasonEnd,
   String? name,
+  String? nameEn,
   String? nameAr,
   String? type,
   String? logo,
+  DocumentReference? countryRef,
   String? countryName,
+  String? countryNameEn,
+  String? countryNameAr,
   String? countryCode,
   String? countryFlog,
+  bool? isActive,
+  String? addRandomCode,
+  bool? roleHasDoubleMatches,
   bool? roleHomeWin,
   int? roleHomeWinPoints,
   bool? roleAwayWin,
@@ -232,24 +326,35 @@ Map<String, dynamic> createTournamentsRecordData({
   int? roleHomeGoalsPoints,
   bool? roleAwayGoals,
   int? roleAwayGoalsPoints,
-  bool? roleHasDoubleMatches,
-  String? addRandomCode,
-  bool? isActive,
+  bool? roleHomeYellowCard,
+  int? roleHomeYellowCardPoints,
+  bool? roleAwayYellowCard,
+  int? roleAwayYellowCardPoints,
+  bool? roleHomeRedCard,
+  int? roleHomeRedCardPoints,
+  bool? roleAwayRedCard,
+  int? roleAwayRedCardPoints,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'tournamentsID': tournamentsID,
-      'tournamentsRef': tournamentsRef,
+      'id': id,
       'seasonYear': seasonYear,
       'seasonStart': seasonStart,
       'seasonEnd': seasonEnd,
       'name': name,
+      'nameEn': nameEn,
       'nameAr': nameAr,
       'type': type,
       'logo': logo,
+      'countryRef': countryRef,
       'countryName': countryName,
+      'countryNameEn': countryNameEn,
+      'countryNameAr': countryNameAr,
       'countryCode': countryCode,
       'countryFlog': countryFlog,
+      'isActive': isActive,
+      'addRandomCode': addRandomCode,
+      'roleHasDoubleMatches': roleHasDoubleMatches,
       'roleHomeWin': roleHomeWin,
       'roleHomeWinPoints': roleHomeWinPoints,
       'roleAwayWin': roleAwayWin,
@@ -260,9 +365,14 @@ Map<String, dynamic> createTournamentsRecordData({
       'roleHomeGoalsPoints': roleHomeGoalsPoints,
       'roleAwayGoals': roleAwayGoals,
       'roleAwayGoalsPoints': roleAwayGoalsPoints,
-      'roleHasDoubleMatches': roleHasDoubleMatches,
-      'addRandomCode': addRandomCode,
-      'isActive': isActive,
+      'roleHomeYellowCard': roleHomeYellowCard,
+      'roleHomeYellowCardPoints': roleHomeYellowCardPoints,
+      'roleAwayYellowCard': roleAwayYellowCard,
+      'roleAwayYellowCardPoints': roleAwayYellowCardPoints,
+      'roleHomeRedCard': roleHomeRedCard,
+      'roleHomeRedCardPoints': roleHomeRedCardPoints,
+      'roleAwayRedCard': roleAwayRedCard,
+      'roleAwayRedCardPoints': roleAwayRedCardPoints,
     }.withoutNulls,
   );
 
@@ -275,18 +385,27 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
   @override
   bool equals(TournamentsRecord? e1, TournamentsRecord? e2) {
     const listEquality = ListEquality();
-    return e1?.tournamentsID == e2?.tournamentsID &&
-        e1?.tournamentsRef == e2?.tournamentsRef &&
+    return e1?.id == e2?.id &&
         e1?.seasonYear == e2?.seasonYear &&
         e1?.seasonStart == e2?.seasonStart &&
         e1?.seasonEnd == e2?.seasonEnd &&
         e1?.name == e2?.name &&
+        e1?.nameEn == e2?.nameEn &&
         e1?.nameAr == e2?.nameAr &&
         e1?.type == e2?.type &&
         e1?.logo == e2?.logo &&
+        e1?.countryRef == e2?.countryRef &&
         e1?.countryName == e2?.countryName &&
+        e1?.countryNameEn == e2?.countryNameEn &&
+        e1?.countryNameAr == e2?.countryNameAr &&
         e1?.countryCode == e2?.countryCode &&
         e1?.countryFlog == e2?.countryFlog &&
+        e1?.isActive == e2?.isActive &&
+        e1?.addRandomCode == e2?.addRandomCode &&
+        e1?.roleHasDoubleMatches == e2?.roleHasDoubleMatches &&
+        listEquality.equals(e1?.roundsList, e2?.roundsList) &&
+        listEquality.equals(e1?.teamsList, e2?.teamsList) &&
+        listEquality.equals(e1?.usersList, e2?.usersList) &&
         e1?.roleHomeWin == e2?.roleHomeWin &&
         e1?.roleHomeWinPoints == e2?.roleHomeWinPoints &&
         e1?.roleAwayWin == e2?.roleAwayWin &&
@@ -297,26 +416,39 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
         e1?.roleHomeGoalsPoints == e2?.roleHomeGoalsPoints &&
         e1?.roleAwayGoals == e2?.roleAwayGoals &&
         e1?.roleAwayGoalsPoints == e2?.roleAwayGoalsPoints &&
-        e1?.roleHasDoubleMatches == e2?.roleHasDoubleMatches &&
-        e1?.addRandomCode == e2?.addRandomCode &&
-        listEquality.equals(e1?.teamsList, e2?.teamsList) &&
-        e1?.isActive == e2?.isActive;
+        e1?.roleHomeYellowCard == e2?.roleHomeYellowCard &&
+        e1?.roleHomeYellowCardPoints == e2?.roleHomeYellowCardPoints &&
+        e1?.roleAwayYellowCard == e2?.roleAwayYellowCard &&
+        e1?.roleAwayYellowCardPoints == e2?.roleAwayYellowCardPoints &&
+        e1?.roleHomeRedCard == e2?.roleHomeRedCard &&
+        e1?.roleHomeRedCardPoints == e2?.roleHomeRedCardPoints &&
+        e1?.roleAwayRedCard == e2?.roleAwayRedCard &&
+        e1?.roleAwayRedCardPoints == e2?.roleAwayRedCardPoints;
   }
 
   @override
   int hash(TournamentsRecord? e) => const ListEquality().hash([
-        e?.tournamentsID,
-        e?.tournamentsRef,
+        e?.id,
         e?.seasonYear,
         e?.seasonStart,
         e?.seasonEnd,
         e?.name,
+        e?.nameEn,
         e?.nameAr,
         e?.type,
         e?.logo,
+        e?.countryRef,
         e?.countryName,
+        e?.countryNameEn,
+        e?.countryNameAr,
         e?.countryCode,
         e?.countryFlog,
+        e?.isActive,
+        e?.addRandomCode,
+        e?.roleHasDoubleMatches,
+        e?.roundsList,
+        e?.teamsList,
+        e?.usersList,
         e?.roleHomeWin,
         e?.roleHomeWinPoints,
         e?.roleAwayWin,
@@ -327,10 +459,14 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
         e?.roleHomeGoalsPoints,
         e?.roleAwayGoals,
         e?.roleAwayGoalsPoints,
-        e?.roleHasDoubleMatches,
-        e?.addRandomCode,
-        e?.teamsList,
-        e?.isActive
+        e?.roleHomeYellowCard,
+        e?.roleHomeYellowCardPoints,
+        e?.roleAwayYellowCard,
+        e?.roleAwayYellowCardPoints,
+        e?.roleHomeRedCard,
+        e?.roleHomeRedCardPoints,
+        e?.roleAwayRedCard,
+        e?.roleAwayRedCardPoints
       ]);
 
   @override

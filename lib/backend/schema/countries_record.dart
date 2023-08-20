@@ -16,20 +16,25 @@ class CountriesRecord extends FirestoreRecord {
     _initializeFields();
   }
 
+  // "code" field.
+  String? _code;
+  String get code => _code ?? '';
+  bool hasCode() => _code != null;
+
   // "name" field.
   String? _name;
   String get name => _name ?? '';
   bool hasName() => _name != null;
 
+  // "nameEn" field.
+  String? _nameEn;
+  String get nameEn => _nameEn ?? '';
+  bool hasNameEn() => _nameEn != null;
+
   // "nameAr" field.
   String? _nameAr;
   String get nameAr => _nameAr ?? '';
   bool hasNameAr() => _nameAr != null;
-
-  // "code" field.
-  String? _code;
-  String get code => _code ?? '';
-  bool hasCode() => _code != null;
 
   // "isActive" field.
   bool? _isActive;
@@ -67,9 +72,10 @@ class CountriesRecord extends FirestoreRecord {
   bool hasFlagW320() => _flagW320 != null;
 
   void _initializeFields() {
-    _name = snapshotData['name'] as String?;
-    _nameAr = snapshotData['nameAr'] as String?;
     _code = snapshotData['code'] as String?;
+    _name = snapshotData['name'] as String?;
+    _nameEn = snapshotData['nameEn'] as String?;
+    _nameAr = snapshotData['nameAr'] as String?;
     _isActive = snapshotData['isActive'] as bool?;
     _flagSvg = snapshotData['flagSvg'] as String?;
     _flagW20 = snapshotData['flagW20'] as String?;
@@ -114,9 +120,10 @@ class CountriesRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createCountriesRecordData({
-  String? name,
-  String? nameAr,
   String? code,
+  String? name,
+  String? nameEn,
+  String? nameAr,
   bool? isActive,
   String? flagSvg,
   String? flagW20,
@@ -127,9 +134,10 @@ Map<String, dynamic> createCountriesRecordData({
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'name': name,
-      'nameAr': nameAr,
       'code': code,
+      'name': name,
+      'nameEn': nameEn,
+      'nameAr': nameAr,
       'isActive': isActive,
       'flagSvg': flagSvg,
       'flagW20': flagW20,
@@ -148,9 +156,10 @@ class CountriesRecordDocumentEquality implements Equality<CountriesRecord> {
 
   @override
   bool equals(CountriesRecord? e1, CountriesRecord? e2) {
-    return e1?.name == e2?.name &&
+    return e1?.code == e2?.code &&
+        e1?.name == e2?.name &&
+        e1?.nameEn == e2?.nameEn &&
         e1?.nameAr == e2?.nameAr &&
-        e1?.code == e2?.code &&
         e1?.isActive == e2?.isActive &&
         e1?.flagSvg == e2?.flagSvg &&
         e1?.flagW20 == e2?.flagW20 &&
@@ -162,9 +171,10 @@ class CountriesRecordDocumentEquality implements Equality<CountriesRecord> {
 
   @override
   int hash(CountriesRecord? e) => const ListEquality().hash([
-        e?.name,
-        e?.nameAr,
         e?.code,
+        e?.name,
+        e?.nameEn,
+        e?.nameAr,
         e?.isActive,
         e?.flagSvg,
         e?.flagW20,

@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'index.dart'; // Imports other custom actions
 
 import 'index.dart'; // Imports other custom actions
+
+import 'index.dart'; // Imports other custom actions
 import 'dart:math' as math;
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
@@ -18,6 +20,7 @@ import 'package:http/http.dart' as http;
 Future<String> updateMatches(String tournamentCode) async {
   final firestore = FirebaseFirestore.instance;
   final MatchesCol = firestore.collection('Matches');
+  final MatchStandingsCol = firestore.collection('MatchStandings');
   var headers = {
     'x-rapidapi-key': 'ba825d70e7634e7015d2f116c1a07e03',
     'x-rapidapi-host': 'v3.football.api-sports.io'
@@ -63,79 +66,70 @@ Future<String> updateMatches(String tournamentCode) async {
               scorePenaltyHome: matche['score']['penalty']['home'],
               scorePenaltyAway: matche['score']['penalty']['away'],
             ));
-
             await MatchesRecord.getDocumentOnce(
                     firestore.doc('Matches/${matcheDoc.id}'))
                 .then((matchesDoc) async {
-              Stream<List<MatchStandingsRecord>> matchStandingsSDoc =
-                  queryMatchStandingsRecord(
-                      queryBuilder: (matchStandingsRecord) =>
-                          matchStandingsRecord.where('matcheRef',
-                              isEqualTo: matcheDoc.reference));
-              matchStandingsSDoc.forEach((element) {
-                var fixtureGoalsHome = matchesDoc.goalsHome;
-                var userHomeGoals = element.single.homeGoals;
-                var fixtureGoalsAway = matchesDoc.goalsAway;
-                var userAwayGoals = element.single.awayGoals;
-                var bHomeGoalsPoints = 0;
-                var bAwayGoalsPoints = 0;
-                var bTotalGoalsPoints = 0;
-                var bWonPoints = 0;
-                var bDrawPoints = 0;
-                var bTotalPoints = 0;
-                if (userHomeGoals == fixtureGoalsHome) {
-                  bHomeGoalsPoints = matchesDoc.tournamentroleHomeGoalsPoints;
-                } else {
-                  bHomeGoalsPoints = 0;
+              MatchStandingsCol.where('matcheRef',
+                      isEqualTo: matcheDoc.reference)
+                  .snapshots()
+                  .listen((event) {
+                for (var doc in event.docs) {
+                  var fixtureGoalsHome = matchesDoc.goalsHome;
+                  var userHomeGoals = doc.data()['homeGoals'];
+                  var fixtureGoalsAway = matchesDoc.goalsAway;
+                  var userAwayGoals = doc.data()['awayGoals'];
+                  var bHomeGoalsPoints = 0;
+                  var bAwayGoalsPoints = 0;
+                  var bTotalGoalsPoints = 0;
+                  var bWonPoints = 0;
+                  var bDrawPoints = 0;
+                  var bTotalPoints = 0;
+                  if (userHomeGoals == fixtureGoalsHome) {
+                    bHomeGoalsPoints = matchesDoc.tournamentroleHomeGoalsPoints;
+                  } else {
+                    bHomeGoalsPoints = 0;
+                  }
+                  if (userAwayGoals == fixtureGoalsAway) {
+                    bAwayGoalsPoints = matchesDoc.tournamentroleAwayGoalsPoints;
+                  } else {
+                    bAwayGoalsPoints = 0;
+                  }
+                  bTotalGoalsPoints = bHomeGoalsPoints + bAwayGoalsPoints;
+                  if ((userHomeGoals > userAwayGoals) &&
+                      (fixtureGoalsHome > fixtureGoalsAway)) {
+                    bWonPoints = matchesDoc.tournamentroleHomeWinPoints;
+                  } else if ((userHomeGoals < userAwayGoals) &&
+                      (fixtureGoalsHome < fixtureGoalsAway)) {
+                    bWonPoints = matchesDoc.tournamentroleAwayWinPoints;
+                  } else if ((userHomeGoals == userAwayGoals) &&
+                      (fixtureGoalsHome == fixtureGoalsAway)) {
+                    bDrawPoints = matchesDoc.tournamentroleDrawPoints;
+                  } else {
+                    bWonPoints = 0;
+                  }
+                  bTotalPoints = bTotalGoalsPoints + bWonPoints + bDrawPoints;
+                  doc.reference.update(createMatchStandingsRecordData(
+                    totalGoalsPoints: bTotalGoalsPoints,
+                    wonPoints: bWonPoints,
+                    totalPoints: bTotalPoints,
+                  ));
                 }
-                if (userAwayGoals == fixtureGoalsAway) {
-                  bAwayGoalsPoints = matchesDoc.tournamentroleAwayGoalsPoints;
-                } else {
-                  bAwayGoalsPoints = 0;
-                }
-                bTotalGoalsPoints = bHomeGoalsPoints + bAwayGoalsPoints;
-                if ((userHomeGoals > userAwayGoals) &&
-                    (fixtureGoalsHome > fixtureGoalsAway)) {
-                  bWonPoints = matchesDoc.tournamentroleHomeWinPoints;
-                } else if ((userHomeGoals < userAwayGoals) &&
-                    (fixtureGoalsHome < fixtureGoalsAway)) {
-                  bWonPoints = matchesDoc.tournamentroleAwayWinPoints;
-                } else if ((userHomeGoals == userAwayGoals) &&
-                    (fixtureGoalsHome == fixtureGoalsAway)) {
-                  bDrawPoints = matchesDoc.tournamentroleDrawPoints;
-                } else {
-                  bWonPoints = 0;
-                  bDrawPoints = 0;
-                }
-                bTotalPoints = bTotalGoalsPoints + bWonPoints + bDrawPoints;
-                element.single.reference.update(createMatchStandingsRecordData(
-                  homeGoalsPoints: bHomeGoalsPoints,
-                  awayGoalsPoints: bAwayGoalsPoints,
-                  totalGoalsPoints: bTotalGoalsPoints,
-                  wonPoints: bWonPoints,
-                  drawPoints: bDrawPoints,
-                  totalPoints: bTotalPoints,
-                ));
               });
-              /*
-              var setNewPosition = 0;
-              Stream<List<MatchStandingsRecord>> matchStandingsPosition =
-                  queryMatchStandingsRecord(
-                      queryBuilder: (matchStandingsRecord) =>
-                          matchStandingsRecord
-                              .where('matcheRef',
-                                  isEqualTo: matcheDoc.reference)
-                              .orderBy('totalPoints', descending: true)
-                              .orderBy('totalGoalsPoints', descending: true)
-                              .orderBy('userUpdate', descending: false));
-              matchStandingsPosition.forEach((element) {
-                setNewPosition = setNewPosition + 1;
-                element.single.reference.update(createMatchStandingsRecordData(
-                  newPosition: setNewPosition,
-                  oldPosition: element.single.newPosition,
-                ));
+
+              MatchStandingsCol.where('matcheRef',
+                      isEqualTo: matcheDoc.reference)
+                  .orderBy('totalPoints', descending: true)
+                  .orderBy('totalGoalsPoints', descending: true)
+                  .orderBy('userUpdate', descending: false)
+                  .snapshots()
+                  .listen((event) {
+                for (int i = 0; i < event.docs.length; i++) {
+                  event.docs[i].reference.update(createMatchStandingsRecordData(
+                    newPosition: (i + 1),
+                    oldPosition: event.docs[i].data()['newPosition'],
+                  ));
+                }
               });
-              */
             });
           }
         });

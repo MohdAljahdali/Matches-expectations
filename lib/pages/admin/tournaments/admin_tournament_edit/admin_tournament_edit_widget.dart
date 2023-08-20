@@ -80,37 +80,42 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
             body: NestedScrollView(
               floatHeaderSlivers: true,
               headerSliverBuilder: (context, _) => [
-                SliverAppBar(
-                  pinned: false,
-                  floating: false,
-                  backgroundColor:
-                      FlutterFlowTheme.of(context).secondaryBackground,
-                  iconTheme: IconThemeData(color: Color(0xFF801F1F)),
-                  automaticallyImplyLeading: false,
-                  leading: FlutterFlowIconButton(
-                    borderColor: Colors.transparent,
-                    borderRadius: 30.0,
-                    borderWidth: 1.0,
-                    buttonSize: 60.0,
-                    icon: Icon(
-                      Icons.arrow_back_rounded,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 30.0,
+                if (responsiveVisibility(
+                  context: context,
+                  tabletLandscape: false,
+                  desktop: false,
+                ))
+                  SliverAppBar(
+                    pinned: false,
+                    floating: false,
+                    backgroundColor:
+                        FlutterFlowTheme.of(context).secondaryBackground,
+                    iconTheme: IconThemeData(color: Color(0xFF801F1F)),
+                    automaticallyImplyLeading: false,
+                    leading: FlutterFlowIconButton(
+                      borderColor: Colors.transparent,
+                      borderRadius: 30.0,
+                      borderWidth: 1.0,
+                      buttonSize: 60.0,
+                      icon: Icon(
+                        Icons.arrow_back_rounded,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 30.0,
+                      ),
+                      onPressed: () async {
+                        context.pop();
+                      },
                     ),
-                    onPressed: () async {
-                      context.pop();
-                    },
-                  ),
-                  title: Text(
-                    FFLocalizations.of(context).getText(
-                      'ldnybeqm' /* Edit Member */,
+                    title: Text(
+                      FFLocalizations.of(context).getText(
+                        'ldnybeqm' /* Edit Member */,
+                      ),
+                      style: FlutterFlowTheme.of(context).titleLarge,
                     ),
-                    style: FlutterFlowTheme.of(context).titleLarge,
-                  ),
-                  actions: [],
-                  centerTitle: true,
-                  elevation: 2.0,
-                )
+                    actions: [],
+                    centerTitle: true,
+                    elevation: 2.0,
+                  )
               ],
               body: Builder(
                 builder: (context) {
@@ -1933,7 +1938,6 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                         await adminTournamentEditTournamentsRecord
                                             .reference
                                             .update(createTournamentsRecordData(
-                                          name: _model.nameEnTFController.text,
                                           nameAr:
                                               _model.nameArTFController.text,
                                           roleHomeWin: _model.homeWinSTValue,
@@ -1956,6 +1960,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                           roleHasDoubleMatches:
                                               _model.doubleSTValue,
                                           isActive: _model.activeSTValue,
+                                          nameEn: '',
                                         ));
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(

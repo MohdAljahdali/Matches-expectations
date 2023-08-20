@@ -170,17 +170,33 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Email',
       'ar': 'بريد إلكتروني',
     },
+    's0vdlwdp': {
+      'en': '@test.aaa',
+      'ar': '',
+    },
     '7e4rd28f': {
       'en': 'Password',
       'ar': 'كلمة المرور',
+    },
+    'ffokksze': {
+      'en': 'Mm2391170',
+      'ar': '',
     },
     'mky5u79j': {
       'en': 'Confirm password',
       'ar': 'تأكيد كلمة المرور',
     },
+    '55yopzwm': {
+      'en': 'Mm2391170',
+      'ar': '',
+    },
     'dbqdipgd': {
       'en': 'Name',
       'ar': 'الاسم',
+    },
+    'rhtrog6s': {
+      'en': 'Test ',
+      'ar': '',
     },
     '22j3ui4l': {
       'en': 'Field is required',
@@ -438,10 +454,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Profile',
       'ar': 'الملف الشخصي',
     },
-    'dgvk0tnk': {
-      'en': 'Member',
-      'ar': 'الاعضاء',
-    },
     'b9axb78m': {
       'en': 'Countries',
       'ar': 'الدول',
@@ -453,6 +465,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'slqr9i0n': {
       'en': 'Matches',
       'ar': 'المباريات',
+    },
+    '6jji10z3': {
+      'en': 'Member',
+      'ar': 'الأغاني',
+    },
+    '2w2ck0p7': {
+      'en': 'Hello World',
+      'ar': '',
     },
     'p4z0veqy': {
       'en': 'Admin',
@@ -566,7 +586,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
-  // adminCountriesList
+  // adminCountriesListdd
   {
     'rjwugg1n': {
       'en': 'Countries List',
@@ -1022,6 +1042,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': ' : ',
       'ar': ' : ',
     },
+    'dxj5ntpu': {
+      'en': 'Hello World ',
+      'ar': '',
+    },
     'rorq2dwr': {
       'en': 'Code',
       'ar': 'الكود',
@@ -1029,6 +1053,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '2231ob8a': {
       'en': ' : ',
       'ar': ' : ',
+    },
+    '1oebw19y': {
+      'en': 'Hello World ',
+      'ar': '',
     },
     'yv9ev3dd': {
       'en': 'Tournaments list',
@@ -1173,27 +1201,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Home
   {
     'sn71fbwo': {
-      'en': 'Current requests ',
-      'ar': 'الطلبات الحالية',
+      'en': 'Current requests  ',
+      'ar': 'الطلبات الحالية  ',
     },
     'oae9gsnp': {
-      'en': ' of ',
-      'ar': 'من',
+      'en': '  of  ',
+      'ar': '  من  ',
     },
     'jle2nucz': {
-      'en': ' request',
-      'ar': 'طلب',
+      'en': '  request',
+      'ar': 'طلب   ',
     },
     'n2hwqhr1': {
       'en': 'Update',
       'ar': 'تحديث',
     },
-    'fjk1p3jb': {
-      'en': '0',
+    'a7bflrrx': {
+      'en': 'Button',
       'ar': '',
     },
-    'nm5ooy78': {
-      'en': '2',
+    'lpt67wlf': {
+      'en': 'Button',
       'ar': '',
     },
     'qncd93ik': {
@@ -1201,11 +1229,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الرئسية',
     },
   },
-  // HomeCopy
+  // adminCountriesList
   {
-    '35gohpla': {
+    'yezr4vxf': {
+      'en': 'Countries List',
+      'ar': 'قائمة الدول',
+    },
+    'b0eec786': {
       'en': 'Home',
-      'ar': 'الرئسية',
+      'ar': '',
     },
   },
   // signInComponent
@@ -1219,12 +1251,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'البريد الالكتروني',
     },
     '431ds5c7': {
-      'en': 'mohd.aljahdali@gmail.com',
+      'en': '@test.aaa',
       'ar': '',
     },
     '350x7yti': {
       'en': 'Password',
       'ar': 'كلمة المرور',
+    },
+    '6qxig44r': {
+      'en': 'Mm2391170',
+      'ar': '',
     },
     'nwsf5k6z': {
       'en': 'Sign In',
@@ -1317,6 +1353,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'lqufqdff': {
       'en': 'Edit',
       'ar': 'تعديل',
+    },
+  },
+  // adminCountriesAdd
+  {
+    '0trrhufw': {
+      'en': 'Hello World',
+      'ar': '',
+    },
+    'awowqp96': {
+      'en': 'Import countries data',
+      'ar': 'استيراد بيانات الدول',
     },
   },
   // Miscellaneous

@@ -53,8 +53,7 @@ Future<String> addTournaments(
           if (!doc.exists) {
             TournamentsDoc.doc(tournamentRefID)
                 .set(createTournamentsRecordData(
-              tournamentsID: int.parse(tournament['league']['id'].toString()),
-              tournamentsRef: tournamentRefID,
+              id: int.parse(tournament['league']['id'].toString()),
               seasonYear: int.parse(seasons['year'].toString()),
               seasonStart: seasons['start'].toString(),
               seasonEnd: seasons['end'].toString(),
@@ -86,7 +85,7 @@ Future<String> addTournaments(
                 var teamsrequest = http.Request(
                     'GET',
                     Uri.parse(
-                        'https://v3.football.api-sports.io/teams?league=${tournamentDoc.tournamentsID.toString()}&season=${tournamentDoc.seasonYear.toString()}'));
+                        'https://v3.football.api-sports.io/teams?league=${tournamentDoc.id.toString()}&season=${tournamentDoc.seasonYear.toString()}'));
                 teamsrequest.headers.addAll(headers);
 
                 http.StreamedResponse response = await teamsrequest.send();
