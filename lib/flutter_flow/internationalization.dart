@@ -1231,6 +1231,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // adminCountriesList
   {
+    'h2xquusi': {
+      'en': 'List Item Title',
+      'ar': '',
+    },
+    'lyd5ukgw': {
+      'en': 'Hello World',
+      'ar': '',
+    },
     'yezr4vxf': {
       'en': 'Countries List',
       'ar': 'قائمة الدول',
