@@ -136,11 +136,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => AdminEditMemberWidget(),
         ),
         FFRoute(
-          name: 'adminCountriesListdd',
-          path: '/adminCountriesListdd',
-          builder: (context, params) => AdminCountriesListddWidget(),
-        ),
-        FFRoute(
           name: 'adminTournamentsAdd',
           path: '/adminTournamentsAdd',
           builder: (context, params) => AdminTournamentsAddWidget(),

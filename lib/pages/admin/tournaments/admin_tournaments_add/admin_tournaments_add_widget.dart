@@ -613,7 +613,7 @@ class _AdminTournamentsAddWidgetState extends State<AdminTournamentsAddWidget> {
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyMedium,
+                                                      .bodySmall,
                                                   validator: _model
                                                       .textControllerValidator
                                                       .asValidator(context),

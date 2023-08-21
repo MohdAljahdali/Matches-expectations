@@ -56,19 +56,9 @@ class CountriesCall {
     );
   }
 
-  dynamic name(dynamic response) => getJsonField(
+  dynamic xzXxzx(dynamic response) => getJsonField(
         response,
-        r'''$.response[:].name''',
-        true,
-      );
-  dynamic code(dynamic response) => getJsonField(
-        response,
-        r'''$.response[:].code''',
-        true,
-      );
-  dynamic flag(dynamic response) => getJsonField(
-        response,
-        r'''$.response[:].flag''',
+        r'''$.response''',
         true,
       );
 }

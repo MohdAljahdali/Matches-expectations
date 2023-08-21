@@ -97,7 +97,7 @@ class _AdminCountriesEidtWidgetState extends State<AdminCountriesEidtWidget> {
                         child: TextFormField(
                           controller: _model.englishNameTFController ??=
                               TextEditingController(
-                            text: containerCountriesRecord.name,
+                            text: containerCountriesRecord.nameEn,
                           ),
                           autofocus: true,
                           obscureText: false,
@@ -283,9 +283,9 @@ class _AdminCountriesEidtWidgetState extends State<AdminCountriesEidtWidget> {
                           onPressed: () async {
                             await widget.countrieRef!
                                 .update(createCountriesRecordData(
-                              name: _model.englishNameTFController.text,
                               nameAr: _model.arabicNameTFController.text,
                               isActive: _model.activeCountryTLValue,
+                              nameEn: _model.englishNameTFController.text,
                             ));
                             Navigator.pop(context);
                           },

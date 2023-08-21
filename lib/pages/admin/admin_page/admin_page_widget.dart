@@ -515,7 +515,7 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          '6jji10z3' /* Member */,
+                                                          'zkc1i229' /* Member */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -550,6 +550,95 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           5.0, 0.0, 5.0, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context
+                                              .pushNamed('adminCountriesList');
+                                        },
+                                        child: Container(
+                                          width: double.infinity,
+                                          height: 40.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.0, -1.0),
+                                                child: Icon(
+                                                  FFIcons.kglobe6,
+                                                  color: Colors.white,
+                                                  size: 30.0,
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          8.0, 0.0, 8.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    2.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '6jji10z3' /* Countries */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyLarge,
+                                                        ),
+                                                      ),
+                                                      Icon(
+                                                        Icons
+                                                            .arrow_forward_ios_rounded,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 16.0,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Divider(
+                                      height: 1.0,
+                                      thickness: 1.0,
+                                      indent: 40.0,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          5.0, 0.0, 5.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         height: 40.0,
@@ -560,10 +649,14 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Icon(
-                                              FFIcons.ktrophy3,
-                                              color: Colors.white,
-                                              size: 32.0,
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, -1.0),
+                                              child: Icon(
+                                                FFIcons.ktrophy3,
+                                                color: Colors.white,
+                                                size: 30.0,
+                                              ),
                                             ),
                                             Expanded(
                                               child: Padding(

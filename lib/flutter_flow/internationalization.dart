@@ -466,9 +466,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Matches',
       'ar': 'المباريات',
     },
-    '6jji10z3': {
+    'zkc1i229': {
       'en': 'Member',
       'ar': 'الأغاني',
+    },
+    '6jji10z3': {
+      'en': 'Countries',
+      'ar': 'الدول',
     },
     '2w2ck0p7': {
       'en': 'Hello World',
@@ -582,17 +586,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تعديل بيانات العضو',
     },
     'z4hfyabm': {
-      'en': 'Home',
-      'ar': '',
-    },
-  },
-  // adminCountriesListdd
-  {
-    'rjwugg1n': {
-      'en': 'Countries List',
-      'ar': 'قائمة الدول',
-    },
-    'l2v96hef': {
       'en': 'Home',
       'ar': '',
     },
@@ -1231,14 +1224,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // adminCountriesList
   {
-    'h2xquusi': {
-      'en': 'List Item Title',
-      'ar': '',
-    },
-    'lyd5ukgw': {
-      'en': 'Hello World',
-      'ar': '',
-    },
     'yezr4vxf': {
       'en': 'Countries List',
       'ar': 'قائمة الدول',
@@ -1361,17 +1346,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'lqufqdff': {
       'en': 'Edit',
       'ar': 'تعديل',
-    },
-  },
-  // adminCountriesAdd
-  {
-    '0trrhufw': {
-      'en': 'Hello World',
-      'ar': '',
-    },
-    'awowqp96': {
-      'en': 'Import countries data',
-      'ar': 'استيراد بيانات الدول',
     },
   },
   // Miscellaneous
