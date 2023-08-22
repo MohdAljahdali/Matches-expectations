@@ -270,6 +270,12 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
+                                              image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: Image.network(
+                                                  'https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwzfHxncmFkaWVudCUyMGRhcmt8ZW58MHx8fHwxNjkyNjUyNTA0fDA&ixlib=rb-4.0.3&q=80&w=1080',
+                                                ).image,
+                                              ),
                                             ),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
