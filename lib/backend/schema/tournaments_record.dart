@@ -66,31 +66,6 @@ class TournamentsRecord extends FirestoreRecord {
   DocumentReference? get countryRef => _countryRef;
   bool hasCountryRef() => _countryRef != null;
 
-  // "countryName" field.
-  String? _countryName;
-  String get countryName => _countryName ?? '';
-  bool hasCountryName() => _countryName != null;
-
-  // "countryNameEn" field.
-  String? _countryNameEn;
-  String get countryNameEn => _countryNameEn ?? '';
-  bool hasCountryNameEn() => _countryNameEn != null;
-
-  // "countryNameAr" field.
-  String? _countryNameAr;
-  String get countryNameAr => _countryNameAr ?? '';
-  bool hasCountryNameAr() => _countryNameAr != null;
-
-  // "countryCode" field.
-  String? _countryCode;
-  String get countryCode => _countryCode ?? '';
-  bool hasCountryCode() => _countryCode != null;
-
-  // "countryFlog" field.
-  String? _countryFlog;
-  String get countryFlog => _countryFlog ?? '';
-  bool hasCountryFlog() => _countryFlog != null;
-
   // "isActive" field.
   bool? _isActive;
   bool get isActive => _isActive ?? false;
@@ -222,11 +197,6 @@ class TournamentsRecord extends FirestoreRecord {
     _type = snapshotData['type'] as String?;
     _logo = snapshotData['logo'] as String?;
     _countryRef = snapshotData['countryRef'] as DocumentReference?;
-    _countryName = snapshotData['countryName'] as String?;
-    _countryNameEn = snapshotData['countryNameEn'] as String?;
-    _countryNameAr = snapshotData['countryNameAr'] as String?;
-    _countryCode = snapshotData['countryCode'] as String?;
-    _countryFlog = snapshotData['countryFlog'] as String?;
     _isActive = snapshotData['isActive'] as bool?;
     _addRandomCode = snapshotData['addRandomCode'] as String?;
     _roleHasDoubleMatches = snapshotData['roleHasDoubleMatches'] as bool?;
@@ -308,11 +278,6 @@ Map<String, dynamic> createTournamentsRecordData({
   String? type,
   String? logo,
   DocumentReference? countryRef,
-  String? countryName,
-  String? countryNameEn,
-  String? countryNameAr,
-  String? countryCode,
-  String? countryFlog,
   bool? isActive,
   String? addRandomCode,
   bool? roleHasDoubleMatches,
@@ -347,11 +312,6 @@ Map<String, dynamic> createTournamentsRecordData({
       'type': type,
       'logo': logo,
       'countryRef': countryRef,
-      'countryName': countryName,
-      'countryNameEn': countryNameEn,
-      'countryNameAr': countryNameAr,
-      'countryCode': countryCode,
-      'countryFlog': countryFlog,
       'isActive': isActive,
       'addRandomCode': addRandomCode,
       'roleHasDoubleMatches': roleHasDoubleMatches,
@@ -395,11 +355,6 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
         e1?.type == e2?.type &&
         e1?.logo == e2?.logo &&
         e1?.countryRef == e2?.countryRef &&
-        e1?.countryName == e2?.countryName &&
-        e1?.countryNameEn == e2?.countryNameEn &&
-        e1?.countryNameAr == e2?.countryNameAr &&
-        e1?.countryCode == e2?.countryCode &&
-        e1?.countryFlog == e2?.countryFlog &&
         e1?.isActive == e2?.isActive &&
         e1?.addRandomCode == e2?.addRandomCode &&
         e1?.roleHasDoubleMatches == e2?.roleHasDoubleMatches &&
@@ -438,11 +393,6 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
         e?.type,
         e?.logo,
         e?.countryRef,
-        e?.countryName,
-        e?.countryNameEn,
-        e?.countryNameAr,
-        e?.countryCode,
-        e?.countryFlog,
         e?.isActive,
         e?.addRandomCode,
         e?.roleHasDoubleMatches,

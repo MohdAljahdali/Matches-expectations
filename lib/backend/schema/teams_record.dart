@@ -31,6 +31,11 @@ class TeamsRecord extends FirestoreRecord {
   String get name => _name ?? '';
   bool hasName() => _name != null;
 
+  // "nameEn" field.
+  String? _nameEn;
+  String get nameEn => _nameEn ?? '';
+  bool hasNameEn() => _nameEn != null;
+
   // "nameAr" field.
   String? _nameAr;
   String get nameAr => _nameAr ?? '';
@@ -41,30 +46,31 @@ class TeamsRecord extends FirestoreRecord {
   String get code => _code ?? '';
   bool hasCode() => _code != null;
 
-  // "country" field.
-  String? _country;
-  String get country => _country ?? '';
-  bool hasCountry() => _country != null;
+  // "countryRef" field.
+  DocumentReference? _countryRef;
+  DocumentReference? get countryRef => _countryRef;
+  bool hasCountryRef() => _countryRef != null;
+
+  // "venuesRef" field.
+  DocumentReference? _venuesRef;
+  DocumentReference? get venuesRef => _venuesRef;
+  bool hasVenuesRef() => _venuesRef != null;
 
   // "logo" field.
   String? _logo;
   String get logo => _logo ?? '';
   bool hasLogo() => _logo != null;
 
-  // "tournamentsList" field.
-  List<DocumentReference>? _tournamentsList;
-  List<DocumentReference> get tournamentsList => _tournamentsList ?? const [];
-  bool hasTournamentsList() => _tournamentsList != null;
-
   void _initializeFields() {
     _teamID = castToType<int>(snapshotData['teamID']);
     _teamRef = snapshotData['teamRef'] as String?;
     _name = snapshotData['name'] as String?;
+    _nameEn = snapshotData['nameEn'] as String?;
     _nameAr = snapshotData['nameAr'] as String?;
     _code = snapshotData['code'] as String?;
-    _country = snapshotData['country'] as String?;
+    _countryRef = snapshotData['countryRef'] as DocumentReference?;
+    _venuesRef = snapshotData['venuesRef'] as DocumentReference?;
     _logo = snapshotData['logo'] as String?;
-    _tournamentsList = getDataList(snapshotData['tournamentsList']);
   }
 
   static CollectionReference get collection =>
@@ -104,9 +110,11 @@ Map<String, dynamic> createTeamsRecordData({
   int? teamID,
   String? teamRef,
   String? name,
+  String? nameEn,
   String? nameAr,
   String? code,
-  String? country,
+  DocumentReference? countryRef,
+  DocumentReference? venuesRef,
   String? logo,
 }) {
   final firestoreData = mapToFirestore(
@@ -114,9 +122,11 @@ Map<String, dynamic> createTeamsRecordData({
       'teamID': teamID,
       'teamRef': teamRef,
       'name': name,
+      'nameEn': nameEn,
       'nameAr': nameAr,
       'code': code,
-      'country': country,
+      'countryRef': countryRef,
+      'venuesRef': venuesRef,
       'logo': logo,
     }.withoutNulls,
   );
@@ -129,15 +139,15 @@ class TeamsRecordDocumentEquality implements Equality<TeamsRecord> {
 
   @override
   bool equals(TeamsRecord? e1, TeamsRecord? e2) {
-    const listEquality = ListEquality();
     return e1?.teamID == e2?.teamID &&
         e1?.teamRef == e2?.teamRef &&
         e1?.name == e2?.name &&
+        e1?.nameEn == e2?.nameEn &&
         e1?.nameAr == e2?.nameAr &&
         e1?.code == e2?.code &&
-        e1?.country == e2?.country &&
-        e1?.logo == e2?.logo &&
-        listEquality.equals(e1?.tournamentsList, e2?.tournamentsList);
+        e1?.countryRef == e2?.countryRef &&
+        e1?.venuesRef == e2?.venuesRef &&
+        e1?.logo == e2?.logo;
   }
 
   @override
@@ -145,11 +155,12 @@ class TeamsRecordDocumentEquality implements Equality<TeamsRecord> {
         e?.teamID,
         e?.teamRef,
         e?.name,
+        e?.nameEn,
         e?.nameAr,
         e?.code,
-        e?.country,
-        e?.logo,
-        e?.tournamentsList
+        e?.countryRef,
+        e?.venuesRef,
+        e?.logo
       ]);
 
   @override

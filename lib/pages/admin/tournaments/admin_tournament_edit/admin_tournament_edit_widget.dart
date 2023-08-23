@@ -951,8 +951,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                       .all(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .alternate,
-                                                                    width: 2.0,
+                                                                        .noColor,
+                                                                    width: 0.0,
                                                                   ),
                                                                 ),
                                                                 child:

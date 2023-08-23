@@ -1348,6 +1348,53 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تعديل',
     },
   },
+  // adminTournamentsAddC
+  {
+    '375g9cre': {
+      'en': 'Arabic name',
+      'ar': 'الاسم العربي',
+    },
+    '55blixme': {
+      'en': 'Tournament code',
+      'ar': 'كود البطولة',
+    },
+    'wy6xjihe': {
+      'en': '2022',
+      'ar': '2022',
+    },
+    '4w0jkfnt': {
+      'en': '2023',
+      'ar': '2023',
+    },
+    't9s164vm': {
+      'en': '2024',
+      'ar': '2024',
+    },
+    'gu0fzcbc': {
+      'en': '2025',
+      'ar': '2025',
+    },
+    'f48vmt67': {
+      'en': '2026',
+      'ar': '2026',
+    },
+    'wc6dacp9': {
+      'en': '2027',
+      'ar': '2027',
+    },
+    'lbq1wcgo': {
+      'en': 'Please select...',
+      'ar': '',
+    },
+    '7oz0jq9m': {
+      'en': 'Search for an item...',
+      'ar': '',
+    },
+    'pi2lfqa3': {
+      'en': 'Add',
+      'ar': 'أضافة',
+    },
+  },
   // Miscellaneous
   {
     's6yiju6t': {

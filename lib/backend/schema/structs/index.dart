@@ -1,5 +1,6 @@
 export '/backend/schema/util/schema_util.dart';
 
+export 'api_request_struct.dart';
 export 'p_admin_tournaments_liat_struct.dart';
 export 'p_matches_struct.dart';
 export 'p_tournaments_struct.dart';

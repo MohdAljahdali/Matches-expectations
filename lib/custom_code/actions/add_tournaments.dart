@@ -104,7 +104,7 @@ Future<String> addTournaments(
                           name: team['team']['name'].toString(),
                           nameAr: '-',
                           code: team['team']['code'].toString(),
-                          country: team['team']['country'].toString(),
+                          //country: team['team']['country'].toString(),
                           logo: team['team']['logo'].toString(),
                         ))
                             .then((value) async {
