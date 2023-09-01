@@ -136,11 +136,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => AdminEditMemberWidget(),
         ),
         FFRoute(
-          name: 'adminTournamentsAdd',
-          path: '/adminTournamentsAdd',
-          builder: (context, params) => AdminTournamentsAddWidget(),
-        ),
-        FFRoute(
           name: 'adminTournamentsList',
           path: '/adminTournamentsList',
           builder: (context, params) => AdminTournamentsListWidget(),
@@ -179,14 +174,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'adminTournamentTeamEdit',
-          path: '/adminTournamentTeamEdit',
-          builder: (context, params) => AdminTournamentTeamEditWidget(
-            teamsRef: params.getParam(
-                'teamsRef', ParamType.DocumentReference, false, ['Teams']),
-          ),
-        ),
-        FFRoute(
           name: 'adminMatchesAddList',
           path: '/adminMatchesAddList',
           builder: (context, params) => AdminMatchesAddListWidget(
@@ -203,6 +190,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'adminCountriesList',
           path: '/adminCountriesList',
           builder: (context, params) => AdminCountriesListWidget(),
+        ),
+        FFRoute(
+          name: 'AdminTournaments',
+          path: '/adminTournaments',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'AdminTournaments')
+              : AdminTournamentsWidget(),
+        ),
+        FFRoute(
+          name: 'HomeCopy',
+          path: '/homeCopy',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'HomeCopy')
+              : HomeCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

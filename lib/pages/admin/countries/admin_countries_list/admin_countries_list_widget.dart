@@ -40,8 +40,6 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
@@ -135,10 +133,8 @@ class _AdminCountriesListWidgetState extends State<AdminCountriesListWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
-                          child: StreamBuilder<List<CountriesRecord>>(
-                            stream: FFAppState().adminCountriesList(
-                              requestFn: () => queryCountriesRecord(),
-                            ),
+                          child: FutureBuilder<List<CountriesRecord>>(
+                            future: queryCountriesRecordOnce(),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {

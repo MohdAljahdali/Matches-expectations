@@ -39,9 +39,7 @@ class _AdminMatchesAddListWidgetState extends State<AdminMatchesAddListWidget> {
     _model = createModel(context, () => AdminMatchesAddListModel());
 
     // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {});
-    });
+    SchedulerBinding.instance.addPostFrameCallback((_) async {});
   }
 
   @override
@@ -53,8 +51,6 @@ class _AdminMatchesAddListWidgetState extends State<AdminMatchesAddListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(

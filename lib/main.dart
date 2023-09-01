@@ -1,4 +1,3 @@
-import 'package:provider/provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -24,13 +23,7 @@ void main() async {
 
   await FFLocalizations.initialize();
 
-  final appState = FFAppState(); // Initialize FFAppState
-  await appState.initializePersistedState();
-
-  runApp(ChangeNotifierProvider(
-    create: (context) => appState,
-    child: MyApp(),
-  ));
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -136,6 +129,8 @@ class _NavBarPageState extends State<NavBarPage> {
       'Profile': ProfileWidget(),
       'adminPage': AdminPageWidget(),
       'Home': HomeWidget(),
+      'AdminTournaments': AdminTournamentsWidget(),
+      'HomeCopy': HomeCopyWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -187,6 +182,26 @@ class _NavBarPageState extends State<NavBarPage> {
               ),
               label: FFLocalizations.of(context).getText(
                 'qncd93ik' /* Home */,
+              ),
+              tooltip: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.person_2_sharp,
+                size: 28.0,
+              ),
+              label: FFLocalizations.of(context).getText(
+                'ebke5ry7' /* Admin */,
+              ),
+              tooltip: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home_outlined,
+                size: 24.0,
+              ),
+              label: FFLocalizations.of(context).getText(
+                '42nya8sw' /* Home */,
               ),
               tooltip: '',
             )

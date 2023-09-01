@@ -46,8 +46,6 @@ class _AdminMembersWidgetState extends State<AdminMembersWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
@@ -129,9 +127,7 @@ class _AdminMembersWidgetState extends State<AdminMembersWidget> {
                                       .primaryBackground,
                                   size: 24.0,
                                 ),
-                                onPressed: () async {
-                                  setState(() {});
-                                },
+                                onPressed: () async {},
                               ),
                               FlutterFlowIconButton(
                                 borderColor:

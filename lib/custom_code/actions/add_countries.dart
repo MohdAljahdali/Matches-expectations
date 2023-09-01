@@ -8,17 +8,17 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'dart:js_interop';
-
 import 'index.dart'; // Imports other custom actions
 
+import 'dart:js_interop';
+
+import 'dart:io';
 import 'index.dart'; // Imports other custom actions
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
+import 'package:firebase_storage/firebase_storage.dart'; // Add this import for FirebaseStorage
 
 Future<String> addCountries() async {
-  final firestore = FirebaseFirestore.instance;
-  final CountriesCol = firestore.collection('Countries');
   var headers = {
     'x-rapidapi-key': 'ba825d70e7634e7015d2f116c1a07e03',
     'x-rapidapi-host': 'v3.football.api-sports.io'
@@ -33,39 +33,49 @@ Future<String> addCountries() async {
     final countriesresponse = countriesjson['response'];
 
     countriesresponse.forEach((country) async {
-      await queryCountriesRecordOnce(
-        queryBuilder: (countriesRecord) => countriesRecord.where('code',
-            isEqualTo: country['code'].toString()),
-        singleRecord: true,
-      ).then((countryData) async {
-        if (countryData.isEmpty) {
-          await CountriesCol.doc(country['code'].toString())
-              .set(createCountriesRecordData(
-            name: country['name'].toString(),
-            nameEn: country['name'].toString(),
-            nameAr: '-',
-            code: country['code'].toString(),
-            isActive: false,
-            flagSvg: country['flag'].toString(),
-            flagW20: 'https://flagcdn.com/w20/' +
-                country['code'].toString().toLowerCase() +
-                '.png',
-            flagW40: 'https://flagcdn.com/w40/' +
-                country['code'].toString().toLowerCase() +
-                '.png',
-            flagW80: 'https://flagcdn.com/w80/' +
-                country['code'].toString().toLowerCase() +
-                '.png',
-            flagW160: 'https://flagcdn.com/w160/' +
-                country['code'].toString().toLowerCase() +
-                '.png',
-            flagW320: 'https://flagcdn.com/w320/' +
-                country['code'].toString().toLowerCase() +
-                '.png',
-          ));
-        }
-      });
+      List<CountriesRecord> countryData = await queryCountriesRecordOnce(
+          queryBuilder: (countriesRecord) => countriesRecord.where('code',
+              isEqualTo: country['code'].toString()),
+          singleRecord: true);
+      if (countryData.isEmpty) {
+        await CountriesRecord.collection
+            .doc(country['code'].toString())
+            .set(createCountriesRecordData(
+              name: country['name'].toString(),
+              nameEn: country['name'].toString(),
+              nameAr: '-',
+              code: country['code'].toString(),
+              isActive: false,
+              flagSvg: country['flag'].toString(),
+              flagW20: 'https://flagcdn.com/w20/' +
+                  country['code'].toString().toLowerCase() +
+                  '.png',
+              flagW40: 'https://flagcdn.com/w40/' +
+                  country['code'].toString().toLowerCase() +
+                  '.png',
+              flagW80: 'https://flagcdn.com/w80/' +
+                  country['code'].toString().toLowerCase() +
+                  '.png',
+              flagW160: 'https://flagcdn.com/w160/' +
+                  country['code'].toString().toLowerCase() +
+                  '.png',
+              flagW320: 'https://flagcdn.com/w320/' +
+                  country['code'].toString().toLowerCase() +
+                  '.png',
+            ))
+            .whenComplete(() async {});
+      }
     });
   } else {}
+
   return "listOfNewCountries";
 }
+/*
+Future<String> uploadFlag(String filePath,String fileSize,String countryCode) async {
+    final file = File(filePath);
+    final storageRef = FirebaseStorage.instance.ref().child('CountryFlag/${fileSize}-${countryCode}.png');
+    final uploadTask = await storageRef.putFile(file);
+    uploadTask.state
+    return await storageRef.getDownloadURL();
+}
+*/

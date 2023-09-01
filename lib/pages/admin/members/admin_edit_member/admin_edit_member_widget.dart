@@ -44,8 +44,6 @@ class _AdminEditMemberWidgetState extends State<AdminEditMemberWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(

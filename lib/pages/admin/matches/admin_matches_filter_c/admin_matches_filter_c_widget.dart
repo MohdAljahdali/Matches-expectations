@@ -1,4 +1,3 @@
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_checkbox_group.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -71,8 +70,6 @@ class _AdminMatchesFilterCWidgetState extends State<AdminMatchesFilterCWidget>
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
       child: ClipRRect(
@@ -520,17 +517,8 @@ class _AdminMatchesFilterCWidgetState extends State<AdminMatchesFilterCWidget>
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       FFButtonWidget(
-                        onPressed: () async {
-                          setState(() {
-                            FFAppState().updatePMatchesStruct(
-                              (e) => e
-                                ..filterIsActive = _model.isActiveSValue
-                                ..filterIsDouble = _model.isDoubleSValue
-                                ..filterDateStart = _model.datePicked1
-                                ..filterDateEnd = _model.datePicked2,
-                            );
-                          });
-                          Navigator.pop(context);
+                        onPressed: () {
+                          print('showResultsB pressed ...');
                         },
                         text: FFLocalizations.of(context).getText(
                           '4z49z2ay' /* Show results */,
@@ -562,17 +550,8 @@ class _AdminMatchesFilterCWidgetState extends State<AdminMatchesFilterCWidget>
                         ),
                       ),
                       FFButtonWidget(
-                        onPressed: () async {
-                          setState(() {
-                            FFAppState().updatePMatchesStruct(
-                              (e) => e
-                                ..filterIsActive = null
-                                ..filterIsDouble = null
-                                ..filterDateStart = null
-                                ..filterDateEnd = null,
-                            );
-                          });
-                          Navigator.pop(context);
+                        onPressed: () {
+                          print('Button pressed ...');
                         },
                         text: FFLocalizations.of(context).getText(
                           'o4srtq1x' /* Clean */,

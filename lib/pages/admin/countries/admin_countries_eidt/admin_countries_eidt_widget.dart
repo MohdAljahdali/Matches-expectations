@@ -48,8 +48,6 @@ class _AdminCountriesEidtWidgetState extends State<AdminCountriesEidtWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return StreamBuilder<CountriesRecord>(
       stream: CountriesRecord.getDocument(widget.countrieRef!),
       builder: (context, snapshot) {

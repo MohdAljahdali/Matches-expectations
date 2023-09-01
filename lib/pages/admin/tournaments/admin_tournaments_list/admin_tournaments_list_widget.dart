@@ -1,5 +1,4 @@
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -7,7 +6,6 @@ import 'package:styled_divider/styled_divider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -32,17 +30,6 @@ class _AdminTournamentsListWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => AdminTournamentsListModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().updatePTournamentsStruct(
-          (e) => e
-            ..active = true
-            ..translation = '',
-        );
-      });
-    });
   }
 
   @override
@@ -54,8 +41,6 @@ class _AdminTournamentsListWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
@@ -131,141 +116,7 @@ class _AdminTournamentsListWidgetState
                                 children: [
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 0.0, 5.0, 0.0),
-                                        child: Builder(
-                                          builder: (context) {
-                                            if (FFAppState()
-                                                .PTournaments
-                                                .active) {
-                                              return FlutterFlowIconButton(
-                                                borderColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent3,
-                                                borderRadius: 20.0,
-                                                borderWidth: 1.0,
-                                                buttonSize: 40.0,
-                                                fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent3,
-                                                icon: Icon(
-                                                  Icons.task_alt_sharp,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryBackground,
-                                                  size: 24.0,
-                                                ),
-                                                onPressed: () async {
-                                                  setState(() {
-                                                    FFAppState()
-                                                        .updatePTournamentsStruct(
-                                                      (e) => e..active = false,
-                                                    );
-                                                  });
-                                                },
-                                              );
-                                            } else {
-                                              return FlutterFlowIconButton(
-                                                borderColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent3,
-                                                borderRadius: 20.0,
-                                                borderWidth: 1.0,
-                                                buttonSize: 40.0,
-                                                fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent3,
-                                                icon: Icon(
-                                                  Icons.add_task_rounded,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryBackground,
-                                                  size: 24.0,
-                                                ),
-                                                onPressed: () async {
-                                                  setState(() {
-                                                    FFAppState()
-                                                        .updatePTournamentsStruct(
-                                                      (e) => e..active = true,
-                                                    );
-                                                  });
-                                                },
-                                              );
-                                            }
-                                          },
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 0.0, 5.0, 0.0),
-                                        child: Builder(
-                                          builder: (context) {
-                                            if (FFAppState()
-                                                    .PTournaments
-                                                    .translation !=
-                                                '-') {
-                                              return FlutterFlowIconButton(
-                                                borderColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent3,
-                                                borderRadius: 20.0,
-                                                borderWidth: 1.0,
-                                                buttonSize: 40.0,
-                                                fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent3,
-                                                icon: Icon(
-                                                  Icons.translate_outlined,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryBackground,
-                                                  size: 24.0,
-                                                ),
-                                                onPressed: () async {
-                                                  setState(() {
-                                                    FFAppState()
-                                                        .updatePTournamentsStruct(
-                                                      (e) =>
-                                                          e..translation = '',
-                                                    );
-                                                  });
-                                                },
-                                              );
-                                            } else {
-                                              return FlutterFlowIconButton(
-                                                borderColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent3,
-                                                borderRadius: 20.0,
-                                                borderWidth: 1.0,
-                                                buttonSize: 40.0,
-                                                fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent3,
-                                                icon: Icon(
-                                                  Icons.g_translate,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryBackground,
-                                                  size: 24.0,
-                                                ),
-                                                onPressed: () async {
-                                                  setState(() {
-                                                    FFAppState()
-                                                        .updatePTournamentsStruct(
-                                                      (e) =>
-                                                          e..translation = '-',
-                                                    );
-                                                  });
-                                                },
-                                              );
-                                            }
-                                          },
-                                        ),
-                                      ),
-                                    ],
+                                    children: [],
                                   ),
                                   FlutterFlowIconButton(
                                     borderColor:
@@ -281,8 +132,8 @@ class _AdminTournamentsListWidgetState
                                           .primaryBackground,
                                       size: 24.0,
                                     ),
-                                    onPressed: () async {
-                                      context.pushNamed('adminTournamentsAdd');
+                                    onPressed: () {
+                                      print('IconButton pressed ...');
                                     },
                                   ),
                                 ],
@@ -303,22 +154,7 @@ class _AdminTournamentsListWidgetState
                         padding: EdgeInsetsDirectional.fromSTEB(
                             10.0, 5.0, 10.0, 0.0),
                         child: StreamBuilder<List<TournamentsRecord>>(
-                          stream: queryTournamentsRecord(
-                            queryBuilder: (tournamentsRecord) =>
-                                tournamentsRecord
-                                    .where('isActive',
-                                        isEqualTo:
-                                            FFAppState().PTournaments.active)
-                                    .where('nameAr',
-                                        isEqualTo: FFAppState()
-                                                    .PTournaments
-                                                    .translation !=
-                                                ''
-                                            ? FFAppState()
-                                                .PTournaments
-                                                .translation
-                                            : null),
-                          ),
+                          stream: queryTournamentsRecord(),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -407,24 +243,11 @@ class _AdminTournamentsListWidgetState
                                                           MainAxisSize.max,
                                                       children: [
                                                         Text(
-                                                          () {
-                                                            if (FFLocalizations.of(
-                                                                        context)
-                                                                    .languageCode ==
-                                                                'en') {
-                                                              return listViewTournamentsRecord
-                                                                  .name;
-                                                            } else if (FFLocalizations.of(
-                                                                        context)
-                                                                    .languageCode ==
-                                                                'ar') {
-                                                              return listViewTournamentsRecord
-                                                                  .nameAr;
-                                                            } else {
-                                                              return listViewTournamentsRecord
-                                                                  .name;
-                                                            }
-                                                          }(),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'lw9lpn77' /* List Item Title */,
+                                                          ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium,

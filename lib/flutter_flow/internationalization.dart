@@ -446,26 +446,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Admin control',
       'ar': 'تحكم الاداري',
     },
-    '8n30lm2h': {
-      'en': 'Log out',
-      'ar': 'تسجيل خروج',
-    },
-    'zihcwu0d': {
-      'en': 'Profile',
-      'ar': 'الملف الشخصي',
-    },
-    'b9axb78m': {
-      'en': 'Countries',
-      'ar': 'الدول',
-    },
-    'by4o5ylx': {
-      'en': 'Tournaments',
-      'ar': 'البطولات',
-    },
-    'slqr9i0n': {
-      'en': 'Matches',
-      'ar': 'المباريات',
-    },
     'zkc1i229': {
       'en': 'Member',
       'ar': 'الأغاني',
@@ -474,9 +454,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Countries',
       'ar': 'الدول',
     },
-    '2w2ck0p7': {
-      'en': 'Hello World',
-      'ar': '',
+    'il8pd8bd': {
+      'en': 'Tournaments',
+      'ar': 'البطولات',
     },
     'p4z0veqy': {
       'en': 'Admin',
@@ -590,127 +570,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
-  // adminTournamentsAdd
-  {
-    'bszrb3on': {
-      'en': 'Add tournaments by Country',
-      'ar': 'اضافة البطولات بكود الدولة',
-    },
-    'ob6r0xb7': {
-      'en': 'Country',
-      'ar': 'الدولة',
-    },
-    'n8gnz9gs': {
-      'en': 'Option 1',
-      'ar': '',
-    },
-    'qbimm6nk': {
-      'en': 'Country',
-      'ar': 'الدولة',
-    },
-    '3wa7lagy': {
-      'en': 'Search for an Country...',
-      'ar': 'البحث عن الدولة ...',
-    },
-    'abaa4ktb': {
-      'en': 'Season',
-      'ar': 'الموسم',
-    },
-    '46dmj54o': {
-      'en': '2022',
-      'ar': '2022',
-    },
-    'zhnzdd7v': {
-      'en': '2023',
-      'ar': '2023',
-    },
-    'vkxd2f0q': {
-      'en': '2024',
-      'ar': '2024',
-    },
-    'z0b7l9r1': {
-      'en': '2025',
-      'ar': '2025',
-    },
-    'afpdh0u9': {
-      'en': '2026',
-      'ar': '2026',
-    },
-    'tqngvb78': {
-      'en': '2027',
-      'ar': '2027',
-    },
-    'mng90tob': {
-      'en': 'Please select...',
-      'ar': '',
-    },
-    'nbwl5xx3': {
-      'en': 'Search for an item...',
-      'ar': '',
-    },
-    'ih6jxsam': {
-      'en': 'Add',
-      'ar': 'أضف',
-    },
-    'eqcxp81l': {
-      'en': 'Add tournament manually',
-      'ar': 'أضافة البطولة يدوي',
-    },
-    '7ofp8xgw': {
-      'en': 'Tournament code',
-      'ar': 'كود البطولة',
-    },
-    'kf16ohp6': {
-      'en': 'Season',
-      'ar': 'الموسم',
-    },
-    'yq4t38v3': {
-      'en': '2022',
-      'ar': '2022',
-    },
-    '8qof8sh2': {
-      'en': '2023',
-      'ar': '2023',
-    },
-    'xlzcv3l0': {
-      'en': '2024',
-      'ar': '2024',
-    },
-    'tiwt3n4e': {
-      'en': '2025',
-      'ar': '2025',
-    },
-    'nezr3a05': {
-      'en': '2026',
-      'ar': '2026',
-    },
-    'add9y9kp': {
-      'en': '2027',
-      'ar': '2027',
-    },
-    '3034jjzm': {
-      'en': 'Please select...',
-      'ar': '',
-    },
-    'buic52h2': {
-      'en': 'Search for an item...',
-      'ar': '',
-    },
-    'ic8c9grk': {
-      'en': 'Add',
-      'ar': 'أضف',
-    },
-    'rcrsp1mh': {
-      'en': 'Add tournaments',
-      'ar': 'أضافة بطولات',
-    },
-    'z72dk26j': {
-      'en': 'Home',
-      'ar': '',
-    },
-  },
   // adminTournamentsList
   {
+    'lw9lpn77': {
+      'en': 'List Item Title',
+      'ar': '',
+    },
     '6yy6pbye': {
       'en': 'Season',
       'ar': 'الموسم',
@@ -1060,106 +925,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
-  // adminTournamentTeamEdit
-  {
-    't4v1biy8': {
-      'en': 'Logo URL',
-      'ar': 'رابط الشعار',
-    },
-    'xqxrs7f1': {
-      'en': 'English name',
-      'ar': 'الاسم بالانجليزية',
-    },
-    'u5zu4hh1': {
-      'en': 'Arabic name',
-      'ar': 'الاسم بالعربية',
-    },
-    'pvg3ncvx': {
-      'en': 'Field is required',
-      'ar': 'الحقل مطلوب',
-    },
-    't1dy8lak': {
-      'en': '',
-      'ar': '',
-    },
-    'n6ztrp2f': {
-      'en': 'Mxnimum 25 characters',
-      'ar': 'الحد الأقصى 16 حرفًا',
-    },
-    'iqud55p2': {
-      'en': 'Invalid Email Format',
-      'ar': 'تنسيق بريد إلكتروني غير صالح',
-    },
-    'to0ga9zq': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    'rxociyvn': {
-      'en': 'Field is required',
-      'ar': 'الحقل مطلوب',
-    },
-    'wmtc4wr8': {
-      'en': 'Minimum eight characters',
-      'ar': 'ثمانية أحرف على الأقل',
-    },
-    'eqo39n1v': {
-      'en': 'Mxnimum 16 characters',
-      'ar': 'الحد الأقصى 16 حرفًا',
-    },
-    'f8yomldh': {
-      'en':
-          'at least one uppercase letter, one lowercase letter and one number',
-      'ar': 'حرف كبير واحد على الأقل وحرف صغير واحد ورقم واحد',
-    },
-    'vvhlhhrc': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    '1r9v95o4': {
-      'en': 'Field is required',
-      'ar': 'الحقل مطلوب',
-    },
-    '8b5i7tep': {
-      'en': 'Minimum eight characters',
-      'ar': 'ثمانية أحرف على الأقل',
-    },
-    'qo79t2dg': {
-      'en': 'Mxnimum 16 characters',
-      'ar': 'الحد الأقصى 16 حرفًا',
-    },
-    'lmdk0qqr': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    'khm303u7': {
-      'en': 'Field is required',
-      'ar': 'الحقل مطلوب',
-    },
-    'yxn4aoad': {
-      'en': 'Minimum 8 characters',
-      'ar': '8 أحرف على الأقل',
-    },
-    'rjwpnvif': {
-      'en': 'Mxnimum 20 characters',
-      'ar': '20 حرفًا بحد أقصى',
-    },
-    '4hu02ru2': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    '13bt70nb': {
-      'en': 'Save your edite',
-      'ar': 'حفظ التعديل',
-    },
-    'bvnaypq1': {
-      'en': 'Edit Teams',
-      'ar': 'تعديل بيانات الفريق',
-    },
-    'zhv19kdu': {
-      'en': 'Home',
-      'ar': '',
-    },
-  },
   // adminMatchesAddList
   {
     'er7if1v5': {
@@ -1231,6 +996,40 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'b0eec786': {
       'en': 'Home',
       'ar': '',
+    },
+  },
+  // AdminTournaments
+  {
+    'cz3fwwtv': {
+      'en': 'Admin control',
+      'ar': 'تحكم الاداري',
+    },
+    '8qmfs3q9': {
+      'en': 'Add new tournament',
+      'ar': 'أضافة بطولة جديدة',
+    },
+    'n9n4ajsj': {
+      'en': 'Countries',
+      'ar': 'الدول',
+    },
+    '8umiev6t': {
+      'en': 'Tournaments',
+      'ar': 'البطولات',
+    },
+    'ebke5ry7': {
+      'en': 'Admin',
+      'ar': '',
+    },
+  },
+  // HomeCopy
+  {
+    '15mmzj0x': {
+      'en': 'Button',
+      'ar': '',
+    },
+    '42nya8sw': {
+      'en': 'Home',
+      'ar': 'الرئسية',
     },
   },
   // signInComponent
@@ -1350,11 +1149,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // adminTournamentsAddC
   {
-    '375g9cre': {
-      'en': 'Arabic name',
-      'ar': 'الاسم العربي',
+    'w0w2g2gd': {
+      'en': 'Add tournament',
+      'ar': 'أضافة بطولة',
     },
-    '55blixme': {
+    '375g9cre': {
       'en': 'Tournament code',
       'ar': 'كود البطولة',
     },
@@ -1393,6 +1192,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'pi2lfqa3': {
       'en': 'Add',
       'ar': 'أضافة',
+    },
+  },
+  // UserProfileInfo
+  {
+    '3ucbjaqs': {
+      'en': 'Log out',
+      'ar': 'تسجيل خروج',
+    },
+    '74eyy9v0': {
+      'en': 'Profile',
+      'ar': 'الملف الشخصي',
     },
   },
   // Miscellaneous

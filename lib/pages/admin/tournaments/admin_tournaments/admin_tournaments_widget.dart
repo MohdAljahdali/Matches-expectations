@@ -2,30 +2,29 @@ import '/components/user_profile_info_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'admin_page_model.dart';
-export 'admin_page_model.dart';
+import 'admin_tournaments_model.dart';
+export 'admin_tournaments_model.dart';
 
-class AdminPageWidget extends StatefulWidget {
-  const AdminPageWidget({Key? key}) : super(key: key);
+class AdminTournamentsWidget extends StatefulWidget {
+  const AdminTournamentsWidget({Key? key}) : super(key: key);
 
   @override
-  _AdminPageWidgetState createState() => _AdminPageWidgetState();
+  _AdminTournamentsWidgetState createState() => _AdminTournamentsWidgetState();
 }
 
-class _AdminPageWidgetState extends State<AdminPageWidget> {
-  late AdminPageModel _model;
+class _AdminTournamentsWidgetState extends State<AdminTournamentsWidget> {
+  late AdminTournamentsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AdminPageModel());
+    _model = createModel(context, () => AdminTournamentsModel());
   }
 
   @override
@@ -73,7 +72,7 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                 ),
                 title: Text(
                   FFLocalizations.of(context).getText(
-                    'g68blc5o' /* Admin control */,
+                    'cz3fwwtv' /* Admin control */,
                   ),
                   style: FlutterFlowTheme.of(context).titleLarge,
                 ),
@@ -125,28 +124,24 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          _model.ssssssss =
-                                              await actions.newCustomAction();
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                _model.ssssssss!,
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
+                                          context.pushNamed(
+                                            'adminTournamentsAddList',
+                                            queryParameters: {
+                                              'randomCode': serializeParam(
+                                                '',
+                                                ParamType.String,
                                               ),
-                                              duration:
-                                                  Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                            ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
                                           );
-
-                                          setState(() {});
                                         },
                                         child: Container(
                                           width: double.infinity,
@@ -158,14 +153,18 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: Image.asset(
-                                                  'assets/images/trophy.png',
-                                                  width: 30.0,
-                                                  height: 30.0,
-                                                  fit: BoxFit.cover,
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.0, -1.0),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 3.0, 0.0, 0.0),
+                                                  child: Icon(
+                                                    Icons.add,
+                                                    color: Colors.white,
+                                                    size: 30.0,
+                                                  ),
                                                 ),
                                               ),
                                               Expanded(
@@ -192,7 +191,7 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'zkc1i229' /* Member */,
+                                                            '8qmfs3q9' /* Add new tournament */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -281,7 +280,7 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            '6jji10z3' /* Countries */,
+                                                            'n9n4ajsj' /* Countries */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -316,95 +315,76 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           5.0, 0.0, 5.0, 0.0),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          context.pushNamed(
-                                            'AdminTournaments',
-                                            extra: <String, dynamic>{
-                                              kTransitionInfoKey:
-                                                  TransitionInfo(
-                                                hasTransition: true,
-                                                transitionType:
-                                                    PageTransitionType
-                                                        .leftToRight,
-                                              ),
-                                            },
-                                          );
-                                        },
-                                        child: Container(
-                                          width: double.infinity,
-                                          height: 40.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, -1.0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 3.0, 0.0, 0.0),
-                                                  child: Icon(
-                                                    FFIcons.ktrophy3,
-                                                    color: Colors.white,
-                                                    size: 26.0,
-                                                  ),
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 40.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, -1.0),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 3.0, 0.0, 0.0),
+                                                child: Icon(
+                                                  FFIcons.ktrophy3,
+                                                  color: Colors.white,
+                                                  size: 26.0,
                                                 ),
                                               ),
-                                              Expanded(
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          8.0, 0.0, 8.0, 0.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    2.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'il8pd8bd' /* Tournaments */,
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyLarge,
+                                            ),
+                                            Expanded(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        8.0, 0.0, 8.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  2.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          '8umiev6t' /* Tournaments */,
                                                         ),
-                                                      ),
-                                                      Icon(
-                                                        Icons
-                                                            .arrow_forward_ios_rounded,
-                                                        color:
+                                                        style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryText,
-                                                        size: 16.0,
+                                                                .bodyLarge,
                                                       ),
-                                                    ],
-                                                  ),
+                                                    ),
+                                                    Icon(
+                                                      Icons
+                                                          .arrow_forward_ios_rounded,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 16.0,
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ),

@@ -50,8 +50,6 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return StreamBuilder<TournamentsRecord>(
       stream: TournamentsRecord.getDocument(widget.aTournamentRef!),
       builder: (context, snapshot) {

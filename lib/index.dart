@@ -12,8 +12,6 @@ export '/pages/admin/members/admin_members/admin_members_widget.dart'
     show AdminMembersWidget;
 export '/pages/admin/members/admin_edit_member/admin_edit_member_widget.dart'
     show AdminEditMemberWidget;
-export '/pages/admin/tournaments/admin_tournaments_add/admin_tournaments_add_widget.dart'
-    show AdminTournamentsAddWidget;
 export '/pages/admin/tournaments/admin_tournaments_list/admin_tournaments_list_widget.dart'
     show AdminTournamentsListWidget;
 export '/pages/admin/tournaments/admin_tournament_edit/admin_tournament_edit_widget.dart'
@@ -26,10 +24,11 @@ export '/pages/admin/tournaments/admin_tournaments_add_list/admin_tournaments_ad
     show AdminTournamentsAddListWidget;
 export '/pages/admin/tournaments/admin_tournaments_team_list/admin_tournaments_team_list_widget.dart'
     show AdminTournamentsTeamListWidget;
-export '/pages/admin/tournaments/admin_tournament_team_edit/admin_tournament_team_edit_widget.dart'
-    show AdminTournamentTeamEditWidget;
 export '/pages/admin/matches/admin_matches_add_list/admin_matches_add_list_widget.dart'
     show AdminMatchesAddListWidget;
 export '/home/home/home_widget.dart' show HomeWidget;
 export '/pages/admin/countries/admin_countries_list/admin_countries_list_widget.dart'
     show AdminCountriesListWidget;
+export '/pages/admin/tournaments/admin_tournaments/admin_tournaments_widget.dart'
+    show AdminTournamentsWidget;
+export '/home/home_copy/home_copy_widget.dart' show HomeCopyWidget;

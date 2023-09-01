@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:js_interop';
 
 import 'index.dart'; // Imports other custom actions
@@ -17,8 +19,8 @@ import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
 Future<String> addTournaments(
-  String countryCode,
-  String season,
+  int tournamentID,
+  int season,
   String randomCode,
 ) async {
   final firestore = FirebaseFirestore.instance;
@@ -26,7 +28,7 @@ Future<String> addTournaments(
   final TeamsDoc = TeamsRecord.collection;
 
   final tournamentApi = api(
-      'https://v3.football.api-sports.io/leagues?id=${countryCode.toString()}&season=${season.toString()}');
+      'https://v3.football.api-sports.io/leagues?id=${tournamentID.toString()}&season=${season.toString()}');
   if (!tournamentApi.isNull) {
     tournamentApi['response'].forEach((tournament) async {
       tournament['seasons'].forEach((seasons) async {
@@ -37,16 +39,16 @@ Future<String> addTournaments(
           singleRecord: true,
         ).then((tournamentData) async {
           if (tournamentData.isEmpty) {
+            /*
             final countryData = await queryCountriesRecordOnce(
               queryBuilder: (countriesRecord) => countriesRecord.where('code',
                   isEqualTo: tournament['country']['code'].toString()),
               singleRecord: true,
             );
-
-            String tournamentRefID = tournament['league']['id'].toString() +
-                seasons['year'].toString();
-            var tournamentRecordReference =
-                TournamentsRecord.collection.doc(tournamentRefID);
+*/
+            var tournamentRecordReference = TournamentsRecord.collection.doc(
+                tournament['league']['id'].toString() +
+                    seasons['year'].toString());
             var createTournamentsData = createTournamentsRecordData(
               id: int.parse(tournament['league']['id'].toString()),
               seasonYear: int.parse(seasons['year'].toString()),
@@ -58,7 +60,7 @@ Future<String> addTournaments(
               type: tournament['league']['type'].toString(),
               logo: tournament['league']['logo'].toString(),
               //country
-              countryRef: countryData.first.reference,
+              //countryRef: countryData.first.reference,
               isActive: false,
               addRandomCode: randomCode,
               roleHasDoubleMatches: true,
@@ -82,6 +84,7 @@ Future<String> addTournaments(
               roleAwayRedCardPoints: 0,
             );
             await tournamentRecordReference.set(createTournamentsData);
+            /*
             final tournamentData = TournamentsRecord.getDocumentFromData(
                 createTournamentsData, tournamentRecordReference);
 
@@ -89,10 +92,11 @@ Future<String> addTournaments(
                 'https://v3.football.api-sports.io/teams?league=${tournamentData.id.toString()}&season=${tournamentData.seasonYear.toString()}');
             if (!teamsApi.isNull) {
               teamsApi['response'].forEach((team) async {
-                final teamCountryData = await queryCountriesRecordOnce(
+                List<CountriesRecord> teamCountryData =
+                    await queryCountriesRecordOnce(
                   queryBuilder: (countriesRecord) => countriesRecord.where(
-                      'code',
-                      isEqualTo: tournament['country']['code'].toString()),
+                      'name',
+                      isEqualTo: tournament['team']['country'].toString()),
                   singleRecord: true,
                 );
                 await queryTeamsRecordOnce(
@@ -108,7 +112,7 @@ Future<String> addTournaments(
                       name: team['team']['name'].toString(),
                       nameAr: '-',
                       code: team['team']['code'].toString(),
-                      //countryRef: team['team']['country'].toString(),
+                      countryRef: teamCountryData.first.reference,
                       logo: team['team']['logo'].toString(),
                     );
                     await teamsRecordReference.set(createTournamentsData);
@@ -118,6 +122,7 @@ Future<String> addTournaments(
                 });
               });
             }
+            */
           }
         });
       });
