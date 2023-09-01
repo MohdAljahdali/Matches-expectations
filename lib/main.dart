@@ -129,7 +129,6 @@ class _NavBarPageState extends State<NavBarPage> {
       'Profile': ProfileWidget(),
       'adminPage': AdminPageWidget(),
       'Home': HomeWidget(),
-      'AdminTournaments': AdminTournamentsWidget(),
       'HomeCopy': HomeCopyWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -182,16 +181,6 @@ class _NavBarPageState extends State<NavBarPage> {
               ),
               label: FFLocalizations.of(context).getText(
                 'qncd93ik' /* Home */,
-              ),
-              tooltip: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person_2_sharp,
-                size: 28.0,
-              ),
-              label: FFLocalizations.of(context).getText(
-                'ebke5ry7' /* Admin */,
               ),
               tooltip: '',
             ),

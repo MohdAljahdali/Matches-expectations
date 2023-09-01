@@ -1023,7 +1023,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // HomeCopy
   {
-    '091myf11': {
+    'a68cdla9': {
       'en': 'Button',
       'ar': '',
     },

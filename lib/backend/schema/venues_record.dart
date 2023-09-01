@@ -46,16 +46,6 @@ class VenuesRecord extends FirestoreRecord {
   DocumentReference? get countryRef => _countryRef;
   bool hasCountryRef() => _countryRef != null;
 
-  // "countryEn" field.
-  String? _countryEn;
-  String get countryEn => _countryEn ?? '';
-  bool hasCountryEn() => _countryEn != null;
-
-  // "countryAr" field.
-  String? _countryAr;
-  String get countryAr => _countryAr ?? '';
-  bool hasCountryAr() => _countryAr != null;
-
   // "capacity" field.
   int? _capacity;
   int get capacity => _capacity ?? 0;
@@ -78,8 +68,6 @@ class VenuesRecord extends FirestoreRecord {
     _cityEn = snapshotData['cityEn'] as String?;
     _cityAR = snapshotData['cityAR'] as String?;
     _countryRef = snapshotData['countryRef'] as DocumentReference?;
-    _countryEn = snapshotData['countryEn'] as String?;
-    _countryAr = snapshotData['countryAr'] as String?;
     _capacity = castToType<int>(snapshotData['capacity']);
     _surface = snapshotData['surface'] as String?;
     _image = snapshotData['image'] as String?;
@@ -125,8 +113,6 @@ Map<String, dynamic> createVenuesRecordData({
   String? cityEn,
   String? cityAR,
   DocumentReference? countryRef,
-  String? countryEn,
-  String? countryAr,
   int? capacity,
   String? surface,
   String? image,
@@ -139,8 +125,6 @@ Map<String, dynamic> createVenuesRecordData({
       'cityEn': cityEn,
       'cityAR': cityAR,
       'countryRef': countryRef,
-      'countryEn': countryEn,
-      'countryAr': countryAr,
       'capacity': capacity,
       'surface': surface,
       'image': image,
@@ -161,8 +145,6 @@ class VenuesRecordDocumentEquality implements Equality<VenuesRecord> {
         e1?.cityEn == e2?.cityEn &&
         e1?.cityAR == e2?.cityAR &&
         e1?.countryRef == e2?.countryRef &&
-        e1?.countryEn == e2?.countryEn &&
-        e1?.countryAr == e2?.countryAr &&
         e1?.capacity == e2?.capacity &&
         e1?.surface == e2?.surface &&
         e1?.image == e2?.image;
@@ -176,8 +158,6 @@ class VenuesRecordDocumentEquality implements Equality<VenuesRecord> {
         e?.cityEn,
         e?.cityAR,
         e?.countryRef,
-        e?.countryEn,
-        e?.countryAr,
         e?.capacity,
         e?.surface,
         e?.image

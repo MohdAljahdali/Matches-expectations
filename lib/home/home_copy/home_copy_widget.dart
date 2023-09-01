@@ -55,7 +55,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                           print('Button pressed ...');
                         },
                         text: FFLocalizations.of(context).getText(
-                          '091myf11' /* Button */,
+                          'a68cdla9' /* Button */,
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
