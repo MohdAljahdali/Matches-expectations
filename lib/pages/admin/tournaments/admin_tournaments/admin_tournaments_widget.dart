@@ -125,7 +125,7 @@ class _AdminTournamentsWidgetState extends State<AdminTournamentsWidget> {
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           context.pushNamed(
-                                            'adminTournamentsAddList',
+                                            'adminTournamentsList',
                                             queryParameters: {
                                               'randomCode': serializeParam(
                                                 '',

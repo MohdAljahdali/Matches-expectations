@@ -323,7 +323,7 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           context.pushNamed(
-                                            'adminTournamentsAddList',
+                                            'adminTournamentsList',
                                             queryParameters: {
                                               'randomCode': serializeParam(
                                                 '',

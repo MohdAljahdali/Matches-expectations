@@ -18,9 +18,6 @@ class AdminTournamentEditModel extends FlutterFlowModel {
 
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
-  // State field(s) for logoUrlTF widget.
-  TextEditingController? logoUrlTFController;
-  String? Function(BuildContext, String?)? logoUrlTFControllerValidator;
   // State field(s) for nameEnTF widget.
   TextEditingController? nameEnTFController;
   String? Function(BuildContext, String?)? nameEnTFControllerValidator;
@@ -58,7 +55,6 @@ class AdminTournamentEditModel extends FlutterFlowModel {
 
   void dispose() {
     unfocusNode.dispose();
-    logoUrlTFController?.dispose();
     nameEnTFController?.dispose();
     nameArTFController?.dispose();
   }

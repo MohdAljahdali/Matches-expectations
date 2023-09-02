@@ -18,10 +18,10 @@ export 'admin_tournament_edit_model.dart';
 class AdminTournamentEditWidget extends StatefulWidget {
   const AdminTournamentEditWidget({
     Key? key,
-    required this.aTournamentRef,
+    required this.tournamentRef,
   }) : super(key: key);
 
-  final DocumentReference? aTournamentRef;
+  final DocumentReference? tournamentRef;
 
   @override
   _AdminTournamentEditWidgetState createState() =>
@@ -37,8 +37,6 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AdminTournamentEditModel());
-
-    _model.logoUrlTFController ??= TextEditingController();
   }
 
   @override
@@ -51,7 +49,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<TournamentsRecord>(
-      stream: TournamentsRecord.getDocument(widget.aTournamentRef!),
+      stream: TournamentsRecord.getDocument(widget.tournamentRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -185,149 +183,129 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                 ),
                                               ),
                                             ),
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 7.0, 0.0, 7.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
                                             Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 10.0, 0.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  7.0,
-                                                                  0.0,
-                                                                  7.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Expanded(
-                                                            child:
-                                                                TextFormField(
-                                                              controller: _model
-                                                                  .logoUrlTFController,
-                                                              autofocus: true,
-                                                              obscureText:
-                                                                  false,
-                                                              decoration:
-                                                                  InputDecoration(
-                                                                isDense: true,
-                                                                labelText:
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                  'qy2x0tb8' /* Logo URL */,
-                                                                ),
-                                                                labelStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                                hintStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium,
-                                                                enabledBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryText,
-                                                                    width: 2.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              15.0),
-                                                                ),
-                                                                focusedBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryText,
-                                                                    width: 2.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              15.0),
-                                                                ),
-                                                                errorBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .error,
-                                                                    width: 2.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              15.0),
-                                                                ),
-                                                                focusedErrorBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .error,
-                                                                    width: 2.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              15.0),
-                                                                ),
-                                                                filled: true,
-                                                                fillColor: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                prefixIcon:
-                                                                    Icon(
-                                                                  Icons
-                                                                      .text_fields_sharp,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  size: 24.0,
-                                                                ),
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodySmall,
-                                                              keyboardType:
-                                                                  TextInputType
-                                                                      .emailAddress,
-                                                              validator: _model
-                                                                  .logoUrlTFControllerValidator
-                                                                  .asValidator(
-                                                                      context),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
+                                              child: TextFormField(
+                                                controller: _model
+                                                        .nameEnTFController ??=
+                                                    TextEditingController(
+                                                  text:
+                                                      adminTournamentEditTournamentsRecord
+                                                          .name,
                                                 ),
+                                                autofocus: true,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  isDense: true,
+                                                  labelText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'fc2ssg9i' /* English name */,
+                                                  ),
+                                                  labelStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                                  hintStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium,
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15.0),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15.0),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15.0),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15.0),
+                                                  ),
+                                                  filled: true,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  prefixIcon: Icon(
+                                                    Icons.text_fields_sharp,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 24.0,
+                                                  ),
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall,
+                                                keyboardType:
+                                                    TextInputType.emailAddress,
+                                                validator: _model
+                                                    .nameEnTFControllerValidator
+                                                    .asValidator(context),
                                               ),
                                             ),
                                           ],
@@ -340,274 +318,113 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Expanded(
-                                              child: Container(
-                                                width: 100.0,
-                                                height: 52.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          15.0),
-                                                  border: Border.all(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    width: 2.0,
-                                                  ),
+                                              child: TextFormField(
+                                                controller: _model
+                                                        .nameArTFController ??=
+                                                    TextEditingController(
+                                                  text:
+                                                      adminTournamentEditTournamentsRecord
+                                                          .nameAr,
                                                 ),
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: TextFormField(
-                                                  controller: _model
-                                                          .nameEnTFController ??=
-                                                      TextEditingController(
-                                                    text:
-                                                        adminTournamentEditTournamentsRecord
-                                                            .name,
+                                                autofocus: true,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  isDense: true,
+                                                  labelText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'rl2uu226' /* Arabic name */,
                                                   ),
-                                                  autofocus: true,
-                                                  obscureText: false,
-                                                  decoration: InputDecoration(
-                                                    isDense: true,
-                                                    labelText:
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                      'fc2ssg9i' /* English name */,
-                                                    ),
-                                                    labelStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              useGoogleFonts: GoogleFonts
-                                                                      .asMap()
-                                                                  .containsKey(
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMediumFamily),
-                                                            ),
-                                                    hintStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium,
-                                                    enabledBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            Color(0x00000000),
-                                                        width: 0.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              15.0),
-                                                    ),
-                                                    focusedBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            Color(0x00000000),
-                                                        width: 0.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              15.0),
-                                                    ),
-                                                    errorBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
+                                                  labelStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .error,
-                                                        width: 0.0,
+                                                                .primaryText,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
                                                       ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              15.0),
-                                                    ),
-                                                    focusedErrorBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                        width: 0.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              15.0),
-                                                    ),
-                                                    filled: true,
-                                                    fillColor: FlutterFlowTheme
-                                                            .of(context)
-                                                        .secondaryBackground,
-                                                    prefixIcon: Icon(
-                                                      Icons.text_fields_sharp,
+                                                  hintStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium,
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .secondaryText,
-                                                      size: 24.0,
+                                                      width: 2.0,
                                                     ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15.0),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodySmall,
-                                                  keyboardType: TextInputType
-                                                      .emailAddress,
-                                                  validator: _model
-                                                      .nameEnTFControllerValidator
-                                                      .asValidator(context),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 7.0, 0.0, 7.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Expanded(
-                                              child: Container(
-                                                width: 100.0,
-                                                height: 52.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          15.0),
-                                                  border: Border.all(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    width: 2.0,
-                                                  ),
-                                                ),
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: TextFormField(
-                                                  controller: _model
-                                                          .nameArTFController ??=
-                                                      TextEditingController(
-                                                    text:
-                                                        adminTournamentEditTournamentsRecord
-                                                            .nameAr,
-                                                  ),
-                                                  autofocus: true,
-                                                  obscureText: false,
-                                                  decoration: InputDecoration(
-                                                    isDense: true,
-                                                    labelText:
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                      'rl2uu226' /* Arabic name */,
-                                                    ),
-                                                    labelStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              useGoogleFonts: GoogleFonts
-                                                                      .asMap()
-                                                                  .containsKey(
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMediumFamily),
-                                                            ),
-                                                    hintStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium,
-                                                    enabledBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            Color(0x00000000),
-                                                        width: 0.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              15.0),
-                                                    ),
-                                                    focusedBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            Color(0x00000000),
-                                                        width: 0.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              15.0),
-                                                    ),
-                                                    errorBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            Color(0x00000000),
-                                                        width: 0.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              15.0),
-                                                    ),
-                                                    focusedErrorBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            Color(0x00000000),
-                                                        width: 0.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              15.0),
-                                                    ),
-                                                    filled: true,
-                                                    fillColor: FlutterFlowTheme
-                                                            .of(context)
-                                                        .secondaryBackground,
-                                                    prefixIcon: Icon(
-                                                      Icons.text_fields_sharp,
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .secondaryText,
-                                                      size: 24.0,
+                                                      width: 2.0,
                                                     ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15.0),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodySmall,
-                                                  keyboardType: TextInputType
-                                                      .emailAddress,
-                                                  validator: _model
-                                                      .nameArTFControllerValidator
-                                                      .asValidator(context),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15.0),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15.0),
+                                                  ),
+                                                  filled: true,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  prefixIcon: Icon(
+                                                    Icons.text_fields_sharp,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 24.0,
+                                                  ),
                                                 ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall,
+                                                keyboardType:
+                                                    TextInputType.emailAddress,
+                                                validator: _model
+                                                    .nameArTFControllerValidator
+                                                    .asValidator(context),
                                               ),
                                             ),
                                           ],
@@ -622,7 +439,6 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                             Expanded(
                                               child: Container(
                                                 width: double.infinity,
-                                                height: 52.0,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -665,7 +481,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
-                                                          fontSize: 16.0,
+                                                          fontSize: 12.0,
                                                           useGoogleFonts: GoogleFonts
                                                                   .asMap()
                                                               .containsKey(
@@ -710,7 +526,6 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                             Expanded(
                                               child: Container(
                                                 width: double.infinity,
-                                                height: 52.0,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -753,7 +568,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
-                                                          fontSize: 16.0,
+                                                          fontSize: 12.0,
                                                           useGoogleFonts: GoogleFonts
                                                                   .asMap()
                                                               .containsKey(
@@ -802,7 +617,6 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                 Expanded(
                                                   child: Container(
                                                     width: double.infinity,
-                                                    height: 100.0,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -853,7 +667,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                           context)
                                                                       .primaryText,
                                                                   fontSize:
-                                                                      16.0,
+                                                                      12.0,
                                                                   useGoogleFonts: GoogleFonts
                                                                           .asMap()
                                                                       .containsKey(
@@ -896,7 +710,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       18.0,
-                                                                      5.0,
+                                                                      0.0,
                                                                       0.0,
                                                                       0.0),
                                                           child: Row(
@@ -924,87 +738,100 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                               context)
                                                                           .primaryText,
                                                                       fontSize:
-                                                                          16.0,
+                                                                          12.0,
                                                                       useGoogleFonts: GoogleFonts
                                                                               .asMap()
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                     ),
                                                               ),
-                                                              Container(
-                                                                width: 160.0,
-                                                                height: 40.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                  shape: BoxShape
-                                                                      .rectangle,
-                                                                  border: Border
-                                                                      .all(
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            8.0,
+                                                                            0.0,
+                                                                            8.0,
+                                                                            0.0),
+                                                                child:
+                                                                    Container(
+                                                                  width: 160.0,
+                                                                  height: 35.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .noColor,
-                                                                    width: 0.0,
+                                                                        .secondaryBackground,
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                    shape: BoxShape
+                                                                        .rectangle,
+                                                                    border:
+                                                                        Border
+                                                                            .all(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .noColor,
+                                                                      width:
+                                                                          0.0,
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                                child:
-                                                                    FlutterFlowCountController(
-                                                                  decrementIconBuilder:
-                                                                      (enabled) =>
-                                                                          FaIcon(
-                                                                    FontAwesomeIcons
-                                                                        .minus,
-                                                                    color: enabled
-                                                                        ? FlutterFlowTheme.of(context)
-                                                                            .secondaryText
-                                                                        : FlutterFlowTheme.of(context)
-                                                                            .alternate,
-                                                                    size: 20.0,
+                                                                  child:
+                                                                      FlutterFlowCountController(
+                                                                    decrementIconBuilder:
+                                                                        (enabled) =>
+                                                                            FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .minus,
+                                                                      color: enabled
+                                                                          ? FlutterFlowTheme.of(context)
+                                                                              .secondaryText
+                                                                          : FlutterFlowTheme.of(context)
+                                                                              .alternate,
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    incrementIconBuilder:
+                                                                        (enabled) =>
+                                                                            FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .plus,
+                                                                      color: enabled
+                                                                          ? FlutterFlowTheme.of(context)
+                                                                              .primary
+                                                                          : FlutterFlowTheme.of(context)
+                                                                              .alternate,
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    countBuilder:
+                                                                        (count) =>
+                                                                            Text(
+                                                                      count
+                                                                          .toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleLarge
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).titleLargeFamily,
+                                                                            fontSize:
+                                                                                19.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleLargeFamily),
+                                                                          ),
+                                                                    ),
+                                                                    count: _model
+                                                                            .homeWinPointsCCValue ??=
+                                                                        adminTournamentEditTournamentsRecord
+                                                                            .roleHomeWinPoints,
+                                                                    updateCount:
+                                                                        (count) =>
+                                                                            setState(() =>
+                                                                                _model.homeWinPointsCCValue = count),
+                                                                    stepSize: 1,
                                                                   ),
-                                                                  incrementIconBuilder:
-                                                                      (enabled) =>
-                                                                          FaIcon(
-                                                                    FontAwesomeIcons
-                                                                        .plus,
-                                                                    color: enabled
-                                                                        ? FlutterFlowTheme.of(context)
-                                                                            .primary
-                                                                        : FlutterFlowTheme.of(context)
-                                                                            .alternate,
-                                                                    size: 20.0,
-                                                                  ),
-                                                                  countBuilder:
-                                                                      (count) =>
-                                                                          Text(
-                                                                    count
-                                                                        .toString(),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleLarge
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).titleLargeFamily,
-                                                                          fontSize:
-                                                                              19.0,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleLargeFamily),
-                                                                        ),
-                                                                  ),
-                                                                  count: _model
-                                                                          .homeWinPointsCCValue ??=
-                                                                      adminTournamentEditTournamentsRecord
-                                                                          .roleHomeWinPoints,
-                                                                  updateCount: (count) =>
-                                                                      setState(() =>
-                                                                          _model.homeWinPointsCCValue =
-                                                                              count),
-                                                                  stepSize: 1,
                                                                 ),
                                                               ),
                                                             ],
@@ -1027,7 +854,6 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                 Expanded(
                                                   child: Container(
                                                     width: double.infinity,
-                                                    height: 100.0,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -1078,7 +904,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                           context)
                                                                       .primaryText,
                                                                   fontSize:
-                                                                      16.0,
+                                                                      13.0,
                                                                   useGoogleFonts: GoogleFonts
                                                                           .asMap()
                                                                       .containsKey(
@@ -1149,87 +975,100 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                               context)
                                                                           .primaryText,
                                                                       fontSize:
-                                                                          16.0,
+                                                                          13.0,
                                                                       useGoogleFonts: GoogleFonts
                                                                               .asMap()
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                     ),
                                                               ),
-                                                              Container(
-                                                                width: 160.0,
-                                                                height: 40.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                  shape: BoxShape
-                                                                      .rectangle,
-                                                                  border: Border
-                                                                      .all(
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            8.0,
+                                                                            0.0,
+                                                                            8.0,
+                                                                            0.0),
+                                                                child:
+                                                                    Container(
+                                                                  width: 160.0,
+                                                                  height: 35.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .alternate,
-                                                                    width: 2.0,
+                                                                        .secondaryBackground,
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                    shape: BoxShape
+                                                                        .rectangle,
+                                                                    border:
+                                                                        Border
+                                                                            .all(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .noColor,
+                                                                      width:
+                                                                          0.0,
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                                child:
-                                                                    FlutterFlowCountController(
-                                                                  decrementIconBuilder:
-                                                                      (enabled) =>
-                                                                          FaIcon(
-                                                                    FontAwesomeIcons
-                                                                        .minus,
-                                                                    color: enabled
-                                                                        ? FlutterFlowTheme.of(context)
-                                                                            .secondaryText
-                                                                        : FlutterFlowTheme.of(context)
-                                                                            .alternate,
-                                                                    size: 20.0,
+                                                                  child:
+                                                                      FlutterFlowCountController(
+                                                                    decrementIconBuilder:
+                                                                        (enabled) =>
+                                                                            FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .minus,
+                                                                      color: enabled
+                                                                          ? FlutterFlowTheme.of(context)
+                                                                              .secondaryText
+                                                                          : FlutterFlowTheme.of(context)
+                                                                              .alternate,
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    incrementIconBuilder:
+                                                                        (enabled) =>
+                                                                            FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .plus,
+                                                                      color: enabled
+                                                                          ? FlutterFlowTheme.of(context)
+                                                                              .primary
+                                                                          : FlutterFlowTheme.of(context)
+                                                                              .alternate,
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    countBuilder:
+                                                                        (count) =>
+                                                                            Text(
+                                                                      count
+                                                                          .toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleLarge
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).titleLargeFamily,
+                                                                            fontSize:
+                                                                                19.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleLargeFamily),
+                                                                          ),
+                                                                    ),
+                                                                    count: _model
+                                                                            .awayWinPointsCCValue ??=
+                                                                        adminTournamentEditTournamentsRecord
+                                                                            .roleHomeWinPoints,
+                                                                    updateCount:
+                                                                        (count) =>
+                                                                            setState(() =>
+                                                                                _model.awayWinPointsCCValue = count),
+                                                                    stepSize: 1,
                                                                   ),
-                                                                  incrementIconBuilder:
-                                                                      (enabled) =>
-                                                                          FaIcon(
-                                                                    FontAwesomeIcons
-                                                                        .plus,
-                                                                    color: enabled
-                                                                        ? FlutterFlowTheme.of(context)
-                                                                            .primary
-                                                                        : FlutterFlowTheme.of(context)
-                                                                            .alternate,
-                                                                    size: 20.0,
-                                                                  ),
-                                                                  countBuilder:
-                                                                      (count) =>
-                                                                          Text(
-                                                                    count
-                                                                        .toString(),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleLarge
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).titleLargeFamily,
-                                                                          fontSize:
-                                                                              19.0,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleLargeFamily),
-                                                                        ),
-                                                                  ),
-                                                                  count: _model
-                                                                          .awayWinPointsCCValue ??=
-                                                                      adminTournamentEditTournamentsRecord
-                                                                          .roleAwayWinPoints,
-                                                                  updateCount: (count) =>
-                                                                      setState(() =>
-                                                                          _model.awayWinPointsCCValue =
-                                                                              count),
-                                                                  stepSize: 1,
                                                                 ),
                                                               ),
                                                             ],
@@ -1252,7 +1091,6 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                 Expanded(
                                                   child: Container(
                                                     width: double.infinity,
-                                                    height: 100.0,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -1303,7 +1141,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                           context)
                                                                       .primaryText,
                                                                   fontSize:
-                                                                      16.0,
+                                                                      13.0,
                                                                   useGoogleFonts: GoogleFonts
                                                                           .asMap()
                                                                       .containsKey(
@@ -1346,7 +1184,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       18.0,
-                                                                      5.0,
+                                                                      0.0,
                                                                       0.0,
                                                                       0.0),
                                                           child: Row(
@@ -1374,87 +1212,100 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                               context)
                                                                           .primaryText,
                                                                       fontSize:
-                                                                          16.0,
+                                                                          13.0,
                                                                       useGoogleFonts: GoogleFonts
                                                                               .asMap()
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                     ),
                                                               ),
-                                                              Container(
-                                                                width: 160.0,
-                                                                height: 40.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                  shape: BoxShape
-                                                                      .rectangle,
-                                                                  border: Border
-                                                                      .all(
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            8.0,
+                                                                            0.0,
+                                                                            8.0,
+                                                                            0.0),
+                                                                child:
+                                                                    Container(
+                                                                  width: 160.0,
+                                                                  height: 35.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .alternate,
-                                                                    width: 2.0,
+                                                                        .secondaryBackground,
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                    shape: BoxShape
+                                                                        .rectangle,
+                                                                    border:
+                                                                        Border
+                                                                            .all(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .noColor,
+                                                                      width:
+                                                                          0.0,
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                                child:
-                                                                    FlutterFlowCountController(
-                                                                  decrementIconBuilder:
-                                                                      (enabled) =>
-                                                                          FaIcon(
-                                                                    FontAwesomeIcons
-                                                                        .minus,
-                                                                    color: enabled
-                                                                        ? FlutterFlowTheme.of(context)
-                                                                            .secondaryText
-                                                                        : FlutterFlowTheme.of(context)
-                                                                            .alternate,
-                                                                    size: 20.0,
+                                                                  child:
+                                                                      FlutterFlowCountController(
+                                                                    decrementIconBuilder:
+                                                                        (enabled) =>
+                                                                            FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .minus,
+                                                                      color: enabled
+                                                                          ? FlutterFlowTheme.of(context)
+                                                                              .secondaryText
+                                                                          : FlutterFlowTheme.of(context)
+                                                                              .alternate,
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    incrementIconBuilder:
+                                                                        (enabled) =>
+                                                                            FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .plus,
+                                                                      color: enabled
+                                                                          ? FlutterFlowTheme.of(context)
+                                                                              .primary
+                                                                          : FlutterFlowTheme.of(context)
+                                                                              .alternate,
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    countBuilder:
+                                                                        (count) =>
+                                                                            Text(
+                                                                      count
+                                                                          .toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleLarge
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).titleLargeFamily,
+                                                                            fontSize:
+                                                                                19.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleLargeFamily),
+                                                                          ),
+                                                                    ),
+                                                                    count: _model
+                                                                            .drawPointsCCValue ??=
+                                                                        adminTournamentEditTournamentsRecord
+                                                                            .roleHomeWinPoints,
+                                                                    updateCount:
+                                                                        (count) =>
+                                                                            setState(() =>
+                                                                                _model.drawPointsCCValue = count),
+                                                                    stepSize: 1,
                                                                   ),
-                                                                  incrementIconBuilder:
-                                                                      (enabled) =>
-                                                                          FaIcon(
-                                                                    FontAwesomeIcons
-                                                                        .plus,
-                                                                    color: enabled
-                                                                        ? FlutterFlowTheme.of(context)
-                                                                            .primary
-                                                                        : FlutterFlowTheme.of(context)
-                                                                            .alternate,
-                                                                    size: 20.0,
-                                                                  ),
-                                                                  countBuilder:
-                                                                      (count) =>
-                                                                          Text(
-                                                                    count
-                                                                        .toString(),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleLarge
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).titleLargeFamily,
-                                                                          fontSize:
-                                                                              19.0,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleLargeFamily),
-                                                                        ),
-                                                                  ),
-                                                                  count: _model
-                                                                          .drawPointsCCValue ??=
-                                                                      adminTournamentEditTournamentsRecord
-                                                                          .roleDrawPoints,
-                                                                  updateCount: (count) =>
-                                                                      setState(() =>
-                                                                          _model.drawPointsCCValue =
-                                                                              count),
-                                                                  stepSize: 1,
                                                                 ),
                                                               ),
                                                             ],
@@ -1477,7 +1328,6 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                 Expanded(
                                                   child: Container(
                                                     width: double.infinity,
-                                                    height: 100.0,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -1528,7 +1378,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                           context)
                                                                       .primaryText,
                                                                   fontSize:
-                                                                      16.0,
+                                                                      13.0,
                                                                   useGoogleFonts: GoogleFonts
                                                                           .asMap()
                                                                       .containsKey(
@@ -1571,7 +1421,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       18.0,
-                                                                      5.0,
+                                                                      0.0,
                                                                       0.0,
                                                                       0.0),
                                                           child: Row(
@@ -1599,87 +1449,100 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                               context)
                                                                           .primaryText,
                                                                       fontSize:
-                                                                          16.0,
+                                                                          13.0,
                                                                       useGoogleFonts: GoogleFonts
                                                                               .asMap()
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                     ),
                                                               ),
-                                                              Container(
-                                                                width: 160.0,
-                                                                height: 40.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                  shape: BoxShape
-                                                                      .rectangle,
-                                                                  border: Border
-                                                                      .all(
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            8.0,
+                                                                            0.0,
+                                                                            8.0,
+                                                                            0.0),
+                                                                child:
+                                                                    Container(
+                                                                  width: 160.0,
+                                                                  height: 35.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .alternate,
-                                                                    width: 2.0,
+                                                                        .secondaryBackground,
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                    shape: BoxShape
+                                                                        .rectangle,
+                                                                    border:
+                                                                        Border
+                                                                            .all(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .noColor,
+                                                                      width:
+                                                                          0.0,
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                                child:
-                                                                    FlutterFlowCountController(
-                                                                  decrementIconBuilder:
-                                                                      (enabled) =>
-                                                                          FaIcon(
-                                                                    FontAwesomeIcons
-                                                                        .minus,
-                                                                    color: enabled
-                                                                        ? FlutterFlowTheme.of(context)
-                                                                            .secondaryText
-                                                                        : FlutterFlowTheme.of(context)
-                                                                            .alternate,
-                                                                    size: 20.0,
+                                                                  child:
+                                                                      FlutterFlowCountController(
+                                                                    decrementIconBuilder:
+                                                                        (enabled) =>
+                                                                            FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .minus,
+                                                                      color: enabled
+                                                                          ? FlutterFlowTheme.of(context)
+                                                                              .secondaryText
+                                                                          : FlutterFlowTheme.of(context)
+                                                                              .alternate,
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    incrementIconBuilder:
+                                                                        (enabled) =>
+                                                                            FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .plus,
+                                                                      color: enabled
+                                                                          ? FlutterFlowTheme.of(context)
+                                                                              .primary
+                                                                          : FlutterFlowTheme.of(context)
+                                                                              .alternate,
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    countBuilder:
+                                                                        (count) =>
+                                                                            Text(
+                                                                      count
+                                                                          .toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleLarge
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).titleLargeFamily,
+                                                                            fontSize:
+                                                                                19.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleLargeFamily),
+                                                                          ),
+                                                                    ),
+                                                                    count: _model
+                                                                            .homeGoalsPointsCCValue ??=
+                                                                        adminTournamentEditTournamentsRecord
+                                                                            .roleHomeWinPoints,
+                                                                    updateCount:
+                                                                        (count) =>
+                                                                            setState(() =>
+                                                                                _model.homeGoalsPointsCCValue = count),
+                                                                    stepSize: 1,
                                                                   ),
-                                                                  incrementIconBuilder:
-                                                                      (enabled) =>
-                                                                          FaIcon(
-                                                                    FontAwesomeIcons
-                                                                        .plus,
-                                                                    color: enabled
-                                                                        ? FlutterFlowTheme.of(context)
-                                                                            .primary
-                                                                        : FlutterFlowTheme.of(context)
-                                                                            .alternate,
-                                                                    size: 20.0,
-                                                                  ),
-                                                                  countBuilder:
-                                                                      (count) =>
-                                                                          Text(
-                                                                    count
-                                                                        .toString(),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleLarge
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).titleLargeFamily,
-                                                                          fontSize:
-                                                                              19.0,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleLargeFamily),
-                                                                        ),
-                                                                  ),
-                                                                  count: _model
-                                                                          .homeGoalsPointsCCValue ??=
-                                                                      adminTournamentEditTournamentsRecord
-                                                                          .roleHomeGoalsPoints,
-                                                                  updateCount: (count) =>
-                                                                      setState(() =>
-                                                                          _model.homeGoalsPointsCCValue =
-                                                                              count),
-                                                                  stepSize: 1,
                                                                 ),
                                                               ),
                                                             ],
@@ -1702,7 +1565,6 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                 Expanded(
                                                   child: Container(
                                                     width: double.infinity,
-                                                    height: 100.0,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -1753,7 +1615,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                           context)
                                                                       .primaryText,
                                                                   fontSize:
-                                                                      16.0,
+                                                                      13.0,
                                                                   useGoogleFonts: GoogleFonts
                                                                           .asMap()
                                                                       .containsKey(
@@ -1796,7 +1658,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       18.0,
-                                                                      5.0,
+                                                                      0.0,
                                                                       0.0,
                                                                       0.0),
                                                           child: Row(
@@ -1824,87 +1686,100 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                               context)
                                                                           .primaryText,
                                                                       fontSize:
-                                                                          16.0,
+                                                                          13.0,
                                                                       useGoogleFonts: GoogleFonts
                                                                               .asMap()
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                     ),
                                                               ),
-                                                              Container(
-                                                                width: 160.0,
-                                                                height: 40.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                  shape: BoxShape
-                                                                      .rectangle,
-                                                                  border: Border
-                                                                      .all(
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            8.0,
+                                                                            0.0,
+                                                                            8.0,
+                                                                            0.0),
+                                                                child:
+                                                                    Container(
+                                                                  width: 160.0,
+                                                                  height: 35.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .alternate,
-                                                                    width: 2.0,
+                                                                        .secondaryBackground,
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                    shape: BoxShape
+                                                                        .rectangle,
+                                                                    border:
+                                                                        Border
+                                                                            .all(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .noColor,
+                                                                      width:
+                                                                          0.0,
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                                child:
-                                                                    FlutterFlowCountController(
-                                                                  decrementIconBuilder:
-                                                                      (enabled) =>
-                                                                          FaIcon(
-                                                                    FontAwesomeIcons
-                                                                        .minus,
-                                                                    color: enabled
-                                                                        ? FlutterFlowTheme.of(context)
-                                                                            .secondaryText
-                                                                        : FlutterFlowTheme.of(context)
-                                                                            .alternate,
-                                                                    size: 20.0,
+                                                                  child:
+                                                                      FlutterFlowCountController(
+                                                                    decrementIconBuilder:
+                                                                        (enabled) =>
+                                                                            FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .minus,
+                                                                      color: enabled
+                                                                          ? FlutterFlowTheme.of(context)
+                                                                              .secondaryText
+                                                                          : FlutterFlowTheme.of(context)
+                                                                              .alternate,
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    incrementIconBuilder:
+                                                                        (enabled) =>
+                                                                            FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .plus,
+                                                                      color: enabled
+                                                                          ? FlutterFlowTheme.of(context)
+                                                                              .primary
+                                                                          : FlutterFlowTheme.of(context)
+                                                                              .alternate,
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    countBuilder:
+                                                                        (count) =>
+                                                                            Text(
+                                                                      count
+                                                                          .toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleLarge
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).titleLargeFamily,
+                                                                            fontSize:
+                                                                                19.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleLargeFamily),
+                                                                          ),
+                                                                    ),
+                                                                    count: _model
+                                                                            .awayGoalsPointsCCValue ??=
+                                                                        adminTournamentEditTournamentsRecord
+                                                                            .roleHomeWinPoints,
+                                                                    updateCount:
+                                                                        (count) =>
+                                                                            setState(() =>
+                                                                                _model.awayGoalsPointsCCValue = count),
+                                                                    stepSize: 1,
                                                                   ),
-                                                                  incrementIconBuilder:
-                                                                      (enabled) =>
-                                                                          FaIcon(
-                                                                    FontAwesomeIcons
-                                                                        .plus,
-                                                                    color: enabled
-                                                                        ? FlutterFlowTheme.of(context)
-                                                                            .primary
-                                                                        : FlutterFlowTheme.of(context)
-                                                                            .alternate,
-                                                                    size: 20.0,
-                                                                  ),
-                                                                  countBuilder:
-                                                                      (count) =>
-                                                                          Text(
-                                                                    count
-                                                                        .toString(),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleLarge
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).titleLargeFamily,
-                                                                          fontSize:
-                                                                              19.0,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleLargeFamily),
-                                                                        ),
-                                                                  ),
-                                                                  count: _model
-                                                                          .awayGoalsPointsCCValue ??=
-                                                                      adminTournamentEditTournamentsRecord
-                                                                          .roleAwayGoalsPoints,
-                                                                  updateCount: (count) =>
-                                                                      setState(() =>
-                                                                          _model.awayGoalsPointsCCValue =
-                                                                              count),
-                                                                  stepSize: 1,
                                                                 ),
                                                               ),
                                                             ],
@@ -1978,9 +1853,6 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                     .secondary,
                                           ),
                                         );
-
-                                        context
-                                            .pushNamed('adminTournamentsList');
                                       },
                                       text: FFLocalizations.of(context).getText(
                                         'zdwcvv5d' /* Save your edite */,

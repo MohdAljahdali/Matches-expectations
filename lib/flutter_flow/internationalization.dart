@@ -570,43 +570,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
-  // adminTournamentsList
-  {
-    'lw9lpn77': {
-      'en': 'List Item Title',
-      'ar': '',
-    },
-    '6yy6pbye': {
-      'en': 'Season',
-      'ar': 'الموسم',
-    },
-    'vqdi7gj1': {
-      'en': ' : ',
-      'ar': ' : ',
-    },
-    '35vlaenp': {
-      'en': 'Type',
-      'ar': 'نوع',
-    },
-    'epxlvliy': {
-      'en': ' : ',
-      'ar': ' : ',
-    },
-    'ejatipx8': {
-      'en': 'Tournaments list',
-      'ar': 'أضافة بطولات',
-    },
-    'ufe43z3x': {
-      'en': 'Home',
-      'ar': '',
-    },
-  },
   // adminTournamentEdit
   {
-    'qy2x0tb8': {
-      'en': 'Logo URL',
-      'ar': 'رابط الشعار',
-    },
     'fc2ssg9i': {
       'en': 'English name',
       'ar': 'الاسم بالانجليزية',
@@ -863,7 +828,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
-  // adminTournamentsAddList
+  // adminTournamentsList
   {
     '6t2porny': {
       'en': 'Season',
@@ -1023,7 +988,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // HomeCopy
   {
-    'a68cdla9': {
+    'obs7fexf': {
       'en': 'Button',
       'ar': '',
     },

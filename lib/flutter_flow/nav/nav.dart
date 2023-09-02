@@ -136,15 +136,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => AdminEditMemberWidget(),
         ),
         FFRoute(
-          name: 'adminTournamentsList',
-          path: '/adminTournamentsList',
-          builder: (context, params) => AdminTournamentsListWidget(),
-        ),
-        FFRoute(
           name: 'adminTournamentEdit',
           path: '/adminTournamentEdit',
           builder: (context, params) => AdminTournamentEditWidget(
-            aTournamentRef: params.getParam('aTournamentRef',
+            tournamentRef: params.getParam('tournamentRef',
                 ParamType.DocumentReference, false, ['Tournaments']),
           ),
         ),
@@ -159,9 +154,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => AdminMatchesListWidget(),
         ),
         FFRoute(
-          name: 'adminTournamentsAddList',
-          path: '/adminTournamentsAddList',
-          builder: (context, params) => AdminTournamentsAddListWidget(
+          name: 'adminTournamentsList',
+          path: '/adminTournamentsList',
+          builder: (context, params) => AdminTournamentsListWidget(
             randomCode: params.getParam('randomCode', ParamType.String),
           ),
         ),
