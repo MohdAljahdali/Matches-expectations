@@ -997,6 +997,150 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الرئسية',
     },
   },
+  // adminTournamentEditAdd
+  {
+    'y86gwbhj': {
+      'en': 'English name',
+      'ar': 'الاسم بالانجليزية',
+    },
+    'ur0hjoed': {
+      'en': 'Arabic name',
+      'ar': 'الاسم بالعربية',
+    },
+    'sgrvk3ai': {
+      'en': 'Tournament is active',
+      'ar': 'البطولة نشطة',
+    },
+    'azyy1cdv': {
+      'en': 'Activate the double feature',
+      'ar': 'تفعيل خاصية الدبل في البطولة',
+    },
+    'x45wjmah': {
+      'en': 'If home team win',
+      'ar': 'في حال فوز فريق المضيف',
+    },
+    'ngku6930': {
+      'en': 'Points',
+      'ar': 'النقاط',
+    },
+    'louj0093': {
+      'en': 'If away team win',
+      'ar': 'في حال فوز فريق الضيف',
+    },
+    'z450ggkb': {
+      'en': 'Points',
+      'ar': 'النقاط',
+    },
+    '8zglyk8f': {
+      'en': 'If two teams draw',
+      'ar': 'في حال تعادل الفريقين',
+    },
+    'fdavbs96': {
+      'en': 'Points',
+      'ar': 'النقاط',
+    },
+    'hydzysis': {
+      'en': 'Anticipate the goals of home team',
+      'ar': 'في حال توقع اهداف الفريق المضيف',
+    },
+    'xohgnlzh': {
+      'en': 'Points',
+      'ar': 'النقاط',
+    },
+    'ge9zpxc0': {
+      'en': 'Anticipate the goals of away team',
+      'ar': 'في حال توقع اهداف الفريق المضيف',
+    },
+    'qmlq22pb': {
+      'en': 'Points',
+      'ar': 'النقاط',
+    },
+    'owtxnfpk': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    'aum2rmrt': {
+      'en': '',
+      'ar': '',
+    },
+    '2qzq7utl': {
+      'en': 'Mxnimum 25 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    'q6s6rldr': {
+      'en': 'Invalid Email Format',
+      'ar': 'تنسيق بريد إلكتروني غير صالح',
+    },
+    'a99vue3j': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'qefyvk5p': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    'x4ct07xk': {
+      'en': 'Minimum eight characters',
+      'ar': 'ثمانية أحرف على الأقل',
+    },
+    'ebwd5elg': {
+      'en': 'Mxnimum 16 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    '6ehomcqs': {
+      'en':
+          'at least one uppercase letter, one lowercase letter and one number',
+      'ar': 'حرف كبير واحد على الأقل وحرف صغير واحد ورقم واحد',
+    },
+    'rkr4imko': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'ezvn6j4l': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    'szj5j5o9': {
+      'en': 'Minimum eight characters',
+      'ar': 'ثمانية أحرف على الأقل',
+    },
+    'ngisn03h': {
+      'en': 'Mxnimum 16 characters',
+      'ar': 'الحد الأقصى 16 حرفًا',
+    },
+    'z4n24kva': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'fw1t3o3m': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    'fmxuaql6': {
+      'en': 'Minimum 8 characters',
+      'ar': '8 أحرف على الأقل',
+    },
+    'dk6kfi9i': {
+      'en': 'Mxnimum 20 characters',
+      'ar': '20 حرفًا بحد أقصى',
+    },
+    'fp8kja9l': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '45w4eifb': {
+      'en': 'Save your edite',
+      'ar': 'حفظ التعديل',
+    },
+    'ivzu4klo': {
+      'en': 'Edit Member',
+      'ar': 'تعديل بيانات العضو',
+    },
+    '4jxwf0fh': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
   // signInComponent
   {
     '73htmsl1': {

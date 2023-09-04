@@ -11,13 +11,14 @@ import 'package:flutter/material.dart';
 import 'index.dart'; // Imports other custom actions
 
 import 'index.dart'; // Imports other custom actions
-
-import 'dart:js_interop';
-
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
-Future<DocumentReference?> addTournaments(int tournamentID, int season) async {
+Future<String> addTournaments(
+  int tournamentID,
+  int season,
+  String randomCode,
+) async {
   final firestore = FirebaseFirestore.instance;
   final TournamentsDoc = TournamentsRecord.collection;
   final TeamsDoc = TeamsRecord.collection;
@@ -44,6 +45,10 @@ Future<DocumentReference?> addTournaments(int tournamentID, int season) async {
                     .where('seasonYear', isEqualTo: seasons['year']),
                 singleRecord: true);
         if (tournamentData.isEmpty) {
+          List<CountriesRecord> countryData = await queryCountriesRecordOnce(
+              queryBuilder: (cR) => cR.where('code',
+                  isEqualTo: tournament['country']['code'].toString().trim()),
+              singleRecord: true);
           TournamentsRecord.collection
               .doc(tournament['league']['id'].toString() +
                   seasons['year'].toString())
@@ -57,8 +62,8 @@ Future<DocumentReference?> addTournaments(int tournamentID, int season) async {
                 nameAr: '-',
                 type: tournament['league']['type'].toString(),
                 logo: tournament['league']['logo'].toString(),
-                //country
-                //countryRef: countryData.first.reference,
+                countryRef: countryData.first.reference,
+                addRandomCode: randomCode,
                 isActive: false,
                 roleHasDoubleMatches: true,
                 roleHomeWin: true,
@@ -131,5 +136,5 @@ Future<DocumentReference?> addTournaments(int tournamentID, int season) async {
     });
   } else {}
 
-  return tournamentRef;
+  return randomCode;
 }

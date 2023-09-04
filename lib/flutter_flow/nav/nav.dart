@@ -197,6 +197,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'HomeCopy')
               : HomeCopyWidget(),
+        ),
+        FFRoute(
+          name: 'adminTournamentEditAdd',
+          path: '/adminTournamentEditAdd',
+          builder: (context, params) => AdminTournamentEditAddWidget(
+            randomCode: params.getParam('randomCode', ParamType.String),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
