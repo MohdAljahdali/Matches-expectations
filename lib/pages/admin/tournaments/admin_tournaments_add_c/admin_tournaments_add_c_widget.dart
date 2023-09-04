@@ -230,15 +230,7 @@ class _AdminTournamentsAddCWidgetState
                           ),
                         );
 
-                        context.goNamed(
-                          'adminTournamentEditAdd',
-                          queryParameters: {
-                            'randomCode': serializeParam(
-                              _model.tournamentRC,
-                              ParamType.String,
-                            ),
-                          }.withoutNulls,
-                        );
+                        context.goNamed('adminTournamentEditAdd');
 
                         Navigator.pop(context);
 

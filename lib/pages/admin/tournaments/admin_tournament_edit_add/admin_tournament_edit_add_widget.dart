@@ -18,7 +18,7 @@ export 'admin_tournament_edit_add_model.dart';
 class AdminTournamentEditAddWidget extends StatefulWidget {
   const AdminTournamentEditAddWidget({
     Key? key,
-    required this.randomCode,
+    this.randomCode,
   }) : super(key: key);
 
   final String? randomCode;
