@@ -119,7 +119,7 @@ class _UserProfileInfoWidgetState extends State<UserProfileInfoWidget> {
                           color: FlutterFlowTheme.of(context).noColor,
                         ),
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceAround,

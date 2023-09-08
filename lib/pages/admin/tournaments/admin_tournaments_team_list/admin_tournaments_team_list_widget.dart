@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:styled_divider/styled_divider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -192,273 +193,275 @@ class _AdminTournamentsTeamListWidgetState
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 5.0, 10.0, 0.0),
-                            child: Builder(
-                              builder: (context) {
-                                final teamsList = columnTournamentsRecord
-                                    .teamsList
-                                    .map((e) => e)
-                                    .toList();
-                                return ListView.builder(
-                                  padding: EdgeInsets.zero,
-                                  primary: false,
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: teamsList.length,
-                                  itemBuilder: (context, teamsListIndex) {
-                                    final teamsListItem =
-                                        teamsList[teamsListIndex];
-                                    return Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 6.0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 7.0,
-                                              color: Color(0x2F1D2429),
-                                              offset: Offset(0.0, 3.0),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        child: Column(
+                            child: ListView(
+                              padding: EdgeInsets.zero,
+                              primary: false,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 6.0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 7.0,
+                                          color: Color(0x2F1D2429),
+                                          offset: Offset(0.0, 3.0),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Row(
                                           mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
                                           children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.end,
-                                              children: [
-                                                Container(
+                                            Container(
+                                              width: 90.0,
+                                              height: 90.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                borderRadius: BorderRadius.only(
+                                                  bottomLeft:
+                                                      Radius.circular(8.0),
+                                                  bottomRight:
+                                                      Radius.circular(0.0),
+                                                  topLeft: Radius.circular(8.0),
+                                                  topRight:
+                                                      Radius.circular(0.0),
+                                                ),
+                                              ),
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.only(
+                                                  bottomLeft:
+                                                      Radius.circular(8.0),
+                                                  bottomRight:
+                                                      Radius.circular(0.0),
+                                                  topLeft: Radius.circular(8.0),
+                                                  topRight:
+                                                      Radius.circular(0.0),
+                                                ),
+                                                child: CachedNetworkImage(
+                                                  fadeInDuration: Duration(
+                                                      milliseconds: 500),
+                                                  fadeOutDuration: Duration(
+                                                      milliseconds: 500),
+                                                  imageUrl:
+                                                      'https://picsum.photos/seed/559/600',
                                                   width: 90.0,
                                                   height: 90.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                      bottomLeft:
-                                                          Radius.circular(8.0),
-                                                      bottomRight:
-                                                          Radius.circular(0.0),
-                                                      topLeft:
-                                                          Radius.circular(8.0),
-                                                      topRight:
-                                                          Radius.circular(0.0),
-                                                    ),
-                                                  ),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                      bottomLeft:
-                                                          Radius.circular(8.0),
-                                                      bottomRight:
-                                                          Radius.circular(0.0),
-                                                      topLeft:
-                                                          Radius.circular(8.0),
-                                                      topRight:
-                                                          Radius.circular(0.0),
-                                                    ),
-                                                    child: CachedNetworkImage(
-                                                      fadeInDuration: Duration(
-                                                          milliseconds: 500),
-                                                      fadeOutDuration: Duration(
-                                                          milliseconds: 500),
-                                                      imageUrl:
-                                                          'https://picsum.photos/seed/559/600',
-                                                      width: 90.0,
-                                                      height: 90.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
+                                                  fit: BoxFit.cover,
                                                 ),
-                                                Flexible(
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(12.0, 0.0,
-                                                                8.0, 0.0),
-                                                    child: Column(
+                                              ),
+                                            ),
+                                            Flexible(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        12.0, 0.0, 8.0, 0.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .stretch,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Text(
+                                                          valueOrDefault<
+                                                              String>(
+                                                            () {
+                                                              if (FFLocalizations.of(
+                                                                          context)
+                                                                      .languageCode ==
+                                                                  'en') {
+                                                                return '1';
+                                                              } else if (FFLocalizations.of(
+                                                                          context)
+                                                                      .languageCode ==
+                                                                  'ar') {
+                                                                return '1';
+                                                              } else {
+                                                                return '1';
+                                                              }
+                                                            }(),
+                                                            '1',
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
-                                                              .center,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .stretch,
+                                                              .spaceBetween,
                                                       children: [
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Text(
-                                                              valueOrDefault<
-                                                                  String>(
-                                                                () {
-                                                                  if (FFLocalizations.of(
-                                                                              context)
-                                                                          .languageCode ==
-                                                                      'en') {
-                                                                    return '1';
-                                                                  } else if (FFLocalizations.of(
-                                                                              context)
-                                                                          .languageCode ==
-                                                                      'ar') {
-                                                                    return '1';
-                                                                  } else {
-                                                                    return '1';
-                                                                  }
-                                                                }(),
-                                                                '1',
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium,
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            SingleChildScrollView(
-                                                              scrollDirection:
-                                                                  Axis.horizontal,
-                                                              child: Row(
+                                                        SingleChildScrollView(
+                                                          scrollDirection:
+                                                              Axis.horizontal,
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Column(
                                                                 mainAxisSize:
                                                                     MainAxisSize
                                                                         .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceBetween,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
                                                                 children: [
-                                                                  Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .start,
-                                                                    children: [
-                                                                      RichText(
-                                                                        text:
-                                                                            TextSpan(
-                                                                          children: [
-                                                                            TextSpan(
-                                                                              text: FFLocalizations.of(context).getText(
-                                                                                'ak5ui8se' /* Country */,
+                                                                  RichText(
+                                                                    textScaleFactor:
+                                                                        MediaQuery.of(context)
+                                                                            .textScaleFactor,
+                                                                    text:
+                                                                        TextSpan(
+                                                                      children: [
+                                                                        TextSpan(
+                                                                          text:
+                                                                              FFLocalizations.of(context).getText(
+                                                                            'ak5ui8se' /* Country */,
+                                                                          ),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
+                                                                                fontWeight: FontWeight.normal,
+                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                               ),
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                    color: FlutterFlowTheme.of(context).primaryText,
-                                                                                    fontWeight: FontWeight.normal,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                  ),
-                                                                            ),
-                                                                            TextSpan(
-                                                                              text: FFLocalizations.of(context).getText(
-                                                                                'to40qi32' /*  :  */,
-                                                                              ),
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium,
-                                                                            ),
-                                                                            TextSpan(
-                                                                              text: FFLocalizations.of(context).getText(
-                                                                                'dxj5ntpu' /* Hello World  */,
-                                                                              ),
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium,
-                                                                            )
-                                                                          ],
+                                                                        ),
+                                                                        TextSpan(
+                                                                          text:
+                                                                              FFLocalizations.of(context).getText(
+                                                                            'to40qi32' /*  :  */,
+                                                                          ),
                                                                           style:
                                                                               FlutterFlowTheme.of(context).bodyMedium,
                                                                         ),
-                                                                      ),
-                                                                      RichText(
-                                                                        text:
-                                                                            TextSpan(
-                                                                          children: [
-                                                                            TextSpan(
-                                                                              text: FFLocalizations.of(context).getText(
-                                                                                'rorq2dwr' /* Code */,
+                                                                        TextSpan(
+                                                                          text:
+                                                                              FFLocalizations.of(context).getText(
+                                                                            'dxj5ntpu' /* Hello World  */,
+                                                                          ),
+                                                                          style:
+                                                                              FlutterFlowTheme.of(context).bodyMedium,
+                                                                        )
+                                                                      ],
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium,
+                                                                    ),
+                                                                  ),
+                                                                  RichText(
+                                                                    textScaleFactor:
+                                                                        MediaQuery.of(context)
+                                                                            .textScaleFactor,
+                                                                    text:
+                                                                        TextSpan(
+                                                                      children: [
+                                                                        TextSpan(
+                                                                          text:
+                                                                              FFLocalizations.of(context).getText(
+                                                                            'rorq2dwr' /* Code */,
+                                                                          ),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
+                                                                                fontWeight: FontWeight.normal,
+                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                               ),
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                    color: FlutterFlowTheme.of(context).primaryText,
-                                                                                    fontWeight: FontWeight.normal,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                  ),
-                                                                            ),
-                                                                            TextSpan(
-                                                                              text: FFLocalizations.of(context).getText(
-                                                                                '2231ob8a' /*  :  */,
-                                                                              ),
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium,
-                                                                            ),
-                                                                            TextSpan(
-                                                                              text: FFLocalizations.of(context).getText(
-                                                                                '1oebw19y' /* Hello World  */,
-                                                                              ),
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium,
-                                                                            )
-                                                                          ],
+                                                                        ),
+                                                                        TextSpan(
+                                                                          text:
+                                                                              FFLocalizations.of(context).getText(
+                                                                            '2231ob8a' /*  :  */,
+                                                                          ),
                                                                           style:
                                                                               FlutterFlowTheme.of(context).bodyMedium,
                                                                         ),
-                                                                      ),
-                                                                    ],
+                                                                        TextSpan(
+                                                                          text:
+                                                                              FFLocalizations.of(context).getText(
+                                                                            '1oebw19y' /* Hello World  */,
+                                                                          ),
+                                                                          style:
+                                                                              FlutterFlowTheme.of(context).bodyMedium,
+                                                                        )
+                                                                      ],
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium,
+                                                                    ),
                                                                   ),
                                                                 ],
                                                               ),
-                                                            ),
-                                                            FlutterFlowIconButton(
-                                                              borderColor: Color(
-                                                                  0x9AA2A8AF),
-                                                              borderRadius: 8.0,
-                                                              borderWidth: 2.0,
-                                                              buttonSize: 50.0,
-                                                              fillColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .accent3,
-                                                              icon: Icon(
-                                                                Icons
-                                                                    .edit_square,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                size: 20.0,
-                                                              ),
-                                                              onPressed: () {
-                                                                print(
-                                                                    'IconButton pressed ...');
-                                                              },
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        FlutterFlowIconButton(
+                                                          borderColor:
+                                                              Color(0x9AA2A8AF),
+                                                          borderRadius: 8.0,
+                                                          borderWidth: 2.0,
+                                                          buttonSize: 50.0,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .accent3,
+                                                          icon: Icon(
+                                                            Icons.edit_square,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            size: 20.0,
+                                                          ),
+                                                          onPressed: () {
+                                                            print(
+                                                                'IconButton pressed ...');
+                                                          },
                                                         ),
                                                       ],
                                                     ),
-                                                  ),
+                                                  ],
                                                 ),
-                                              ],
+                                              ),
                                             ),
                                           ],
                                         ),
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],

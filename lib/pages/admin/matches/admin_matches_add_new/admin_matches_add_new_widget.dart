@@ -9,20 +9,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'admin_tournaments_add_c_model.dart';
-export 'admin_tournaments_add_c_model.dart';
+import 'admin_matches_add_new_model.dart';
+export 'admin_matches_add_new_model.dart';
 
-class AdminTournamentsAddCWidget extends StatefulWidget {
-  const AdminTournamentsAddCWidget({Key? key}) : super(key: key);
+class AdminMatchesAddNewWidget extends StatefulWidget {
+  const AdminMatchesAddNewWidget({Key? key}) : super(key: key);
 
   @override
-  _AdminTournamentsAddCWidgetState createState() =>
-      _AdminTournamentsAddCWidgetState();
+  _AdminMatchesAddNewWidgetState createState() =>
+      _AdminMatchesAddNewWidgetState();
 }
 
-class _AdminTournamentsAddCWidgetState
-    extends State<AdminTournamentsAddCWidget> {
-  late AdminTournamentsAddCModel _model;
+class _AdminMatchesAddNewWidgetState extends State<AdminMatchesAddNewWidget> {
+  late AdminMatchesAddNewModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -33,7 +32,7 @@ class _AdminTournamentsAddCWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AdminTournamentsAddCModel());
+    _model = createModel(context, () => AdminMatchesAddNewModel());
 
     _model.tournamentCodeTFController ??= TextEditingController();
   }
@@ -68,7 +67,7 @@ class _AdminTournamentsAddCWidgetState
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
               child: Text(
                 FFLocalizations.of(context).getText(
-                  'w0w2g2gd' /* Add tournament */,
+                  '680d689i' /* Add tournament */,
                 ),
                 style: FlutterFlowTheme.of(context).titleMedium,
               ),
@@ -86,7 +85,7 @@ class _AdminTournamentsAddCWidgetState
                       decoration: InputDecoration(
                         isDense: true,
                         labelText: FFLocalizations.of(context).getText(
-                          '375g9cre' /* Tournament code */,
+                          'dtjda0lr' /* Tournament code */,
                         ),
                         labelStyle: FlutterFlowTheme.of(context)
                             .bodyMedium
@@ -158,22 +157,22 @@ class _AdminTournamentsAddCWidgetState
                       options: [2022, 2023, 2024, 2025, 2026, 2027],
                       optionLabels: [
                         FFLocalizations.of(context).getText(
-                          'wy6xjihe' /* 2022 */,
+                          'rqes1a8e' /* 2022 */,
                         ),
                         FFLocalizations.of(context).getText(
-                          '4w0jkfnt' /* 2023 */,
+                          'f0zvtuii' /* 2023 */,
                         ),
                         FFLocalizations.of(context).getText(
-                          't9s164vm' /* 2024 */,
+                          'jzh27w7n' /* 2024 */,
                         ),
                         FFLocalizations.of(context).getText(
-                          'gu0fzcbc' /* 2025 */,
+                          '25tjnq0a' /* 2025 */,
                         ),
                         FFLocalizations.of(context).getText(
-                          'f48vmt67' /* 2026 */,
+                          '622wbrbe' /* 2026 */,
                         ),
                         FFLocalizations.of(context).getText(
-                          'wc6dacp9' /* 2027 */,
+                          '33gg78dc' /* 2027 */,
                         )
                       ],
                       onChanged: (val) =>
@@ -182,7 +181,7 @@ class _AdminTournamentsAddCWidgetState
                       height: 45.0,
                       textStyle: FlutterFlowTheme.of(context).bodyMedium,
                       hintText: FFLocalizations.of(context).getText(
-                        'lbq1wcgo' /* Please select... */,
+                        'jat4mou0' /* Please select... */,
                       ),
                       icon: Icon(
                         Icons.keyboard_arrow_down_rounded,
@@ -231,7 +230,7 @@ class _AdminTournamentsAddCWidgetState
                         setState(() {});
                       },
                       text: FFLocalizations.of(context).getText(
-                        'pi2lfqa3' /* Add */,
+                        'q8ttlt4t' /* Add */,
                       ),
                       options: FFButtonOptions(
                         width: 150.0,

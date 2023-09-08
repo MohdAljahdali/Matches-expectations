@@ -289,7 +289,7 @@ class _SignInComponentWidgetState extends State<SignInComponentWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
+              alignment: AlignmentDirectional(0.00, 0.00),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: Row(
@@ -297,7 +297,7 @@ class _SignInComponentWidgetState extends State<SignInComponentWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.00, 0.00),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,

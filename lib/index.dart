@@ -30,5 +30,5 @@ export '/pages/admin/countries/admin_countries_list/admin_countries_list_widget.
 export '/pages/admin/tournaments/admin_tournaments/admin_tournaments_widget.dart'
     show AdminTournamentsWidget;
 export '/home/home_copy/home_copy_widget.dart' show HomeCopyWidget;
-export '/pages/admin/tournaments/admin_tournament_edit_add/admin_tournament_edit_add_widget.dart'
-    show AdminTournamentEditAddWidget;
+export '/pages/admin/matches/admin_matches/admin_matches_widget.dart'
+    show AdminMatchesWidget;

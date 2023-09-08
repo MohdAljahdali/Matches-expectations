@@ -136,13 +136,14 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                           width: 2.0,
                                         ),
                                       ),
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment:
+                                          AlignmentDirectional(0.00, 0.00),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Align(
-                                            alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                            alignment: AlignmentDirectional(
+                                                -1.00, 0.00),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -450,7 +451,8 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                           width: 2.0,
                                         ),
                                       ),
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment:
+                                          AlignmentDirectional(0.00, 0.00),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -720,7 +722,8 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                                           width: 2.0,
                                         ),
                                       ),
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment:
+                                          AlignmentDirectional(0.00, 0.00),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [

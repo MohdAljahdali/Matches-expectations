@@ -157,7 +157,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'adminTournamentsList',
           path: '/adminTournamentsList',
           builder: (context, params) => AdminTournamentsListWidget(
-            randomCode: params.getParam('randomCode', ParamType.String),
+            filterActive: params.getParam('filterActive', ParamType.bool),
           ),
         ),
         FFRoute(
@@ -199,11 +199,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : HomeCopyWidget(),
         ),
         FFRoute(
-          name: 'adminTournamentEditAdd',
-          path: '/adminTournamentEditAdd',
-          builder: (context, params) => AdminTournamentEditAddWidget(
-            randomCode: params.getParam('randomCode', ParamType.String),
-          ),
+          name: 'AdminMatches',
+          path: '/adminMatches',
+          builder: (context, params) => AdminMatchesWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

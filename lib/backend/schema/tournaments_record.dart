@@ -86,11 +86,6 @@ class TournamentsRecord extends FirestoreRecord {
   List<TournamentRoundsStruct> get roundsList => _roundsList ?? const [];
   bool hasRoundsList() => _roundsList != null;
 
-  // "teamsList" field.
-  List<TeamStruct>? _teamsList;
-  List<TeamStruct> get teamsList => _teamsList ?? const [];
-  bool hasTeamsList() => _teamsList != null;
-
   // "usersList" field.
   List<DocumentReference>? _usersList;
   List<DocumentReference> get usersList => _usersList ?? const [];
@@ -186,6 +181,11 @@ class TournamentsRecord extends FirestoreRecord {
   int get roleAwayRedCardPoints => _roleAwayRedCardPoints ?? 0;
   bool hasRoleAwayRedCardPoints() => _roleAwayRedCardPoints != null;
 
+  // "teamsList" field.
+  List<DocumentReference>? _teamsList;
+  List<DocumentReference> get teamsList => _teamsList ?? const [];
+  bool hasTeamsList() => _teamsList != null;
+
   void _initializeFields() {
     _id = castToType<int>(snapshotData['id']);
     _seasonYear = castToType<int>(snapshotData['seasonYear']);
@@ -203,10 +203,6 @@ class TournamentsRecord extends FirestoreRecord {
     _roundsList = getStructList(
       snapshotData['roundsList'],
       TournamentRoundsStruct.fromMap,
-    );
-    _teamsList = getStructList(
-      snapshotData['teamsList'],
-      TeamStruct.fromMap,
     );
     _usersList = getDataList(snapshotData['usersList']);
     _roleHomeWin = snapshotData['roleHomeWin'] as bool?;
@@ -231,6 +227,7 @@ class TournamentsRecord extends FirestoreRecord {
     _roleAwayRedCard = snapshotData['roleAwayRedCard'] as bool?;
     _roleAwayRedCardPoints =
         castToType<int>(snapshotData['roleAwayRedCardPoints']);
+    _teamsList = getDataList(snapshotData['teamsList']);
   }
 
   static CollectionReference get collection =>
@@ -359,7 +356,6 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
         e1?.addRandomCode == e2?.addRandomCode &&
         e1?.roleHasDoubleMatches == e2?.roleHasDoubleMatches &&
         listEquality.equals(e1?.roundsList, e2?.roundsList) &&
-        listEquality.equals(e1?.teamsList, e2?.teamsList) &&
         listEquality.equals(e1?.usersList, e2?.usersList) &&
         e1?.roleHomeWin == e2?.roleHomeWin &&
         e1?.roleHomeWinPoints == e2?.roleHomeWinPoints &&
@@ -378,7 +374,8 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
         e1?.roleHomeRedCard == e2?.roleHomeRedCard &&
         e1?.roleHomeRedCardPoints == e2?.roleHomeRedCardPoints &&
         e1?.roleAwayRedCard == e2?.roleAwayRedCard &&
-        e1?.roleAwayRedCardPoints == e2?.roleAwayRedCardPoints;
+        e1?.roleAwayRedCardPoints == e2?.roleAwayRedCardPoints &&
+        listEquality.equals(e1?.teamsList, e2?.teamsList);
   }
 
   @override
@@ -397,7 +394,6 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
         e?.addRandomCode,
         e?.roleHasDoubleMatches,
         e?.roundsList,
-        e?.teamsList,
         e?.usersList,
         e?.roleHomeWin,
         e?.roleHomeWinPoints,
@@ -416,7 +412,8 @@ class TournamentsRecordDocumentEquality implements Equality<TournamentsRecord> {
         e?.roleHomeRedCard,
         e?.roleHomeRedCardPoints,
         e?.roleAwayRedCard,
-        e?.roleAwayRedCardPoints
+        e?.roleAwayRedCardPoints,
+        e?.teamsList
       ]);
 
   @override

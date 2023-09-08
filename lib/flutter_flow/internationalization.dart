@@ -973,13 +973,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Add new tournament',
       'ar': 'أضافة بطولة جديدة',
     },
-    'n9n4ajsj': {
-      'en': 'Countries',
-      'ar': 'الدول',
+    'qgtknt8d': {
+      'en': 'Active tournaments',
+      'ar': 'البطولات النشطة',
     },
     '8umiev6t': {
-      'en': 'Tournaments',
-      'ar': 'البطولات',
+      'en': 'Unactive tournaments',
+      'ar': 'البطولات الغير نشطة',
     },
     'ebke5ry7': {
       'en': 'Admin',
@@ -997,147 +997,26 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الرئسية',
     },
   },
-  // adminTournamentEditAdd
+  // AdminMatches
   {
-    'y86gwbhj': {
-      'en': 'English name',
-      'ar': 'الاسم بالانجليزية',
+    '2z75hyxx': {
+      'en': 'Admin control',
+      'ar': 'تحكم الاداري',
     },
-    'ur0hjoed': {
-      'en': 'Arabic name',
-      'ar': 'الاسم بالعربية',
+    'itsmbvz1': {
+      'en': 'Add new matches',
+      'ar': 'أضافة مباريات جديدة',
     },
-    'sgrvk3ai': {
-      'en': 'Tournament is active',
-      'ar': 'البطولة نشطة',
+    'euou5u0l': {
+      'en': 'Active tournaments',
+      'ar': 'البطولات النشطة',
     },
-    'azyy1cdv': {
-      'en': 'Activate the double feature',
-      'ar': 'تفعيل خاصية الدبل في البطولة',
+    'ds2q9669': {
+      'en': 'Unactive tournaments',
+      'ar': 'البطولات الغير نشطة',
     },
-    'x45wjmah': {
-      'en': 'If home team win',
-      'ar': 'في حال فوز فريق المضيف',
-    },
-    'ngku6930': {
-      'en': 'Points',
-      'ar': 'النقاط',
-    },
-    'louj0093': {
-      'en': 'If away team win',
-      'ar': 'في حال فوز فريق الضيف',
-    },
-    'z450ggkb': {
-      'en': 'Points',
-      'ar': 'النقاط',
-    },
-    '8zglyk8f': {
-      'en': 'If two teams draw',
-      'ar': 'في حال تعادل الفريقين',
-    },
-    'fdavbs96': {
-      'en': 'Points',
-      'ar': 'النقاط',
-    },
-    'hydzysis': {
-      'en': 'Anticipate the goals of home team',
-      'ar': 'في حال توقع اهداف الفريق المضيف',
-    },
-    'xohgnlzh': {
-      'en': 'Points',
-      'ar': 'النقاط',
-    },
-    'ge9zpxc0': {
-      'en': 'Anticipate the goals of away team',
-      'ar': 'في حال توقع اهداف الفريق المضيف',
-    },
-    'qmlq22pb': {
-      'en': 'Points',
-      'ar': 'النقاط',
-    },
-    'owtxnfpk': {
-      'en': 'Field is required',
-      'ar': 'الحقل مطلوب',
-    },
-    'aum2rmrt': {
-      'en': '',
-      'ar': '',
-    },
-    '2qzq7utl': {
-      'en': 'Mxnimum 25 characters',
-      'ar': 'الحد الأقصى 16 حرفًا',
-    },
-    'q6s6rldr': {
-      'en': 'Invalid Email Format',
-      'ar': 'تنسيق بريد إلكتروني غير صالح',
-    },
-    'a99vue3j': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    'qefyvk5p': {
-      'en': 'Field is required',
-      'ar': 'الحقل مطلوب',
-    },
-    'x4ct07xk': {
-      'en': 'Minimum eight characters',
-      'ar': 'ثمانية أحرف على الأقل',
-    },
-    'ebwd5elg': {
-      'en': 'Mxnimum 16 characters',
-      'ar': 'الحد الأقصى 16 حرفًا',
-    },
-    '6ehomcqs': {
-      'en':
-          'at least one uppercase letter, one lowercase letter and one number',
-      'ar': 'حرف كبير واحد على الأقل وحرف صغير واحد ورقم واحد',
-    },
-    'rkr4imko': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    'ezvn6j4l': {
-      'en': 'Field is required',
-      'ar': 'الحقل مطلوب',
-    },
-    'szj5j5o9': {
-      'en': 'Minimum eight characters',
-      'ar': 'ثمانية أحرف على الأقل',
-    },
-    'ngisn03h': {
-      'en': 'Mxnimum 16 characters',
-      'ar': 'الحد الأقصى 16 حرفًا',
-    },
-    'z4n24kva': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    'fw1t3o3m': {
-      'en': 'Field is required',
-      'ar': 'الحقل مطلوب',
-    },
-    'fmxuaql6': {
-      'en': 'Minimum 8 characters',
-      'ar': '8 أحرف على الأقل',
-    },
-    'dk6kfi9i': {
-      'en': 'Mxnimum 20 characters',
-      'ar': '20 حرفًا بحد أقصى',
-    },
-    'fp8kja9l': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    '45w4eifb': {
-      'en': 'Save your edite',
-      'ar': 'حفظ التعديل',
-    },
-    'ivzu4klo': {
-      'en': 'Edit Member',
-      'ar': 'تعديل بيانات العضو',
-    },
-    '4jxwf0fh': {
-      'en': 'Home',
+    '7g7qvwtb': {
+      'en': 'Admin',
       'ar': '',
     },
   },
@@ -1314,6 +1193,53 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الملف الشخصي',
     },
   },
+  // AdminMatchesAddNew
+  {
+    '680d689i': {
+      'en': 'Add tournament',
+      'ar': 'أضافة بطولة',
+    },
+    'dtjda0lr': {
+      'en': 'Tournament code',
+      'ar': 'كود البطولة',
+    },
+    'rqes1a8e': {
+      'en': '2022',
+      'ar': '2022',
+    },
+    'f0zvtuii': {
+      'en': '2023',
+      'ar': '2023',
+    },
+    'jzh27w7n': {
+      'en': '2024',
+      'ar': '2024',
+    },
+    '25tjnq0a': {
+      'en': '2025',
+      'ar': '2025',
+    },
+    '622wbrbe': {
+      'en': '2026',
+      'ar': '2026',
+    },
+    '33gg78dc': {
+      'en': '2027',
+      'ar': '2027',
+    },
+    'jat4mou0': {
+      'en': 'Please select...',
+      'ar': '',
+    },
+    'zr4grrgo': {
+      'en': 'Search for an item...',
+      'ar': '',
+    },
+    'q8ttlt4t': {
+      'en': 'Add',
+      'ar': 'أضافة',
+    },
+  },
   // Miscellaneous
   {
     's6yiju6t': {
@@ -1362,7 +1288,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'xqzg432p': {
       'en': 'Invalid file format',
-      'ar': 'تنسيق ملف غير صالح',
+      'ar': 'تنسيق الصورة غير صالح',
     },
     'y4vkdd6m': {
       'en': 'Uploading File',
@@ -1370,11 +1296,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'nd0vx833': {
       'en': ' Success',
-      'ar': 'نجاح',
+      'ar': 'تم تحميل الصورة',
     },
     '6sqqp824': {
       'en': 'Failed to upload data ',
-      'ar': 'فشل تحميل البيانات',
+      'ar': 'فشل تحميل الصورة',
     },
     'u8v02bec': {
       'en': '',
@@ -1382,15 +1308,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'rlv7863u': {
       'en': 'Choose source',
-      'ar': 'اختر المصدر',
+      'ar': 'اختر المصدر الصورة',
     },
     '1gp8ulqa': {
       'en': 'Gallery',
-      'ar': 'معرض',
+      'ar': 'معرض الصور',
     },
     'mzm4q5me': {
       'en': 'Gallery (Photo)',
-      'ar': 'معرض (صور)',
+      'ar': 'البوم الصور',
     },
     's6pv9qpd': {
       'en': 'Gallery (Video)',

@@ -9,25 +9,25 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'admin_tournaments_model.dart';
-export 'admin_tournaments_model.dart';
+import 'admin_matches_model.dart';
+export 'admin_matches_model.dart';
 
-class AdminTournamentsWidget extends StatefulWidget {
-  const AdminTournamentsWidget({Key? key}) : super(key: key);
+class AdminMatchesWidget extends StatefulWidget {
+  const AdminMatchesWidget({Key? key}) : super(key: key);
 
   @override
-  _AdminTournamentsWidgetState createState() => _AdminTournamentsWidgetState();
+  _AdminMatchesWidgetState createState() => _AdminMatchesWidgetState();
 }
 
-class _AdminTournamentsWidgetState extends State<AdminTournamentsWidget> {
-  late AdminTournamentsModel _model;
+class _AdminMatchesWidgetState extends State<AdminMatchesWidget> {
+  late AdminMatchesModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AdminTournamentsModel());
+    _model = createModel(context, () => AdminMatchesModel());
   }
 
   @override
@@ -75,7 +75,7 @@ class _AdminTournamentsWidgetState extends State<AdminTournamentsWidget> {
                 ),
                 title: Text(
                   FFLocalizations.of(context).getText(
-                    'cz3fwwtv' /* Admin control */,
+                    '2z75hyxx' /* Admin control */,
                   ),
                   style: FlutterFlowTheme.of(context).titleLarge,
                 ),
@@ -200,7 +200,7 @@ class _AdminTournamentsWidgetState extends State<AdminTournamentsWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            '8qmfs3q9' /* Add new tournament */,
+                                                            'itsmbvz1' /* Add new matches */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -296,7 +296,7 @@ class _AdminTournamentsWidgetState extends State<AdminTournamentsWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'qgtknt8d' /* Active tournaments */,
+                                                            'euou5u0l' /* Active tournaments */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -395,7 +395,7 @@ class _AdminTournamentsWidgetState extends State<AdminTournamentsWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            '8umiev6t' /* Unactive tournaments */,
+                                                            'ds2q9669' /* Unactive tournaments */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)

@@ -90,6 +90,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               RichText(
+                                textScaleFactor:
+                                    MediaQuery.of(context).textScaleFactor,
                                 text: TextSpan(
                                   children: [
                                     TextSpan(
@@ -368,7 +370,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                       Align(
                                                         alignment:
                                                             AlignmentDirectional(
-                                                                0.0, 0.0),
+                                                                0.00, 0.00),
                                                         child: Container(
                                                           width: 100.0,
                                                           height: 100.0,
@@ -380,7 +382,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                           ),
                                                           alignment:
                                                               AlignmentDirectional(
-                                                                  0.0, 0.0),
+                                                                  0.00, 0.00),
                                                           child: Column(
                                                             mainAxisSize:
                                                                 MainAxisSize
@@ -416,8 +418,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                     ),
                                                                     alignment:
                                                                         AlignmentDirectional(
-                                                                            0.0,
-                                                                            0.0),
+                                                                            0.00,
+                                                                            0.00),
                                                                     child:
                                                                         Padding(
                                                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -439,8 +441,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                               Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0),
+                                                                        0.00,
+                                                                        0.00),
                                                                 child: Row(
                                                                   mainAxisSize:
                                                                       MainAxisSize
@@ -450,10 +452,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                           .center,
                                                                   children: [
                                                                     Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0),
+                                                                      alignment: AlignmentDirectional(
+                                                                          0.00,
+                                                                          0.00),
                                                                       child:
                                                                           AutoSizeText(
                                                                         valueOrDefault<
@@ -490,10 +491,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                       ),
                                                                     ),
                                                                     Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0),
+                                                                      alignment: AlignmentDirectional(
+                                                                          0.00,
+                                                                          0.00),
                                                                       child:
                                                                           AutoSizeText(
                                                                         valueOrDefault<
@@ -519,8 +519,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                               Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0),
+                                                                        0.00,
+                                                                        0.00),
                                                                 child: Row(
                                                                   mainAxisSize:
                                                                       MainAxisSize
@@ -530,10 +530,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                           .center,
                                                                   children: [
                                                                     Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0),
+                                                                      alignment: AlignmentDirectional(
+                                                                          0.00,
+                                                                          0.00),
                                                                       child:
                                                                           AutoSizeText(
                                                                         valueOrDefault<
@@ -570,10 +569,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                       ),
                                                                     ),
                                                                     Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0),
+                                                                      alignment: AlignmentDirectional(
+                                                                          0.00,
+                                                                          0.00),
                                                                       child:
                                                                           AutoSizeText(
                                                                         valueOrDefault<

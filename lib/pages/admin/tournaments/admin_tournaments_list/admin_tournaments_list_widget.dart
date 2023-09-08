@@ -2,7 +2,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/pages/admin/tournaments/admin_tournaments_add_c/admin_tournaments_add_c_widget.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -15,10 +15,11 @@ export 'admin_tournaments_list_model.dart';
 class AdminTournamentsListWidget extends StatefulWidget {
   const AdminTournamentsListWidget({
     Key? key,
-    required this.randomCode,
-  }) : super(key: key);
+    bool? filterActive,
+  })  : this.filterActive = filterActive ?? true,
+        super(key: key);
 
-  final String? randomCode;
+  final bool filterActive;
 
   @override
   _AdminTournamentsListWidgetState createState() =>
@@ -86,48 +87,7 @@ class _AdminTournamentsListWidgetState
                   ),
                   style: FlutterFlowTheme.of(context).titleLarge,
                 ),
-                actions: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        await showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          enableDrag: false,
-                          context: context,
-                          builder: (context) {
-                            return GestureDetector(
-                              onTap: () => FocusScope.of(context)
-                                  .requestFocus(_model.unfocusNode),
-                              child: Padding(
-                                padding: MediaQuery.viewInsetsOf(context),
-                                child: Container(
-                                  height: 250.0,
-                                  child: AdminTournamentsAddCWidget(
-                                    rendomCode: '',
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ).then((value) => setState(() {}));
-
-                        Navigator.pop(context, widget.randomCode);
-                      },
-                      child: Icon(
-                        Icons.system_update_sharp,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 30.0,
-                      ),
-                    ),
-                  ),
-                ],
+                actions: [],
                 centerTitle: true,
                 elevation: 2.0,
               )
@@ -151,7 +111,7 @@ class _AdminTournamentsListWidgetState
                             stream: queryTournamentsRecord(
                               queryBuilder: (tournamentsRecord) =>
                                   tournamentsRecord.where('isActive',
-                                      isEqualTo: true),
+                                      isEqualTo: widget.filterActive),
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
@@ -261,6 +221,10 @@ class _AdminTournamentsListWidgetState
                                                           ],
                                                         ),
                                                         RichText(
+                                                          textScaleFactor:
+                                                              MediaQuery.of(
+                                                                      context)
+                                                                  .textScaleFactor,
                                                           text: TextSpan(
                                                             children: [
                                                               TextSpan(
@@ -313,6 +277,10 @@ class _AdminTournamentsListWidgetState
                                                           ),
                                                         ),
                                                         RichText(
+                                                          textScaleFactor:
+                                                              MediaQuery.of(
+                                                                      context)
+                                                                  .textScaleFactor,
                                                           text: TextSpan(
                                                             children: [
                                                               TextSpan(
@@ -373,7 +341,7 @@ class _AdminTournamentsListWidgetState
                                                   child: Align(
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            1.0, 0.0),
+                                                            1.00, 0.00),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,

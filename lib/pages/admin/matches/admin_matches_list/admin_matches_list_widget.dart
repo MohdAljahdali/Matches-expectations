@@ -369,7 +369,7 @@ class _AdminMatchesListWidgetState extends State<AdminMatchesListWidget> {
                                                       ),
                                                       alignment:
                                                           AlignmentDirectional(
-                                                              1.0, 0.0),
+                                                              1.00, 0.00),
                                                       child: Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,

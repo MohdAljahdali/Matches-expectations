@@ -2,6 +2,7 @@ import '/components/user_profile_info_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -244,13 +245,13 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                                                 .secondaryBackground,
                                           ),
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.00, 0.00),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.0, -1.0),
+                                                    0.00, -1.00),
                                                 child: Icon(
                                                   FFIcons.kglobe6,
                                                   color: Colors.white,
@@ -323,13 +324,7 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           context.pushNamed(
-                                            'adminTournamentsList',
-                                            queryParameters: {
-                                              'randomCode': serializeParam(
-                                                '',
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
+                                            'AdminTournaments',
                                             extra: <String, dynamic>{
                                               kTransitionInfoKey:
                                                   TransitionInfo(
@@ -353,7 +348,7 @@ class _AdminPageWidgetState extends State<AdminPageWidget> {
                                             children: [
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.0, -1.0),
+                                                    0.00, -1.00),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(

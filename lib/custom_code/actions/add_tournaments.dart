@@ -64,7 +64,7 @@ Future<String> addTournaments(
                 logo: tournament['league']['logo'].toString(),
                 countryRef: countryData.first.reference,
                 addRandomCode: randomCode,
-                isActive: false,
+                isActive: true,
                 roleHasDoubleMatches: true,
                 roleHomeWin: true,
                 roleHomeWinPoints: 3,
@@ -125,7 +125,17 @@ Future<String> addTournaments(
                           countryRef: countryData.first.reference,
                           logo: team['team']['logo'].toString(),
                         ))
-                        .whenComplete(() async {});
+                        .whenComplete(() async {
+                      TeamsRecord.getDocumentOnce(firestore
+                              .doc('Teams/${team['team']['id'].toString()}'))
+                          .then((teamDoc) async {
+                        await TournamentsDoc.doc(tournamentData.first.reference)
+                            .update({
+                          'teamsList':
+                              FieldValue.arrayUnion([teamDoc.reference])
+                        });
+                      });
+                    });
                   } else {}
                 });
               }

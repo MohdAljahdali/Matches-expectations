@@ -154,6 +154,11 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
+                                                await FirebaseStorage.instance
+                                                    .refFromURL(
+                                                        adminTournamentEditTournamentsRecord
+                                                            .logo)
+                                                    .delete();
                                                 final selectedMedia =
                                                     await selectMedia(
                                                   maxWidth: 100.00,
@@ -174,6 +179,15 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
 
                                                   var downloadUrls = <String>[];
                                                   try {
+                                                    showUploadMessage(
+                                                      context,
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'y4vkdd6m' /* Uploading File */,
+                                                      ),
+                                                      showLoading: true,
+                                                    );
                                                     selectedUploadedFiles =
                                                         selectedMedia
                                                             .map((m) =>
@@ -209,6 +223,9 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                         .map((u) => u!)
                                                         .toList();
                                                   } finally {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .hideCurrentSnackBar();
                                                     _model.isDataUploading =
                                                         false;
                                                   }
@@ -226,19 +243,37 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                       _model.uploadedFileUrl =
                                                           downloadUrls.first;
                                                     });
+                                                    showUploadMessage(
+                                                        context,
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          'nd0vx833' /*  Success */,
+                                                        ));
                                                   } else {
                                                     setState(() {});
+                                                    showUploadMessage(
+                                                        context,
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          '6sqqp824' /* Failed to upload data  */,
+                                                        ));
                                                     return;
                                                   }
                                                 }
 
-                                                await FirebaseStorage.instance
-                                                    .refFromURL(
-                                                        adminTournamentEditTournamentsRecord
-                                                            .logo)
-                                                    .delete();
+                                                await adminTournamentEditTournamentsRecord
+                                                    .reference
+                                                    .update(
+                                                        createTournamentsRecordData(
+                                                  logo: _model.uploadedFileUrl,
+                                                ));
                                               },
-                                              child: Container(
+                                              child: AnimatedContainer(
+                                                duration:
+                                                    Duration(milliseconds: 100),
+                                                curve: Curves.easeInOut,
                                                 width: 100.0,
                                                 height: 100.0,
                                                 decoration: BoxDecoration(
@@ -246,7 +281,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                           context)
                                                       .secondaryBackground,
                                                   image: DecorationImage(
-                                                    fit: BoxFit.scaleDown,
+                                                    fit: BoxFit.none,
                                                     image: Image.asset(
                                                       'assets/images/add-photo-dark.png',
                                                     ).image,
@@ -275,7 +310,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                             .logo,
                                                     width: 100.0,
                                                     height: 100.0,
-                                                    fit: BoxFit.cover,
+                                                    fit: BoxFit.fill,
                                                   ),
                                                 ),
                                               ),
@@ -551,7 +586,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                   ),
                                                 ),
                                                 alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
+                                                    0.00, 0.00),
                                                 child: SwitchListTile.adaptive(
                                                   value: _model
                                                           .activeSTValue ??=
@@ -638,12 +673,12 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                   ),
                                                 ),
                                                 alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
+                                                    0.00, 0.00),
                                                 child: SwitchListTile.adaptive(
                                                   value: _model
                                                           .doubleSTValue ??=
                                                       adminTournamentEditTournamentsRecord
-                                                          .isActive,
+                                                          .roleHasDoubleMatches,
                                                   onChanged: (newValue) async {
                                                     setState(() =>
                                                         _model.doubleSTValue =
@@ -731,7 +766,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                     ),
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            0.0, 0.0),
+                                                            0.00, 0.00),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -740,7 +775,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                           value: _model
                                                                   .homeWinSTValue ??=
                                                               adminTournamentEditTournamentsRecord
-                                                                  .isActive,
+                                                                  .roleHomeWin,
                                                           onChanged:
                                                               (newValue) async {
                                                             setState(() => _model
@@ -916,6 +951,8 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                           _model.homeWinPointsCCValue =
                                                                               count),
                                                                   stepSize: 1,
+                                                                  minimum: 0,
+                                                                  maximum: 3,
                                                                 ),
                                                               ),
                                                             ],
@@ -955,7 +992,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                     ),
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            0.0, 0.0),
+                                                            0.00, 0.00),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -964,7 +1001,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                           value: _model
                                                                   .awayWinSTValue ??=
                                                               adminTournamentEditTournamentsRecord
-                                                                  .isActive,
+                                                                  .roleAwayWin,
                                                           onChanged:
                                                               (newValue) async {
                                                             setState(() => _model
@@ -1134,7 +1171,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   count: _model
                                                                           .awayWinPointsCCValue ??=
                                                                       adminTournamentEditTournamentsRecord
-                                                                          .roleHomeWinPoints,
+                                                                          .roleAwayWinPoints,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
                                                                           _model.awayWinPointsCCValue =
@@ -1179,7 +1216,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                     ),
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            0.0, 0.0),
+                                                            0.00, 0.00),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -1188,7 +1225,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                           value: _model
                                                                   .drawSTValue ??=
                                                               adminTournamentEditTournamentsRecord
-                                                                  .isActive,
+                                                                  .roleDraw,
                                                           onChanged:
                                                               (newValue) async {
                                                             setState(() => _model
@@ -1358,7 +1395,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   count: _model
                                                                           .drawPointsCCValue ??=
                                                                       adminTournamentEditTournamentsRecord
-                                                                          .roleHomeWinPoints,
+                                                                          .roleDrawPoints,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
                                                                           _model.drawPointsCCValue =
@@ -1403,7 +1440,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                     ),
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            0.0, 0.0),
+                                                            0.00, 0.00),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -1412,7 +1449,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                           value: _model
                                                                   .homeGoalsSTValue ??=
                                                               adminTournamentEditTournamentsRecord
-                                                                  .isActive,
+                                                                  .roleHomeGoals,
                                                           onChanged:
                                                               (newValue) async {
                                                             setState(() => _model
@@ -1582,7 +1619,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   count: _model
                                                                           .homeGoalsPointsCCValue ??=
                                                                       adminTournamentEditTournamentsRecord
-                                                                          .roleHomeWinPoints,
+                                                                          .roleHomeGoalsPoints,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
                                                                           _model.homeGoalsPointsCCValue =
@@ -1627,7 +1664,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                     ),
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            0.0, 0.0),
+                                                            0.00, 0.00),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -1806,7 +1843,7 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                                                   count: _model
                                                                           .awayGoalsPointsCCValue ??=
                                                                       adminTournamentEditTournamentsRecord
-                                                                          .roleHomeWinPoints,
+                                                                          .roleAwayGoalsPoints,
                                                                   updateCount: (count) =>
                                                                       setState(() =>
                                                                           _model.awayGoalsPointsCCValue =
@@ -1866,7 +1903,6 @@ class _AdminTournamentEditWidgetState extends State<AdminTournamentEditWidget> {
                                               _model.doubleSTValue,
                                           isActive: _model.activeSTValue,
                                           nameEn: '',
-                                          logo: _model.uploadedFileUrl,
                                         ));
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(

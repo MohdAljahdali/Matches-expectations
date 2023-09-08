@@ -264,7 +264,7 @@ class _AdminMembersWidgetState extends State<AdminMembersWidget> {
                                             ),
                                             child: Align(
                                               alignment: AlignmentDirectional(
-                                                  1.0, 0.0),
+                                                  1.00, 0.00),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
