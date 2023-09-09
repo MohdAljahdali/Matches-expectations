@@ -76,10 +76,80 @@ class FixturesRecord extends FirestoreRecord {
   int get statusElapsed => _statusElapsed ?? 0;
   bool hasStatusElapsed() => _statusElapsed != null;
 
-  // "venues" field.
-  FixtureVenueStruct? _venues;
-  FixtureVenueStruct get venues => _venues ?? FixtureVenueStruct();
-  bool hasVenues() => _venues != null;
+  // "venueRef" field.
+  DocumentReference? _venueRef;
+  DocumentReference? get venueRef => _venueRef;
+  bool hasVenueRef() => _venueRef != null;
+
+  // "teamHomeRef" field.
+  DocumentReference? _teamHomeRef;
+  DocumentReference? get teamHomeRef => _teamHomeRef;
+  bool hasTeamHomeRef() => _teamHomeRef != null;
+
+  // "teamHomeWinner" field.
+  bool? _teamHomeWinner;
+  bool get teamHomeWinner => _teamHomeWinner ?? false;
+  bool hasTeamHomeWinner() => _teamHomeWinner != null;
+
+  // "teamAwayRef" field.
+  DocumentReference? _teamAwayRef;
+  DocumentReference? get teamAwayRef => _teamAwayRef;
+  bool hasTeamAwayRef() => _teamAwayRef != null;
+
+  // "teamAwayWinner" field.
+  bool? _teamAwayWinner;
+  bool get teamAwayWinner => _teamAwayWinner ?? false;
+  bool hasTeamAwayWinner() => _teamAwayWinner != null;
+
+  // "goalsHome" field.
+  int? _goalsHome;
+  int get goalsHome => _goalsHome ?? 0;
+  bool hasGoalsHome() => _goalsHome != null;
+
+  // "goalsAway" field.
+  int? _goalsAway;
+  int get goalsAway => _goalsAway ?? 0;
+  bool hasGoalsAway() => _goalsAway != null;
+
+  // "scoreHalftimeHome" field.
+  int? _scoreHalftimeHome;
+  int get scoreHalftimeHome => _scoreHalftimeHome ?? 0;
+  bool hasScoreHalftimeHome() => _scoreHalftimeHome != null;
+
+  // "scoreHalftimeAway" field.
+  int? _scoreHalftimeAway;
+  int get scoreHalftimeAway => _scoreHalftimeAway ?? 0;
+  bool hasScoreHalftimeAway() => _scoreHalftimeAway != null;
+
+  // "scoreFulltimeHome" field.
+  int? _scoreFulltimeHome;
+  int get scoreFulltimeHome => _scoreFulltimeHome ?? 0;
+  bool hasScoreFulltimeHome() => _scoreFulltimeHome != null;
+
+  // "scoreFulltimeAway" field.
+  int? _scoreFulltimeAway;
+  int get scoreFulltimeAway => _scoreFulltimeAway ?? 0;
+  bool hasScoreFulltimeAway() => _scoreFulltimeAway != null;
+
+  // "scoreExtratimeHome" field.
+  int? _scoreExtratimeHome;
+  int get scoreExtratimeHome => _scoreExtratimeHome ?? 0;
+  bool hasScoreExtratimeHome() => _scoreExtratimeHome != null;
+
+  // "scoreExtratimeAway" field.
+  int? _scoreExtratimeAway;
+  int get scoreExtratimeAway => _scoreExtratimeAway ?? 0;
+  bool hasScoreExtratimeAway() => _scoreExtratimeAway != null;
+
+  // "scorePenaltyHome" field.
+  int? _scorePenaltyHome;
+  int get scorePenaltyHome => _scorePenaltyHome ?? 0;
+  bool hasScorePenaltyHome() => _scorePenaltyHome != null;
+
+  // "scorePenaltyAway" field.
+  int? _scorePenaltyAway;
+  int get scorePenaltyAway => _scorePenaltyAway ?? 0;
+  bool hasScorePenaltyAway() => _scorePenaltyAway != null;
 
   void _initializeFields() {
     _id = castToType<int>(snapshotData['id']);
@@ -94,7 +164,21 @@ class FixturesRecord extends FirestoreRecord {
     _statusGeneralAr = snapshotData['StatusGeneralAr'] as String?;
     _statusShort = snapshotData['StatusShort'] as String?;
     _statusElapsed = castToType<int>(snapshotData['statusElapsed']);
-    _venues = FixtureVenueStruct.maybeFromMap(snapshotData['venues']);
+    _venueRef = snapshotData['venueRef'] as DocumentReference?;
+    _teamHomeRef = snapshotData['teamHomeRef'] as DocumentReference?;
+    _teamHomeWinner = snapshotData['teamHomeWinner'] as bool?;
+    _teamAwayRef = snapshotData['teamAwayRef'] as DocumentReference?;
+    _teamAwayWinner = snapshotData['teamAwayWinner'] as bool?;
+    _goalsHome = castToType<int>(snapshotData['goalsHome']);
+    _goalsAway = castToType<int>(snapshotData['goalsAway']);
+    _scoreHalftimeHome = castToType<int>(snapshotData['scoreHalftimeHome']);
+    _scoreHalftimeAway = castToType<int>(snapshotData['scoreHalftimeAway']);
+    _scoreFulltimeHome = castToType<int>(snapshotData['scoreFulltimeHome']);
+    _scoreFulltimeAway = castToType<int>(snapshotData['scoreFulltimeAway']);
+    _scoreExtratimeHome = castToType<int>(snapshotData['scoreExtratimeHome']);
+    _scoreExtratimeAway = castToType<int>(snapshotData['scoreExtratimeAway']);
+    _scorePenaltyHome = castToType<int>(snapshotData['scorePenaltyHome']);
+    _scorePenaltyAway = castToType<int>(snapshotData['scorePenaltyAway']);
   }
 
   static CollectionReference get collection =>
@@ -144,7 +228,21 @@ Map<String, dynamic> createFixturesRecordData({
   String? statusGeneralAr,
   String? statusShort,
   int? statusElapsed,
-  FixtureVenueStruct? venues,
+  DocumentReference? venueRef,
+  DocumentReference? teamHomeRef,
+  bool? teamHomeWinner,
+  DocumentReference? teamAwayRef,
+  bool? teamAwayWinner,
+  int? goalsHome,
+  int? goalsAway,
+  int? scoreHalftimeHome,
+  int? scoreHalftimeAway,
+  int? scoreFulltimeHome,
+  int? scoreFulltimeAway,
+  int? scoreExtratimeHome,
+  int? scoreExtratimeAway,
+  int? scorePenaltyHome,
+  int? scorePenaltyAway,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -160,12 +258,23 @@ Map<String, dynamic> createFixturesRecordData({
       'StatusGeneralAr': statusGeneralAr,
       'StatusShort': statusShort,
       'statusElapsed': statusElapsed,
-      'venues': FixtureVenueStruct().toMap(),
+      'venueRef': venueRef,
+      'teamHomeRef': teamHomeRef,
+      'teamHomeWinner': teamHomeWinner,
+      'teamAwayRef': teamAwayRef,
+      'teamAwayWinner': teamAwayWinner,
+      'goalsHome': goalsHome,
+      'goalsAway': goalsAway,
+      'scoreHalftimeHome': scoreHalftimeHome,
+      'scoreHalftimeAway': scoreHalftimeAway,
+      'scoreFulltimeHome': scoreFulltimeHome,
+      'scoreFulltimeAway': scoreFulltimeAway,
+      'scoreExtratimeHome': scoreExtratimeHome,
+      'scoreExtratimeAway': scoreExtratimeAway,
+      'scorePenaltyHome': scorePenaltyHome,
+      'scorePenaltyAway': scorePenaltyAway,
     }.withoutNulls,
   );
-
-  // Handle nested data for "venues" field.
-  addFixtureVenueStructData(firestoreData, venues, 'venues');
 
   return firestoreData;
 }
@@ -187,7 +296,21 @@ class FixturesRecordDocumentEquality implements Equality<FixturesRecord> {
         e1?.statusGeneralAr == e2?.statusGeneralAr &&
         e1?.statusShort == e2?.statusShort &&
         e1?.statusElapsed == e2?.statusElapsed &&
-        e1?.venues == e2?.venues;
+        e1?.venueRef == e2?.venueRef &&
+        e1?.teamHomeRef == e2?.teamHomeRef &&
+        e1?.teamHomeWinner == e2?.teamHomeWinner &&
+        e1?.teamAwayRef == e2?.teamAwayRef &&
+        e1?.teamAwayWinner == e2?.teamAwayWinner &&
+        e1?.goalsHome == e2?.goalsHome &&
+        e1?.goalsAway == e2?.goalsAway &&
+        e1?.scoreHalftimeHome == e2?.scoreHalftimeHome &&
+        e1?.scoreHalftimeAway == e2?.scoreHalftimeAway &&
+        e1?.scoreFulltimeHome == e2?.scoreFulltimeHome &&
+        e1?.scoreFulltimeAway == e2?.scoreFulltimeAway &&
+        e1?.scoreExtratimeHome == e2?.scoreExtratimeHome &&
+        e1?.scoreExtratimeAway == e2?.scoreExtratimeAway &&
+        e1?.scorePenaltyHome == e2?.scorePenaltyHome &&
+        e1?.scorePenaltyAway == e2?.scorePenaltyAway;
   }
 
   @override
@@ -204,7 +327,21 @@ class FixturesRecordDocumentEquality implements Equality<FixturesRecord> {
         e?.statusGeneralAr,
         e?.statusShort,
         e?.statusElapsed,
-        e?.venues
+        e?.venueRef,
+        e?.teamHomeRef,
+        e?.teamHomeWinner,
+        e?.teamAwayRef,
+        e?.teamAwayWinner,
+        e?.goalsHome,
+        e?.goalsAway,
+        e?.scoreHalftimeHome,
+        e?.scoreHalftimeAway,
+        e?.scoreFulltimeHome,
+        e?.scoreFulltimeAway,
+        e?.scoreExtratimeHome,
+        e?.scoreExtratimeAway,
+        e?.scorePenaltyHome,
+        e?.scorePenaltyAway
       ]);
 
   @override

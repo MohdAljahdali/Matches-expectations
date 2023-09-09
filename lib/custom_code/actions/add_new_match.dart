@@ -17,29 +17,18 @@ import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
 Future<String> addNewMatch(
-  String tournamentRef,
-  bool dateB,
+  String tournamentRandomCode,
   DateTime fromDate,
   DateTime toDate,
-  String matchStatusB,
-  String? matchStatusT,
   String randomCode,
 ) async {
   // Date format
   var outputFormat = DateFormat('yyyy-MM-dd');
   final firestore = FirebaseFirestore.instance;
   final MatchesCol = firestore.collection('Matches');
+  var fromDateFormat = outputFormat.format(fromDate);
+  var toDateFormat = outputFormat.format(toDate);
 
-  String filtterSearch = "";
-  if (dateB == true) {
-    var fromDateFormat = outputFormat.format(fromDate);
-    var toDateFormat = outputFormat.format(toDate);
-    filtterSearch = filtterSearch +
-        "&from=${fromDateFormat.toString()}&to=${toDateFormat.toString()}";
-  }
-  if (matchStatusB == true) {
-    filtterSearch = filtterSearch + "&statusto=${matchStatusT.toString()}";
-  }
   var headers = {
     'x-rapidapi-key': 'ba825d70e7634e7015d2f116c1a07e03',
     'x-rapidapi-host': 'v3.football.api-sports.io'

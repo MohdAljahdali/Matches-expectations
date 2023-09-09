@@ -1199,37 +1199,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Add tournament',
       'ar': 'أضافة بطولة',
     },
-    'dtjda0lr': {
-      'en': 'Tournament code',
-      'ar': 'كود البطولة',
-    },
-    'rqes1a8e': {
-      'en': '2022',
-      'ar': '2022',
-    },
-    'f0zvtuii': {
-      'en': '2023',
-      'ar': '2023',
-    },
-    'jzh27w7n': {
-      'en': '2024',
-      'ar': '2024',
-    },
-    '25tjnq0a': {
-      'en': '2025',
-      'ar': '2025',
-    },
-    '622wbrbe': {
-      'en': '2026',
-      'ar': '2026',
-    },
-    '33gg78dc': {
-      'en': '2027',
-      'ar': '2027',
-    },
     'jat4mou0': {
-      'en': 'Please select...',
-      'ar': '',
+      'en': 'Please select tournament',
+      'ar': 'قم باختيار البطوبة',
     },
     'zr4grrgo': {
       'en': 'Search for an item...',

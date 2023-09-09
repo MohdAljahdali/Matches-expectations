@@ -883,11 +883,8 @@ class _AdminMatchesAddWidgetState extends State<AdminMatchesAddWidget> {
                           _model.outputAddNewMatches =
                               await actions.addNewMatch(
                             _model.activeTournamentDDValue!,
-                            _model.startDateSTValue!,
                             _model.datePicked1!,
                             _model.datePicked2!,
-                            _model.matchStatusSTValue!.toString(),
-                            _model.matchStatusDDValue,
                             random_data.randomString(
                               25,
                               25,

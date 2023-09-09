@@ -129,14 +129,21 @@ Future<String> addTournaments(
                       TeamsRecord.getDocumentOnce(firestore
                               .doc('Teams/${team['team']['id'].toString()}'))
                           .then((teamDoc) async {
-                        await TournamentsDoc.doc(tournamentData.first.reference)
-                            .update({
+                        tournamentRef?.update({
                           'teamsList':
                               FieldValue.arrayUnion([teamDoc.reference])
                         });
                       });
                     });
-                  } else {}
+                  } else {
+                    TeamsRecord.getDocumentOnce(firestore
+                            .doc('Teams/${team['team']['id'].toString()}'))
+                        .then((teamDoc) async {
+                      tournamentRef?.update({
+                        'teamsList': FieldValue.arrayUnion([teamDoc.reference])
+                      });
+                    });
+                  }
                 });
               }
             }
