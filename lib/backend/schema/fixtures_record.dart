@@ -32,19 +32,49 @@ class FixturesRecord extends FirestoreRecord {
   bool hasDate() => _date != null;
 
   // "timestamp" field.
-  int? _timestamp;
-  int get timestamp => _timestamp ?? 0;
+  DateTime? _timestamp;
+  DateTime? get timestamp => _timestamp;
   bool hasTimestamp() => _timestamp != null;
 
   // "firstPeriod" field.
-  int? _firstPeriod;
-  int get firstPeriod => _firstPeriod ?? 0;
+  DateTime? _firstPeriod;
+  DateTime? get firstPeriod => _firstPeriod;
   bool hasFirstPeriod() => _firstPeriod != null;
 
+  // "firstPeriodTamp" field.
+  int? _firstPeriodTamp;
+  int get firstPeriodTamp => _firstPeriodTamp ?? 0;
+  bool hasFirstPeriodTamp() => _firstPeriodTamp != null;
+
   // "secondPeriod" field.
-  int? _secondPeriod;
-  int get secondPeriod => _secondPeriod ?? 0;
+  DateTime? _secondPeriod;
+  DateTime? get secondPeriod => _secondPeriod;
   bool hasSecondPeriod() => _secondPeriod != null;
+
+  // "secondPeriodTamp" field.
+  int? _secondPeriodTamp;
+  int get secondPeriodTamp => _secondPeriodTamp ?? 0;
+  bool hasSecondPeriodTamp() => _secondPeriodTamp != null;
+
+  // "tournamentRef" field.
+  DocumentReference? _tournamentRef;
+  DocumentReference? get tournamentRef => _tournamentRef;
+  bool hasTournamentRef() => _tournamentRef != null;
+
+  // "tournamentID" field.
+  int? _tournamentID;
+  int get tournamentID => _tournamentID ?? 0;
+  bool hasTournamentID() => _tournamentID != null;
+
+  // "tournamentSeasonYear" field.
+  int? _tournamentSeasonYear;
+  int get tournamentSeasonYear => _tournamentSeasonYear ?? 0;
+  bool hasTournamentSeasonYear() => _tournamentSeasonYear != null;
+
+  // "statusShort" field.
+  String? _statusShort;
+  String get statusShort => _statusShort ?? '';
+  bool hasStatusShort() => _statusShort != null;
 
   // "statusLongEn" field.
   String? _statusLongEn;
@@ -56,20 +86,15 @@ class FixturesRecord extends FirestoreRecord {
   String get statusLongAr => _statusLongAr ?? '';
   bool hasStatusLongAr() => _statusLongAr != null;
 
-  // "StatusGeneralEn" field.
+  // "statusGeneralEn" field.
   String? _statusGeneralEn;
   String get statusGeneralEn => _statusGeneralEn ?? '';
   bool hasStatusGeneralEn() => _statusGeneralEn != null;
 
-  // "StatusGeneralAr" field.
+  // "statusGeneralAr" field.
   String? _statusGeneralAr;
   String get statusGeneralAr => _statusGeneralAr ?? '';
   bool hasStatusGeneralAr() => _statusGeneralAr != null;
-
-  // "StatusShort" field.
-  String? _statusShort;
-  String get statusShort => _statusShort ?? '';
-  bool hasStatusShort() => _statusShort != null;
 
   // "statusElapsed" field.
   int? _statusElapsed;
@@ -155,14 +180,20 @@ class FixturesRecord extends FirestoreRecord {
     _id = castToType<int>(snapshotData['id']);
     _timezone = snapshotData['timezone'] as String?;
     _date = snapshotData['date'] as DateTime?;
-    _timestamp = castToType<int>(snapshotData['timestamp']);
-    _firstPeriod = castToType<int>(snapshotData['firstPeriod']);
-    _secondPeriod = castToType<int>(snapshotData['secondPeriod']);
+    _timestamp = snapshotData['timestamp'] as DateTime?;
+    _firstPeriod = snapshotData['firstPeriod'] as DateTime?;
+    _firstPeriodTamp = castToType<int>(snapshotData['firstPeriodTamp']);
+    _secondPeriod = snapshotData['secondPeriod'] as DateTime?;
+    _secondPeriodTamp = castToType<int>(snapshotData['secondPeriodTamp']);
+    _tournamentRef = snapshotData['tournamentRef'] as DocumentReference?;
+    _tournamentID = castToType<int>(snapshotData['tournamentID']);
+    _tournamentSeasonYear =
+        castToType<int>(snapshotData['tournamentSeasonYear']);
+    _statusShort = snapshotData['statusShort'] as String?;
     _statusLongEn = snapshotData['statusLongEn'] as String?;
     _statusLongAr = snapshotData['statusLongAr'] as String?;
-    _statusGeneralEn = snapshotData['StatusGeneralEn'] as String?;
-    _statusGeneralAr = snapshotData['StatusGeneralAr'] as String?;
-    _statusShort = snapshotData['StatusShort'] as String?;
+    _statusGeneralEn = snapshotData['statusGeneralEn'] as String?;
+    _statusGeneralAr = snapshotData['statusGeneralAr'] as String?;
     _statusElapsed = castToType<int>(snapshotData['statusElapsed']);
     _venueRef = snapshotData['venueRef'] as DocumentReference?;
     _teamHomeRef = snapshotData['teamHomeRef'] as DocumentReference?;
@@ -219,14 +250,19 @@ Map<String, dynamic> createFixturesRecordData({
   int? id,
   String? timezone,
   DateTime? date,
-  int? timestamp,
-  int? firstPeriod,
-  int? secondPeriod,
+  DateTime? timestamp,
+  DateTime? firstPeriod,
+  int? firstPeriodTamp,
+  DateTime? secondPeriod,
+  int? secondPeriodTamp,
+  DocumentReference? tournamentRef,
+  int? tournamentID,
+  int? tournamentSeasonYear,
+  String? statusShort,
   String? statusLongEn,
   String? statusLongAr,
   String? statusGeneralEn,
   String? statusGeneralAr,
-  String? statusShort,
   int? statusElapsed,
   DocumentReference? venueRef,
   DocumentReference? teamHomeRef,
@@ -251,12 +287,17 @@ Map<String, dynamic> createFixturesRecordData({
       'date': date,
       'timestamp': timestamp,
       'firstPeriod': firstPeriod,
+      'firstPeriodTamp': firstPeriodTamp,
       'secondPeriod': secondPeriod,
+      'secondPeriodTamp': secondPeriodTamp,
+      'tournamentRef': tournamentRef,
+      'tournamentID': tournamentID,
+      'tournamentSeasonYear': tournamentSeasonYear,
+      'statusShort': statusShort,
       'statusLongEn': statusLongEn,
       'statusLongAr': statusLongAr,
-      'StatusGeneralEn': statusGeneralEn,
-      'StatusGeneralAr': statusGeneralAr,
-      'StatusShort': statusShort,
+      'statusGeneralEn': statusGeneralEn,
+      'statusGeneralAr': statusGeneralAr,
       'statusElapsed': statusElapsed,
       'venueRef': venueRef,
       'teamHomeRef': teamHomeRef,
@@ -289,12 +330,17 @@ class FixturesRecordDocumentEquality implements Equality<FixturesRecord> {
         e1?.date == e2?.date &&
         e1?.timestamp == e2?.timestamp &&
         e1?.firstPeriod == e2?.firstPeriod &&
+        e1?.firstPeriodTamp == e2?.firstPeriodTamp &&
         e1?.secondPeriod == e2?.secondPeriod &&
+        e1?.secondPeriodTamp == e2?.secondPeriodTamp &&
+        e1?.tournamentRef == e2?.tournamentRef &&
+        e1?.tournamentID == e2?.tournamentID &&
+        e1?.tournamentSeasonYear == e2?.tournamentSeasonYear &&
+        e1?.statusShort == e2?.statusShort &&
         e1?.statusLongEn == e2?.statusLongEn &&
         e1?.statusLongAr == e2?.statusLongAr &&
         e1?.statusGeneralEn == e2?.statusGeneralEn &&
         e1?.statusGeneralAr == e2?.statusGeneralAr &&
-        e1?.statusShort == e2?.statusShort &&
         e1?.statusElapsed == e2?.statusElapsed &&
         e1?.venueRef == e2?.venueRef &&
         e1?.teamHomeRef == e2?.teamHomeRef &&
@@ -320,12 +366,17 @@ class FixturesRecordDocumentEquality implements Equality<FixturesRecord> {
         e?.date,
         e?.timestamp,
         e?.firstPeriod,
+        e?.firstPeriodTamp,
         e?.secondPeriod,
+        e?.secondPeriodTamp,
+        e?.tournamentRef,
+        e?.tournamentID,
+        e?.tournamentSeasonYear,
+        e?.statusShort,
         e?.statusLongEn,
         e?.statusLongAr,
         e?.statusGeneralEn,
         e?.statusGeneralAr,
-        e?.statusShort,
         e?.statusElapsed,
         e?.venueRef,
         e?.teamHomeRef,

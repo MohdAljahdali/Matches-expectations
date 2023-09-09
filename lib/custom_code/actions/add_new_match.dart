@@ -12,6 +12,8 @@ import 'index.dart'; // Imports other custom actions
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:math' as math;
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
@@ -33,97 +35,33 @@ Future<String> addNewMatch(
     'x-rapidapi-key': 'ba825d70e7634e7015d2f116c1a07e03',
     'x-rapidapi-host': 'v3.football.api-sports.io'
   };
-  await TournamentsRecord.getDocumentOnce(
-          firestore.doc('Tournaments/$tournamentRef'))
-      .then((tournamentDoc) async {
-    var request = http.Request(
-        'GET',
-        Uri.parse(
-            'https://v3.football.api-sports.io/fixtures?league=${tournamentDoc.id.toString()}&season=${tournamentDoc.seasonYear.toString()}${filtterSearch.toString()}&timezone=Asia/Riyadh'));
-    request.headers.addAll(headers);
-    http.StreamedResponse response = await request.send();
-    if (response.statusCode == 200) {
-      final Matchesjson =
-          convert.jsonDecode(await response.stream.bytesToString());
-      final Matchesresponse = Matchesjson['response'];
-      Matchesresponse.forEach((matche) async {
+
+  List<TournamentsRecord> tournamentData = await queryTournamentsRecordOnce(
+      queryBuilder: (tr) =>
+          tr.where('addRandomCode', isEqualTo: tournamentRandomCode),
+      singleRecord: true);
+  var request = http.Request(
+      'GET',
+      Uri.parse(
+          'https://v3.football.api-sports.io/fixtures?league=${tournamentData.first.id.toString()}&season=${tournamentData.first.seasonYear.toString()}&&from=${fromDateFormat}&to=${toDateFormat}&timezone=Asia/Riyadh'));
+  request.headers.addAll(headers);
+  http.StreamedResponse response = await request.send();
+  if (response.statusCode == 200) {
+    final Matchesjson =
+        convert.jsonDecode(await response.stream.bytesToString());
+    final Matchesresponse = Matchesjson['response'];
+    Matchesresponse.forEach((matche) async {
+      await TeamsRecord.getDocumentOnce(firestore
+              .doc('Teams/' + matche['teams']['home']['id'].toString()))
+          .then((teamHomeDoc) async {
         await TeamsRecord.getDocumentOnce(firestore
-                .doc('Teams/' + matche['teams']['home']['id'].toString()))
-            .then((teamHomeDoc) async {
-          await TeamsRecord.getDocumentOnce(firestore
-                  .doc('Teams/' + matche['teams']['away']['id'].toString()))
-              .then((teamAwayDoc) async {
-            await MatchesCol.doc(matche['fixture']['id'].toString())
-                .get()
-                .then((matcheDoc) {
-              if (!matcheDoc.exists) {
-                matcheDoc.reference.set(createMatchesRecordData(
-                  matcheID: matche['fixture']['id'].toString(),
-                  fixtureDate: DateTime.parse(
-                      matche['fixture']['date'].toString().trim()),
-                  fixtureTimestamp: int.parse(
-                      matche['fixture']['timestamp'].toString().trim()),
-                  fixtureIsDouble: false,
-                  tournamentRef: tournamentDoc.reference,
-                  tournamentID: tournamentDoc.reference.id,
-                  tournamentseasonYear: tournamentDoc.seasonYear.toString(),
-                  tournamentName: tournamentDoc.name,
-                  tournamentNameAr: tournamentDoc.nameAr,
-                  tournamentType: tournamentDoc.type,
-                  tournamentLogo: tournamentDoc.logo,
-                  tournamentroleHomeWin: tournamentDoc.roleHomeWin,
-                  tournamentroleHomeWinPoints: tournamentDoc.roleHomeWinPoints,
-                  tournamentroleAwayWin: tournamentDoc.roleAwayWin,
-                  tournamentroleAwayWinPoints: tournamentDoc.roleAwayWinPoints,
-                  tournamentroleDraw: tournamentDoc.roleDraw,
-                  tournamentroleDrawPoints: tournamentDoc.roleDrawPoints,
-                  tournamentroleHomeGoals: tournamentDoc.roleHomeGoals,
-                  tournamentroleHomeGoalsPoints:
-                      tournamentDoc.roleHomeGoalsPoints,
-                  tournamentroleAwayGoals: tournamentDoc.roleAwayGoals,
-                  tournamentroleAwayGoalsPoints:
-                      tournamentDoc.roleAwayGoalsPoints,
-                  teamHomeRef: teamHomeDoc.reference,
-                  teamHomeName: teamHomeDoc.name,
-                  teamHomeNameAr: teamHomeDoc.nameAr,
-                  teamHomeCode: teamHomeDoc.code,
-                  teamHomeLogo: teamHomeDoc.logo,
-                  teamAwayRef: teamAwayDoc.reference,
-                  teamAwayName: teamAwayDoc.name,
-                  teamAwayNameAr: teamAwayDoc.nameAr,
-                  teamAwayCode: teamAwayDoc.code,
-                  teamHAwayLogo: teamAwayDoc.logo,
-                  fixtureStatusGeneral: getStatusGeneral(
-                      matche['fixture']['status']['short'].toString().trim()),
-                  fixtureStatusLongEn:
-                      matche['fixture']['status']['long'].toString().trim(),
-                  fixtureStatusLongAr:
-                      matche['fixture']['status']['long'].toString().trim(),
-                  fixtureStatusShort:
-                      matche['fixture']['status']['short'].toString().trim(),
-                  fixtureStatusElapsed:
-                      matche['fixture']['status']['elapsed'].toString().trim(),
-                  goalsHome: 0,
-                  goalsAway: 0,
-                  scoreHalftimeHome: 0,
-                  scoreHalftimeAway: 0,
-                  scoreFulltimeHome: 0,
-                  scoreFulltimeAway: 0,
-                  scoreExtratimeHome: 0,
-                  scoreExtratimeAway: 0,
-                  scorePenaltyHome: 0,
-                  scorePenaltyAway: 0,
-                  isActive: false,
-                  addRandomCode: randomCode,
-                ));
-              }
-            });
-          });
-        });
+                .doc('Teams/' + matche['teams']['away']['id'].toString()))
+            .then((teamAwayDoc) async {});
       });
-    }
-    //TournamentsRecord.getDocumentOnce End
-  });
+    });
+  }
+  //TournamentsRecord.getDocumentOnce End
+
   return randomCode;
 }
 
